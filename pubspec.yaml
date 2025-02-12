@@ -1,0 +1,122 @@
+name: eli_tattoo_clienti
+description: "Eli Tattoo Client App"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # Firebase
+  firebase_core: ^2.32.0
+  firebase_auth: ^4.20.0
+  cloud_firestore: ^4.15.6
+  firebase_storage: ^11.7.7
+  firebase_messaging: ^14.9.4
+  firebase_analytics: ^10.8.10
+  google_sign_in: ^6.2.2
+
+  # UI Components
+  cupertino_icons: ^1.0.8
+  google_fonts: ^6.2.1
+  cached_network_image: ^3.3.1
+  flutter_svg: ^2.0.9
+  shimmer: ^3.0.0
+  lottie: ^3.1.0
+  animate_do: ^3.3.3  # Pentru animații elegante
+  animations: ^2.0.11 # Pentru tranziții de pagină
+
+  # State Management
+  provider: ^6.1.2
+  get: ^4.6.6
+
+  # Maps & Location
+  google_maps_flutter: ^2.5.3
+  location: ^5.0.3
+  geolocator: ^12.0.0
+
+  # Utils
+  intl: ^0.19.0
+  url_launcher: ^6.2.4
+  shared_preferences: ^2.2.2
+  image_picker: ^1.0.7
+  path_provider: ^2.1.2
+  permission_handler: ^11.3.0
+  connectivity_plus: ^5.0.2
+  package_info_plus: ^8.1.4
+
+  # QR & Barcode
+  qr_flutter: ^4.1.0
+  mobile_scanner: ^6.0.6
+  firebase_admin: ^0.3.0+1
+  qr_code_scanner: ^1.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  flutter_launcher_icons: ^0.13.1
+  flutter_native_splash: ^2.3.10
+
+# Configurare Flutter Icons
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icons/app_icon.png"
+  min_sdk_android: 21
+  adaptive_icon_background: "#000000"
+  adaptive_icon_foreground: "assets/icons/app_icon_foreground.png"
+
+# Configurare Native Splash
+flutter_native_splash:
+  color: "#000000"
+  image: assets/images/splash_logo.png
+  branding: assets/images/branding.png
+  color_dark: "#000000"
+  image_dark: assets/images/splash_logo_dark.png
+  branding_dark: assets/images/branding_dark.png
+
+  android_12:
+    image: assets/images/splash_logo.png
+    icon_background_color: "#000000"
+    image_dark: assets/images/splash_logo_dark.png
+    icon_background_color_dark: "#000000"
+
+  web: false
+
+# Configurare Flutter
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/animations/
+    - assets/fonts/
+    - assets/buttons/
+    - assets/images/logo.png  # ✅ ADĂUGAT LOGO
+
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Black.ttf
+        - asset: assets/fonts/Poppins-BlackItalic.ttf
+        - asset: assets/fonts/Poppins-Bold.ttf
+        - asset: assets/fonts/Poppins-BoldItalic.ttf
+        - asset: assets/fonts/Poppins-ExtraBold.ttf
+        - asset: assets/fonts/Poppins-ExtraBoldItalic.ttf
+        - asset: assets/fonts/Poppins-ExtraLight.ttf
+        - asset: assets/fonts/Poppins-ExtraLightItalic.ttf
+        - asset: assets/fonts/Poppins-Italic.ttf
+        - asset: assets/fonts/Poppins-Light.ttf
+        - asset: assets/fonts/Poppins-LightItalic.ttf
+        - asset: assets/fonts/Poppins-Medium.ttf
+        - asset: assets/fonts/Poppins-MediumItalic.ttf
+        - asset: assets/fonts/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+        - asset: assets/fonts/Poppins-SemiBoldItalic.ttf
+        - asset: assets/fonts/Poppins-Thin.ttf
+        - asset: assets/fonts/Poppins-ThinItalic.ttf  

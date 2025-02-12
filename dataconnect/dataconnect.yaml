@@ -1,0 +1,12 @@
+specVersion: "v1beta"
+serviceId: "eli_tattoo_clienti_nou"
+location: "europe-west3"
+schema:
+  source: "./schema"
+  datasource:
+    postgresql:
+      database: "fdcdb"
+      cloudSql:
+        instanceId: "eli_tattoo_clienti_nou-fdc"
+      # schemaValidation: "COMPATIBLE"
+connectorDirs: ["./connector"]

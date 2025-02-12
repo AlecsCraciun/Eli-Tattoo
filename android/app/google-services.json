@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "485612502628",
+    "project_id": "elitattoo-app-c7763",
+    "storage_bucket": "elitattoo-app-c7763.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:485612502628:android:c836831a3075e075d0a971",
+        "android_client_info": {
+          "package_name": "com.elitattoo.clients"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "485612502628-2kp77j7cg4pqiugdk45mfk332ej2fapj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.elitattoo.clients",
+            "certificate_hash": "7112480aafc35482c39d998da041f16568fa979f"
+          }
+        },
+        {
+          "client_id": "485612502628-r470qvpinru85ima6pl7b0rmpegg5j0i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-NzCgBePeBHqkVwOsvfaiORVVbz7UdT4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "485612502628-r470qvpinru85ima6pl7b0rmpegg5j0i.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "485612502628-ih9og8slbltg17kretoqia5edt3memfu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.elitattoo.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
