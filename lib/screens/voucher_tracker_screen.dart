@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'qr_scanner_screen.dart';
 
 class VoucherTrackerScreen extends StatefulWidget {
-  final double voucherLatitude;
-  final double voucherLongitude;
+  final String title;
+  final double latitude;
+  final double longitude;
+  final int value; // ✅ Adăugat value
 
-  VoucherTrackerScreen({required this.voucherLatitude, required this.voucherLongitude});
+  const VoucherTrackerScreen({
+    Key? key,
+    required this.title,
+    required this.latitude,
+    required this.longitude,
+    required this.value,
+  }) : super(key: key);
 
   @override
   _VoucherTrackerScreenState createState() => _VoucherTrackerScreenState();
@@ -13,92 +23,150 @@ class VoucherTrackerScreen extends StatefulWidget {
 
 class _VoucherTrackerScreenState extends State<VoucherTrackerScreen> {
   Position? _currentPosition;
-  double _distance = 1000; // Inițial, setăm o distanță mare
-  
+  double _distance = double.infinity;
+  final FlutterLocalNotificationsPlugin _notificationsPlugin =
+      FlutterLocalNotificationsPlugin();
+
   @override
   void initState() {
     super.initState();
+    _initNotifications();
     _getCurrentLocation();
   }
 
+  void _initNotifications() async {
+    const AndroidInitializationSettings androidSettings =
+        AndroidInitializationSettings('@mipmap/ic_launcher');
+    final InitializationSettings settings =
+        InitializationSettings(android: androidSettings);
+    await _notificationsPlugin.initialize(settings);
+  }
+
+  void _showNotification() async {
+    const AndroidNotificationDetails androidDetails = AndroidNotificationDetails(
+      'treasure_hunt', 'Treasure Hunt',
+      importance: Importance.high,
+      priority: Priority.high,
+    );
+    const NotificationDetails notificationDetails =
+        NotificationDetails(android: androidDetails);
+    await _notificationsPlugin.show(
+      0,
+      '🎉 Ești aproape de un voucher!',
+      'Mai ai doar ${_distance.toStringAsFixed(2)} metri până la premiu!',
+      notificationDetails,
+    );
+  }
+
   void _getCurrentLocation() async {
-    Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-    
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.best);
     setState(() {
       _currentPosition = position;
-      _distance = Geolocator.distanceBetween(
-        position.latitude,
-        position.longitude,
-        widget.voucherLatitude,
-        widget.voucherLongitude,
-      );
+      _updateDistance();
     });
   }
 
-  Color _getDistanceColor() {
-    if (_distance <= 5) return Colors.green; // 5m - Verde
-    if (_distance <= 10) return Colors.yellow; // 10m - Galben
-    if (_distance <= 20) return Colors.orangeAccent; // 20m - Portocaliu deschis
-    if (_distance <= 30) return Colors.orange; // 30m - Portocaliu
-    if (_distance <= 40) return Colors.redAccent; // 40m - Roșu deschis
-    return Colors.red; // Peste 50m - Roșu intens
+  void _updateDistance() {
+    if (_currentPosition == null) return;
+    double distance = Geolocator.distanceBetween(
+      _currentPosition!.latitude,
+      _currentPosition!.longitude,
+      widget.latitude,
+      widget.longitude,
+    );
+    setState(() {
+      _distance = distance;
+    });
+
+    if (_distance <= 50) {
+      _showNotification();
+    }
   }
 
-  String _getDistanceMessage() {
-    if (_distance <= 5) return "📍 Ești extrem de aproape! Caută în jurul tău.";
-    if (_distance <= 10) return "🔍 Aproape acolo! Mai ai doar câțiva metri.";
-    if (_distance <= 20) return "📡 Ești la doar 20m distanță!";
-    if (_distance <= 30) return "🧭 Ești la 30m! Mai aproape...";
-    if (_distance <= 40) return "📶 Ești la 40m, continuă!";
-    return "📍 Ești la ${_distance.toStringAsFixed(1)}m distanță.";
+  Color _getIndicatorColor() {
+    if (_distance > 50) return Colors.red;
+    if (_distance > 40) return Colors.redAccent;
+    if (_distance > 30) return Colors.orange;
+    if (_distance > 20) return Colors.orangeAccent;
+    if (_distance > 10) return Colors.yellow;
+    if (_distance > 5) return Colors.green;
+    return Colors.greenAccent.shade700;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Tracker Voucher")),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "Distanța până la voucher:",
-              style: TextStyle(fontSize: 18),
-            ),
-            SizedBox(height: 10),
-            Container(
-              width: 150,
-              height: 150,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: _getDistanceColor(),
+      appBar: AppBar(
+        title: Text(widget.title),
+        backgroundColor: Colors.black.withOpacity(0.8),
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/background.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "📍 Distanță până la voucher: ${_distance.toStringAsFixed(2)} metri",
+                style: TextStyle(fontSize: 18, color: Colors.white),
               ),
-              child: Center(
-                child: Text(
-                  "${_distance.toStringAsFixed(1)}m",
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
-                ),
+              SizedBox(height: 20),
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  Container(
+                    width: 120,
+                    height: 120,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: _getIndicatorColor(),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black45,
+                          blurRadius: 10,
+                          spreadRadius: 3,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Text(
+                    "${_distance.toStringAsFixed(1)}m",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
               ),
-            ),
-            SizedBox(height: 20),
-            Text(
-              _getDistanceMessage(),
-              style: TextStyle(fontSize: 18),
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: 40),
-            if (_distance <= 1) // Afișează butonul doar dacă ești la 1m
+              SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () {
-                  // Aici urmează implementarea pentru scanarea QR
-                },
-                child: Text("📸 Scanează codul QR"),
+                onPressed: _distance <= 1
+                    ? () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => QRScannerScreen(),
+                          ),
+                        );
+                      }
+                    : null,
+                child: Text("📸 Scanează Codul QR"),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green,
-                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                  backgroundColor:
+                      _distance <= 1 ? Colors.green : Colors.grey.shade700,
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                  textStyle: TextStyle(fontSize: 18),
                 ),
               ),
-          ],
+            ],
+          ),
         ),
       ),
     );

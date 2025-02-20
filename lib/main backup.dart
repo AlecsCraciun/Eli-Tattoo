@@ -5,18 +5,15 @@ import 'screens/home_screen.dart';
 import 'screens/treasure_hunt_screen.dart';
 import 'screens/loyalty_screen.dart';
 import 'screens/qr_scanner_screen.dart';
-import 'screens/chat_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  runApp(const MyApp()); // 🔹 Adăugat `const`
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key); // 🔹 Adăugat `const`
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,20 +21,18 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: Colors.white,
-        textTheme: const TextTheme(
+        textTheme: TextTheme(
           bodyLarge: TextStyle(color: Colors.black87),
           bodyMedium: TextStyle(color: Colors.black54),
         ),
       ),
-      debugShowCheckedModeBanner: false, // 🔹 Elimină bannerul "Debug"
       initialRoute: '/',
       routes: {
-        '/': (context) => HomeScreen(),
+        '/': (context) => HomeScreen(), // Acces direct la HomeScreen fără autentificare
         '/home': (context) => HomeScreen(),
-        '/treasure_hunt': (context) => TreasureHuntScreen(), 
+        '/treasure_hunt': (context) => TreasureHuntScreen(),
         '/fidelizare': (context) => LoyaltyScreen(),
-        '/scan_qr': (context) => QRScannerScreen(),
-        '/chat': (context) => ChatScreen(),
+        '/scan_qr': (context) => QrScannerScreen(),
       },
     );
   }

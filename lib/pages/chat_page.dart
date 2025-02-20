@@ -1,129 +1,108 @@
-// lib/pages/chat_page.dart
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../theme/app_theme.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-class ChatPage extends StatelessWidget {
-  const ChatPage({super.key});
+class ChatPage extends StatefulWidget {
+  const ChatPage({Key? key}) : super(key: key);
+
+  @override
+  _ChatPageState createState() => _ChatPageState();
+}
+
+class _ChatPageState extends State<ChatPage> {
+  final TextEditingController _messageController = TextEditingController();
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  // Funcția pentru trimiterea mesajelor
+  Future<void> _sendMessage() async {
+    if (_messageController.text.trim().isEmpty) return;
+
+    await _firestore.collection('messages').add({
+      'text': _messageController.text.trim(),
+      'timestamp': FieldValue.serverTimestamp(),
+      'senderId': 'testUser123', // În viitor vom folosi ID-ul utilizatorului autentificat
+    });
+
+    _messageController.clear();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.darkBackground,
       appBar: AppBar(
-        backgroundColor: AppColors.black,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios, color: AppColors.gold),
-          onPressed: () => Get.back(),
-        ),
-        title: const Text(
-          'CHAT',
-          style: TextStyle(
-            color: AppColors.gold,
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            letterSpacing: 4,
-          ),
-        ),
-        centerTitle: true,
+        title: const Text('Chat ELI Tattoo'),
       ),
       body: Column(
         children: [
-          // Lista de conversații
+          // 🔹 Zona în care apar mesajele
           Expanded(
-            child: ListView(
-              padding: const EdgeInsets.all(15),
-              children: [
-                _buildChatItem('Alecs', 'Bună ziua! Cu ce vă pot ajuta?'),
-                _buildChatItem('Blanca', 'Aveți întrebări despre piercing?'),
-                _buildChatItem('Denis', 'Vă pot ajuta cu un design personalizat'),
-              ],
+            child: StreamBuilder<QuerySnapshot>(
+              stream: _firestore
+                  .collection('messages')
+                  .orderBy('timestamp', descending: false)
+                  .snapshots(),
+              builder: (context, snapshot) {
+                if (snapshot.hasError) {
+                  return Center(child: Text('Eroare: ${snapshot.error}'));
+                }
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+
+                final messages = snapshot.data?.docs ?? [];
+
+                return ListView.builder(
+                  padding: const EdgeInsets.all(8.0),
+                  itemCount: messages.length,
+                  itemBuilder: (context, index) {
+                    final message = messages[index];
+                    final text = message['text'];
+                    final senderId = message['senderId'];
+
+                    return Align(
+                      alignment: senderId == 'testUser123'
+                          ? Alignment.centerRight
+                          : Alignment.centerLeft,
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(vertical: 4.0),
+                        padding: const EdgeInsets.all(12.0),
+                        decoration: BoxDecoration(
+                          color: senderId == 'testUser123'
+                              ? Colors.blueAccent.withOpacity(0.7)
+                              : Colors.grey.withOpacity(0.3),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        child: Text(text),
+                      ),
+                    );
+                  },
+                );
+              },
             ),
           ),
-          // Bara de căutare
+
+          // 🔹 Zona de input pentru mesaje
           Container(
-            padding: const EdgeInsets.all(15),
-            color: AppColors.black,
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            color: Colors.grey[200],
             child: Row(
               children: [
                 Expanded(
                   child: TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Caută o conversație...',
-                      hintStyle: const TextStyle(color: Colors.grey),
-                      filled: true,
-                      fillColor: AppColors.darkBackground,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                        borderSide: const BorderSide(color: AppColors.gold),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                        borderSide: const BorderSide(color: AppColors.gold),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                        borderSide: const BorderSide(color: AppColors.gold, width: 2),
-                      ),
-                      prefixIcon: const Icon(Icons.search, color: AppColors.gold),
+                    controller: _messageController,
+                    onSubmitted: (_) => _sendMessage(),
+                    decoration: const InputDecoration.collapsed(
+                      hintText: 'Scrie un mesaj...',
                     ),
-                    style: const TextStyle(color: AppColors.white),
                   ),
                 ),
-                const SizedBox(width: 10),
-                FloatingActionButton(
-                  onPressed: () {
-                    // Logica pentru chat nou
-                  },
-                  backgroundColor: AppColors.gold,
-                  child: const Icon(Icons.add, color: AppColors.black),
+                IconButton(
+                  icon: const Icon(Icons.send),
+                  onPressed: _sendMessage,
                 ),
               ],
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildChatItem(String name, String lastMessage) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 10),
-      decoration: BoxDecoration(
-        color: AppColors.black,
-        borderRadius: BorderRadius.circular(15),
-        border: Border.all(color: AppColors.gold),
-      ),
-      child: ListTile(
-        leading: CircleAvatar(
-          backgroundColor: AppColors.gold,
-          child: Text(
-            name[0],
-            style: const TextStyle(
-              color: AppColors.black,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-        title: Text(
-          name,
-          style: const TextStyle(
-            color: AppColors.gold,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        subtitle: Text(
-          lastMessage,
-          style: const TextStyle(
-            color: Colors.grey,
-          ),
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-        ),
-        trailing: const Icon(Icons.arrow_forward_ios, color: AppColors.gold),
-        onTap: () {
-          // Logica pentru deschiderea conversației
-        },
       ),
     );
   }

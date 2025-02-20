@@ -91,7 +91,7 @@ class _TreasureHuntScreenState extends State<TreasureHuntScreen> {
               }
 
               var vouchers = snapshot.data!.docs;
-              print("🔥 Vouchere încărcate: ${vouchers.length}");
+              print("🔥 Vouchere încărcate: \${vouchers.length}");
 
               return ListView.builder(
                 itemCount: vouchers.length,
@@ -130,11 +130,11 @@ class _TreasureHuntScreenState extends State<TreasureHuntScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             ClipRRect(
-                              borderRadius: BorderRadius.circular(6),
+                              borderRadius: BorderRadius.circular(12),
                               child: Container(
                                 decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.white, width: 1),
-                                  borderRadius: BorderRadius.circular(6),
+                                  border: Border.all(color: Colors.white, width: 2),
+                                  borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: Image.network(
                                   imageUrl,
@@ -152,13 +152,13 @@ class _TreasureHuntScreenState extends State<TreasureHuntScreen> {
                               subtitle: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text("Distanță: ${distance.toStringAsFixed(2)} km",
+                                  Text("Distanță: \${distance.toStringAsFixed(2)} km",
                                       style: TextStyle(color: Colors.white70)),
                                   Text("Lat: $latitude, Lon: $longitude",
                                       style: TextStyle(color: Colors.white70)),
                                 ],
                               ),
-                              trailing: Text("$value RON",
+                              trailing: Text("\$value RON",
                                   style: TextStyle(
                                       color: Colors.amber, fontSize: 18)),
                             ),

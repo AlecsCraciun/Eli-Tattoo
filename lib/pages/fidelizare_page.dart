@@ -20,12 +20,27 @@ class _FidelizarePageState extends State<FidelizarePage> {
     User? user = _auth.currentUser;
     if (user != null) {
       DocumentReference userRef = _firestore.collection('users').doc(user.uid);
-      userRef.update({
-        'points': FieldValue.increment(10), // Adaugă 10 puncte per scanare
-      });
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Puncte adăugate!')),
-      );
+
+      try {
+        await _firestore.runTransaction((transaction) async {
+          DocumentSnapshot snapshot = await transaction.get(userRef);
+
+          if (!snapshot.exists) {
+            transaction.set(userRef, {'points': 10});
+          } else {
+            transaction.update(userRef, {'points': FieldValue.increment(10)});
+          }
+        });
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Puncte adăugate!')),
+        );
+      } catch (e) {
+        print("Eroare la actualizarea punctelor: $e");
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Eroare la adăugarea punctelor!')),
+        );
+      }
     }
   }
 

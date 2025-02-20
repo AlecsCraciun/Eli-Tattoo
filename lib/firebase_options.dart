@@ -40,7 +40,7 @@ class DefaultFirebaseOptions {
 
   // 🔹 CONFIGURARE WEB
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: "AIzaSyB6bUWN6JD4RCN8a3_O-O6Rno1gudaVXvU",
+    apiKey: "AIzaSyBbOGqgBB1htpneQ8bnxdIlWhsxWRKYNvQ",
     authDomain: "elitattoo-app-c7763.firebaseapp.com",
     projectId: "elitattoo-app-c7763",
     storageBucket: "elitattoo-app-c7763.appspot.com",
@@ -51,22 +51,22 @@ class DefaultFirebaseOptions {
 
   // 🔹 CONFIGURARE ANDROID
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: "AIzaSyBKBHgJkzUBoO9y0DyPRCq8I5CU16sSPRU",
-    appId: "1:244765485886:android:xxxxxxxxxxxxxx",
-    messagingSenderId: "244765485886",
-    projectId: "elitattoo-app",
-    storageBucket: "elitattoo-app.appspot.com",
+    apiKey: "AIzaSyBbOGqgBB1htpneQ8bnxdIlWhsxWRKYNvQ",
+    appId: "1:485612502628:android:c836831a3075e075d0a971",
+    messagingSenderId: "485612502628",
+    projectId: "elitattoo-app-c7763",
+    storageBucket: "elitattoo-app-c7763.appspot.com",
   );
 
   // 🔹 CONFIGURARE iOS & macOS
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: "AIzaSyCfeEYbhLkRnO9JuhlDkE7w8tz9Dd0p0Zk",
-    appId: "1:244765485886:ios:xxxxxxxxxxxxxx",
-    messagingSenderId: "244765485886",
-    projectId: "elitattoo-app",
-    storageBucket: "elitattoo-app.appspot.com",
-    iosClientId: "244765485886-rg32rsn4jgeejmroumbpd4ngkg2hgvp4.apps.googleusercontent.com",
-    iosBundleId: "com.example.eliTattooClienti",
+    apiKey: "AIzaSyBbOGqgBB1htpneQ8bnxdIlWhsxWRKYNvQ",
+    appId: "1:485612502628:ios:c836831a3075e075d0a971",
+    messagingSenderId: "485612502628",
+    projectId: "elitattoo-app-c7763",
+    storageBucket: "elitattoo-app-c7763.appspot.com",
+    iosClientId: "485612502628-rg32rsn4jgeejmroumbpd4ngkg2hgvp4.apps.googleusercontent.com",
+    iosBundleId: "com.elitattoo.app",
   );
 
   static const FirebaseOptions macos = ios; // macOS folosește aceeași configurare ca iOS

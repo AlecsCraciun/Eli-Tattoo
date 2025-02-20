@@ -1,4 +1,3 @@
-// lib/pages/home_page.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,63 +18,70 @@ class HomePage extends StatelessWidget {
         crossAxisSpacing: 16.0,
         children: [
           _buildMenuItem(
+            context,
             icon: Icons.local_offer,
             title: 'Promoții',
-            onTap: () => Get.toNamed('/promotii'),
+            route: '/promotii',
           ),
           _buildMenuItem(
+            context,
             icon: Icons.photo_library,
             title: 'Portofoliu',
-            onTap: () => Get.toNamed('/portofoliu'),
+            route: '/portofoliu',
           ),
           _buildMenuItem(
+            context,
             icon: Icons.design_services,
             title: 'Servicii',
-            onTap: () => Get.toNamed('/servicii'),
+            route: '/servicii',
           ),
           _buildMenuItem(
+            context,
             icon: Icons.card_giftcard,
             title: 'Fidelizare',
-            onTap: () => Get.toNamed('/fidelizare'),
+            route: '/fidelizare',
           ),
           _buildMenuItem(
+            context,
             icon: Icons.chat_bubble,
             title: 'Chat',
-            onTap: () => Get.toNamed('/chat'),
+            route: '/chat',
           ),
           _buildMenuItem(
+            context,
             icon: Icons.map,
             title: 'Treasure Hunt',
-            onTap: () => Get.toNamed('/treasure-hunt'),
+            route: '/treasure-hunt',
           ),
         ],
       ),
     );
   }
 
-  Widget _buildMenuItem({
+  Widget _buildMenuItem(
+    BuildContext context, {
     required IconData icon,
     required String title,
-    required VoidCallback onTap,
+    required String route,
   }) {
     return InkWell(
-      onTap: onTap,
+      onTap: () => Get.toNamed(route),
       child: Container(
         decoration: BoxDecoration(
-          gradient: const LinearGradient(
+          gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              Color(0xFF2D2D2D),
-              Color(0xFF1A1A1A),
+              const Color(0xFF2C3E50), // Albastru petrol
+              const Color(0xFF1ABC9C), // Verde smarald
             ],
           ),
           borderRadius: BorderRadius.circular(15),
-          boxShadow: const [
+          boxShadow: [
             BoxShadow(
-              color: Colors.black26,
+              color: Colors.black.withOpacity(0.3),
               blurRadius: 10,
-              offset: Offset(0, 5),
+              offset: const Offset(0, 5),
             ),
           ],
         ),
@@ -84,8 +90,8 @@ class HomePage extends StatelessWidget {
           children: [
             Icon(
               icon,
-              size: 40,
-              color: const Color(0xFFE91E63),
+              size: MediaQuery.of(context).size.width * 0.1,
+              color: const Color(0xFFD4A373), // Bej auriu pentru eleganță
             ),
             const SizedBox(height: 8),
             Text(

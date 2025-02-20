@@ -4,14 +4,14 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.5.0
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  
-  # Firebase
-  firebase_core: ^3.11.0
+
+  # 🔹 Firebase Services
+  firebase_core: ^3.11.1
   firebase_auth: ^5.4.2
   cloud_firestore: ^5.6.3
   firebase_storage: ^12.4.2
@@ -19,40 +19,44 @@ dependencies:
   firebase_analytics: ^11.4.2
   google_sign_in: ^6.2.2
 
-  # UI Components
+  # 🔹 UI Components
   cupertino_icons: ^1.0.8
   google_fonts: ^6.2.1
   cached_network_image: ^3.3.1
   flutter_svg: ^2.0.9
   shimmer: ^3.0.0
   lottie: ^3.1.0
-  animate_do: ^4.0.1  # Pentru animații elegante
-  animations: ^2.0.11 # Pentru tranziții de pagină
+  animate_do: ^4.0.1
+  animations: ^2.0.11
 
-  # State Management
+  # 🔹 State Management
   provider: ^6.1.2
   get: ^4.6.6
 
-  # Maps & Location
+  # 🔹 Maps & Location
   google_maps_flutter: ^2.5.3
   location: ^8.0.0
   geolocator: ^13.0.2
 
-  # Utils
-  intl: ^0.19.0
+  # 🔹 Utils
+  intl: ^0.20.2
   url_launcher: ^6.2.4
   shared_preferences: ^2.2.2
+  flutter_secure_storage: ^9.2.2  # ✅ Stocare securizată pentru token-uri
   image_picker: ^1.0.7
   path_provider: ^2.1.2
   permission_handler: ^11.3.0
   connectivity_plus: ^6.1.3
   package_info_plus: ^8.1.4
 
-  # QR & Barcode
+  # 🔹 QR & Barcode
   qr_flutter: ^4.1.0
   mobile_scanner: ^6.0.6
-  firebase_admin: ^0.3.0+1
-  qr_code_scanner: ^1.0.1
+
+  # 🔹 Notificări locale
+  flutter_local_notifications: ^18.0.1
+  photo_view: ^0.15.0
+  glassmorphism_ui: ^0.3.0
 
 dev_dependencies:
   flutter_test:
@@ -70,7 +74,7 @@ flutter_icons:
   adaptive_icon_background: "#000000"
   adaptive_icon_foreground: "assets/icons/app_icon_foreground.png"
 
-# Configurare Native Splash
+# Configurare Native Splash (Splash Screen)
 flutter_native_splash:
   color: "#000000"
   image: assets/images/splash_logo.png
@@ -85,9 +89,8 @@ flutter_native_splash:
     image_dark: assets/images/splash_logo_dark.png
     icon_background_color_dark: "#000000"
 
-  web: false
+  web: false  # ✅ Dezactivat splash pentru web
 
-# Configurare Flutter
 flutter:
   uses-material-design: true
 
@@ -97,26 +100,12 @@ flutter:
     - assets/animations/
     - assets/fonts/
     - assets/buttons/
-    - assets/images/logo.png  # ✅ ADĂUGAT LOGO
+    - assets/images/logo.png
 
   fonts:
     - family: Poppins
       fonts:
         - asset: assets/fonts/Poppins-Black.ttf
-        - asset: assets/fonts/Poppins-BlackItalic.ttf
         - asset: assets/fonts/Poppins-Bold.ttf
-        - asset: assets/fonts/Poppins-BoldItalic.ttf
-        - asset: assets/fonts/Poppins-ExtraBold.ttf
-        - asset: assets/fonts/Poppins-ExtraBoldItalic.ttf
-        - asset: assets/fonts/Poppins-ExtraLight.ttf
-        - asset: assets/fonts/Poppins-ExtraLightItalic.ttf
-        - asset: assets/fonts/Poppins-Italic.ttf
-        - asset: assets/fonts/Poppins-Light.ttf
-        - asset: assets/fonts/Poppins-LightItalic.ttf
-        - asset: assets/fonts/Poppins-Medium.ttf
-        - asset: assets/fonts/Poppins-MediumItalic.ttf
         - asset: assets/fonts/Poppins-Regular.ttf
-        - asset: assets/fonts/Poppins-SemiBold.ttf
-        - asset: assets/fonts/Poppins-SemiBoldItalic.ttf
-        - asset: assets/fonts/Poppins-Thin.ttf
-        - asset: assets/fonts/Poppins-ThinItalic.ttf  
+        - asset: assets/fonts/Poppins-Light.ttf
