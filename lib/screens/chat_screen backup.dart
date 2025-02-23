@@ -74,9 +74,7 @@ class _ChatScreenState extends State<ChatScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Chat ELI Tattoo'),
-        backgroundColor: Colors.teal[800],
       ),
-      backgroundColor: Colors.grey[300], // Fundal gri deschis ca în WhatsApp
       body: Column(
         children: [
           Expanded(
@@ -119,56 +117,55 @@ class _ChatScreenState extends State<ChatScreen> {
 
                     bool isMe = senderId == user?.uid;
 
-                    return Container(
+                    return Align(
                       alignment: isMe ? Alignment.centerRight : Alignment.centerLeft,
-                      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 8),
-                      child: Column(
-                        crossAxisAlignment:
-                            isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+                      child: Row(
+                        mainAxisAlignment: isMe ? MainAxisAlignment.end : MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          if (!isMe)
-                            Text(
-                              senderName,
-                              style: TextStyle(fontSize: 12, color: Colors.black54),
-                            ),
-                          Material(
-                            borderRadius: BorderRadius.only(
-                              topLeft: const Radius.circular(12),
-                              topRight: const Radius.circular(12),
-                              bottomLeft: isMe
-                                  ? const Radius.circular(12)
-                                  : const Radius.circular(0),
-                              bottomRight: isMe
-                                  ? const Radius.circular(0)
-                                  : const Radius.circular(12),
-                            ),
-                            color: isMe ? Colors.green[400] : Colors.white,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 10, horizontal: 14),
+                          if (!isMe && senderPhoto.isNotEmpty)
+                            CircleAvatar(backgroundImage: NetworkImage(senderPhoto)),
+
+                          Flexible(
+                            child: Container(
+                              margin: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
+                              padding: const EdgeInsets.all(10.0),
+                              decoration: BoxDecoration(
+                                color: isMe ? Colors.blueAccent.withOpacity(0.7) : Colors.grey.withOpacity(0.3),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
+                                  if (!isMe)
+                                    Text(
+                                      senderName,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14,
+                                        color: Colors.white70,
+                                      ),
+                                    ),
                                   if (imageUrl.isNotEmpty)
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(8),
-                                      child: Image.network(
-                                        imageUrl,
-                                        width: 200,
-                                        height: 200,
-                                        fit: BoxFit.cover,
-                                        loadingBuilder:
-                                            (context, child, progress) {
-                                          if (progress == null) return child;
-                                          return const Center(
-                                            child: CircularProgressIndicator(),
-                                          );
-                                        },
-                                        errorBuilder:
-                                            (context, error, stackTrace) {
-                                          return const Icon(Icons.error,
-                                              color: Colors.red);
-                                        },
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 5),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(8),
+                                        child: Image.network(
+                                          imageUrl,
+                                          width: 200,
+                                          height: 200,
+                                          fit: BoxFit.cover,
+                                          loadingBuilder: (context, child, progress) {
+                                            if (progress == null) return child;
+                                            return const Center(
+                                              child: CircularProgressIndicator(),
+                                            );
+                                          },
+                                          errorBuilder: (context, error, stackTrace) {
+                                            return const Icon(Icons.error, color: Colors.red);
+                                          },
+                                        ),
                                       ),
                                     ),
                                   if (text.isNotEmpty)
@@ -176,17 +173,16 @@ class _ChatScreenState extends State<ChatScreen> {
                                       padding: const EdgeInsets.only(top: 5),
                                       child: Text(
                                         text,
-                                        style: TextStyle(
-                                          color:
-                                              isMe ? Colors.white : Colors.black,
-                                          fontSize: 16,
-                                        ),
+                                        style: const TextStyle(color: Colors.white),
                                       ),
                                     ),
                                 ],
                               ),
                             ),
                           ),
+
+                          if (isMe && senderPhoto.isNotEmpty)
+                            CircleAvatar(backgroundImage: NetworkImage(senderPhoto)),
                         ],
                       ),
                     );
@@ -196,10 +192,9 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
           ),
 
-          // Zona de input pentru mesaje
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            color: Colors.white,
+            color: Colors.grey[200],
             child: Row(
               children: [
                 IconButton(
@@ -217,7 +212,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   ),
                 ),
                 IconButton(
-                  icon: const Icon(Icons.send, color: Colors.teal),
+                  icon: const Icon(Icons.send, color: Colors.blueAccent),
                   onPressed: _sendMessage,
                 ),
               ],

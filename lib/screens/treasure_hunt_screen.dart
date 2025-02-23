@@ -24,7 +24,6 @@ class _TreasureHuntScreenState extends State<TreasureHuntScreen> {
 
     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      print("❌ GPS dezactivat!");
       setState(() => _locationError = true);
       return;
     }
@@ -32,12 +31,8 @@ class _TreasureHuntScreenState extends State<TreasureHuntScreen> {
     LocationPermission permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.deniedForever) {
-        print("🚫 Permisiunea este blocată permanent!");
-        setState(() => _locationError = true);
-        return;
-      } else if (permission == LocationPermission.denied) {
-        print("⚠️ Permisiunea a fost refuzată!");
+      if (permission == LocationPermission.deniedForever ||
+          permission == LocationPermission.denied) {
         setState(() => _locationError = true);
         return;
       }
@@ -46,10 +41,8 @@ class _TreasureHuntScreenState extends State<TreasureHuntScreen> {
     try {
       Position position = await Geolocator.getCurrentPosition(
           desiredAccuracy: LocationAccuracy.high);
-      print("📍 Locația actuală: ${position.latitude}, ${position.longitude}");
       setState(() => _currentPosition = position);
     } catch (e) {
-      print("⚠️ Eroare la obținerea locației: $e");
       setState(() => _locationError = true);
     }
   }
@@ -65,18 +58,17 @@ class _TreasureHuntScreenState extends State<TreasureHuntScreen> {
         'https://www.google.com/maps/search/?api=1&query=$latitude,$longitude';
     if (await canLaunchUrl(Uri.parse(url))) {
       await launchUrl(Uri.parse(url));
-    } else {
-      print("❌ Nu s-a putut deschide harta!");
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text("Treasure Hunt"),
-        backgroundColor: Colors.black.withOpacity(0.8),
-        elevation: 0,
+        title: const Text("Treasure Hunt", style: TextStyle(color: Colors.amber)),
+        backgroundColor: Colors.black,
+        elevation: 2,
       ),
       body: _locationError
           ? _buildLocationError()
@@ -85,15 +77,10 @@ class _TreasureHuntScreenState extends State<TreasureHuntScreen> {
                   .collection('treasure_hunt_rewards')
                   .snapshots(),
               builder: (context, snapshot) {
-                if (snapshot.hasError) {
-                  print("❌ Eroare Firestore: ${snapshot.error}");
-                  return const Center(
-                    child: Text("Eroare la încărcarea voucherelor."),
-                  );
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator(color: Colors.amber));
                 }
-
                 if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                  print("⚠️ Firestore nu returnează date.");
                   return const Center(
                     child: Text(
                       "Nu sunt vouchere disponibile acum.",
@@ -103,22 +90,20 @@ class _TreasureHuntScreenState extends State<TreasureHuntScreen> {
                 }
 
                 var vouchers = snapshot.data!.docs;
-                print("✅ Firestore a returnat ${vouchers.length} vouchere");
 
                 return ListView.builder(
                   itemCount: vouchers.length,
-                  padding: const EdgeInsets.only(bottom: 20),
+                  padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
                   itemBuilder: (context, index) {
                     var voucher = vouchers[index].data() as Map<String, dynamic>?;
 
                     if (voucher == null) return const SizedBox();
 
                     String title = voucher['title'] ?? "Voucher";
-                    String description =
-                        voucher['description'] ?? "Descriere indisponibilă";
-                    String detailedDescription =
-                        voucher['detailed_description'] ?? "Nicio descriere detaliată.";
-                    String imageUrl = voucher['image_url'] ?? "";
+                    String description = voucher['description'] ?? "Descriere indisponibilă";
+                    String detailedDescription = voucher['detailed_description'] ?? "Fără detalii";
+                    String imageUrl = voucher['image_url'] ??
+                        "https://firebasestorage.googleapis.com/v0/b/elitattoo-app-c7763.firebasestorage.app/o/voucher_fantana.jpg?alt=media&token=2920ee76-f1d8-4a6d-8574-0b2d0bd2dba0";
                     double latitude = voucher['latitude'] ?? 0.0;
                     double longitude = voucher['longitude'] ?? 0.0;
                     int value = voucher['value'] ?? 0;
@@ -128,98 +113,97 @@ class _TreasureHuntScreenState extends State<TreasureHuntScreen> {
                         ? "Locație necunoscută"
                         : "${distance.toStringAsFixed(2)} metri";
 
-                    print("🎯 Voucher ${index + 1}: $title, Distanță: $distanceText");
-
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                      child: Card(
-                        color: Colors.grey.shade900,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            side: const BorderSide(color: Colors.white, width: 1)),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(12),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.white, width: 2),
-                                    borderRadius: BorderRadius.circular(12),
+                    return Card(
+                      color: Colors.black,
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        side: BorderSide(color: Colors.amber.shade700, width: 2),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(12),
+                              child: Image.network(
+                                imageUrl,
+                                width: double.infinity,
+                                height: 180,
+                                fit: BoxFit.cover,
+                                loadingBuilder: (context, child, progress) {
+                                  if (progress == null) return child;
+                                  return const Center(
+                                    child: CircularProgressIndicator(color: Colors.amber),
+                                  );
+                                },
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            Text(
+                              title,
+                              style: TextStyle(
+                                  color: Colors.amber.shade700,
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            const SizedBox(height: 5),
+                            Text(
+                              "Distanță: $distanceText",
+                              style: const TextStyle(color: Colors.white70, fontSize: 16),
+                            ),
+                            const SizedBox(height: 5),
+                            Text(
+                              "$value RON",
+                              style: const TextStyle(
+                                  color: Colors.amber, fontSize: 22, fontWeight: FontWeight.bold),
+                            ),
+                            const SizedBox(height: 10),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                ElevatedButton.icon(
+                                  onPressed: () => _openMap(latitude, longitude),
+                                  icon: const Icon(Icons.map, color: Colors.black),
+                                  label: const Text("Vezi pe hartă",
+                                      style: TextStyle(color: Colors.black)),
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.amber,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(10)),
                                   ),
-                                  child: imageUrl.isNotEmpty
-                                      ? Image.network(
-                                          imageUrl,
-                                          width: double.infinity,
-                                          height: MediaQuery.of(context).size.width * 2 / 5,
-                                          fit: BoxFit.cover,
-                                          loadingBuilder: (context, child, progress) {
-                                            if (progress == null) return child;
-                                            return const Center(
-                                              child: CircularProgressIndicator(),
-                                            );
-                                          },
-                                        )
-                                      : Image.asset(
-                                          'assets/images/placeholder.png',
-                                          width: double.infinity,
-                                          height: MediaQuery.of(context).size.width * 2 / 5,
-                                          fit: BoxFit.cover,
-                                        ),
                                 ),
-                              ),
-                              const SizedBox(height: 10),
-                              ListTile(
-                                title: Text(title,
-                                    style: const TextStyle(
-                                        color: Colors.white, fontSize: 20)),
-                                subtitle: Text(
-                                  "Distanță: $distanceText",
-                                  style: const TextStyle(color: Colors.white70),
-                                ),
-                                trailing: Text("$value RON",
-                                    style: const TextStyle(
-                                        color: Colors.amber, fontSize: 18)),
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  ElevatedButton.icon(
-                                    onPressed: () => _openMap(latitude, longitude),
-                                    icon: const Icon(Icons.map),
-                                    label: const Text("Vezi pe hartă"),
-                                    style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.blue),
-                                  ),
-                                  ElevatedButton.icon(
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => VoucherDetailsScreen(
-                                            title: title,
-                                            description: description,
-                                            detailedDescription: detailedDescription,
-                                            imageUrl: imageUrl,
-                                            latitude: latitude,
-                                            longitude: longitude,
-                                            value: value,
-                                            location: 'Lat: $latitude, Lon: $longitude',
-                                          ),
+                                ElevatedButton.icon(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => VoucherDetailsScreen(
+                                          title: title,
+                                          description: description,
+                                          detailedDescription: detailedDescription,
+                                          imageUrl: imageUrl,
+                                          latitude: latitude,
+                                          longitude: longitude,
+                                          value: value,
+                                          location: 'Lat: $latitude, Lon: $longitude',
                                         ),
-                                      );
-                                    },
-                                    icon: const Icon(Icons.info),
-                                    label: const Text("Vezi voucherul"),
-                                    style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.redAccent),
+                                      ),
+                                    );
+                                  },
+                                  icon: const Icon(Icons.info, color: Colors.black),
+                                  label: const Text("Detalii",
+                                      style: TextStyle(color: Colors.black)),
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.amber,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(10)),
                                   ),
-                                ],
-                              ),
-                            ],
-                          ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                       ),
                     );
