@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:photo_view/photo_view.dart';
+import 'package:photo_view/photo_view_gallery.dart';
 
 class PortfolioScreen extends StatefulWidget {
   const PortfolioScreen({super.key});
@@ -11,8 +12,8 @@ class PortfolioScreen extends StatefulWidget {
 }
 
 class _PortfolioScreenState extends State<PortfolioScreen> {
-  String selectedArtist = "Alecs";
-  final userId = FirebaseAuth.instance.currentUser?.uid ?? "guest";
+  String selectedArtist = "Alecs"; // Artistul selectat
+  final userId = FirebaseAuth.instance.currentUser?.uid ?? "guest"; // ID-ul utilizatorului
 
   void _changeArtist(String artist) {
     setState(() {
@@ -53,62 +54,35 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text("Portofoliu Artiști", style: TextStyle(color: Colors.white)),
-        backgroundColor: Colors.black,
+        title: const Text("Portofoliu"),
         centerTitle: true,
-        elevation: 0,
       ),
       body: Column(
         children: [
-          // 🔹 Meniu pentru selectarea artistului
-          Container(
-            color: Colors.black,
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+          // 🔹 Selectare artist
+          Padding(
+            padding: const EdgeInsets.all(10.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: ["Alecs", "Blanca", "Denis"].map((artist) {
-                return ElevatedButton(
-                  onPressed: () => _changeArtist(artist),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: selectedArtist == artist ? Colors.purpleAccent : Colors.grey.shade800,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: ElevatedButton(
+                    onPressed: () => _changeArtist(artist),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: selectedArtist == artist
+                          ? Colors.amber.shade700
+                          : Colors.grey.shade800,
+                    ),
+                    child: Text(artist),
                   ),
-                  child: Text(artist, style: const TextStyle(fontSize: 16, color: Colors.white)),
                 );
               }).toList(),
             ),
           ),
 
-          // 🔹 Header cu avatar + bio
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20),
-            child: Column(
-              children: [
-                CircleAvatar(
-                  radius: 50,
-                  backgroundImage: AssetImage("assets/images/${selectedArtist.toLowerCase()}_avatar.jpg"),
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  selectedArtist,
-                  style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
-                  child: Text(
-                    _getArtistBio(selectedArtist),
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(color: Colors.white70, fontSize: 14),
-                  ),
-                ),
-              ],
-            ),
-          ),
-
-          // 🔹 Galerie de imagini (tip Instagram)
+          // 🔹 Galerie de imagini
           Expanded(
             child: StreamBuilder<QuerySnapshot>(
               stream: FirebaseFirestore.instance
@@ -116,17 +90,21 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                   .where('artist', isEqualTo: selectedArtist)
                   .snapshots(),
               builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                }
                 if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                  return const Center(child: Text("Nu există imagini pentru acest artist.", style: TextStyle(color: Colors.white)));
+                  return const Center(child: Text("Nu există imagini pentru acest artist."));
                 }
 
                 var images = snapshot.data!.docs;
+
                 return GridView.builder(
                   padding: const EdgeInsets.all(10),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    crossAxisSpacing: 5,
-                    mainAxisSpacing: 5,
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
                   ),
                   itemCount: images.length,
                   itemBuilder: (context, index) {
@@ -140,12 +118,17 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                           .doc(imageId)
                           .snapshots(),
                       builder: (context, likeSnapshot) {
-                        List<dynamic> likes = likeSnapshot.hasData ? List.from(likeSnapshot.data?['likes'] ?? []) : [];
-                        List<dynamic> dislikes = likeSnapshot.hasData ? List.from(likeSnapshot.data?['dislikes'] ?? []) : [];
+                        if (!likeSnapshot.hasData || !likeSnapshot.data!.exists) {
+                          return _buildImageCard(imageUrl, imageId, 0, 0);
+                        }
+                        var data = likeSnapshot.data!;
+                        List<dynamic> likes = data['likes'] ?? [];
+                        List<dynamic> dislikes = data['dislikes'] ?? [];
                         bool isLiked = likes.contains(userId);
                         bool isDisliked = dislikes.contains(userId);
 
-                        return _buildImageCard(imageUrl, imageId, likes.length, dislikes.length, isLiked: isLiked, isDisliked: isDisliked);
+                        return _buildImageCard(imageUrl, imageId, likes.length, dislikes.length,
+                            isLiked: isLiked, isDisliked: isDisliked);
                       },
                     );
                   },
@@ -163,34 +146,49 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
     return GestureDetector(
       onTap: () => _openImageFullScreen(imageUrl),
       child: Stack(
-        alignment: Alignment.bottomCenter,
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: Image.network(imageUrl, fit: BoxFit.cover),
+            borderRadius: BorderRadius.circular(10),
+            child: Image.network(
+              imageUrl,
+              width: double.infinity,
+              height: double.infinity,
+              fit: BoxFit.cover,
+            ),
           ),
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-            color: Colors.black54,
+          Positioned(
+            bottom: 8,
+            left: 8,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _buildLikeButton(Icons.thumb_up, isLiked, () => _toggleLike(imageId, true), likes),
-                _buildLikeButton(Icons.thumb_down, isDisliked, () => _toggleLike(imageId, false), dislikes),
+                IconButton(
+                  icon: Icon(
+                    Icons.thumb_up,
+                    color: isLiked ? Colors.blue : Colors.white,
+                  ),
+                  onPressed: () => _toggleLike(imageId, true),
+                ),
+                Text(
+                  "$likes",
+                  style: const TextStyle(color: Colors.white),
+                ),
+                const SizedBox(width: 10),
+                IconButton(
+                  icon: Icon(
+                    Icons.thumb_down,
+                    color: isDisliked ? Colors.red : Colors.white,
+                  ),
+                  onPressed: () => _toggleLike(imageId, false),
+                ),
+                Text(
+                  "$dislikes",
+                  style: const TextStyle(color: Colors.white),
+                ),
               ],
             ),
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildLikeButton(IconData icon, bool isActive, VoidCallback onTap, int count) {
-    return Row(
-      children: [
-        IconButton(icon: Icon(icon, color: isActive ? Colors.purpleAccent : Colors.white), onPressed: onTap),
-        Text("$count", style: const TextStyle(color: Colors.white)),
-      ],
     );
   }
 
@@ -201,14 +199,6 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
         builder: (context) => FullScreenImage(imageUrl: imageUrl),
       ),
     );
-  }
-
-  String _getArtistBio(String artist) {
-    return {
-      "Alecs": "Expert în realism și black & grey, cu peste 10 ani de experiență.",
-      "Blanca": "Maestră în piercing și body modifications.",
-      "Denis": "Artist specializat în neo-traditional și color tattoos."
-    }[artist] ?? "";
   }
 }
 
@@ -221,9 +211,15 @@ class FullScreenImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(backgroundColor: Colors.transparent),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
       body: Center(
-        child: PhotoView(imageProvider: NetworkImage(imageUrl)),
+        child: PhotoView(
+          imageProvider: NetworkImage(imageUrl),
+          minScale: PhotoViewComputedScale.contained,
+          maxScale: PhotoViewComputedScale.covered * 2,
+        ),
       ),
     );
   }
