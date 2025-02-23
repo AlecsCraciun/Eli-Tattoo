@@ -6,6 +6,11 @@ import 'screens/treasure_hunt_screen.dart';
 import 'screens/loyalty_screen.dart';
 import 'screens/qr_scanner_screen.dart';
 import 'screens/chat_screen.dart';
+import 'screens/services_screen.dart';
+import 'screens/tatuaje_screen.dart';
+import 'screens/portofoliu_blanca_screen.dart';
+import 'screens/laser_removal_screen.dart';
+import 'screens/rate_tbi_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,6 +43,11 @@ class MyApp extends StatelessWidget {
         '/fidelizare': (context) => LoyaltyScreen(),
         '/scan_qr': (context) => QRScannerScreen(),
         '/chat': (context) => ChatScreen(),
+        '/services': (context) => const ServicesScreen(),
+        '/tatuaje': (context) => const TatuajeScreen(),
+        '/portofoliu_blanca': (context) => const PortofoliuBlancaScreen(),
+        '/laser_removal': (context) => const LaserRemovalScreen(),
+        '/rate_tbi': (context) => const RateTBIScreen(),
       },
     );
   }
