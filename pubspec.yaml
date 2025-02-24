@@ -103,6 +103,9 @@ flutter:
     - assets/buttons/
     - assets/images/logo.png
     - assets/images/tbi_banner.png
+    - assets/images/alecs_avatar.jpg  # ✅ Adăugat avatar Alecs
+    - assets/images/blanca_avatar.jpg # ✅ Adăugat avatar Blanca
+    - assets/images/denis_avatar.jpg  # ✅ Adăugat avatar Denis
 
   fonts:
     - family: Poppins
