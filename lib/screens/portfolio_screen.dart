@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:photo_view/photo_view.dart';
 
 class PortfolioScreen extends StatefulWidget {
@@ -12,41 +11,10 @@ class PortfolioScreen extends StatefulWidget {
 
 class _PortfolioScreenState extends State<PortfolioScreen> {
   String selectedArtist = "Alecs";
-  final userId = FirebaseAuth.instance.currentUser?.uid ?? "guest";
 
   void _changeArtist(String artist) {
     setState(() {
       selectedArtist = artist;
-    });
-  }
-
-  void _toggleLike(String imageId, bool isLiked) async {
-    final docRef = FirebaseFirestore.instance.collection('portfolio_likes').doc(imageId);
-
-    await FirebaseFirestore.instance.runTransaction((transaction) async {
-      final doc = await transaction.get(docRef);
-      if (!doc.exists) {
-        transaction.set(docRef, {
-          'likes': isLiked ? [userId] : [],
-          'dislikes': isLiked ? [] : [userId],
-        });
-      } else {
-        List<dynamic> likes = List.from(doc['likes'] ?? []);
-        List<dynamic> dislikes = List.from(doc['dislikes'] ?? []);
-
-        if (isLiked) {
-          likes.contains(userId) ? likes.remove(userId) : likes.add(userId);
-          dislikes.remove(userId);
-        } else {
-          dislikes.contains(userId) ? dislikes.remove(userId) : dislikes.add(userId);
-          likes.remove(userId);
-        }
-
-        transaction.update(docRef, {
-          'likes': likes,
-          'dislikes': dislikes,
-        });
-      }
     });
   }
 
@@ -62,21 +30,25 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
       ),
       body: Column(
         children: [
-          // 🔹 Meniu pentru selectarea artistului
+          // 🔹 Meniu fix cu 3 butoane egale
           Container(
-            color: Colors.black,
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+            color: Colors.grey.shade900,
+            padding: const EdgeInsets.symmetric(vertical: 10),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: ["Alecs", "Blanca", "Denis"].map((artist) {
-                return ElevatedButton(
-                  onPressed: () => _changeArtist(artist),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: selectedArtist == artist ? Colors.purpleAccent : Colors.grey.shade800,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                return Expanded(
+                  child: TextButton(
+                    onPressed: () => _changeArtist(artist),
+                    style: TextButton.styleFrom(
+                      backgroundColor: selectedArtist == artist ? Colors.purpleAccent : Colors.transparent,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+                      padding: const EdgeInsets.symmetric(vertical: 15),
+                    ),
+                    child: Text(
+                      artist,
+                      style: const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
                   ),
-                  child: Text(artist, style: const TextStyle(fontSize: 16, color: Colors.white)),
                 );
               }).toList(),
             ),
@@ -88,39 +60,65 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
             child: Column(
               children: [
                 CircleAvatar(
-                  radius: 50,
+                  radius: 100, // 🔹 Dimensiune redusă la 200px (100 = raza)
                   backgroundImage: AssetImage("assets/images/${selectedArtist.toLowerCase()}_avatar.jpg"),
                 ),
                 const SizedBox(height: 10),
-                Text(
-                  selectedArtist,
-                  style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                   child: Text(
                     _getArtistBio(selectedArtist),
                     textAlign: TextAlign.center,
-                    style: const TextStyle(color: Colors.white70, fontSize: 14),
+                    style: const TextStyle(color: Colors.white, fontSize: 14),
                   ),
                 ),
               ],
             ),
           ),
 
-          // 🔹 Galerie de imagini (tip Instagram)
+          // 🔹 Galerie de imagini
           Expanded(
-            child: StreamBuilder<QuerySnapshot>(
+            child: StreamBuilder<DocumentSnapshot>(
               stream: FirebaseFirestore.instance
-                  .collection('portfolio')
-                  .where('artist', isEqualTo: selectedArtist)
+                  .collection('portofolio') // ✅ CORECȚIE: folosește numele corect al colecției
+                  .doc(selectedArtist)
                   .snapshots(),
               builder: (context, snapshot) {
-                if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                  return const Center(child: Text("Nu există imagini pentru acest artist.", style: TextStyle(color: Colors.white)));
+                if (!snapshot.hasData || !snapshot.data!.exists) {
+                  print("🔥 Firestore: Documentul pentru $selectedArtist NU există!");
+                  return const Center(
+                    child: Text("Nu există imagini pentru acest artist.",
+                        style: TextStyle(color: Colors.white)),
+                  );
                 }
 
-                var images = snapshot.data!.docs;
+                var data = snapshot.data!.data() as Map<String, dynamic>?;
+
+                if (data == null || !data.containsKey('urls') || data['urls'] == null) {
+                  print("⚠️ Firestore: Documentul există, dar `urls` este NULL sau inexistent!");
+                  return const Center(
+                    child: Text("Nu există imagini pentru acest artist.",
+                        style: TextStyle(color: Colors.white)),
+                  );
+                }
+
+                List<dynamic> rawImageList = data['urls'];
+                List<String> imageList = rawImageList.whereType<String>().toList();
+
+                print("✅ Firestore: ${imageList.length} imagini găsite pentru $selectedArtist!");
+
+                if (imageList.isEmpty) {
+                  return const Center(
+                    child: Text("Nu există imagini pentru acest artist.",
+                        style: TextStyle(color: Colors.white)),
+                  );
+                }
+
                 return GridView.builder(
                   padding: const EdgeInsets.all(10),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -128,25 +126,33 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                     crossAxisSpacing: 5,
                     mainAxisSpacing: 5,
                   ),
-                  itemCount: images.length,
+                  itemCount: imageList.length,
                   itemBuilder: (context, index) {
-                    var imageData = images[index].data() as Map<String, dynamic>;
-                    String imageUrl = imageData['url'] ?? "";
-                    String imageId = images[index].id;
+                    String imageUrl = imageList[index];
 
-                    return StreamBuilder<DocumentSnapshot>(
-                      stream: FirebaseFirestore.instance
-                          .collection('portfolio_likes')
-                          .doc(imageId)
-                          .snapshots(),
-                      builder: (context, likeSnapshot) {
-                        List<dynamic> likes = likeSnapshot.hasData ? List.from(likeSnapshot.data?['likes'] ?? []) : [];
-                        List<dynamic> dislikes = likeSnapshot.hasData ? List.from(likeSnapshot.data?['dislikes'] ?? []) : [];
-                        bool isLiked = likes.contains(userId);
-                        bool isDisliked = dislikes.contains(userId);
-
-                        return _buildImageCard(imageUrl, imageId, likes.length, dislikes.length, isLiked: isLiked, isDisliked: isDisliked);
-                      },
+                    return GestureDetector(
+                      onTap: () => _openImageFullScreen(imageUrl),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(color: Colors.white.withOpacity(0.5), width: 5),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image.network(
+                            imageUrl,
+                            fit: BoxFit.cover,
+                            loadingBuilder: (context, child, loadingProgress) {
+                              if (loadingProgress == null) return child;
+                              return const Center(child: CircularProgressIndicator());
+                            },
+                            errorBuilder: (context, error, stackTrace) {
+                              print("❌ Eroare la încărcarea imaginii: $error");
+                              return const Icon(Icons.error, color: Colors.red);
+                            },
+                          ),
+                        ),
+                      ),
                     );
                   },
                 );
@@ -155,42 +161,6 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildImageCard(String imageUrl, String imageId, int likes, int dislikes,
-      {bool isLiked = false, bool isDisliked = false}) {
-    return GestureDetector(
-      onTap: () => _openImageFullScreen(imageUrl),
-      child: Stack(
-        alignment: Alignment.bottomCenter,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: Image.network(imageUrl, fit: BoxFit.cover),
-          ),
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-            color: Colors.black54,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _buildLikeButton(Icons.thumb_up, isLiked, () => _toggleLike(imageId, true), likes),
-                _buildLikeButton(Icons.thumb_down, isDisliked, () => _toggleLike(imageId, false), dislikes),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildLikeButton(IconData icon, bool isActive, VoidCallback onTap, int count) {
-    return Row(
-      children: [
-        IconButton(icon: Icon(icon, color: isActive ? Colors.purpleAccent : Colors.white), onPressed: onTap),
-        Text("$count", style: const TextStyle(color: Colors.white)),
-      ],
     );
   }
 
