@@ -175,9 +175,9 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
 
   String _getArtistBio(String artist) {
     return {
-      "Alecs": "Expert în realism și black & grey, cu peste 10 ani de experiență.",
-      "Blanca": "Maestră în piercing și body modifications.",
-      "Denis": "Artist specializat în neo-traditional și color tattoos."
+      "Alecs": "Salut! Sunt Alecs, artist cu peste 10 ani de experiență în lumea tatuajelor. Îmi place să creez artă care să te reprezinte, fie că alegi un design realist, geometric sau ornamental. Specialitatea mea? Să transform ideile tale în tatuaje care să te facă să zâmbești de fiecare dată când le privești! 🎨",
+      "Blanca": "Bună! Sunt Blanca, iar pasiunea mea e să te ajut să strălucești prin piercing-uri cool și sigure! Cu experiență în toate tipurile de piercing și un ochi pentru detalii, sunt aici să-ți transform ideile în realitate. Vino să discutăm despre următorul tău piercing! 💫",
+      "Denis": "Hey! Sunt Denis, și mă pasionează arta în cele mai fine detalii! Specializat în fine line, microrealism, black work și stippling, transform cu răbdare și precizie fiecare concept în tatuaje delicate și pline de personalitate. Hai să dăm viață ideilor tale! 🎨"
     }[artist] ?? "";
   }
 }
