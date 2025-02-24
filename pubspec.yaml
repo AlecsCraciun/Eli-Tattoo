@@ -36,8 +36,7 @@ dependencies:
 
   # 🔹 Maps & Location
   google_maps_flutter: ^2.5.3
-  location: ^5.0.3  # ✅ Funcționează pe Dart 3.4.3
-
+  location: ^7.0.1  # ✅ Versiune compatibilă cu Dart 3.4.3
   geolocator: ^13.0.2
 
   # 🔹 Utils
