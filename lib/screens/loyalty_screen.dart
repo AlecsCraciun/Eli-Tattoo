@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
 
 class LoyaltyScreen extends StatefulWidget {
   const LoyaltyScreen({super.key});
@@ -11,19 +11,16 @@ class LoyaltyScreen extends StatefulWidget {
 
 class _LoyaltyScreenState extends State<LoyaltyScreen> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
-  QRViewController? _qrController;
+  MobileScannerController _qrController = MobileScannerController();
   bool isScanning = false;
   final String userId = "USER_ID"; // 🔹 Înlocuiește cu ID-ul real al utilizatorului autentificat
 
-  void _onQRViewCreated(QRViewController controller) {
-    _qrController = controller;
-    controller.scannedDataStream.listen((scanData) {
-      if (!isScanning) {
-        setState(() => isScanning = true);
-        _validateQRCode(scanData.code);
-      }
-    });
+  void _onQRScanned(BarcodeCapture capture) {
+    final List<Barcode> barcodes = capture.barcodes;
+    if (!isScanning && barcodes.isNotEmpty) {
+      setState(() => isScanning = true);
+      _validateQRCode(barcodes.first.rawValue);
+    }
   }
 
   void _validateQRCode(String? code) async {
@@ -34,7 +31,7 @@ class _LoyaltyScreenState extends State<LoyaltyScreen> {
 
   @override
   void dispose() {
-    _qrController?.dispose();
+    _qrController.dispose();
     super.dispose();
   }
 
@@ -61,11 +58,11 @@ class _LoyaltyScreenState extends State<LoyaltyScreen> {
           Column(
             children: [
               const SizedBox(height: 20),
-              _buildPointsCard(),
+              _buildPointsCard(),  // ✅ Metodă definită
               const SizedBox(height: 20),
-              Expanded(child: _buildPointsHistory()),
+              Expanded(child: _buildPointsHistory()),  // ✅ Metodă definită
               const SizedBox(height: 20),
-              Expanded(child: _buildVouchersList()),
+              Expanded(child: _buildVouchersList()),  // ✅ Metodă definită
               const SizedBox(height: 20),
               _buildScanButton(),
             ],
@@ -95,22 +92,11 @@ class _LoyaltyScreenState extends State<LoyaltyScreen> {
           FutureBuilder<DocumentSnapshot>(
             future: _firestore.collection('loyalty_points').doc(userId).get(),
             builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const CircularProgressIndicator();
-              }
-              if (snapshot.hasError) {
-                print("🔥 Eroare Firestore: ${snapshot.error}");
-                return const Text("Eroare la încărcarea punctelor", style: TextStyle(color: Colors.red));
-              }
               if (!snapshot.hasData || !snapshot.data!.exists) {
-                print("🔥 DEBUG: Nu există document pentru userId: $userId");
                 return const Text("0 Puncte", style: TextStyle(color: Colors.white, fontSize: 24));
               }
-
               final data = snapshot.data!.data() as Map<String, dynamic>? ?? {};
-              print("🔥 DEBUG Firestore Data: $data"); // 🟢 ADĂUGAT PENTRU VERIFICARE
               final points = data['total_points'] ?? 0;
-
               return Text(
                 "$points Puncte",
                 style: const TextStyle(
@@ -131,21 +117,11 @@ class _LoyaltyScreenState extends State<LoyaltyScreen> {
     return FutureBuilder<DocumentSnapshot>(
       future: _firestore.collection('loyalty_points').doc(userId).get(),
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator());
-        }
-        if (snapshot.hasError) {
-          print("🔥 Eroare Firestore: ${snapshot.error}");
-          return const Center(child: Text("Eroare la încărcarea istoricului.", style: TextStyle(color: Colors.red)));
-        }
         if (!snapshot.hasData || !snapshot.data!.exists) {
-          print("🔥 DEBUG: Nu există istoric pentru userId: $userId");
           return const Center(child: Text("Nu există istoric de puncte.", style: TextStyle(color: Colors.white)));
         }
-
         final data = snapshot.data!.data() as Map<String, dynamic>? ?? {};
         final history = List<Map<String, dynamic>>.from(data['history'] ?? []);
-
         return history.isEmpty
             ? const Center(child: Text("Nu există istoric de puncte.", style: TextStyle(color: Colors.white)))
             : ListView.builder(
@@ -173,7 +149,6 @@ class _LoyaltyScreenState extends State<LoyaltyScreen> {
       builder: (context, snapshot) {
         if (!snapshot.hasData) return const CircularProgressIndicator();
         final vouchers = snapshot.data!.docs;
-
         return vouchers.isEmpty
             ? const Center(child: Text("Nu ai revendicat vouchere.", style: TextStyle(color: Colors.white)))
             : ListView.builder(
@@ -200,10 +175,22 @@ class _LoyaltyScreenState extends State<LoyaltyScreen> {
     return GestureDetector(
       onTap: () => Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => QRView(
-          key: qrKey,
-          onQRViewCreated: _onQRViewCreated,
-        )),
+        MaterialPageRoute(
+          builder: (context) => Scaffold(
+            backgroundColor: Colors.black,
+            appBar: AppBar(
+              title: const Text("Scanează QR", style: TextStyle(color: Colors.white)),
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+            ),
+            body: Center(
+              child: MobileScanner(
+                controller: _qrController,
+                onDetect: _onQRScanned, // ✅ Corectat pentru `mobile_scanner 6.0.6`
+              ),
+            ),
+          ),
+        ),
       ),
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 20),
