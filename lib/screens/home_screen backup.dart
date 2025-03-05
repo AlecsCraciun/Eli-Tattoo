@@ -15,9 +15,8 @@ class HomeScreen extends StatelessWidget {
 
   // 🔹 Funcție pentru lansarea URL-urilor
   void _launchURL(String url) async {
-    final Uri uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri);
+    if (await canLaunch(url)) {
+      await launch(url);
     } else {
       throw 'Nu se poate deschide $url';
     }
@@ -43,7 +42,7 @@ class HomeScreen extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: Colors.amber,
               ),
               child: const Text(
@@ -122,12 +121,12 @@ class HomeScreen extends StatelessWidget {
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     children: [
-                      _buildCustomButton(context, 'Promoții', PromoScreen(), Icons.local_offer),
-                      _buildCustomButton(context, 'Portofoliu', PortfolioScreen(), Icons.image),
-                      _buildCustomButton(context, 'Servicii', ServicesScreen(), Icons.build),
-                      _buildCustomButton(context, 'Fidelizare', LoyaltyScreen(), Icons.star),
-                      _buildCustomButton(context, 'Chat', ChatScreen(), Icons.chat),
-                      _buildCustomButton(context, 'Treasure Hunt', TreasureHuntScreen(), Icons.map),
+                      _buildCustomButton(context, 'Promoții', const PromoScreen(), Icons.local_offer),
+                      _buildCustomButton(context, 'Portofoliu', const PortfolioScreen(), Icons.image),
+                      _buildCustomButton(context, 'Servicii', const ServicesScreen(), Icons.build),
+                      _buildCustomButton(context, 'Fidelizare', const LoyaltyScreen(), Icons.star),
+                      _buildCustomButton(context, 'Chat', const ChatScreen(), Icons.chat),
+                      _buildCustomButton(context, 'Treasure Hunt', const TreasureHuntScreen(), Icons.map),
                     ],
                   ),
                 ),
@@ -140,7 +139,7 @@ class HomeScreen extends StatelessWidget {
       floatingActionButton: BounceIn(
         child: FloatingActionButton(
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => QRScannerScreen()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const QRScannerScreen()));
           },
           backgroundColor: Colors.redAccent,
           child: const Icon(Icons.qr_code_scanner, size: 28, color: Colors.white),
@@ -173,11 +172,11 @@ class HomeScreen extends StatelessWidget {
                 _launchURL('https://wa.me/40787229574');
               },
             ),
-            Builder(
-              builder: (context) => IconButton(
-                icon: const Icon(Icons.account_circle, color: Colors.white),
-                onPressed: () => Scaffold.of(context).openDrawer(),
-              ),
+            IconButton(
+              icon: const Icon(Icons.account_circle, color: Colors.white),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
             ),
           ],
         ),

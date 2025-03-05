@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 import 'voucher_details_screen.dart';
 
 class TreasureHuntScreen extends StatefulWidget {
@@ -64,153 +65,142 @@ class _TreasureHuntScreenState extends State<TreasureHuntScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: const Text("Treasure Hunt", style: TextStyle(color: Colors.amber)),
-        backgroundColor: Colors.black,
-        elevation: 2,
+        title: const Text("Treasure Hunt", style: TextStyle(color: Colors.white)),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
       ),
-      body: _locationError
-          ? _buildLocationError()
-          : StreamBuilder<QuerySnapshot>(
-              stream: FirebaseFirestore.instance
-                  .collection('treasure_hunt_rewards')
-                  .snapshots(),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator(color: Colors.amber));
-                }
-                if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                  return const Center(
-                    child: Text(
-                      "Nu sunt vouchere disponibile acum.",
-                      style: TextStyle(color: Colors.white, fontSize: 18),
-                    ),
-                  );
-                }
+      body: Stack(
+        children: [
+          // 🔹 Fundal luxury
+          Positioned.fill(
+            child: Image.asset('assets/images/background.png', fit: BoxFit.cover),
+          ),
 
-                var vouchers = snapshot.data!.docs;
+          _locationError
+              ? _buildLocationError()
+              : StreamBuilder<QuerySnapshot>(
+                  stream: FirebaseFirestore.instance.collection('treasure_hunt_rewards').snapshots(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(child: CircularProgressIndicator(color: Colors.amber));
+                    }
+                    if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                      return const Center(
+                        child: Text(
+                          "Nu sunt vouchere disponibile acum.",
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        ),
+                      );
+                    }
 
-                return ListView.builder(
-                  itemCount: vouchers.length,
-                  padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
-                  itemBuilder: (context, index) {
-                    var voucher = vouchers[index].data() as Map<String, dynamic>?;
+                    var vouchers = snapshot.data!.docs;
 
-                    if (voucher == null) return const SizedBox();
+                    return ListView.builder(
+                      itemCount: vouchers.length,
+                      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+                      itemBuilder: (context, index) {
+                        var voucher = vouchers[index].data() as Map<String, dynamic>?;
 
-                    String title = voucher['title'] ?? "Voucher";
-                    String description = voucher['description'] ?? "Descriere indisponibilă";
-                    String detailedDescription = voucher['detailed_description'] ?? "Fără detalii";
-                    String imageUrl = voucher['image_url'] ??
-                        "https://firebasestorage.googleapis.com/v0/b/elitattoo-app-c7763.firebasestorage.app/o/voucher_fantana.jpg?alt=media&token=2920ee76-f1d8-4a6d-8574-0b2d0bd2dba0";
-                    double latitude = voucher['latitude'] ?? 0.0;
-                    double longitude = voucher['longitude'] ?? 0.0;
-                    int value = voucher['value'] ?? 0;
+                        if (voucher == null) return const SizedBox();
 
-                    double distance = _calculateDistance(latitude, longitude);
-                    String distanceText = (distance < 0)
-                        ? "Locație necunoscută"
-                        : "${distance.toStringAsFixed(2)} metri";
+                        String title = voucher['title'] ?? "Voucher";
+                        String description = voucher['description'] ?? "Descriere indisponibilă";
+                        String detailedDescription = voucher['detailed_description'] ?? "Fără detalii";
+                        String imageUrl = voucher['image_url'] ?? "https://firebasestorage.googleapis.com/v0/b/elitattoo-app-c7763.firebasestorage.app/o/voucher_fantana.jpg?alt=media&token=2920ee76-f1d8-4a6d-8574-0b2d0bd2dba0";
+                        double latitude = voucher['latitude'] ?? 0.0;
+                        double longitude = voucher['longitude'] ?? 0.0;
+                        int value = voucher['value'] ?? 0;
 
-                    return Card(
-                      color: Colors.black,
-                      elevation: 5,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                        side: BorderSide(color: Colors.amber.shade700, width: 2),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(16),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(12),
-                              child: Image.network(
-                                imageUrl,
-                                width: double.infinity,
-                                height: 180,
-                                fit: BoxFit.cover,
-                                loadingBuilder: (context, child, progress) {
-                                  if (progress == null) return child;
-                                  return const Center(
-                                    child: CircularProgressIndicator(color: Colors.amber),
-                                  );
-                                },
+                        double distance = _calculateDistance(latitude, longitude);
+                        String distanceText = (distance < 0)
+                            ? "Locație necunoscută"
+                            : "${distance.toStringAsFixed(2)} metri";
+
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          child: GlassContainer(
+                            borderRadius: BorderRadius.circular(15),
+                            blur: 12,
+                            border: Border.all(width: 1, color: Colors.white.withOpacity(0.3)),
+                            gradient: LinearGradient(
+                              colors: [Colors.white.withOpacity(0.1), Colors.white.withOpacity(0.05)],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(16),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(12),
+                                    child: Image.network(
+                                      imageUrl,
+                                      width: double.infinity,
+                                      height: 200,
+                                      fit: BoxFit.cover,
+                                      loadingBuilder: (context, child, progress) {
+                                        if (progress == null) return child;
+                                        return const Center(child: CircularProgressIndicator(color: Colors.amber));
+                                      },
+                                    ),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  Text(
+                                    title,
+                                    style: TextStyle(
+                                        color: Colors.amber.shade700,
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  const SizedBox(height: 5),
+                                  Text(
+                                    "Distanță: $distanceText",
+                                    style: const TextStyle(color: Colors.white70, fontSize: 16),
+                                  ),
+                                  const SizedBox(height: 5),
+                                  Text(
+                                    "$value RON",
+                                    style: const TextStyle(
+                                        color: Colors.amber, fontSize: 22, fontWeight: FontWeight.bold),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      _buildButton(Icons.map, "Vezi pe hartă", () => _openMap(latitude, longitude)),
+                                      _buildButton(Icons.info, "Detalii", () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => VoucherDetailsScreen(
+                                              title: title,
+                                              description: description,
+                                              detailedDescription: detailedDescription,
+                                              imageUrl: imageUrl,
+                                              latitude: latitude,
+                                              longitude: longitude,
+                                              value: value,
+                                              location: 'Lat: $latitude, Lon: $longitude',
+                                            ),
+                                          ),
+                                        );
+                                      }),
+                                    ],
+                                  ),
+                                ],
                               ),
                             ),
-                            const SizedBox(height: 10),
-                            Text(
-                              title,
-                              style: TextStyle(
-                                  color: Colors.amber.shade700,
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            const SizedBox(height: 5),
-                            Text(
-                              "Distanță: $distanceText",
-                              style: const TextStyle(color: Colors.white70, fontSize: 16),
-                            ),
-                            const SizedBox(height: 5),
-                            Text(
-                              "$value RON",
-                              style: const TextStyle(
-                                  color: Colors.amber, fontSize: 22, fontWeight: FontWeight.bold),
-                            ),
-                            const SizedBox(height: 10),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                ElevatedButton.icon(
-                                  onPressed: () => _openMap(latitude, longitude),
-                                  icon: const Icon(Icons.map, color: Colors.black),
-                                  label: const Text("Vezi pe hartă",
-                                      style: TextStyle(color: Colors.black)),
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.amber,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10)),
-                                  ),
-                                ),
-                                ElevatedButton.icon(
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => VoucherDetailsScreen(
-                                          title: title,
-                                          description: description,
-                                          detailedDescription: detailedDescription,
-                                          imageUrl: imageUrl,
-                                          latitude: latitude,
-                                          longitude: longitude,
-                                          value: value,
-                                          location: 'Lat: $latitude, Lon: $longitude',
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                  icon: const Icon(Icons.info, color: Colors.black),
-                                  label: const Text("Detalii",
-                                      style: TextStyle(color: Colors.black)),
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.amber,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10)),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
+                          ),
+                        );
+                      },
                     );
                   },
-                );
-              },
-            ),
+                ),
+        ],
+      ),
     );
   }
 
@@ -224,9 +214,22 @@ class _TreasureHuntScreenState extends State<TreasureHuntScreen> {
           const SizedBox(height: 10),
           ElevatedButton(
             onPressed: _getCurrentLocation,
-            child: const Text("Reîncercă"),
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.amber),
+            child: const Text("Reîncercă", style: TextStyle(color: Colors.black)),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildButton(IconData icon, String text, VoidCallback onTap) {
+    return ElevatedButton.icon(
+      onPressed: onTap,
+      icon: Icon(icon, color: Colors.black),
+      label: Text(text, style: const TextStyle(color: Colors.black)),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.amber,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       ),
     );
   }
