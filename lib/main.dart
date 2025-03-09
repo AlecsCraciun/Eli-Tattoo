@@ -11,16 +11,17 @@ import 'screens/tatuaje_screen.dart';
 import 'screens/portofoliu_blanca_screen.dart';
 import 'screens/laser_removal_screen.dart';
 import 'screens/rate_tbi_screen.dart';
+import 'screens/admin_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  runApp(const MyApp()); // 🔹 Adăugat `const`
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key); // 🔹 Adăugat `const`
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,12 +35,12 @@ class MyApp extends StatelessWidget {
           bodyMedium: TextStyle(color: Colors.black54),
         ),
       ),
-      debugShowCheckedModeBanner: false, // 🔹 Elimină bannerul "Debug"
+      debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) => HomeScreen(),
-        '/home': (context) => HomeScreen(),
-        '/treasure_hunt': (context) => TreasureHuntScreen(), 
+        '/': (context) => const HomeScreen(),
+        '/home': (context) => const HomeScreen(),
+        '/treasure_hunt': (context) => TreasureHuntScreen(),
         '/fidelizare': (context) => LoyaltyScreen(),
         '/scan_qr': (context) => QRScannerScreen(),
         '/chat': (context) => ChatScreen(),
@@ -48,6 +49,7 @@ class MyApp extends StatelessWidget {
         '/portofoliu_blanca': (context) => const PortofoliuBlancaScreen(),
         '/laser_removal': (context) => const LaserRemovalScreen(),
         '/rate_tbi': (context) => const RateTBIScreen(),
+        '/admin': (context) => AdminScreen(),
       },
     );
   }
