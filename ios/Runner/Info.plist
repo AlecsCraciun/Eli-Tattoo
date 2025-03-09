@@ -24,33 +24,26 @@
 		<string>$(FLUTTER_BUILD_NUMBER)</string>
 		<key>LSRequiresIPhoneOS</key>
 		<true/>
-
 		<!-- Permisiuni pentru Cameră -->
 		<key>NSCameraUsageDescription</key>
 		<string>Avem nevoie de acces la cameră pentru scanarea codurilor QR și încărcarea fotografiilor.</string>
-
 		<!-- Permisiuni pentru Galerie -->
 		<key>NSPhotoLibraryUsageDescription</key>
 		<string>Avem nevoie de acces la galerie pentru încărcarea fotografiilor.</string>
-
 		<!-- Permisiuni pentru Locație -->
 		<key>NSLocationWhenInUseUsageDescription</key>
 		<string>Avem nevoie de locația ta pentru a-ți arăta distanța până la salon și pentru Treasure Hunt.</string>
 		<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 		<string>Avem nevoie de locația ta pentru funcționalitatea completă a Treasure Hunt.</string>
-
 		<!-- Permisiuni pentru Notificări -->
 		<key>NSUserNotificationUsageDescription</key>
 		<string>Vrem să te ținem la curent cu noutățile, promoțiile și statusul programărilor tale.</string>
-
 		<!-- Configurare Firebase -->
 		<key>FirebaseAppDelegateProxyEnabled</key>
 		<false/>
-
 		<!-- Launch Screen -->
 		<key>UILaunchStoryboardName</key>
 		<string>LaunchScreen</string>
-
 		<!-- Suport pentru orientarea ecranului -->
 		<key>UISupportedInterfaceOrientations</key>
 		<array>
@@ -58,7 +51,6 @@
 			<string>UIInterfaceOrientationLandscapeLeft</string>
 			<string>UIInterfaceOrientationLandscapeRight</string>
 		</array>
-
 		<key>UISupportedInterfaceOrientations~ipad</key>
 		<array>
 			<string>UIInterfaceOrientationPortrait</string>
@@ -66,20 +58,17 @@
 			<string>UIInterfaceOrientationLandscapeLeft</string>
 			<string>UIInterfaceOrientationLandscapeRight</string>
 		</array>
-
 		<!-- Optimizare performanță -->
 		<key>CADisableMinimumFrameDurationOnPhone</key>
 		<true/>
 		<key>UIApplicationSupportsIndirectInputEvents</key>
 		<true/>
-
 		<!-- Background Modes pentru Firebase Messaging -->
 		<key>UIBackgroundModes</key>
 		<array>
 			<string>fetch</string>
 			<string>remote-notification</string>
 		</array>
-
 		<!-- Status Bar -->
 		<key>UIStatusBarHidden</key>
 		<false/>

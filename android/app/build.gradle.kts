@@ -3,9 +3,9 @@ import java.io.FileInputStream
 
 plugins {
     id("com.android.application")
-    id("com.google.gms.google-services") // FlutterFire Configuration
+    id("com.google.gms.google-services") // 🔹 FlutterFire Configuration
     id("kotlin-android")
-    id("dev.flutter.flutter-gradle-plugin") // Flutter Gradle Plugin
+    id("dev.flutter.flutter-gradle-plugin") // 🔹 Flutter Gradle Plugin
 }
 
 android {
@@ -36,14 +36,15 @@ android {
         create("release") {
             val keystorePropertiesFile = rootProject.file("key.properties")
             val keystoreProperties = Properties()
+            
             if (keystorePropertiesFile.exists()) {
                 keystoreProperties.load(FileInputStream(keystorePropertiesFile))
             }
 
-            storeFile = keystorePropertiesFile.takeIf { it.exists() }?.let { file(keystoreProperties["storeFile"] as String) }
-            storePassword = keystoreProperties["storePassword"] as String?
-            keyAlias = keystoreProperties["keyAlias"] as String?
-            keyPassword = keystoreProperties["keyPassword"] as String?
+            storeFile = file(keystoreProperties["storeFile"] as? String ?: "")
+            storePassword = keystoreProperties["storePassword"] as? String ?: ""
+            keyAlias = keystoreProperties["keyAlias"] as? String ?: ""
+            keyPassword = keystoreProperties["keyPassword"] as? String ?: ""
         }
     }
 
@@ -64,7 +65,7 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.7.3")) // 🔹 Firebase BOM actualizat
     implementation("androidx.core:core-ktx:1.12.0")
 
-    // ✅ Adăugat suport pentru Java 8 desugaring
+    // ✅ Suport pentru Java 8 desugaring
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.3")
 }
 

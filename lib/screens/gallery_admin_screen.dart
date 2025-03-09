@@ -17,8 +17,10 @@ class _GalleryAdminScreenState extends State<GalleryAdminScreen> {
   final FirebaseStorage _storage = FirebaseStorage.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final ImagePicker _picker = ImagePicker();
+  
   bool _isUploading = false;
   String _userRole = "user"; // 🔹 Implicit user
+  String? _selectedArtist; // 🔹 Admin poate selecta un artist
 
   @override
   void initState() {
@@ -37,8 +39,8 @@ class _GalleryAdminScreenState extends State<GalleryAdminScreen> {
     }
   }
 
-  // 🔹 Selectează și încarcă o imagine
-  Future<void> _uploadImage() async {
+  // 🔹 Selectează și încarcă o imagine în galeria unui artist
+  Future<void> _uploadImage({String? artistId}) async {
     final User? user = _auth.currentUser;
     if (user == null) return;
 
@@ -46,19 +48,18 @@ class _GalleryAdminScreenState extends State<GalleryAdminScreen> {
     if (pickedFile == null) return;
 
     File imageFile = File(pickedFile.path);
-    String fileName = 'gallery/${user.uid}/${DateTime.now().millisecondsSinceEpoch}.jpg';
+    String targetUserId = artistId ?? user.uid;
+    String fileName = 'gallery/$targetUserId/${DateTime.now().millisecondsSinceEpoch}.jpg';
 
     setState(() => _isUploading = true);
 
     try {
-      // 🔹 Încarcă imaginea în Firebase Storage
       TaskSnapshot snapshot = await _storage.ref(fileName).putFile(imageFile);
       String downloadUrl = await snapshot.ref.getDownloadURL();
 
-      // 🔹 Salvează imaginea în Firestore
       await _firestore.collection('gallery').add({
         'url': downloadUrl,
-        'uploadedBy': user.uid,
+        'uploadedBy': targetUserId,
         'timestamp': FieldValue.serverTimestamp(),
       });
     } catch (e) {
@@ -75,8 +76,8 @@ class _GalleryAdminScreenState extends State<GalleryAdminScreen> {
 
     if (_userRole == "admin" || user.uid == uploaderId) {
       try {
-        await _storage.refFromURL(imageUrl).delete(); // Șterge din Storage
-        await _firestore.collection('gallery').doc(docId).delete(); // Șterge din Firestore
+        await _storage.refFromURL(imageUrl).delete();
+        await _firestore.collection('gallery').doc(docId).delete();
       } catch (e) {
         print("Eroare la ștergere: $e");
       }
@@ -93,21 +94,43 @@ class _GalleryAdminScreenState extends State<GalleryAdminScreen> {
       appBar: AppBar(
         title: const Text("Administrare Galerii"),
         actions: [
-          if (user != null) 
-            IconButton(
-              icon: const Icon(Icons.add_a_photo),
-              onPressed: _uploadImage,
+          if (_userRole == "admin") // 🔹 Admin selectează artist pentru upload
+            StreamBuilder<QuerySnapshot>(
+              stream: _firestore.collection("users").where("role", isEqualTo: "artist").snapshots(),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) return const SizedBox();
+                List<DropdownMenuItem<String>> artistItems = snapshot.data!.docs.map((doc) {
+                  return DropdownMenuItem(
+                    value: doc.id,
+                    child: Text(doc["name"]),
+                  );
+                }).toList();
+                return DropdownButton<String>(
+                  dropdownColor: Colors.grey.shade900,
+                  value: _selectedArtist,
+                  hint: const Text("Alege Artist", style: TextStyle(color: Colors.white)),
+                  onChanged: (value) {
+                    setState(() => _selectedArtist = value);
+                  },
+                  items: artistItems,
+                );
+              },
             ),
+          IconButton(
+            icon: const Icon(Icons.add_a_photo),
+            onPressed: () => _uploadImage(artistId: _selectedArtist),
+          ),
         ],
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: _firestore.collection('gallery').orderBy('timestamp', descending: true).snapshots(),
         builder: (context, snapshot) {
-          if (!snapshot.hasData) {
-            return const Center(child: CircularProgressIndicator());
-          }
+          if (!snapshot.hasData) return const Center(child: CircularProgressIndicator());
 
-          final images = snapshot.data!.docs;
+          final images = snapshot.data!.docs.where((doc) {
+            final data = doc.data() as Map<String, dynamic>;
+            return _userRole == "admin" || data["uploadedBy"] == user?.uid;
+          }).toList();
 
           return GridView.builder(
             padding: const EdgeInsets.all(10),

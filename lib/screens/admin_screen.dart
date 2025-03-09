@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'gallery_admin_screen.dart';
 import 'vouchers_admin_screen.dart';
@@ -6,6 +7,7 @@ import 'treasure_hunt_admin_screen.dart';
 import 'chat_admin_screen.dart';
 import 'qr_fidelity_screen.dart';
 import 'add_artist_screen.dart';
+import 'admin_portfolio_screen.dart'; // ✅ Import pentru administrarea portofoliului
 
 class AdminScreen extends StatelessWidget {
   @override
@@ -17,6 +19,8 @@ class AdminScreen extends StatelessWidget {
         child: Column(
           children: [
             _buildAdminButton(context, "Administrare Galerii", GalleryAdminScreen()),
+            const SizedBox(height: 20),
+            _buildAdminButton(context, "Administrare Portofoliu", AdminPortfolioScreen()), // ✅ Buton adăugat
             const SizedBox(height: 20),
             _buildAdminButton(context, "Administrare Vouchere Treasure Hunt", VouchersAdminScreen()),
             const SizedBox(height: 20),

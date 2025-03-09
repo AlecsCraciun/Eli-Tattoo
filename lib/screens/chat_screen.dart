@@ -4,9 +4,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 
 class ChatScreen extends StatefulWidget {
-  const ChatScreen({super.key});
+  final String? userId;
+  final String? userName;
+
+  const ChatScreen({super.key, this.userId, this.userName});
 
   @override
   _ChatScreenState createState() => _ChatScreenState();
@@ -15,38 +19,48 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _messageController = TextEditingController();
   final ScrollController _scrollController = ScrollController();
-  final FocusNode _focusNode = FocusNode();
-  final ImagePicker _picker = ImagePicker();
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final ImagePicker _picker = ImagePicker();
+  bool _isUploading = false;
+  String? _currentUserId;
+  String? _userRole;
+
+  @override
+  void initState() {
+    super.initState();
+    _getUserRole();
+  }
+
+  Future<void> _getUserRole() async {
+    final user = _auth.currentUser;
+    if (user != null) {
+      _currentUserId = user.uid;
+      final doc = await _firestore.collection("users").doc(user.uid).get();
+      if (doc.exists) {
+        setState(() {
+          _userRole = doc["role"];
+        });
+      }
+    }
+  }
 
   Future<void> _sendMessage({String? imageUrl}) async {
     final user = _auth.currentUser;
-
-    if ((_messageController.text.trim().isEmpty && imageUrl == null)) return;
+    if (user == null) return;
+    if (_messageController.text.trim().isEmpty && imageUrl == null) return;
 
     await _firestore.collection('messages').add({
       'text': _messageController.text.trim(),
       'imageUrl': imageUrl ?? '',
       'timestamp': FieldValue.serverTimestamp(),
-      'senderId': user?.uid ?? 'guest',
-      'senderName': user?.displayName ?? 'Anonim',
-      'senderPhoto': user?.photoURL ?? '',
-      'receiver': 'eli_tattoo_angajati',
+      'senderId': user.uid,
+      'senderName': user.displayName ?? 'Anonim',
+      'senderPhoto': user.photoURL ?? '',
+      'receiverId': widget.userId ?? 'eli_tattoo_team',
     });
 
     _messageController.clear();
-    _focusNode.unfocus();
-
-    Future.delayed(const Duration(milliseconds: 500), () {
-      if (_scrollController.hasClients) {
-        _scrollController.animateTo(
-          _scrollController.position.maxScrollExtent,
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.easeOut,
-        );
-      }
-    });
   }
 
   Future<void> _pickImage() async {
@@ -58,181 +72,155 @@ class _ChatScreenState extends State<ChatScreen> {
       String fileName = 'chat_images/${DateTime.now().millisecondsSinceEpoch}.jpg';
       UploadTask uploadTask = FirebaseStorage.instance.ref(fileName).putFile(imageFile);
 
+      setState(() => _isUploading = true);
       final snapshot = await uploadTask.whenComplete(() {});
       final imageUrl = await snapshot.ref.getDownloadURL();
 
       _sendMessage(imageUrl: imageUrl);
     } catch (e) {
       print("⚠️ Eroare la upload imagine: $e");
+    } finally {
+      setState(() => _isUploading = false);
     }
   }
 
   @override
   Widget build(BuildContext context) {
     final user = _auth.currentUser;
+    final bool isArtistOrAdmin = _userRole == "admin" || _userRole == "artist";
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Chat ELI Tattoo'),
-        backgroundColor: Colors.teal[800],
+        title: Text(widget.userName ?? 'Chat ELI Tattoo'),
+        backgroundColor: Colors.black,
+        centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.amber),
+          onPressed: () => Navigator.pop(context),
+        ),
       ),
-      backgroundColor: Colors.grey[300], // Fundal gri deschis ca în WhatsApp
-      body: Column(
+      body: Stack(
         children: [
-          Expanded(
-            child: StreamBuilder<QuerySnapshot>(
-              stream: _firestore
-                  .collection('messages')
-                  .orderBy('timestamp', descending: false)
-                  .snapshots(),
-              builder: (context, snapshot) {
-                if (snapshot.hasError) {
-                  print("❌ Eroare Firestore: ${snapshot.error}");
-                  return Center(
-                    child: Text(
-                      'Eroare: ${snapshot.error}',
-                      style: TextStyle(color: Colors.redAccent),
-                    ),
-                  );
-                }
+          Positioned.fill(
+            child: Image.asset('assets/images/background.png', fit: BoxFit.cover),
+          ),
+          Column(
+            children: [
+              Expanded(
+                child: StreamBuilder<QuerySnapshot>(
+                  stream: _firestore
+                      .collection('messages')
+                      .orderBy('timestamp', descending: false)
+                      .snapshots(),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) return const Center(child: CircularProgressIndicator());
 
-                if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                  return const Center(child: Text('Niciun mesaj încă.'));
-                }
+                    final messages = snapshot.data!.docs.where((msg) {
+                      final data = msg.data() as Map<String, dynamic>;
+                      final receiverId = data['receiverId'] ?? '';
+                      final senderId = data['senderId'] ?? '';
 
-                final messages = snapshot.data!.docs;
+                      if (widget.userId != null) {
+                        return senderId == widget.userId || receiverId == widget.userId;
+                      }
 
-                return ListView.builder(
-                  controller: _scrollController,
-                  padding: const EdgeInsets.all(8.0),
-                  itemCount: messages.length,
-                  itemBuilder: (context, index) {
-                    final message = messages[index];
+                      return receiverId == "eli_tattoo_team" || senderId == _currentUserId;
+                    }).toList();
 
-                    final data = message.data() as Map<String, dynamic>;
+                    return ListView.builder(
+                      controller: _scrollController,
+                      padding: const EdgeInsets.all(10),
+                      itemCount: messages.length,
+                      itemBuilder: (context, index) {
+                        final data = messages[index].data() as Map<String, dynamic>;
+                        final senderId = data['senderId'] ?? 'Anonim';
+                        final senderName = data['senderName'] ?? senderId;
+                        final imageUrl = data['imageUrl'] ?? '';
+                        bool isMe = senderId == user?.uid;
 
-                    final text = data['text'] ?? '';
-                    final senderId = data['senderId'] ?? 'Anonim';
-                    final senderName = data['senderName'] ?? senderId;
-                    final senderPhoto = data['senderPhoto'] ?? '';
-                    final imageUrl = data['imageUrl'] ?? '';
-
-                    bool isMe = senderId == user?.uid;
-
-                    return Container(
-                      alignment: isMe ? Alignment.centerRight : Alignment.centerLeft,
-                      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 8),
-                      child: Column(
-                        crossAxisAlignment:
-                            isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
-                        children: [
-                          if (!isMe)
-                            Text(
-                              senderName,
-                              style: TextStyle(fontSize: 12, color: Colors.black54),
-                            ),
-                          Material(
-                            borderRadius: BorderRadius.only(
-                              topLeft: const Radius.circular(12),
-                              topRight: const Radius.circular(12),
-                              bottomLeft: isMe
-                                  ? const Radius.circular(12)
-                                  : const Radius.circular(0),
-                              bottomRight: isMe
-                                  ? const Radius.circular(0)
-                                  : const Radius.circular(12),
-                            ),
-                            color: isMe ? Colors.green[400] : Colors.white,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 10, horizontal: 14),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  if (imageUrl.isNotEmpty)
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(8),
-                                      child: Image.network(
-                                        imageUrl,
-                                        width: 200,
-                                        height: 200,
-                                        fit: BoxFit.cover,
-                                        loadingBuilder:
-                                            (context, child, progress) {
-                                          if (progress == null) return child;
-                                          return const Center(
-                                            child: CircularProgressIndicator(),
-                                          );
-                                        },
-                                        errorBuilder:
-                                            (context, error, stackTrace) {
-                                          return const Icon(Icons.error,
-                                              color: Colors.red);
-                                        },
-                                      ),
-                                    ),
-                                  if (text.isNotEmpty)
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 5),
-                                      child: Text(
-                                        text,
-                                        style: TextStyle(
-                                          color:
-                                              isMe ? Colors.white : Colors.black,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                    ),
-                                ],
+                        return Align(
+                          alignment: isMe ? Alignment.centerRight : Alignment.centerLeft,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+                            child: GlassContainer(
+                              width: MediaQuery.of(context).size.width * 0.7,
+                              blur: 15,
+                              borderRadius: BorderRadius.circular(15),
+                              gradient: LinearGradient(
+                                colors: isMe
+                                    ? [Colors.green.withOpacity(0.4), Colors.green.withOpacity(0.2)]
+                                    : [Colors.white.withOpacity(0.3), Colors.white.withOpacity(0.1)],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: Column(
+                                  crossAxisAlignment: isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+                                  children: [
+                                    if (!isMe) Text(senderName, style: const TextStyle(fontSize: 12, color: Colors.white70)),
+                                    if (imageUrl.isNotEmpty) Image.network(imageUrl, width: 200, height: 200, fit: BoxFit.cover),
+                                    if (data['text'].toString().isNotEmpty) Text(data['text'], style: const TextStyle(fontSize: 16, color: Colors.white)),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ],
-                      ),
+                        );
+                      },
                     );
                   },
-                );
-              },
-            ),
-          ),
+                ),
+              ),
 
-          // Zona de input pentru mesaje
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            color: Colors.white,
-            child: Row(
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.image, color: Colors.green),
-                  onPressed: _pickImage,
-                ),
-                Expanded(
-                  child: TextField(
-                    controller: _messageController,
-                    focusNode: _focusNode,
-                    onSubmitted: (_) => _sendMessage(),
-                    decoration: const InputDecoration.collapsed(
-                      hintText: 'Scrie un mesaj...',
-                    ),
-                  ),
-                ),
-                IconButton(
-                  icon: const Icon(Icons.send, color: Colors.teal),
-                  onPressed: _sendMessage,
-                ),
-              ],
-            ),
+              // ✅ Bara de input pentru trimiterea mesajelor și imaginilor
+              if (user != null) _chatInputField(),
+            ],
           ),
         ],
       ),
     );
   }
 
-  @override
-  void dispose() {
-    _messageController.dispose();
-    _scrollController.dispose();
-    _focusNode.dispose();
-    super.dispose();
+  Widget _chatInputField() {
+    return GlassContainer(
+      width: double.infinity,
+      height: 60,
+      blur: 20,
+      borderRadius: BorderRadius.circular(15),
+      gradient: LinearGradient(
+        colors: [Colors.black.withOpacity(0.6), Colors.black.withOpacity(0.3)],
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+      ),
+      shadowStrength: 5,
+      border: Border.all(color: Colors.white.withOpacity(0.3)),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        child: Row(
+          children: [
+            IconButton(
+              icon: const Icon(Icons.image, color: Colors.amber),
+              onPressed: _pickImage,
+            ),
+            Expanded(
+              child: TextField(
+                controller: _messageController,
+                style: const TextStyle(color: Colors.white),
+                decoration: const InputDecoration(
+                  hintText: 'Scrie un mesaj...',
+                  hintStyle: TextStyle(color: Colors.white60),
+                  border: InputBorder.none,
+                ),
+              ),
+            ),
+            IconButton(
+              icon: const Icon(Icons.send, color: Colors.green),
+              onPressed: _sendMessage,
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

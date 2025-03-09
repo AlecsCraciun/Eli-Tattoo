@@ -10,7 +10,6 @@ import 'services_screen.dart';
 import 'loyalty_screen.dart';
 import 'chat_screen.dart';
 import 'treasure_hunt_screen.dart';
-import 'qr_scanner_screen.dart';
 import 'login_screen.dart';
 import 'admin_screen.dart';
 
@@ -34,8 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<void> _checkAuthStatus() async {
     FirebaseAuth.instance.authStateChanges().listen((User? user) async {
       if (user != null) {
-        DocumentSnapshot userDoc =
-            await FirebaseFirestore.instance.collection("users").doc(user.uid).get();
+        DocumentSnapshot userDoc = await FirebaseFirestore.instance.collection("users").doc(user.uid).get();
 
         setState(() {
           _user = user;
@@ -76,32 +74,6 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         iconTheme: const IconThemeData(color: Colors.white),
-        actions: [
-          if (_user != null) ...[
-            Padding(
-              padding: const EdgeInsets.only(right: 10),
-              child: CircleAvatar(
-                backgroundImage: _user!.photoURL != null && _user!.photoURL!.isNotEmpty
-                    ? NetworkImage(_user!.photoURL!)
-                    : const AssetImage('assets/images/default_avatar.png') as ImageProvider,
-                radius: 18,
-              ),
-            ),
-            IconButton(
-              icon: const Icon(Icons.logout, color: Colors.white),
-              onPressed: () async {
-                await FirebaseAuth.instance.signOut();
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
-              },
-            ),
-          ] else
-            IconButton(
-              icon: const Icon(Icons.login, color: Colors.white),
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
-              },
-            ),
-        ],
       ),
       drawer: Drawer(
         child: ListView(
@@ -124,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
               title: const Text('Setări'),
               onTap: () {},
             ),
-            if (_userRole == "admin" || _userRole == "artist") // ✅ Afișează doar pentru Admin/Artist
+            if (_userRole == "admin" || _userRole == "artist")
               ListTile(
                 leading: const Icon(Icons.admin_panel_settings),
                 title: const Text('Administrează'),
@@ -182,7 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     crossAxisCount: 2,
                     crossAxisSpacing: 15,
                     mainAxisSpacing: 15,
-                    childAspectRatio: 1.4,
+                    childAspectRatio: 1.8,
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     children: [
@@ -197,6 +169,48 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ],
+          ),
+
+          /// 🔹 Bara de jos cu butoane plutitoare
+          Positioned(
+            bottom: 20,
+            left: 0,
+            right: 0,
+            child: GlassContainer(
+              width: MediaQuery.of(context).size.width * 0.9,
+              height: 50,
+              borderRadius: BorderRadius.circular(30),
+              blur: 15,
+              gradient: LinearGradient(
+                colors: [Colors.white.withOpacity(0.1), Colors.white.withOpacity(0.05)],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              border: Border.all(color: Colors.white.withOpacity(0.2)),
+              shadowStrength: 10,
+              shadowColor: Colors.black.withOpacity(0.3),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  IconButton(
+                    icon: const Icon(Icons.menu, color: Colors.white),
+                    onPressed: () => Scaffold.of(context).openDrawer(),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.phone, color: Colors.white),
+                    onPressed: () => _launchURL("tel:+40712345678"),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.map, color: Colors.white),
+                    onPressed: () => _launchURL("https://goo.gl/maps/example"),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.message, color: Colors.white),
+                    onPressed: () => _launchURL("https://wa.me/40712345678"),
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),
@@ -226,36 +240,20 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _buildGlassButton(String text, IconData icon) {
     return GlassContainer(
       width: double.infinity,
-      height: 90,
+      height: 70,
       borderRadius: BorderRadius.circular(18),
       blur: 12,
       border: Border.all(width: 2, color: Colors.white.withOpacity(0.3)),
       gradient: LinearGradient(
-        colors: [
-          Colors.white.withOpacity(0.15),
-          Colors.white.withOpacity(0.07),
-        ],
+        colors: [Colors.white.withOpacity(0.15), Colors.white.withOpacity(0.07)],
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
       ),
-      shadowStrength: 10,
-      shadowColor: Colors.black.withOpacity(0.3),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, color: Colors.white, size: 30),
-          const SizedBox(height: 6),
-          Text(
-            text,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-              shadows: [
-                Shadow(blurRadius: 5, color: Colors.black, offset: Offset(1, 1))
-              ],
-            ),
-          ),
+          Icon(icon, color: Colors.white, size: 25),
+          Text(text, style: const TextStyle(color: Colors.white)),
         ],
       ),
     );
