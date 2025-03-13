@@ -6,12 +6,14 @@ import 'screens/treasure_hunt_screen.dart';
 import 'screens/loyalty_screen.dart';
 import 'screens/qr_scanner_screen.dart';
 import 'screens/chat_screen.dart';
+import 'screens/chat_users_screen.dart'; // 🔹 Import corect pentru lista de conversații
 import 'screens/services_screen.dart';
 import 'screens/tatuaje_screen.dart';
 import 'screens/portofoliu_blanca_screen.dart';
 import 'screens/laser_removal_screen.dart';
 import 'screens/rate_tbi_screen.dart';
 import 'screens/admin_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,7 +45,12 @@ class MyApp extends StatelessWidget {
         '/treasure_hunt': (context) => TreasureHuntScreen(),
         '/fidelizare': (context) => LoyaltyScreen(),
         '/scan_qr': (context) => QRScannerScreen(),
-        '/chat': (context) => ChatScreen(),
+        '/chat': (context) {
+          final user = FirebaseAuth.instance.currentUser;
+          return user != null ? ChatUsersScreen() : const HomeScreen();
+
+        },
+        '/chat_users': (context) => const ChatUsersScreen(), // 🔹 Lista de conversații pentru artiști/admini
         '/services': (context) => const ServicesScreen(),
         '/tatuaje': (context) => const TatuajeScreen(),
         '/portofoliu_blanca': (context) => const PortofoliuBlancaScreen(),

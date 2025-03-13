@@ -5,7 +5,35 @@ class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  // Metodă pentru login cu email și parolă
+  // ✅ Înregistrare utilizator nou cu email și parolă
+  Future<User?> registerWithEmailAndPassword(String email, String password) async {
+    try {
+      UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      User? user = userCredential.user;
+      if (user != null) {
+        // 🔹 Crează documentul utilizatorului în Firestore
+        await _firestore.collection('users').doc(user.uid).set({
+          'uid': user.uid,
+          'email': email,
+          'role': 'user', // Implicit toți utilizatorii noi sunt "user"
+          'points': 0,
+          'vouchers': [],
+          'createdAt': FieldValue.serverTimestamp(),
+        });
+      }
+
+      return user;
+    } catch (e) {
+      print("Eroare înregistrare: $e");
+      return null;
+    }
+  }
+
+  // ✅ Autentificare utilizator
   Future<User?> signInWithEmailAndPassword(String email, String password) async {
     try {
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(
@@ -20,15 +48,10 @@ class AuthService {
     }
   }
 
-  // Metodă pentru logout
-  Future<void> signOut() async {
-    await _auth.signOut();
-  }
-
-  // Metodă pentru verificarea rolului utilizatorului
-  Future<String?> getUserRole(String email) async {
+  // ✅ Obține rolul utilizatorului din Firestore
+  Future<String?> getUserRole(String uid) async {
     try {
-      DocumentSnapshot userDoc = await _firestore.collection('users_roles').doc(email).get();
+      DocumentSnapshot userDoc = await _firestore.collection('users').doc(uid).get();
       if (userDoc.exists) {
         return userDoc['role'];
       } else {
@@ -38,5 +61,10 @@ class AuthService {
       print("Eroare la preluarea rolului: $e");
       return null;
     }
+  }
+
+  // ✅ Deconectare utilizator
+  Future<void> signOut() async {
+    await _auth.signOut();
   }
 }
