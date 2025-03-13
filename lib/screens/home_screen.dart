@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 import 'package:animate_do/animate_do.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'promo_screen.dart';
@@ -9,7 +8,9 @@ import 'portfolio_screen.dart';
 import 'services_screen.dart';
 import 'loyalty_screen.dart';
 import 'chat_screen.dart';
+import 'chat_users_screen.dart';
 import 'treasure_hunt_screen.dart';
+import 'qr_scanner_screen.dart';
 import 'login_screen.dart';
 import 'admin_screen.dart';
 
@@ -33,7 +34,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<void> _checkAuthStatus() async {
     FirebaseAuth.instance.authStateChanges().listen((User? user) async {
       if (user != null) {
-        DocumentSnapshot userDoc = await FirebaseFirestore.instance.collection("users").doc(user.uid).get();
+        DocumentSnapshot userDoc =
+            await FirebaseFirestore.instance.collection("users").doc(user.uid).get();
 
         setState(() {
           _user = user;
@@ -48,20 +50,26 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  void _launchURL(String url) async {
-    final Uri uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri);
-    } else {
-      throw 'Nu se poate deschide $url';
-    }
+  void _logout() async {
+    await FirebaseAuth.instance.signOut();
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
   }
 
-  void _navigateWithAuth(BuildContext context, Widget screen) {
+  void _navigateToChat(BuildContext context) {
     if (_user == null) {
       Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+    } else if (_userRole == "admin" || _userRole == "artist") {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => ChatUsersScreen()));
     } else {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => screen));
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ChatScreen(
+            chatId: _user!.uid,
+            userName: "Eli Tattoo Team",
+          ),
+        ),
+      );
     }
   }
 
@@ -73,52 +81,23 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text('Eli Tattoo Studio', style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        iconTheme: const IconThemeData(color: Colors.white),
-      ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            const DrawerHeader(
-              decoration: BoxDecoration(color: Colors.amber),
-              child: Text(
-                'Meniu Cont',
-                style: TextStyle(color: Colors.white, fontSize: 24),
-              ),
-            ),
-            ListTile(
-              leading: const Icon(Icons.person),
-              title: const Text('Profilul Meu'),
-              onTap: () {},
-            ),
-            ListTile(
-              leading: const Icon(Icons.settings),
-              title: const Text('Setări'),
-              onTap: () {},
-            ),
-            if (_userRole == "admin" || _userRole == "artist")
-              ListTile(
-                leading: const Icon(Icons.admin_panel_settings),
-                title: const Text('Administrează'),
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => AdminScreen()));
-                },
-              ),
-          ],
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: const Icon(Icons.menu, color: Colors.amber),
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          ),
         ),
       ),
+      drawer: _buildDrawer(),
       body: Stack(
         children: [
           Positioned.fill(
-            child: Image.asset(
-              'assets/images/background.png',
-              fit: BoxFit.cover,
-            ),
+            child: Image.asset('assets/images/background.png', fit: BoxFit.cover),
           ),
           Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(height: 80),
+              const SizedBox(height: 80), // 🔹 Coborâm logo-ul
               BounceInDown(
                 child: Container(
                   width: 150,
@@ -146,114 +125,123 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              const SizedBox(height: 15),
+              const SizedBox(height: 30), // 🔹 Coborâm butoanele principale
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: GridView.count(
                     crossAxisCount: 2,
-                    crossAxisSpacing: 15,
-                    mainAxisSpacing: 15,
-                    childAspectRatio: 1.8,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                    childAspectRatio: 2.2, // 🔹 Butoanele mai joase
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     children: [
-                      _buildCustomButton(context, 'Promoții', PromoScreen(), Icons.local_offer),
-                      _buildCustomButton(context, 'Portofoliu', PortfolioScreen(), Icons.image),
-                      _buildCustomButton(context, 'Servicii', ServicesScreen(), Icons.build),
-                      _buildAuthButton(context, 'Fidelizare', LoyaltyScreen(), Icons.star),
-                      _buildAuthButton(context, 'Chat', ChatScreen(), Icons.chat),
-                      _buildAuthButton(context, 'Treasure Hunt', TreasureHuntScreen(), Icons.map),
+                      _buildCustomButton(context, 'Promoții', PromoScreen(), Icons.local_offer, false),
+                      _buildCustomButton(context, 'Portofoliu', PortfolioScreen(), Icons.image, false),
+                      _buildCustomButton(context, 'Servicii', ServicesScreen(), Icons.build, false),
+                      _buildCustomButton(context, 'Fidelizare', LoyaltyScreen(), Icons.star, true),
+                      _buildCustomButton(context, 'Chat', null, Icons.chat, true),
+                      _buildCustomButton(context, 'Treasure Hunt', TreasureHuntScreen(), Icons.map, true),
                     ],
                   ),
                 ),
               ),
+              const SizedBox(height: 10),
             ],
           ),
+        ],
+      ),
+      bottomNavigationBar: _buildBottomBar(),
+    );
+  }
 
-          /// 🔹 Bara de jos cu butoane plutitoare
-          Positioned(
-            bottom: 20,
-            left: 0,
-            right: 0,
-            child: GlassContainer(
-              width: MediaQuery.of(context).size.width * 0.9,
-              height: 50,
-              borderRadius: BorderRadius.circular(30),
-              blur: 15,
-              gradient: LinearGradient(
-                colors: [Colors.white.withOpacity(0.1), Colors.white.withOpacity(0.05)],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-              border: Border.all(color: Colors.white.withOpacity(0.2)),
-              shadowStrength: 10,
-              shadowColor: Colors.black.withOpacity(0.3),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.menu, color: Colors.white),
-                    onPressed: () => Scaffold.of(context).openDrawer(),
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.phone, color: Colors.white),
-                    onPressed: () => _launchURL("tel:+40712345678"),
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.map, color: Colors.white),
-                    onPressed: () => _launchURL("https://goo.gl/maps/example"),
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.message, color: Colors.white),
-                    onPressed: () => _launchURL("https://wa.me/40712345678"),
-                  ),
-                ],
-              ),
-            ),
+  Widget _buildCustomButton(BuildContext context, String label, Widget? screen, IconData icon, bool requiresAuth) {
+    return GestureDetector(
+      onTap: () {
+        if (requiresAuth && _user == null) {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+        } else if (label == 'Chat') {
+          _navigateToChat(context);
+        } else if (screen != null) {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => screen));
+        }
+      },
+      child: GlassContainer(
+        width: double.infinity,
+        height: 60, // 🔹 Reducem înălțimea butoanelor
+        borderRadius: BorderRadius.circular(12),
+        blur: 5,
+        color: Colors.white.withOpacity(0.2),
+        border: Border.all(color: Colors.white.withOpacity(0.3), width: 1.5),
+        child: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(icon, color: Colors.white, size: 24),
+              const SizedBox(width: 8),
+              Text(label, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+            ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBottomBar() {
+    return BottomAppBar(
+      color: Colors.black54,
+      shape: const CircularNotchedRectangle(),
+      notchMargin: 8.0,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          IconButton(icon: const Icon(Icons.phone, color: Colors.white), onPressed: () {}),
+          IconButton(icon: const Icon(Icons.map, color: Colors.white), onPressed: () {}),
+          IconButton(icon: const Icon(Icons.chat, color: Colors.white), onPressed: () => _navigateToChat(context)),
+          IconButton(icon: const Icon(Icons.account_circle, color: Colors.white), onPressed: () => Scaffold.of(context).openDrawer()),
         ],
       ),
     );
   }
 
-  Widget _buildCustomButton(BuildContext context, String text, Widget screen, IconData icon) {
-    return FadeInUp(
-      child: GestureDetector(
-        onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => screen));
-        },
-        child: _buildGlassButton(text, icon),
-      ),
-    );
-  }
-
-  Widget _buildAuthButton(BuildContext context, String text, Widget screen, IconData icon) {
-    return FadeInUp(
-      child: GestureDetector(
-        onTap: () => _navigateWithAuth(context, screen),
-        child: _buildGlassButton(text, icon),
-      ),
-    );
-  }
-
-  Widget _buildGlassButton(String text, IconData icon) {
-    return GlassContainer(
-      width: double.infinity,
-      height: 70,
-      borderRadius: BorderRadius.circular(18),
-      blur: 12,
-      border: Border.all(width: 2, color: Colors.white.withOpacity(0.3)),
-      gradient: LinearGradient(
-        colors: [Colors.white.withOpacity(0.15), Colors.white.withOpacity(0.07)],
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(icon, color: Colors.white, size: 25),
-          Text(text, style: const TextStyle(color: Colors.white)),
+  Widget _buildDrawer() {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          DrawerHeader(
+            decoration: const BoxDecoration(
+              color: Colors.amber,
+            ),
+            child: Text(
+              _user != null ? _user!.email ?? "Cont" : "Cont Neautentificat",
+              style: const TextStyle(color: Colors.white, fontSize: 20),
+            ),
+          ),
+          ListTile(
+            leading: const Icon(Icons.person),
+            title: const Text('Profilul Meu'),
+            onTap: () {},
+          ),
+          ListTile(
+            leading: const Icon(Icons.settings),
+            title: const Text('Setări'),
+            onTap: () {},
+          ),
+          if (_userRole == "admin" || _userRole == "artist")
+            ListTile(
+              leading: const Icon(Icons.admin_panel_settings, color: Colors.amber),
+              title: const Text("Administrează"),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => AdminScreen()));
+              },
+            ),
+          ListTile(
+            leading: const Icon(Icons.exit_to_app, color: Colors.red),
+            title: const Text("Logout", style: TextStyle(color: Colors.redAccent)),
+            onTap: _logout,
+          ),
         ],
       ),
     );

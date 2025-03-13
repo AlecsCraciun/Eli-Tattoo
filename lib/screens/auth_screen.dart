@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 import 'package:eli_tattoo_clienti/services/auth_service.dart';
 import 'package:eli_tattoo_clienti/screens/home_screen.dart';
 import 'package:eli_tattoo_clienti/screens/admin_screen.dart';
@@ -15,9 +17,7 @@ class _AuthScreenState extends State<AuthScreen> {
   bool _loading = false;
 
   void _signIn() async {
-    setState(() {
-      _loading = true;
-    });
+    setState(() => _loading = true);
 
     AuthService authService = AuthService();
     User? user = await authService.signInWithEmailAndPassword(
@@ -26,89 +26,119 @@ class _AuthScreenState extends State<AuthScreen> {
     );
 
     if (user != null) {
-      String? role = await authService.getUserRole(user.email!);
+      String? role = await authService.getUserRole(user.uid);
 
-      if (role == "admin") {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => AdminScreen()),
-        );
-      } else {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => HomeScreen()),
-        );
-      }
+      // 🔹 Verifică și creează colecția messages dacă nu există
+      await _ensureMessagesCollection(user.uid);
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => (role == "admin") ? AdminScreen() : HomeScreen(),
+        ),
+      );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Autentificare eșuată. Verifică email-ul și parola.")),
+        const SnackBar(content: Text("Autentificare eșuată. Verifică email-ul și parola.")),
       );
     }
 
-    setState(() {
-      _loading = false;
-    });
+    setState(() => _loading = false);
+  }
+
+  /// 🔹 Creează automat colecția `messages` pentru utilizatorii noi
+  Future<void> _ensureMessagesCollection(String userId) async {
+    final userMessagesRef = FirebaseFirestore.instance.collection("users").doc(userId).collection("messages");
+
+    final snapshot = await userMessagesRef.limit(1).get();
+    if (snapshot.docs.isEmpty) {
+      await userMessagesRef.doc("placeholder").set({"text": "start chat"}); // Adaugă un document dummy
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "Autentificare",
-                style: TextStyle(color: Colors.white, fontSize: 24),
-              ),
-              SizedBox(height: 20),
-              TextField(
-                controller: emailController,
-                style: TextStyle(color: Colors.white),
-                decoration: InputDecoration(
-                  labelText: "Email",
-                  labelStyle: TextStyle(color: Colors.white),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.amber),
-                  ),
-                ),
-              ),
-              SizedBox(height: 10),
-              TextField(
-                controller: passwordController,
-                obscureText: true,
-                style: TextStyle(color: Colors.white),
-                decoration: InputDecoration(
-                  labelText: "Parolă",
-                  labelStyle: TextStyle(color: Colors.white),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.amber),
-                  ),
-                ),
-              ),
-              SizedBox(height: 20),
-              _loading
-                  ? CircularProgressIndicator(color: Colors.amber)
-                  : ElevatedButton(
-                      onPressed: _signIn,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.amber,
-                      ),
-                      child: Text("Login", style: TextStyle(color: Colors.black)),
-                    ),
-            ],
+      extendBodyBehindAppBar: true,
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: Image.asset(
+              'assets/images/background.png',
+              fit: BoxFit.cover,
+            ),
           ),
+          Center(
+            child: GlassContainer(
+              width: MediaQuery.of(context).size.width * 0.85,
+              height: 350,
+              borderRadius: BorderRadius.circular(20),
+              blur: 15,
+              gradient: LinearGradient(
+                colors: [Colors.white.withOpacity(0.15), Colors.white.withOpacity(0.05)],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              border: Border.all(color: Colors.white.withOpacity(0.2)),
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Text(
+                      "Autentificare",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    _buildInputField(emailController, "Email"),
+                    const SizedBox(height: 10),
+                    _buildInputField(passwordController, "Parolă", isPassword: true),
+                    const SizedBox(height: 20),
+                    _loading
+                        ? const CircularProgressIndicator(color: Colors.amber)
+                        : _buildLoginButton(),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildInputField(TextEditingController controller, String hintText, {bool isPassword = false}) {
+    return TextField(
+      controller: controller,
+      obscureText: isPassword,
+      style: const TextStyle(color: Colors.white),
+      decoration: InputDecoration(
+        hintText: hintText,
+        hintStyle: const TextStyle(color: Colors.white70),
+        filled: true,
+        fillColor: Colors.white.withOpacity(0.1),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(color: Colors.white.withOpacity(0.3)),
         ),
       ),
+    );
+  }
+
+  Widget _buildLoginButton() {
+    return ElevatedButton(
+      onPressed: _signIn,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.amber,
+        foregroundColor: Colors.black,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        minimumSize: const Size(double.infinity, 50),
+      ),
+      child: const Text("Login"),
     );
   }
 }

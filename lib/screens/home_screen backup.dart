@@ -1,24 +1,75 @@
 import 'package:flutter/material.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 import 'package:animate_do/animate_do.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'promo_screen.dart';
 import 'portfolio_screen.dart';
 import 'services_screen.dart';
 import 'loyalty_screen.dart';
 import 'chat_screen.dart';
+import 'chat_users_screen.dart';
 import 'treasure_hunt_screen.dart';
 import 'qr_scanner_screen.dart';
+import 'login_screen.dart';
+import 'admin_screen.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
-  // 🔹 Funcție pentru lansarea URL-urilor
-  void _launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  User? _user;
+  String? _userRole;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkAuthStatus();
+  }
+
+  Future<void> _checkAuthStatus() async {
+    FirebaseAuth.instance.authStateChanges().listen((User? user) async {
+      if (user != null) {
+        DocumentSnapshot userDoc =
+            await FirebaseFirestore.instance.collection("users").doc(user.uid).get();
+
+        setState(() {
+          _user = user;
+          _userRole = userDoc.exists ? userDoc.get("role") : "user";
+        });
+      } else {
+        setState(() {
+          _user = null;
+          _userRole = null;
+        });
+      }
+    });
+  }
+
+  void _logout() async {
+    await FirebaseAuth.instance.signOut();
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+  }
+
+  void _navigateToChat(BuildContext context) {
+    if (_user == null) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+    } else if (_userRole == "admin" || _userRole == "artist") {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => ChatUsersScreen()));
     } else {
-      throw 'Nu se poate deschide $url';
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ChatScreen(
+            chatId: _user!.uid,
+            userName: "Eli Tattoo Team",
+          ),
+        ),
+      );
     }
   }
 
@@ -37,47 +88,16 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.amber,
-              ),
-              child: const Text(
-                'Meniu Cont',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
-              ),
-            ),
-            ListTile(
-              leading: const Icon(Icons.person),
-              title: const Text('Profilul Meu'),
-              onTap: () {},
-            ),
-            ListTile(
-              leading: const Icon(Icons.settings),
-              title: const Text('Setări'),
-              onTap: () {},
-            ),
-          ],
-        ),
-      ),
+      drawer: _buildDrawer(),
       body: Stack(
         children: [
           Positioned.fill(
-            child: Image.asset(
-              'assets/images/background.png',
-              fit: BoxFit.cover,
-            ),
+            child: Image.asset('assets/images/background.png', fit: BoxFit.cover),
           ),
-
           Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              const SizedBox(height: 80), // Spațiu pentru a coborî logo-ul
               BounceInDown(
                 child: Container(
                   width: 180,
@@ -90,9 +110,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
-
-              const SizedBox(height: 10),
-
+              const SizedBox(height: 15),
               FadeIn(
                 child: const Text(
                   "Eli Tattoo Studio",
@@ -107,9 +125,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
-
-              const SizedBox(height: 15),
-
+              const SizedBox(height: 25),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -117,16 +133,16 @@ class HomeScreen extends StatelessWidget {
                     crossAxisCount: 2,
                     crossAxisSpacing: 15,
                     mainAxisSpacing: 15,
-                    childAspectRatio: 1.4,
+                    childAspectRatio: 1.6, // Butoanele sunt coborâte și mai echilibrate
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     children: [
-                      _buildCustomButton(context, 'Promoții', const PromoScreen(), Icons.local_offer),
-                      _buildCustomButton(context, 'Portofoliu', const PortfolioScreen(), Icons.image),
-                      _buildCustomButton(context, 'Servicii', const ServicesScreen(), Icons.build),
-                      _buildCustomButton(context, 'Fidelizare', const LoyaltyScreen(), Icons.star),
-                      _buildCustomButton(context, 'Chat', const ChatScreen(), Icons.chat),
-                      _buildCustomButton(context, 'Treasure Hunt', const TreasureHuntScreen(), Icons.map),
+                      _buildCustomButton(context, 'Promoții', PromoScreen(), Icons.local_offer, false),
+                      _buildCustomButton(context, 'Portofoliu', PortfolioScreen(), Icons.image, false),
+                      _buildCustomButton(context, 'Servicii', ServicesScreen(), Icons.build, false),
+                      _buildCustomButton(context, 'Fidelizare', LoyaltyScreen(), Icons.star, true),
+                      _buildCustomButton(context, 'Chat', null, Icons.chat, true),
+                      _buildCustomButton(context, 'Treasure Hunt', TreasureHuntScreen(), Icons.map, true),
                     ],
                   ),
                 ),
@@ -135,97 +151,97 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
+      bottomNavigationBar: _buildBottomBar(),
+    );
+  }
 
-      floatingActionButton: BounceIn(
-        child: FloatingActionButton(
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const QRScannerScreen()));
-          },
-          backgroundColor: Colors.redAccent,
-          child: const Icon(Icons.qr_code_scanner, size: 28, color: Colors.white),
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.black54,
-        shape: const CircularNotchedRectangle(),
-        notchMargin: 8.0,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            IconButton(
-              icon: const Icon(Icons.phone, color: Colors.white),
-              onPressed: () {
-                _launchURL('tel:+40787229574');
-              },
-            ),
-            IconButton(
-              icon: const Icon(Icons.map, color: Colors.white),
-              onPressed: () {
-                _launchURL('https://www.google.com/maps/place/Eli+Tattoo+%26+Piercing+Bra%C8%99ov/');
-              },
-            ),
-            IconButton(
-              icon: const Icon(Icons.chat, color: Colors.white),
-              onPressed: () {
-                _launchURL('https://wa.me/40787229574');
-              },
-            ),
-            IconButton(
-              icon: const Icon(Icons.account_circle, color: Colors.white),
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
-            ),
-          ],
+  Widget _buildCustomButton(BuildContext context, String label, Widget? screen, IconData icon, bool requiresAuth) {
+    return GestureDetector(
+      onTap: () {
+        if (requiresAuth && _user == null) {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+        } else if (label == 'Chat') {
+          _navigateToChat(context);
+        } else if (screen != null) {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => screen));
+        }
+      },
+      child: GlassContainer(
+        width: double.infinity,
+        height: 90, // Butoane puțin mai înalte pentru echilibru vizual
+        borderRadius: BorderRadius.circular(15),
+        blur: 5,
+        color: Colors.white.withOpacity(0.2),
+        border: Border.all(color: Colors.white.withOpacity(0.3), width: 1.5),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(icon, color: Colors.white, size: 30),
+              const SizedBox(height: 5),
+              Text(label, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  /// 🔹 Funcție corectă pentru butoane
-  Widget _buildCustomButton(BuildContext context, String text, Widget screen, IconData icon) {
-    return FadeInUp(
-      child: GestureDetector(
-        onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => screen));
-        },
-        child: GlassContainer(
-          width: double.infinity,
-          height: 90,
-          borderRadius: BorderRadius.circular(18),
-          blur: 12,
-          border: Border.all(width: 2, color: Colors.white.withOpacity(0.3)),
-          gradient: LinearGradient(
-            colors: [
-              Colors.white.withOpacity(0.15),
-              Colors.white.withOpacity(0.07),
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+  Widget _buildBottomBar() {
+    return BottomAppBar(
+      color: Colors.black54,
+      shape: const CircularNotchedRectangle(),
+      notchMargin: 8.0,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          IconButton(icon: const Icon(Icons.phone, color: Colors.white), onPressed: () {}),
+          IconButton(icon: const Icon(Icons.map, color: Colors.white), onPressed: () {}),
+          IconButton(icon: const Icon(Icons.chat, color: Colors.white), onPressed: () => _navigateToChat(context)),
+          IconButton(icon: const Icon(Icons.account_circle, color: Colors.white), onPressed: () => Scaffold.of(context).openDrawer()),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildDrawer() {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          DrawerHeader(
+            decoration: const BoxDecoration(
+              color: Colors.amber,
+            ),
+            child: Text(
+              _user != null ? _user!.email ?? "Cont" : "Cont Neautentificat",
+              style: const TextStyle(color: Colors.white, fontSize: 20),
+            ),
           ),
-          shadowStrength: 10,
-          shadowColor: Colors.black.withOpacity(0.3),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(icon, color: Colors.white, size: 30),
-              const SizedBox(height: 6),
-              Text(
-                text,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                  shadows: [
-                    Shadow(blurRadius: 5, color: Colors.black, offset: Offset(1, 1))
-                  ],
-                ),
-              ),
-            ],
+          ListTile(
+            leading: const Icon(Icons.person),
+            title: const Text('Profilul Meu'),
+            onTap: () {},
           ),
-        ),
+          ListTile(
+            leading: const Icon(Icons.settings),
+            title: const Text('Setări'),
+            onTap: () {},
+          ),
+          if (_userRole == "admin" || _userRole == "artist")
+            ListTile(
+              leading: const Icon(Icons.admin_panel_settings, color: Colors.amber),
+              title: const Text("Administrează"),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => AdminScreen()));
+              },
+            ),
+          ListTile(
+            leading: const Icon(Icons.exit_to_app, color: Colors.red),
+            title: const Text("Logout", style: TextStyle(color: Colors.redAccent)),
+            onTap: _logout,
+          ),
+        ],
       ),
     );
   }

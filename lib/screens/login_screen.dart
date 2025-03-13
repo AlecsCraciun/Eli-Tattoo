@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import '../services/auth_service.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -10,6 +11,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final AuthService _authService = AuthService();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final FocusNode _passwordFocus = FocusNode();
@@ -24,17 +26,36 @@ class _LoginScreenState extends State<LoginScreen> {
     }
 
     setState(() => _isLoading = true);
+
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: _emailController.text.trim(),
-        password: _passwordController.text.trim(),
+      User? user = await _authService.signInWithEmailAndPassword(
+        _emailController.text.trim(),
+        _passwordController.text.trim(),
       );
-      Navigator.pushReplacementNamed(context, '/home');
+
+      if (user != null) {
+        // 🔹 Verifică rolul utilizatorului din Firestore
+        DocumentSnapshot userDoc =
+            await FirebaseFirestore.instance.collection("users").doc(user.uid).get();
+
+        String role = userDoc.exists ? (userDoc["role"] ?? "user") : "user";
+
+        print("🔥 Autentificare reușită! UID: ${user.uid}, Rol: $role");
+
+        if (role == "admin") {
+          Navigator.pushReplacementNamed(context, '/admin');
+        } else {
+          Navigator.pushReplacementNamed(context, '/home');
+        }
+      } else {
+        setState(() => _errorMessage = "Email sau parolă incorectă!");
+      }
     } catch (e) {
-      setState(() => _errorMessage = "Email sau parolă incorectă!");
-    } finally {
-      setState(() => _isLoading = false);
+      print("❌ Eroare autentificare: $e");
+      setState(() => _errorMessage = "Eroare autentificare: $e");
     }
+
+    setState(() => _isLoading = false);
   }
 
   // 🔹 Înregistrare utilizator nou
@@ -45,41 +66,43 @@ class _LoginScreenState extends State<LoginScreen> {
     }
 
     setState(() => _isLoading = true);
+
     try {
-      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: _emailController.text.trim(),
-        password: _passwordController.text.trim(),
+      User? user = await _authService.registerWithEmailAndPassword(
+        _emailController.text.trim(),
+        _passwordController.text.trim(),
       );
 
-      // 🔹 Salvăm utilizatorul nou în Firestore
-      await FirebaseFirestore.instance.collection("users").doc(userCredential.user!.uid).set({
-        "uid": userCredential.user!.uid,
-        "email": userCredential.user!.email,
-        "name": userCredential.user!.email?.split('@')[0], // Folosim numele înainte de @
-        "avatar": "",
-        "role": "user",
-      });
+      if (user != null) {
+        // 🔹 Adaugă user-ul în Firestore
+        await FirebaseFirestore.instance.collection("users").doc(user.uid).set({
+          "email": user.email,
+          "role": "user",
+          "uid": user.uid,
+        });
 
-      Navigator.pushReplacementNamed(context, '/home');
+        Navigator.pushReplacementNamed(context, '/home');
+      } else {
+        setState(() => _errorMessage = "Email deja folosit sau parolă prea scurtă!");
+      }
     } catch (e) {
-      setState(() => _errorMessage = "Email deja folosit sau parolă prea scurtă!");
-    } finally {
-      setState(() => _isLoading = false);
+      print("❌ Eroare înregistrare: $e");
+      setState(() => _errorMessage = "Eroare înregistrare: $e");
     }
+
+    setState(() => _isLoading = false);
   }
 
-  // 🔹 Autentificare cu Google (compatibilă Web + Mobile)
+  // 🔹 Autentificare cu Google
   Future<void> _signInWithGoogle() async {
     setState(() => _isLoading = true);
     try {
       UserCredential userCredential;
 
       if (kIsWeb) {
-        // 🔹 Pe WEB, folosim Firebase `signInWithPopup()`
         GoogleAuthProvider googleProvider = GoogleAuthProvider();
         userCredential = await FirebaseAuth.instance.signInWithPopup(googleProvider);
       } else {
-        // 🔹 Pe Android/iOS, folosim Google Sign-In normal
         final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
         if (googleUser == null) {
           setState(() => _isLoading = false);
@@ -97,23 +120,22 @@ class _LoginScreenState extends State<LoginScreen> {
 
       User? user = userCredential.user;
       if (user != null) {
-        // 🔹 Verificăm dacă utilizatorul există deja în Firestore
+        // 🔹 Verifică dacă userul există deja în Firestore
         DocumentSnapshot userDoc =
             await FirebaseFirestore.instance.collection("users").doc(user.uid).get();
 
         if (!userDoc.exists) {
-          // 🔹 Dacă utilizatorul e nou, îl adăugăm cu rolul "user"
           await FirebaseFirestore.instance.collection("users").doc(user.uid).set({
-            "uid": user.uid,
             "email": user.email,
-            "name": user.displayName ?? "Utilizator",
-            "avatar": user.photoURL ?? "",
             "role": "user",
+            "uid": user.uid,
           });
         }
+
         Navigator.pushReplacementNamed(context, '/home');
       }
     } catch (e) {
+      print("❌ Eroare Google Sign-In: $e");
       setState(() => _errorMessage = "Autentificare cu Google eșuată.");
     } finally {
       setState(() => _isLoading = false);
@@ -130,7 +152,7 @@ class _LoginScreenState extends State<LoginScreen> {
         iconTheme: const IconThemeData(color: Colors.black87),
       ),
       body: GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(), // Închide tastatura la tap
+        onTap: () => FocusScope.of(context).unfocus(),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(

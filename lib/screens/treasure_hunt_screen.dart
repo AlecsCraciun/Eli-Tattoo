@@ -30,18 +30,16 @@ class _TreasureHuntScreenState extends State<TreasureHuntScreen> {
     }
 
     LocationPermission permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
+    if (permission == LocationPermission.denied || permission == LocationPermission.deniedForever) {
       permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.deniedForever ||
-          permission == LocationPermission.denied) {
+      if (permission == LocationPermission.deniedForever) {
         setState(() => _locationError = true);
         return;
       }
     }
 
     try {
-      Position position = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.high);
+      Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
       setState(() => _currentPosition = position);
     } catch (e) {
       setState(() => _locationError = true);
@@ -50,13 +48,11 @@ class _TreasureHuntScreenState extends State<TreasureHuntScreen> {
 
   double _calculateDistance(double lat, double lon) {
     if (_currentPosition == null) return -1;
-    return Geolocator.distanceBetween(
-        _currentPosition!.latitude, _currentPosition!.longitude, lat, lon);
+    return Geolocator.distanceBetween(_currentPosition!.latitude, _currentPosition!.longitude, lat, lon);
   }
 
   void _openMap(double latitude, double longitude) async {
-    final url =
-        'https://www.google.com/maps/search/?api=1&query=$latitude,$longitude';
+    final url = 'https://www.google.com/maps/search/?api=1&query=$latitude,$longitude';
     if (await canLaunchUrl(Uri.parse(url))) {
       await launchUrl(Uri.parse(url));
     }
@@ -73,11 +69,7 @@ class _TreasureHuntScreenState extends State<TreasureHuntScreen> {
       ),
       body: Stack(
         children: [
-          // 🔹 Fundal luxury
-          Positioned.fill(
-            child: Image.asset('assets/images/background.png', fit: BoxFit.cover),
-          ),
-
+          Positioned.fill(child: Image.asset('assets/images/background.png', fit: BoxFit.cover)),
           _locationError
               ? _buildLocationError()
               : StreamBuilder<QuerySnapshot>(
@@ -108,15 +100,13 @@ class _TreasureHuntScreenState extends State<TreasureHuntScreen> {
                         String title = voucher['title'] ?? "Voucher";
                         String description = voucher['description'] ?? "Descriere indisponibilă";
                         String detailedDescription = voucher['detailed_description'] ?? "Fără detalii";
-                        String imageUrl = voucher['image_url'] ?? "https://firebasestorage.googleapis.com/v0/b/elitattoo-app-c7763.firebasestorage.app/o/voucher_fantana.jpg?alt=media&token=2920ee76-f1d8-4a6d-8574-0b2d0bd2dba0";
+                        String imageUrl = voucher['image_url'] ?? ""; // Verifică imaginea corectă
                         double latitude = voucher['latitude'] ?? 0.0;
                         double longitude = voucher['longitude'] ?? 0.0;
                         int value = voucher['value'] ?? 0;
 
                         double distance = _calculateDistance(latitude, longitude);
-                        String distanceText = (distance < 0)
-                            ? "Locație necunoscută"
-                            : "${distance.toStringAsFixed(2)} metri";
+                        String distanceText = (distance < 0) ? "Locație necunoscută" : "${distance.toStringAsFixed(2)} metri";
 
                         return Padding(
                           padding: const EdgeInsets.symmetric(vertical: 10),
@@ -136,24 +126,36 @@ class _TreasureHuntScreenState extends State<TreasureHuntScreen> {
                                 children: [
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(12),
-                                    child: Image.network(
-                                      imageUrl,
-                                      width: double.infinity,
-                                      height: 200,
-                                      fit: BoxFit.cover,
-                                      loadingBuilder: (context, child, progress) {
-                                        if (progress == null) return child;
-                                        return const Center(child: CircularProgressIndicator(color: Colors.amber));
-                                      },
-                                    ),
+                                    child: imageUrl.isNotEmpty
+                                        ? Image.network(
+                                            imageUrl,
+                                            width: double.infinity,
+                                            height: 200,
+                                            fit: BoxFit.cover,
+                                            loadingBuilder: (context, child, progress) {
+                                              if (progress == null) return child;
+                                              return const Center(child: CircularProgressIndicator(color: Colors.amber));
+                                            },
+                                            errorBuilder: (context, error, stackTrace) {
+                                              return Image.asset(
+                                                'assets/images/voucher_placeholder.png',
+                                                width: double.infinity,
+                                                height: 200,
+                                                fit: BoxFit.cover,
+                                              );
+                                            },
+                                          )
+                                        : Image.asset(
+                                            'assets/images/voucher_placeholder.png',
+                                            width: double.infinity,
+                                            height: 200,
+                                            fit: BoxFit.cover,
+                                          ),
                                   ),
                                   const SizedBox(height: 10),
                                   Text(
                                     title,
-                                    style: TextStyle(
-                                        color: Colors.amber.shade700,
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.bold),
+                                    style: TextStyle(color: Colors.amber.shade700, fontSize: 22, fontWeight: FontWeight.bold),
                                   ),
                                   const SizedBox(height: 5),
                                   Text(
@@ -163,8 +165,7 @@ class _TreasureHuntScreenState extends State<TreasureHuntScreen> {
                                   const SizedBox(height: 5),
                                   Text(
                                     "$value RON",
-                                    style: const TextStyle(
-                                        color: Colors.amber, fontSize: 22, fontWeight: FontWeight.bold),
+                                    style: const TextStyle(color: Colors.amber, fontSize: 22, fontWeight: FontWeight.bold),
                                   ),
                                   const SizedBox(height: 10),
                                   Row(
@@ -209,8 +210,7 @@ class _TreasureHuntScreenState extends State<TreasureHuntScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text("❌ GPS dezactivat sau permisiuni refuzate!",
-              style: TextStyle(color: Colors.redAccent, fontSize: 18)),
+          const Text("❌ GPS dezactivat sau permisiuni refuzate!", style: TextStyle(color: Colors.redAccent, fontSize: 18)),
           const SizedBox(height: 10),
           ElevatedButton(
             onPressed: _getCurrentLocation,
