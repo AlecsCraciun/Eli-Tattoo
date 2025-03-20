@@ -1,8 +1,21 @@
 rules_version = '2';
-service firebase.storage {
-  match /b/{bucket}/o {
-    match /{allPaths=**} {
-      allow read, write: if true;
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // 🔹 Permite autentificarea oricărui utilizator
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // 🔹 Permite utilizatorilor să își acceseze propriile mesaje
+    match /chats/{chatId}/messages/{messageId} {
+      allow read, write: if request.auth != null;
+    }
+
+    // 🔹 Permite citirea globală a datelor publice
+    match /{document=**} {
+      allow read: if true;
+      allow write: if request.auth != null;
     }
   }
 }

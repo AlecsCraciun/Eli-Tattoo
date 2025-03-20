@@ -29,7 +29,6 @@ class _ChatUsersScreenState extends State<ChatUsersScreen> {
         _currentUserId = user.uid;
       });
 
-      // Verifică dacă utilizatorul este admin sau artist
       final userDoc = await _firestore.collection('users').doc(user.uid).get();
       if (userDoc.exists) {
         setState(() {
@@ -51,10 +50,10 @@ class _ChatUsersScreenState extends State<ChatUsersScreen> {
     );
   }
 
-  /// 🔹 Adminul vede DOAR utilizatorii care i-au trimis mesaje
+  /// 🔹 **Adminul vede utilizatorii care au trimis mesaje**
   Widget _buildAdminChatList() {
     return StreamBuilder<QuerySnapshot>(
-      stream: _firestore.collection('users').doc('eli_tattoo_team').collection('messages').snapshots(),
+      stream: _firestore.collection('chats').snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) return const Center(child: CircularProgressIndicator());
 
@@ -74,11 +73,11 @@ class _ChatUsersScreenState extends State<ChatUsersScreen> {
                 if (!userSnapshot.hasData) return const SizedBox.shrink();
 
                 final userData = userSnapshot.data!.data() as Map<String, dynamic>? ?? {};
-                final userName = userData['name'] ?? 'Utilizator Necunoscut';
+                final userName = userData['name'] ?? userData['email']?.split('@').first ?? 'Utilizator Necunoscut';
 
                 return ListTile(
                   title: Text(userName),
-                  subtitle: Text("Apasă pentru a deschide chat-ul"),
+                  subtitle: const Text("Apasă pentru a deschide chat-ul"),
                   onTap: () {
                     Navigator.push(
                       context,

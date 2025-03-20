@@ -42,12 +42,12 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyBbOGqgBB1htpneQ8bnxdIlWhsxWRKYNvQ',
-    appId: '1:485612502628:web:82896b274727ebf2d0a971',
+    appId: '1:485612502628:web:41ab29297c499a80d0a971',
     messagingSenderId: '485612502628',
     projectId: 'elitattoo-app-c7763',
     authDomain: 'elitattoo-app-c7763.firebaseapp.com',
     storageBucket: 'elitattoo-app-c7763.firebasestorage.app',
-    measurementId: 'G-D0FW6CTHQP',
+    measurementId: 'G-E0ZR4KLDR4',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
@@ -82,11 +82,11 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions windows = FirebaseOptions(
     apiKey: 'AIzaSyBbOGqgBB1htpneQ8bnxdIlWhsxWRKYNvQ',
-    appId: '1:485612502628:web:41ab29297c499a80d0a971',
+    appId: '1:485612502628:web:2f7a48a5be2f24e1d0a971',
     messagingSenderId: '485612502628',
     projectId: 'elitattoo-app-c7763',
     authDomain: 'elitattoo-app-c7763.firebaseapp.com',
     storageBucket: 'elitattoo-app-c7763.firebasestorage.app',
-    measurementId: 'G-E0ZR4KLDR4',
+    measurementId: 'G-W8P6EMHGQ1',
   );
 }

@@ -10,26 +10,26 @@ plugins {
 
 android {
     namespace = "com.example.eli_tattoo_clienti"
-    compileSdk = 34
+    compileSdk = 35 // ✅ Actualizat la 35
 
     ndkVersion = "27.0.12077973"
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-        isCoreLibraryDesugaringEnabled = true // ✅ Activare Java 8 desugaring
+        sourceCompatibility = JavaVersion.VERSION_17 // ✅ Actualizat la Java 17
+        targetCompatibility = JavaVersion.VERSION_17
+        isCoreLibraryDesugaringEnabled = true // ✅ Activare Java desugaring
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17" // ✅ Actualizat la 17
     }
 
     defaultConfig {
         applicationId = "com.example.eli_tattoo_clienti"
         minSdk = 23
-        targetSdk = 34
+        targetSdk = 35 // ✅ Actualizat la 35
         versionCode = 1
-        versionName = "1.0.0"
+        versionName = "1.3.0" // ✅ Versiune actualizată
     }
 
     signingConfigs {
@@ -65,8 +65,8 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.7.3")) // 🔹 Firebase BOM actualizat
     implementation("androidx.core:core-ktx:1.12.0")
 
-    // ✅ Suport pentru Java 8 desugaring
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.3")
+    // ✅ Suport pentru Java 8+ desugaring
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4") // ✅ Actualizat
 }
 
 flutter {

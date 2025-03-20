@@ -15,10 +15,10 @@ dependencies:
   firebase_auth: ^5.4.2
   cloud_firestore: ^5.6.5
   firebase_storage: ^12.4.4
-  firebase_messaging: ^15.2.2
+  firebase_messaging: ^15.2.2  # ✅ Firebase Push Notifications
   firebase_analytics: ^11.4.2
-  google_sign_in: ^6.2.2
   firebase_database: ^11.3.3  # ✅ Firebase Database compatibil
+  google_sign_in: ^6.2.2
 
   # 🔹 UI Components
   cupertino_icons: ^1.0.8
@@ -36,7 +36,7 @@ dependencies:
 
   # 🔹 Maps & Location
   google_maps_flutter: ^2.5.3
-  location: ^7.0.1  # ✅ Versiune compatibilă
+  location: ^8.0.0  # ✅ Versiune compatibilă
   geolocator: ^13.0.2
 
   # 🔹 Utils
@@ -54,24 +54,33 @@ dependencies:
   qr_flutter: ^4.1.0
   mobile_scanner: ^6.0.6  # ✅ Înlocuiește qr_code_scanner
 
-  # 🔹 Notificări locale
-  flutter_local_notifications: ^18.0.1
+  # 🔹 Notificări push & locale
+  flutter_local_notifications: ^19.0.0
+
+  # 🔹 Multimedia (GIF, imagini, video)
   photo_view: ^0.15.0
-  glassmorphism_ui: ^0.3.0
   file_picker: ^9.0.2
+  giphy_picker: ^3.0.2  # ✅ Pachet compatibil pentru GIF-uri
+  video_player: ^2.8.3  # ✅ Adăugat pentru videoclipuri
+
+  # 🔹 UI Enhancements
+  glassmorphism_ui: ^0.3.0
   flutter_launcher_icons: ^0.14.3
+
+  # 🔹 🔐 Stocare sigură a cheilor API
+  flutter_dotenv: ^5.1.0  # ✅ Adăugat pentru variabile de mediu
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.3  # ✅ Compatibil cu Dart 3.4.3
+  flutter_lints: ^5.0.0  # ✅ Compatibil cu Dart 3.4.3
   flutter_native_splash: ^2.3.10
 
 # 🔹 Configurare Flutter Icons (Aplica Logo)
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/images/logo.png"  # ✅ Folosim logo-ul oficial
+  image_path: "assets/images/logo.png"
   adaptive_icon_background: "#000000"
   adaptive_icon_foreground: "assets/images/logo.png"
 
@@ -94,9 +103,10 @@ flutter:
     - assets/buttons/
     - assets/images/logo.png
     - assets/images/tbi_banner.png
-    - assets/images/alecs_avatar.jpg  # ✅ Adăugat avatar Alecs
-    - assets/images/blanca_avatar.jpg # ✅ Adăugat avatar Blanca
-    - assets/images/denis_avatar.jpg  # ✅ Adăugat avatar Denis
+    - assets/images/alecs_avatar.jpg
+    - assets/images/blanca_avatar.jpg
+    - assets/images/denis_avatar.jpg
+    - .env  # ✅ Adăugat pentru a încărca cheile API
 
   fonts:
     - family: Poppins
