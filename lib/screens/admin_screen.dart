@@ -1,166 +1,118 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:uuid/uuid.dart';
-import 'package:qr_flutter/qr_flutter.dart';
-import 'package:intl/intl.dart';
-import 'dart:convert';
+import 'package:glassmorphism/glassmorphism.dart';
 
-class AdminScreen extends StatefulWidget {
+import 'admin_portfolio_screen.dart';
+import 'promotions_admin_screen.dart';
+import 'treasure_hunt_admin_screen.dart';
+import 'qr_fidelity_screen.dart';
+
+class AdminScreen extends StatelessWidget {
   const AdminScreen({super.key});
-
-  @override
-  _AdminScreenState createState() => _AdminScreenState();
-}
-
-class _AdminScreenState extends State<AdminScreen> {
-  final TextEditingController _amountController = TextEditingController();
-  String? _qrData;
-  String? _lastScannedBy;
-  int? _points;
-  String? _actionType; // "add" sau "remove"
-
-  Future<void> _generateQR(String type) async {
-    final amountText = _amountController.text;
-    if (amountText.isEmpty || int.tryParse(amountText) == null) return;
-
-    final int amount = int.parse(amountText);
-    final int points = (amount / 10).floor();
-    final String qrId = const Uuid().v4();
-    
-    final qrPayload = {
-      'qr_id': qrId,
-      'points': points,
-      'type': type,
-    };
-
-    await FirebaseFirestore.instance.collection('generated_qr_codes').doc(qrId).set({
-      'timestamp': DateTime.now(),
-      'type': type,
-      'points': points,
-    });
-
-    setState(() {
-      _qrData = jsonEncode(qrPayload);
-      _points = points;
-      _actionType = type;
-    });
-  }
-
-  Stream<QuerySnapshot> _usedQRStream() {
-    return FirebaseFirestore.instance
-        .collection('used_qr_codes')
-        .orderBy('timestamp', descending: true)
-        .snapshots();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: const Text("Admin Panel - Fidelizare"),
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: const Text("Panou Administrare", style: TextStyle(color: Colors.white)),
+        centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
+      body: Stack(
+        children: [
+          _buildBackground(),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: GridView.count(
+                crossAxisCount: 2,
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 16,
+                children: [
+                  _buildGlassTile(
+                    context,
+                    icon: Icons.photo_library,
+                    label: "Portofolii",
+                    screen: const AdminPortfolioScreen(),
+                  ),
+                  _buildGlassTile(
+                    context,
+                    icon: Icons.local_offer,
+                    label: "Promoții",
+                    screen: const PromotionsAdminScreen(),
+                  ),
+                  _buildGlassTile(
+                    context,
+                    icon: Icons.card_giftcard,
+                    label: "Treasure Hunt",
+                    screen: const TreasureHuntAdminScreen(),
+                  ),
+                  _buildGlassTile(
+                    context,
+                    icon: Icons.qr_code,
+                    label: "Fidelizare",
+                    screen: const QrFidelityScreen(),
+                  ),
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _buildGlassTile(BuildContext context,
+      {required IconData icon, required String label, required Widget screen}) {
+    return GestureDetector(
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => screen),
+      ),
+      child: GlassmorphicContainer(
+        width: double.infinity,
+        height: double.infinity,
+        borderRadius: 20,
+        blur: 15,
+        alignment: Alignment.center,
+        border: 2,
+        linearGradient: LinearGradient(
+          colors: [
+            Colors.white.withAlpha(20),
+            Colors.white38.withAlpha(30),
+          ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderGradient: LinearGradient(
+          colors: [
+            Colors.white24,
+            Colors.white10,
+          ],
+        ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              "Sumă cheltuită de client:",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-            ),
-            TextField(
-              controller: _amountController,
-              keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                hintText: "Ex: 280",
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 16),
-            Row(
-              children: [
-                Expanded(
-                  child: ElevatedButton.icon(
-                    onPressed: () => _generateQR("add"),
-                    icon: const Icon(Icons.add),
-                    label: const Text("Oferă Puncte"),
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.all(16),
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: ElevatedButton.icon(
-                    onPressed: () => _generateQR("remove"),
-                    icon: const Icon(Icons.remove),
-                    label: const Text("Retrage Puncte"),
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.all(16),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 20),
-            if (_qrData != null && _points != null && _actionType != null) ...[
-              Center(
-                child: QrImageView(
-                  data: _qrData!,
-                  version: QrVersions.auto,
-                  size: 200,
-                ),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                "${_actionType == 'add' ? 'Oferă' : 'Retrage'} $_points puncte",
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-            const SizedBox(height: 30),
-            const Text(
-              "Istoric QR-uri folosite",
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            Icon(icon, size: 40, color: Colors.white),
             const SizedBox(height: 10),
-            Expanded(
-              child: StreamBuilder<QuerySnapshot>(
-                stream: _usedQRStream(),
-                builder: (context, snapshot) {
-                  if (!snapshot.hasData) {
-                    return const Center(child: CircularProgressIndicator());
-                  }
-                  final docs = snapshot.data!.docs;
-                  return ListView.builder(
-                    itemCount: docs.length,
-                    itemBuilder: (context, index) {
-                      final data = docs[index].data() as Map<String, dynamic>;
-                      final timestamp = (data['timestamp'] as Timestamp).toDate();
-                      final formatted = DateFormat("dd.MM.yyyy HH:mm").format(timestamp);
-                      return Card(
-                        child: ListTile(
-                          title: Text(formatted),
-                          subtitle: Text("Scanat de: ${data['used_by'] ?? 'necunoscut'}"),
-                          leading: Icon(
-                            data['type'] == 'add' ? Icons.add_circle : Icons.remove_circle,
-                            color: data['type'] == 'add' ? Colors.green : Colors.red,
-                          ),
-                        ),
-                      );
-                    },
-                  );
-                },
-              ),
+            Text(
+              label,
+              style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
             )
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBackground() {
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          colors: [Color(0xFF2B5876), Color(0xFF4E4376)],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
         ),
       ),
     );

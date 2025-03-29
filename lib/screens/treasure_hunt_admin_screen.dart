@@ -5,7 +5,6 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:geolocator/geolocator.dart';
 import 'dart:io';
 import 'dart:typed_data';
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 
@@ -64,8 +63,11 @@ class _TreasureHuntAdminScreenState extends State<TreasureHuntAdminScreen> {
 
   Future<void> _pickImage() async {
     if (kIsWeb) {
-      FilePickerResult? result = await FilePicker.platform.pickFiles(type: FileType.image);
-      if (result != null) setState(() => _webImage = result.files.first.bytes);
+      final XFile? pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+      if (pickedFile != null) {
+        final bytes = await pickedFile.readAsBytes();
+        setState(() => _webImage = bytes);
+      }
     } else {
       final XFile? pickedFile = await _picker.pickImage(source: ImageSource.gallery);
       if (pickedFile != null) setState(() => _selectedImage = File(pickedFile.path));
@@ -162,15 +164,63 @@ class _TreasureHuntAdminScreenState extends State<TreasureHuntAdminScreen> {
             const SizedBox(height: 10),
             ElevatedButton(onPressed: _getCurrentLocation, child: const Text("Marchează Voucher")),
             const SizedBox(height: 10),
-            _selectedImage != null || _webImage != null
-                ? Image.memory(_webImage ?? Uint8List(0), height: 150)
-                : const SizedBox(height: 150, child: Center(child: Text("Selectează o imagine"))),
+            _selectedImage != null
+                ? Image.file(_selectedImage!, height: 150)
+                : _webImage != null
+                    ? Image.memory(_webImage!, height: 150)
+                    : const SizedBox(height: 150, child: Center(child: Text("Selectează o imagine"))),
             const SizedBox(height: 10),
             ElevatedButton(onPressed: _pickImage, child: const Text("Alege Imagine")),
             const SizedBox(height: 10),
             _isUploading
                 ? const CircularProgressIndicator()
                 : ElevatedButton(onPressed: _addVoucher, child: const Text("Adaugă Voucher")),
+            const SizedBox(height: 20),
+            const Divider(),
+            const SizedBox(height: 10),
+            const Text(
+              "Vouchere Active",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 10),
+            Expanded(
+              child: StreamBuilder<QuerySnapshot>(
+                stream: _firestore
+                    .collection("treasure_hunt_rewards")
+                    .orderBy("timestamp", descending: true)
+                    .snapshots(),
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) return const Center(child: CircularProgressIndicator());
+                  final docs = snapshot.data!.docs;
+
+                  if (docs.isEmpty) {
+                    return const Center(child: Text("Nu există vouchere active."));
+                  }
+
+                  return ListView.builder(
+                    itemCount: docs.length,
+                    itemBuilder: (context, index) {
+                      final doc = docs[index];
+                      final data = doc.data() as Map<String, dynamic>;
+
+                      return Card(
+                        child: ListTile(
+                          leading: data['image_url'] != null
+                              ? Image.network(data['image_url'], width: 50, height: 50, fit: BoxFit.cover)
+                              : const Icon(Icons.image_not_supported),
+                          title: Text(data['title'] ?? 'Fără titlu'),
+                          subtitle: Text(data['description'] ?? ''),
+                          trailing: IconButton(
+                            icon: const Icon(Icons.delete, color: Colors.red),
+                            onPressed: () => _deleteVoucher(doc.id, data['image_url']),
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
+            )
           ],
         ),
       ),

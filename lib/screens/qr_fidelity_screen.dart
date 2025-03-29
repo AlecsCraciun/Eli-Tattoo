@@ -1,138 +1,157 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:qr_flutter/qr_flutter.dart';
 import 'package:uuid/uuid.dart';
+import 'package:qr_flutter/qr_flutter.dart';
+import 'package:intl/intl.dart';
 import 'dart:convert';
 
-class QRFidelityScreen extends StatefulWidget {
-  const QRFidelityScreen({super.key});
+class QrFidelityScreen extends StatefulWidget {
+  const QrFidelityScreen({super.key});
 
   @override
-  _QRFidelityScreenState createState() => _QRFidelityScreenState();
+  _QrFidelityScreenState createState() => _QrFidelityScreenState();
 }
 
-class _QRFidelityScreenState extends State<QRFidelityScreen> {
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+class _QrFidelityScreenState extends State<QrFidelityScreen> {
   final TextEditingController _amountController = TextEditingController();
-  bool _isAddingPoints = true;
+  String? _qrData;
+  String? _lastScannedBy;
+  int? _points;
+  String? _actionType; // "add" sau "remove"
 
-  Future<void> _generateQRCode() async {
-    if (_amountController.text.isEmpty) return;
-    double amount = double.tryParse(_amountController.text) ?? 0;
-    if (amount <= 0) return;
+  Future<void> _generateQR(String type) async {
+    final amountText = _amountController.text;
+    if (amountText.isEmpty || int.tryParse(amountText) == null) return;
 
-    String qrCode = const Uuid().v4();
-    String type = _isAddingPoints ? "add" : "withdraw";
+    final int amount = int.parse(amountText);
+    final int points = (amount / 10).floor();
+    final String qrId = const Uuid().v4();
+    
+    final qrPayload = {
+      'qr_id': qrId,
+      'points': points,
+      'type': type,
+    };
 
-    final qrPayload = jsonEncode({
-      "qr_id": qrCode,
-      "points": amount.round(),
-      "type": type,
+    await FirebaseFirestore.instance.collection('generated_qr_codes').doc(qrId).set({
+      'timestamp': DateTime.now(),
+      'type': type,
+      'points': points,
     });
 
-    try {
-      await _firestore.collection("qr_codes").add({
-        "code": qrPayload,
-        "type": type,
-        "amount": amount,
-        "createdAt": FieldValue.serverTimestamp(),
-      });
-
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("Cod QR generat cu succes!"),
-        backgroundColor: Colors.green,
-      ));
-
-      _amountController.clear();
-    } catch (e) {
-      print("Eroare la generare QR: $e");
-    }
+    setState(() {
+      _qrData = jsonEncode(qrPayload);
+      _points = points;
+      _actionType = type;
+    });
   }
 
-  Future<void> _deleteQRCode(String docId) async {
-    try {
-      await _firestore.collection("qr_codes").doc(docId).delete();
-    } catch (e) {
-      print("Eroare la ștergere QR: $e");
-    }
+  Stream<QuerySnapshot> _usedQRStream() {
+    return FirebaseFirestore.instance
+        .collection('used_qr_codes')
+        .orderBy('timestamp', descending: true)
+        .snapshots();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Generare QR Fidelizare")),
+      appBar: AppBar(
+        title: const Text("Admin Panel - Fidelizare"),
+        backgroundColor: Theme.of(context).primaryColor,
+      ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            const Text(
+              "Sumă cheltuită de client:",
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            ),
             TextField(
               controller: _amountController,
               keyboardType: TextInputType.number,
               decoration: const InputDecoration(
-                labelText: "Introduceți suma / punctele",
+                hintText: "Ex: 280",
                 border: OutlineInputBorder(),
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 16),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() => _isAddingPoints = true);
-                    _generateQRCode();
-                  },
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
-                  child: const Text("Oferă Puncte"),
+                Expanded(
+                  child: ElevatedButton.icon(
+                    onPressed: () => _generateQR("add"),
+                    icon: const Icon(Icons.add),
+                    label: const Text("Oferă Puncte"),
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.all(16),
+                    ),
+                  ),
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() => _isAddingPoints = false);
-                    _generateQRCode();
-                  },
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                  child: const Text("Retrage Puncte"),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: ElevatedButton.icon(
+                    onPressed: () => _generateQR("remove"),
+                    icon: const Icon(Icons.remove),
+                    label: const Text("Retrage Puncte"),
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.all(16),
+                    ),
+                  ),
                 ),
               ],
             ),
             const SizedBox(height: 20),
+            if (_qrData != null && _points != null && _actionType != null) ...[
+              Center(
+                child: QrImageView(
+                  data: _qrData!,
+                  version: QrVersions.auto,
+                  size: 200,
+                ),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                "${_actionType == 'add' ? 'Oferă' : 'Retrage'} $_points puncte",
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+            const SizedBox(height: 30),
+            const Text(
+              "Istoric QR-uri folosite",
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 10),
             Expanded(
               child: StreamBuilder<QuerySnapshot>(
-                stream: _firestore.collection("qr_codes").orderBy("createdAt", descending: true).snapshots(),
+                stream: _usedQRStream(),
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
                     return const Center(child: CircularProgressIndicator());
                   }
-
-                  final qrCodes = snapshot.data!.docs;
-
-                  if (qrCodes.isEmpty) {
-                    return const Center(child: Text("Nu există coduri QR generate."));
-                  }
-
+                  final docs = snapshot.data!.docs;
                   return ListView.builder(
-                    itemCount: qrCodes.length,
+                    itemCount: docs.length,
                     itemBuilder: (context, index) {
-                      final doc = qrCodes[index];
-                      final data = doc.data() as Map<String, dynamic>;
-                      final String payload = data["code"];
-                      final decoded = jsonDecode(payload);
-                      final String qrCode = decoded["qr_id"];
-                      final double amount = data["amount"];
-                      final String type = data["type"];
-
+                      final data = docs[index].data() as Map<String, dynamic>;
+                      final timestamp = (data['timestamp'] as Timestamp).toDate();
+                      final formatted = DateFormat("dd.MM.yyyy HH:mm").format(timestamp);
                       return Card(
-                        margin: const EdgeInsets.all(10),
                         child: ListTile(
-                          leading: QrImageView(
-                            data: payload,
-                            size: 50,
-                          ),
-                          title: Text("${type == 'add' ? 'Adăugat' : 'Retras'}: ${amount.toStringAsFixed(2)} RON"),
-                          subtitle: Text("Cod: $qrCode"),
-                          trailing: IconButton(
-                            icon: const Icon(Icons.delete, color: Colors.red),
-                            onPressed: () => _deleteQRCode(doc.id),
+                          title: Text(formatted),
+                          subtitle: Text("Scanat de: ${data['used_by'] ?? 'necunoscut'}"),
+                          leading: Icon(
+                            data['type'] == 'add' ? Icons.add_circle : Icons.remove_circle,
+                            color: data['type'] == 'add' ? Colors.green : Colors.red,
                           ),
                         ),
                       );
@@ -140,7 +159,7 @@ class _QRFidelityScreenState extends State<QRFidelityScreen> {
                   );
                 },
               ),
-            ),
+            )
           ],
         ),
       ),

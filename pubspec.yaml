@@ -10,14 +10,14 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # 🔹 Firebase Services
-  firebase_core: ^2.24.2
-  firebase_auth: ^4.15.3
-  cloud_firestore: ^4.13.6
-  firebase_storage: ^11.5.6
-  firebase_messaging: ^14.7.10
-  firebase_analytics: ^10.7.4
-  firebase_database: ^10.3.8
+  # 🔹 Firebase Services (actualizate pt. suport complet Web/Dart 3.4)
+  firebase_core: ^2.25.4
+  firebase_auth: ^4.17.4
+  cloud_firestore: ^4.15.4
+  firebase_storage: ^11.7.4
+  firebase_messaging: ^14.8.4
+  firebase_analytics: ^10.8.4
+  firebase_database: ^10.4.4
   google_sign_in: ^6.2.1
 
   # 🔹 UI Components
@@ -65,6 +65,7 @@ dependencies:
 
   # 🔹 UI Enhancements
   glassmorphism_ui: ^0.3.0
+  glassmorphism: ^3.0.0
   flutter_launcher_icons: ^0.13.1
 
   # 🔹 🔐 Chei API (.env)

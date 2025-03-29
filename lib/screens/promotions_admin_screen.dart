@@ -4,7 +4,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'dart:io';
 import 'dart:typed_data'; // Pentru Web
-import 'package:file_picker/file_picker.dart'; // Alegere fișiere pe Web
 import 'package:flutter/foundation.dart'; // Detectare Web
 
 class PromotionsAdminScreen extends StatefulWidget {
@@ -21,23 +20,20 @@ class _PromotionsAdminScreenState extends State<PromotionsAdminScreen> {
   
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
-  TextEditingController linkTextController = TextEditingController(); // 🔹 Textul linkului
-  TextEditingController linkUrlController = TextEditingController(); // 🔹 URL-ul linkului
+  TextEditingController linkTextController = TextEditingController();
+  TextEditingController linkUrlController = TextEditingController();
 
   File? _selectedImage;
-  Uint8List? _webImage; // 🔹 Pentru Web
+  Uint8List? _webImage;
   DateTime? _selectedExpiryDate;
   bool _isUploading = false;
 
-  // 🔹 Selectează imagine
   Future<void> _pickImage() async {
     if (kIsWeb) {
-      FilePickerResult? result = await FilePicker.platform.pickFiles(
-        type: FileType.image,
-        allowMultiple: false,
-      );
-      if (result != null) {
-        setState(() => _webImage = result.files.first.bytes);
+      final XFile? pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+      if (pickedFile != null) {
+        final bytes = await pickedFile.readAsBytes();
+        setState(() => _webImage = bytes);
       }
     } else {
       final XFile? pickedFile = await _picker.pickImage(source: ImageSource.gallery);
@@ -47,13 +43,12 @@ class _PromotionsAdminScreenState extends State<PromotionsAdminScreen> {
     }
   }
 
-  // 🔹 Selectează data de expirare
   Future<void> _pickExpiryDate() async {
     DateTime? pickedDate = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
       firstDate: DateTime.now(),
-      lastDate: DateTime.now().add(const Duration(days: 365)), // Max 1 an valabilitate
+      lastDate: DateTime.now().add(const Duration(days: 365)),
     );
 
     if (pickedDate != null) {
@@ -61,7 +56,6 @@ class _PromotionsAdminScreenState extends State<PromotionsAdminScreen> {
     }
   }
 
-  // 🔹 Încarcă imaginea și returnează URL-ul
   Future<String?> _uploadImage() async {
     try {
       String fileName = 'promotions/${DateTime.now().millisecondsSinceEpoch}.jpg';
@@ -82,7 +76,6 @@ class _PromotionsAdminScreenState extends State<PromotionsAdminScreen> {
     }
   }
 
-  // 🔹 Salvează promoția în Firestore
   Future<void> _addPromotion() async {
     if (titleController.text.isEmpty ||
         descriptionController.text.isEmpty ||
@@ -104,13 +97,12 @@ class _PromotionsAdminScreenState extends State<PromotionsAdminScreen> {
         'titlu': titleController.text.trim(),
         'descriere': descriptionController.text.trim(),
         'imagine': imageUrl,
-        'expiraLa': _selectedExpiryDate!.toIso8601String(), // 🔹 Salvează ca string ISO 8601
+        'expiraLa': _selectedExpiryDate!.toIso8601String(),
         'timestamp': FieldValue.serverTimestamp(),
-        'linkText': linkTextController.text.trim(), // 🔹 Link text
-        'linkUrl': linkUrlController.text.trim(), // 🔹 Link URL
+        'linkText': linkTextController.text.trim(),
+        'linkUrl': linkUrlController.text.trim(),
       });
 
-      // 🔹 Resetăm formularul
       titleController.clear();
       descriptionController.clear();
       linkTextController.clear();
@@ -127,7 +119,6 @@ class _PromotionsAdminScreenState extends State<PromotionsAdminScreen> {
     }
   }
 
-  // 🔹 Șterge promoția
   Future<void> _deletePromotion(String docId, String imageUrl) async {
     try {
       await _storage.refFromURL(imageUrl).delete();
@@ -155,8 +146,6 @@ class _PromotionsAdminScreenState extends State<PromotionsAdminScreen> {
               decoration: const InputDecoration(labelText: "Descriere"),
             ),
             const SizedBox(height: 10),
-
-            // 🔹 Adăugare link opțional
             TextField(
               controller: linkTextController,
               decoration: const InputDecoration(labelText: "Text Link (ex: Instagram)"),
@@ -168,7 +157,6 @@ class _PromotionsAdminScreenState extends State<PromotionsAdminScreen> {
             ),
             const SizedBox(height: 10),
 
-            // 🔹 Afișare imagine selectată
             _selectedImage != null
                 ? Image.file(_selectedImage!, height: 150)
                 : (_webImage != null
@@ -182,7 +170,6 @@ class _PromotionsAdminScreenState extends State<PromotionsAdminScreen> {
             ),
             const SizedBox(height: 10),
 
-            // 🔹 Selectează data de expirare
             ListTile(
               title: Text(
                 _selectedExpiryDate == null
