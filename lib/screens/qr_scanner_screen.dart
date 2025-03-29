@@ -10,14 +10,14 @@ class QRScannerScreen extends StatefulWidget {
 
 class _QRScannerScreenState extends State<QRScannerScreen> {
   final MobileScannerController cameraController = MobileScannerController();
-  bool _hasScanned = false; // Evită citiri multiple
+  bool _hasScanned = false;
 
   void _onDetect(BarcodeCapture capture) {
     if (_hasScanned || capture.barcodes.isEmpty) return;
 
     final String code = capture.barcodes.first.rawValue ?? "Cod invalid";
     setState(() {
-      _hasScanned = true; // Blochează scanările ulterioare
+      _hasScanned = true;
     });
 
     ScaffoldMessenger.of(context).showSnackBar(
@@ -30,6 +30,12 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
     Future.delayed(const Duration(milliseconds: 1000), () {
       Navigator.pop(context, code);
     });
+  }
+
+  @override
+  void dispose() {
+    cameraController.dispose(); // ✅ Oprire cameră la ieșire
+    super.dispose();
   }
 
   @override
@@ -55,7 +61,7 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
             controller: cameraController,
             onDetect: _onDetect,
           ),
-          if (_hasScanned) // Suprapunere verde după scanare
+          if (_hasScanned)
             Container(
               color: Colors.green.withOpacity(0.3),
               child: const Center(

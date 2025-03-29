@@ -2,6 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart'
+    show
+        FlutterLocalNotificationsPlugin,
+        AndroidInitializationSettings,
+        InitializationSettings,
+        AndroidNotificationDetails,
+        NotificationDetails,
+        Importance,
+        Priority;
+
 import 'qr_scanner_screen.dart';
 
 class VoucherTrackerScreen extends StatefulWidget {
@@ -103,16 +113,13 @@ class _VoucherTrackerScreenState extends State<VoucherTrackerScreen> {
       ),
       body: Stack(
         children: [
-          // 🔹 Fundal luxury
           Positioned.fill(
             child: Image.asset('assets/images/background.png', fit: BoxFit.cover),
           ),
-
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // 🔹 Card cu informații despre voucher
                 GlassContainer(
                   borderRadius: BorderRadius.circular(15),
                   blur: 10,
@@ -128,22 +135,23 @@ class _VoucherTrackerScreenState extends State<VoucherTrackerScreen> {
                       children: [
                         const Icon(Icons.location_on, color: Colors.amber, size: 40),
                         const SizedBox(height: 10),
-                        Text(
+                        const Text(
                           "📍 Distanță până la voucher:",
-                          style: const TextStyle(fontSize: 18, color: Colors.white),
+                          style: TextStyle(fontSize: 18, color: Colors.white),
                         ),
                         Text(
                           "${_distance.toStringAsFixed(2)} metri",
-                          style: const TextStyle(fontSize: 22, color: Colors.amber, fontWeight: FontWeight.bold),
+                          style: const TextStyle(
+                            fontSize: 22,
+                            color: Colors.amber,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ],
                     ),
                   ),
                 ),
-
                 const SizedBox(height: 20),
-
-                // 🔹 Indicator de distanță (cerc colorat)
                 Stack(
                   alignment: Alignment.center,
                   children: [
@@ -172,10 +180,7 @@ class _VoucherTrackerScreenState extends State<VoucherTrackerScreen> {
                     ),
                   ],
                 ),
-
                 const SizedBox(height: 20),
-
-                // 🔹 Buton scanare QR
                 ElevatedButton.icon(
                   onPressed: _distance <= 1
                       ? () {

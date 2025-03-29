@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
+import 'dart:convert';
 
 class LoyaltyScreen extends StatefulWidget {
   const LoyaltyScreen({super.key});
@@ -13,8 +15,9 @@ class LoyaltyScreen extends StatefulWidget {
 
 class _LoyaltyScreenState extends State<LoyaltyScreen> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  MobileScannerController _qrController = MobileScannerController();
-  final String userId = "USER_ID"; // Înlocuiește cu ID-ul real
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final MobileScannerController _qrController = MobileScannerController();
+  bool _isScanning = false;
 
   @override
   void dispose() {
@@ -22,8 +25,78 @@ class _LoyaltyScreenState extends State<LoyaltyScreen> {
     super.dispose();
   }
 
+  Future<void> _processQRCode(String rawValue) async {
+    if (_isScanning) return;
+    setState(() => _isScanning = true);
+
+    try {
+      final user = _auth.currentUser;
+      if (user == null) throw Exception("Utilizator neautentificat.");
+
+      final Map<String, dynamic> data = jsonDecode(rawValue);
+      final String qrId = data['qr_id'];
+      final int points = data['points'];
+      final String type = data['type']; // 'add' sau 'remove'
+
+      final usedRef = _firestore.collection('used_qr_codes').doc(qrId);
+      final usedSnap = await usedRef.get();
+
+      if (usedSnap.exists) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Codul QR a fost deja folosit!')),
+        );
+        return;
+      }
+
+      final loyaltyRef = _firestore.collection('loyalty_points').doc(user.uid);
+      final loyaltySnap = await loyaltyRef.get();
+
+      int currentPoints = 0;
+      List history = [];
+
+      if (loyaltySnap.exists) {
+        final data = loyaltySnap.data() as Map<String, dynamic>;
+        currentPoints = (data['total_points'] ?? 0);
+        history = data['history'] ?? [];
+      }
+
+      final newPoints = type == 'add' ? currentPoints + points : currentPoints - points;
+      final now = DateTime.now();
+
+      history.add({
+        'points': type == 'add' ? points : -points,
+        'date': "${now.day.toString().padLeft(2, '0')}.${now.month.toString().padLeft(2, '0')}.${now.year} ${now.hour}:${now.minute.toString().padLeft(2, '0')}"
+      });
+
+      await loyaltyRef.set({
+        'total_points': newPoints,
+        'history': history,
+      });
+
+      await usedRef.set({'used_by': user.uid, 'timestamp': now});
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("${type == 'add' ? 'Ai primit' : 'Ți s-au retras'} $points puncte.")),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Eroare: $e')),
+      );
+    } finally {
+      setState(() => _isScanning = false);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final user = _auth.currentUser;
+    if (user == null) {
+      return const Scaffold(
+        body: Center(child: Text("Trebuie să fii autentificat pentru a vedea această pagină.")),
+      );
+    }
+    final userId = user.uid;
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -39,13 +112,12 @@ class _LoyaltyScreenState extends State<LoyaltyScreen> {
           Column(
             children: [
               const SizedBox(height: 80),
-              _buildPointsCard(),
+              _buildPointsCard(userId),
               const SizedBox(height: 20),
-              Expanded(child: _buildPointsHistory()),
-              const SizedBox(height: 20),
-              Expanded(child: _buildVouchersList()),
+              Expanded(child: _buildPointsHistory(userId)),
               const SizedBox(height: 20),
               _buildScanButton(),
+              const SizedBox(height: 20),
             ],
           ),
         ],
@@ -53,8 +125,7 @@ class _LoyaltyScreenState extends State<LoyaltyScreen> {
     );
   }
 
-  /// 🔹 Card cu punctele acumulate
-  Widget _buildPointsCard() {
+  Widget _buildPointsCard(String userId) {
     return BounceInDown(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -77,26 +148,16 @@ class _LoyaltyScreenState extends State<LoyaltyScreen> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      "Puncte Acumulate",
-                      style: TextStyle(color: Colors.white, fontSize: 22),
-                    ),
-                    FutureBuilder<DocumentSnapshot>(
-                      future: _firestore.collection('loyalty_points').doc(userId).get(),
+                    const Text("Puncte Acumulate", style: TextStyle(color: Colors.white, fontSize: 22)),
+                    StreamBuilder<DocumentSnapshot>(
+                      stream: _firestore.collection('loyalty_points').doc(userId).snapshots(),
                       builder: (context, snapshot) {
                         if (!snapshot.hasData || !snapshot.data!.exists) {
                           return const Text("0 Puncte", style: TextStyle(color: Colors.white, fontSize: 28));
                         }
                         final data = snapshot.data!.data() as Map<String, dynamic>? ?? {};
                         final points = data['total_points'] ?? 0;
-                        return Text(
-                          "$points Puncte",
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 28,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        );
+                        return Text("$points Puncte", style: const TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.bold));
                       },
                     ),
                   ],
@@ -109,8 +170,7 @@ class _LoyaltyScreenState extends State<LoyaltyScreen> {
     );
   }
 
-  /// 🔹 Istoric puncte
-  Widget _buildPointsHistory() {
+  Widget _buildPointsHistory(String userId) {
     return FadeInUp(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -125,8 +185,8 @@ class _LoyaltyScreenState extends State<LoyaltyScreen> {
           ),
           child: Padding(
             padding: const EdgeInsets.all(16),
-            child: FutureBuilder<DocumentSnapshot>(
-              future: _firestore.collection('loyalty_points').doc(userId).get(),
+            child: StreamBuilder<DocumentSnapshot>(
+              stream: _firestore.collection('loyalty_points').doc(userId).snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData || !snapshot.data!.exists) {
                   return const Center(child: Text("Nu există istoric de puncte.", style: TextStyle(color: Colors.white)));
@@ -141,10 +201,7 @@ class _LoyaltyScreenState extends State<LoyaltyScreen> {
                           final entry = history[index];
                           return ListTile(
                             title: Text(entry['date'], style: const TextStyle(color: Colors.white)),
-                            trailing: Text(
-                              "${entry['points']} Puncte",
-                              style: TextStyle(color: entry['points'] >= 0 ? Colors.green : Colors.red),
-                            ),
+                            trailing: Text("${entry['points']} Puncte", style: TextStyle(color: entry['points'] >= 0 ? Colors.green : Colors.red)),
                           );
                         },
                       );
@@ -156,64 +213,28 @@ class _LoyaltyScreenState extends State<LoyaltyScreen> {
     );
   }
 
-  /// 🔹 Vouchere revendicate
-  Widget _buildVouchersList() {
-    return FadeInUp(
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: GlassContainer(
-              borderRadius: BorderRadius.circular(12),
-              blur: 10,
-              border: Border.all(width: 2, color: Colors.white.withOpacity(0.3)),
-              gradient: LinearGradient(
-                colors: [Colors.white.withOpacity(0.15), Colors.white.withOpacity(0.07)],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(12),
-                child: const Text(
-                  "Aici vor apărea voucherele tale revendicate!",
-                  style: TextStyle(color: Colors.white, fontSize: 18, fontStyle: FontStyle.italic),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(height: 10),
-          Expanded(
-            child: StreamBuilder<QuerySnapshot>(
-              stream: _firestore.collection('users').doc(userId).collection('vouchers').snapshots(),
-              builder: (context, snapshot) {
-                if (!snapshot.hasData) return const CircularProgressIndicator();
-                final vouchers = snapshot.data!.docs;
-                return vouchers.isEmpty
-                    ? const Center(child: Text("Nu ai revendicat vouchere.", style: TextStyle(color: Colors.white)))
-                    : ListView.builder(
-                        itemCount: vouchers.length,
-                        itemBuilder: (context, index) {
-                          final voucher = vouchers[index].data() as Map<String, dynamic>;
-                          return ListTile(
-                            leading: Image.network(voucher['imageUrl'], width: 50, height: 50, fit: BoxFit.cover),
-                            title: Text(voucher['title'], style: const TextStyle(color: Colors.white)),
-                            subtitle: Text("Revendicat pe: ${voucher['date']}", style: const TextStyle(color: Colors.grey)),
-                          );
-                        },
-                      );
-              },
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  /// 🔹 Buton Scanare QR
   Widget _buildScanButton() {
     return FloatingActionButton(
-      onPressed: () {},
+      onPressed: () {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            content: SizedBox(
+              height: 300,
+              child: MobileScanner(
+                controller: _qrController,
+                onDetect: (capture) {
+                  final code = capture.barcodes.firstOrNull?.rawValue;
+                  if (code != null) {
+                    Navigator.of(context).pop();
+                    _processQRCode(code);
+                  }
+                },
+              ),
+            ),
+          ),
+        );
+      },
       backgroundColor: Colors.amber,
       child: const Icon(Icons.qr_code_scanner, size: 28, color: Colors.black),
     );

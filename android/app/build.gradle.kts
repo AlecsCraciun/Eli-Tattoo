@@ -1,74 +1,51 @@
-import java.util.Properties
-import java.io.FileInputStream
-
 plugins {
     id("com.android.application")
-    id("com.google.gms.google-services") // 🔹 FlutterFire Configuration
     id("kotlin-android")
-    id("dev.flutter.flutter-gradle-plugin") // 🔹 Flutter Gradle Plugin
+    id("com.google.gms.google-services") // 🔥 Firebase plugin
+    id("dev.flutter.flutter-gradle-plugin")
 }
 
 android {
-    namespace = "com.example.eli_tattoo_clienti"
-    compileSdk = 35 // ✅ Actualizat la 35
-
+    namespace = "com.elitattoo.clients"
+    compileSdk = flutter.compileSdkVersion
     ndkVersion = "27.0.12077973"
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17 // ✅ Actualizat la Java 17
-        targetCompatibility = JavaVersion.VERSION_17
-        isCoreLibraryDesugaringEnabled = true // ✅ Activare Java desugaring
-    }
-
-    kotlinOptions {
-        jvmTarget = "17" // ✅ Actualizat la 17
-    }
-
     defaultConfig {
-        applicationId = "com.example.eli_tattoo_clienti"
-        minSdk = 23
-        targetSdk = 35 // ✅ Actualizat la 35
-        versionCode = 1
-        versionName = "1.3.0" // ✅ Versiune actualizată
-    }
-
-    signingConfigs {
-        create("release") {
-            val keystorePropertiesFile = rootProject.file("key.properties")
-            val keystoreProperties = Properties()
-            
-            if (keystorePropertiesFile.exists()) {
-                keystoreProperties.load(FileInputStream(keystorePropertiesFile))
-            }
-
-            storeFile = file(keystoreProperties["storeFile"] as? String ?: "")
-            storePassword = keystoreProperties["storePassword"] as? String ?: ""
-            keyAlias = keystoreProperties["keyAlias"] as? String ?: ""
-            keyPassword = keystoreProperties["keyPassword"] as? String ?: ""
-        }
+        applicationId = "com.elitattoo.clients"
+        minSdk = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+        multiDexEnabled = true // ✅ esențial pentru Firebase + Google Sign-In
     }
 
     buildTypes {
         release {
-            isMinifyEnabled = false
-            isShrinkResources = false
-            signingConfig = signingConfigs.getByName("release")
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
-}
 
-dependencies {
-    implementation(platform("com.google.firebase:firebase-bom:32.7.3")) // 🔹 Firebase BOM actualizat
-    implementation("androidx.core:core-ktx:1.12.0")
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+        isCoreLibraryDesugaringEnabled = true
+    }
 
-    // ✅ Suport pentru Java 8+ desugaring
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4") // ✅ Actualizat
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_17.toString()
+    }
 }
 
 flutter {
     source = "../.."
+}
+
+dependencies {
+    implementation("androidx.core:core-ktx:1.12.0")
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("com.google.android.material:material:1.11.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.multidex:multidex:2.0.1")
+    implementation("com.google.android.gms:play-services-auth:20.7.0") // ✅ Google Sign-In
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
 }

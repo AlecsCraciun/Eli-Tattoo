@@ -1,50 +1,168 @@
-
 import 'package:flutter/material.dart';
-import 'gallery_admin_screen.dart';
-import 'vouchers_admin_screen.dart';
-import 'promotions_admin_screen.dart';
-import 'treasure_hunt_admin_screen.dart';
-import 'chat_admin_screen.dart';
-import 'qr_fidelity_screen.dart';
-import 'add_artist_screen.dart';
-import 'admin_portfolio_screen.dart'; // ✅ Import pentru administrarea portofoliului
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:uuid/uuid.dart';
+import 'package:qr_flutter/qr_flutter.dart';
+import 'package:intl/intl.dart';
+import 'dart:convert';
 
-class AdminScreen extends StatelessWidget {
+class AdminScreen extends StatefulWidget {
+  const AdminScreen({super.key});
+
+  @override
+  _AdminScreenState createState() => _AdminScreenState();
+}
+
+class _AdminScreenState extends State<AdminScreen> {
+  final TextEditingController _amountController = TextEditingController();
+  String? _qrData;
+  String? _lastScannedBy;
+  int? _points;
+  String? _actionType; // "add" sau "remove"
+
+  Future<void> _generateQR(String type) async {
+    final amountText = _amountController.text;
+    if (amountText.isEmpty || int.tryParse(amountText) == null) return;
+
+    final int amount = int.parse(amountText);
+    final int points = (amount / 10).floor();
+    final String qrId = const Uuid().v4();
+    
+    final qrPayload = {
+      'qr_id': qrId,
+      'points': points,
+      'type': type,
+    };
+
+    await FirebaseFirestore.instance.collection('generated_qr_codes').doc(qrId).set({
+      'timestamp': DateTime.now(),
+      'type': type,
+      'points': points,
+    });
+
+    setState(() {
+      _qrData = jsonEncode(qrPayload);
+      _points = points;
+      _actionType = type;
+    });
+  }
+
+  Stream<QuerySnapshot> _usedQRStream() {
+    return FirebaseFirestore.instance
+        .collection('used_qr_codes')
+        .orderBy('timestamp', descending: true)
+        .snapshots();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Administrare")),
+      appBar: AppBar(
+        title: const Text("Admin Panel - Fidelizare"),
+        backgroundColor: Theme.of(context).primaryColor,
+      ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            _buildAdminButton(context, "Administrare Galerii", GalleryAdminScreen()),
+            const Text(
+              "Sumă cheltuită de client:",
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            ),
+            TextField(
+              controller: _amountController,
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                hintText: "Ex: 280",
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 16),
+            Row(
+              children: [
+                Expanded(
+                  child: ElevatedButton.icon(
+                    onPressed: () => _generateQR("add"),
+                    icon: const Icon(Icons.add),
+                    label: const Text("Oferă Puncte"),
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.all(16),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: ElevatedButton.icon(
+                    onPressed: () => _generateQR("remove"),
+                    icon: const Icon(Icons.remove),
+                    label: const Text("Retrage Puncte"),
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.all(16),
+                    ),
+                  ),
+                ),
+              ],
+            ),
             const SizedBox(height: 20),
-            _buildAdminButton(context, "Administrare Portofoliu", AdminPortfolioScreen()), // ✅ Buton adăugat
-            const SizedBox(height: 20),
-            _buildAdminButton(context, "Administrare Vouchere Treasure Hunt", VouchersAdminScreen()),
-            const SizedBox(height: 20),
-            _buildAdminButton(context, "Administrare Promoții", PromotionsAdminScreen()),
-            const SizedBox(height: 20),
-            _buildAdminButton(context, "Administrare Treasure Hunt", TreasureHuntAdminScreen()),
-            const SizedBox(height: 20),
-            _buildAdminButton(context, "Administrare Chat", ChatAdminScreen()),
-            const SizedBox(height: 20),
-            _buildAdminButton(context, "Generare QR Fidelizare", QRFidelityScreen()),
-            const SizedBox(height: 20),
-            _buildAdminButton(context, "Adaugă Artiști Noi", AddArtistScreen()),
+            if (_qrData != null && _points != null && _actionType != null) ...[
+              Center(
+                child: QrImageView(
+                  data: _qrData!,
+                  version: QrVersions.auto,
+                  size: 200,
+                ),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                "${_actionType == 'add' ? 'Oferă' : 'Retrage'} $_points puncte",
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+            const SizedBox(height: 30),
+            const Text(
+              "Istoric QR-uri folosite",
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 10),
+            Expanded(
+              child: StreamBuilder<QuerySnapshot>(
+                stream: _usedQRStream(),
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                  final docs = snapshot.data!.docs;
+                  return ListView.builder(
+                    itemCount: docs.length,
+                    itemBuilder: (context, index) {
+                      final data = docs[index].data() as Map<String, dynamic>;
+                      final timestamp = (data['timestamp'] as Timestamp).toDate();
+                      final formatted = DateFormat("dd.MM.yyyy HH:mm").format(timestamp);
+                      return Card(
+                        child: ListTile(
+                          title: Text(formatted),
+                          subtitle: Text("Scanat de: ${data['used_by'] ?? 'necunoscut'}"),
+                          leading: Icon(
+                            data['type'] == 'add' ? Icons.add_circle : Icons.remove_circle,
+                            color: data['type'] == 'add' ? Colors.green : Colors.red,
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
+            )
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildAdminButton(BuildContext context, String text, Widget screen) {
-    return ElevatedButton(
-      onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => screen));
-      },
-      child: Text(text),
     );
   }
 }

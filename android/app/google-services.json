@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "485612502628-buin6idp2s8kqscj397m8lerpipeuhtf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.elitattoo.clients",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
           "client_id": "485612502628-r470qvpinru85ima6pl7b0rmpegg5j0i.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -39,10 +47,46 @@
               "client_type": 3
             },
             {
-              "client_id": "485612502628-ih9og8slbltg17kretoqia5edt3memfu.apps.googleusercontent.com",
+              "client_id": "485612502628-3l55l1tsgmljlbqemqroldu00vmos31n.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.elitattoo.app"
+                "bundle_id": "com.example.eliTattoo"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:485612502628:android:d4e39539432e4a7bd0a971",
+        "android_client_info": {
+          "package_name": "com.example.eli_tattoo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "485612502628-r470qvpinru85ima6pl7b0rmpegg5j0i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-NzCgBePeBHqkVwOsvfaiORVVbz7UdT4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "485612502628-r470qvpinru85ima6pl7b0rmpegg5j0i.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "485612502628-3l55l1tsgmljlbqemqroldu00vmos31n.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.eliTattoo"
               }
             }
           ]
@@ -58,6 +102,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "485612502628-7me0apjjgolov5r0q35iivc5uk706qpm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.eli_tattoo_artisti",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
           "client_id": "485612502628-r470qvpinru85ima6pl7b0rmpegg5j0i.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -75,10 +127,10 @@
               "client_type": 3
             },
             {
-              "client_id": "485612502628-ih9og8slbltg17kretoqia5edt3memfu.apps.googleusercontent.com",
+              "client_id": "485612502628-3l55l1tsgmljlbqemqroldu00vmos31n.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.elitattoo.app"
+                "bundle_id": "com.example.eliTattoo"
               }
             }
           ]
@@ -93,6 +145,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "485612502628-59ttmuo00np5bn5k30djhdatetila1dp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.eli_tattoo_clienti",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
         {
           "client_id": "485612502628-tjtt8al4ghl8p11j415m2dec90qsukpp.apps.googleusercontent.com",
           "client_type": 1,
@@ -119,10 +179,10 @@
               "client_type": 3
             },
             {
-              "client_id": "485612502628-ih9og8slbltg17kretoqia5edt3memfu.apps.googleusercontent.com",
+              "client_id": "485612502628-3l55l1tsgmljlbqemqroldu00vmos31n.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.elitattoo.app"
+                "bundle_id": "com.example.eliTattoo"
               }
             }
           ]
