@@ -20,17 +20,32 @@ class _AdminPortfolioScreenState extends State<AdminPortfolioScreen> {
   Uint8List? webImage;
   final picker = ImagePicker();
   bool isUploading = false;
+  bool showImagePreview = false;
 
   Future<void> pickImage() async {
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
       if (kIsWeb) {
         final bytes = await pickedFile.readAsBytes();
-        setState(() => webImage = bytes);
+        setState(() {
+          webImage = bytes;
+          showImagePreview = true;
+        });
       } else {
-        setState(() => selectedImage = File(pickedFile.path));
+        setState(() {
+          selectedImage = File(pickedFile.path);
+          showImagePreview = true;
+        });
       }
     }
+  }
+
+  void closePreview() {
+    setState(() {
+      showImagePreview = false;
+      selectedImage = null;
+      webImage = null;
+    });
   }
 
   Future<void> uploadImage() async {
@@ -76,6 +91,7 @@ class _AdminPortfolioScreenState extends State<AdminPortfolioScreen> {
       setState(() {
         selectedImage = null;
         webImage = null;
+        showImagePreview = false;
       });
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -185,7 +201,7 @@ class _AdminPortfolioScreenState extends State<AdminPortfolioScreen> {
                 children: [
                   GlassmorphicContainer(
                     width: double.infinity,
-                    height: 180,
+                    height: 120,
                     borderRadius: 20,
                     blur: 20,
                     alignment: Alignment.center,
@@ -211,29 +227,6 @@ class _AdminPortfolioScreenState extends State<AdminPortfolioScreen> {
                           onPressed: pickImage,
                           child: const Text("Selectează Imagine"),
                         ),
-                        const SizedBox(height: 10),
-                        if (selectedImage != null || webImage != null)
-                          Container(
-                            height: 100,
-                            width: 100,
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.white),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: kIsWeb
-                                  ? Image.memory(webImage!, fit: BoxFit.cover)
-                                  : Image.file(selectedImage!, fit: BoxFit.cover),
-                            ),
-                          ),
-                        const SizedBox(height: 10),
-                        isUploading
-                            ? const CircularProgressIndicator()
-                            : ElevatedButton(
-                                onPressed: uploadImage,
-                                child: const Text("Încarcă"),
-                              ),
                       ],
                     ),
                   ),
@@ -249,6 +242,50 @@ class _AdminPortfolioScreenState extends State<AdminPortfolioScreen> {
               ),
             ),
           ),
+          if (showImagePreview && (selectedImage != null || webImage != null))
+            Container(
+              color: Colors.black.withOpacity(0.7),
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: MediaQuery.of(context).size.height * 0.6,
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(color: Colors.white),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: kIsWeb
+                            ? Image.memory(webImage!, fit: BoxFit.contain)
+                            : Image.file(selectedImage!, fit: BoxFit.contain),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        FloatingActionButton(
+                          onPressed: closePreview,
+                          backgroundColor: Colors.red,
+                          child: const Icon(Icons.close),
+                        ),
+                        const SizedBox(width: 20),
+                        FloatingActionButton(
+                          onPressed: isUploading ? null : uploadImage,
+                          backgroundColor: Colors.green,
+                          child: isUploading
+                              ? const CircularProgressIndicator(color: Colors.white)
+                              : const Icon(Icons.check),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
         ],
       ),
     );
