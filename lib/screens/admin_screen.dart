@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:glassmorphism/glassmorphism.dart';
-
 import 'admin_portfolio_screen.dart';
 import 'promotions_admin_screen.dart';
 import 'treasure_hunt_admin_screen.dart';
 import 'qr_fidelity_screen.dart';
+import '../appointments/screens/calendar_screen.dart'; // Am corectat calea de import
 
 class AdminScreen extends StatelessWidget {
   const AdminScreen({super.key});
@@ -53,6 +53,12 @@ class AdminScreen extends StatelessWidget {
                     icon: Icons.qr_code,
                     label: "Fidelizare",
                     screen: const QrFidelityScreen(),
+                  ),
+                  _buildGlassTile(
+                    context,
+                    icon: Icons.calendar_today,
+                    label: "Calendar",
+                    screen: const CalendarScreen(),
                   ),
                 ],
               ),
