@@ -67,15 +67,9 @@ class _CalendarScreenState extends State<CalendarScreen> {
       final startOfMonth = DateTime(_focusedDay.year, _focusedDay.month, 1);
       final endOfMonth = DateTime(_focusedDay.year, _focusedDay.month + 1, 0, 23, 59, 59);
       
-      print("DEBUG: ====== ÎNCĂRCARE PROGRAMĂRI ======");
-      print("DEBUG: Perioada: $startOfMonth - $endOfMonth");
-      print("DEBUG: Artist selectat: $_selectedArtist");
-
       final artistEmail = _selectedArtist == 'Toți artiștii' 
           ? null 
           : _getArtistEmail(_selectedArtist);
-      
-      print("DEBUG: Email artist: $artistEmail");
 
       await _appointmentsService
           .getMonthAppointments(
@@ -85,31 +79,21 @@ class _CalendarScreenState extends State<CalendarScreen> {
           )
           .listen(
             (appointments) {
-              print("DEBUG: Programări primite: ${appointments.length}");
-              
               if (mounted) {
                 setState(() {
                   _appointments = {};
                   for (var appointment in appointments.entries) {
-                    // Modificare aici - folosim UTC
                     final date = DateTime.utc(
                       appointment.key.year,
                       appointment.key.month,
                       appointment.key.day,
                     );
-                    print("DEBUG: Adăugare programare UTC:");
-                    print("DEBUG: Data UTC: $date");
-                    print("DEBUG: Client: ${appointment.value.first.clientName}");
-                    print("DEBUG: Ora: ${appointment.value.first.time}");
                     _appointments[date] = appointment.value;
                   }
-                  print("DEBUG: Total programări în calendar: ${_appointments.length}");
-                  print("DEBUG: ====== FINAL ÎNCĂRCARE ======");
                 });
               }
             },
             onError: (error) {
-              print("DEBUG: EROARE: $error");
               if (mounted) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
@@ -121,7 +105,6 @@ class _CalendarScreenState extends State<CalendarScreen> {
             },
           );
     } catch (e) {
-      print("DEBUG: EROARE NEAȘTEPTATĂ: $e");
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -141,42 +124,36 @@ class _CalendarScreenState extends State<CalendarScreen> {
   }
 
   Widget _buildAppointmentIndicator(List<Appointment> dayAppointments) {
-    print("DEBUG: Construire indicator pentru ${dayAppointments.length} programări");
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: dayAppointments.map((appointment) {
-        final durationText = appointment.formattedDuration;
+        String artistName = '';
+        if (appointment.artistId.toLowerCase().contains('alecs')) {
+          artistName = 'Alecs';
+        } else if (appointment.artistId.toLowerCase().contains('denis')) {
+          artistName = 'Denis';
+        } else if (appointment.artistId.toLowerCase().contains('blanca')) {
+          artistName = 'Blanca';
+        }
+        
         return Container(
-          margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 2),
-          padding: const EdgeInsets.all(4),
+          margin: const EdgeInsets.symmetric(vertical: 1),
+          padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
           decoration: BoxDecoration(
             color: _getArtistColor(appointment.artistId).withOpacity(0.2),
-            borderRadius: BorderRadius.circular(6),
+            borderRadius: BorderRadius.circular(4),
             border: Border.all(
               color: _getArtistColor(appointment.artistId).withOpacity(0.3),
             ),
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                '${appointment.time} ($durationText)',
-                style: const TextStyle(
-                  fontSize: 11,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                appointment.clientName,
-                style: const TextStyle(fontSize: 11, color: Colors.white),
-              ),
-              Text(
-                appointment.tattooTitle,
-                style: const TextStyle(fontSize: 10, color: Colors.white70),
-              ),
-            ],
+          child: Text(
+            '${appointment.time} - $artistName',
+            style: const TextStyle(
+              fontSize: 10,
+              color: Colors.white,
+              fontWeight: FontWeight.w500,
+            ),
           ),
         );
       }).toList(),
@@ -339,10 +316,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
           headerStyle: _headerStyle,
           calendarBuilders: CalendarBuilders(
             markerBuilder: (context, date, events) {
-              // Modificare aici - folosim UTC pentru comparație
               final utcDate = DateTime.utc(date.year, date.month, date.day);
               final appointments = _appointments[utcDate] ?? [];
-              print("DEBUG: Marker pentru data UTC $utcDate: ${appointments.length} programări");
               if (appointments.isEmpty) return null;
               return _buildAppointmentIndicator(appointments);
             },
@@ -365,7 +340,6 @@ class _CalendarScreenState extends State<CalendarScreen> {
       _selectedDay = selectedDay;
       _focusedDay = focusedDay;
     });
-    // Modificare aici - folosim UTC pentru comparație
     final utcDay = DateTime.utc(selectedDay.year, selectedDay.month, selectedDay.day);
     final appointments = _appointments[utcDay] ?? [];
     if (appointments.isNotEmpty) {
@@ -410,7 +384,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
       context: context,
       builder: (BuildContext context) => GlassmorphicContainer(
         width: MediaQuery.of(context).size.width * 0.9,
-                height: MediaQuery.of(context).size.height * 0.8,
+        height: MediaQuery.of(context).size.height * 0.8,
         borderRadius: 20,
         blur: 20,
         alignment: Alignment.center,
@@ -448,14 +422,150 @@ class _CalendarScreenState extends State<CalendarScreen> {
             itemCount: appointments.length,
             itemBuilder: (context, index) {
               final appointment = appointments[index];
-              return AppointmentCard(
-                appointment: appointment,
-                onEdit: () => _editAppointment(appointment),
-                onDelete: () => _deleteAppointment(appointment),
+                            return GestureDetector(
+                onTap: () => _showAppointmentFullDetails(appointment),
+                child: Container(
+                  margin: const EdgeInsets.only(bottom: 8),
+                  decoration: BoxDecoration(
+                    color: _getArtistColor(appointment.artistId).withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: _getArtistColor(appointment.artistId).withOpacity(0.2),
+                    ),
+                  ),
+                  child: ListTile(
+                    title: Text(
+                      appointment.clientName,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    subtitle: Text(
+                      '${appointment.time} - ${appointment.formattedDuration}',
+                      style: const TextStyle(color: Colors.white70),
+                    ),
+                    trailing: Icon(
+                      Icons.arrow_forward_ios,
+                      color: Colors.white.withOpacity(0.5),
+                      size: 16,
+                    ),
+                  ),
+                ),
               );
             },
           ),
         ),
+      ),
+    );
+  }
+
+  void _showAppointmentFullDetails(Appointment appointment) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) => GlassmorphicContainer(
+        width: MediaQuery.of(context).size.width * 0.9,
+        height: MediaQuery.of(context).size.height * 0.7,
+        borderRadius: 20,
+        blur: 20,
+        alignment: Alignment.center,
+        border: 2,
+        linearGradient: LinearGradient(
+          colors: [
+            Colors.white.withOpacity(0.1),
+            Colors.white.withOpacity(0.05),
+          ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderGradient: LinearGradient(
+          colors: [
+            Colors.white.withOpacity(0.2),
+            Colors.white.withOpacity(0.1),
+          ],
+        ),
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            title: const Text(
+              'Detalii Programare',
+              style: TextStyle(color: Colors.white),
+            ),
+            leading: IconButton(
+              icon: const Icon(Icons.arrow_back, color: Colors.white),
+              onPressed: () => Navigator.pop(context),
+            ),
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.edit, color: Colors.white),
+                onPressed: () {
+                  Navigator.pop(context);
+                  _editAppointment(appointment);
+                },
+              ),
+              IconButton(
+                icon: const Icon(Icons.delete, color: Colors.white),
+                onPressed: () {
+                  Navigator.pop(context);
+                  _deleteAppointment(appointment);
+                },
+              ),
+            ],
+          ),
+          body: SingleChildScrollView(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _detailRow('Client:', appointment.clientName),
+                _detailRow('Telefon:', appointment.clientPhone),
+                _detailRow('Email:', appointment.clientEmail),
+                _detailRow('Data:', '${appointment.date.day}/${appointment.date.month}/${appointment.date.year}'),
+                _detailRow('Ora:', appointment.time),
+                _detailRow('Durată:', appointment.formattedDuration),
+                _detailRow('Tip Tatuaj:', appointment.tattooTitle),
+                _detailRow('Preț:', '${appointment.price} RON'),
+                _detailRow('Avans:', '${appointment.advance} RON'),
+                _detailRow('Locație:', appointment.location),
+                if (appointment.notes.isNotEmpty)
+                  _detailRow('Observații:', appointment.notes),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _detailRow(String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: 100,
+            child: Text(
+              label,
+              style: const TextStyle(
+                color: Colors.white70,
+                fontSize: 14,
+              ),
+            ),
+          ),
+          Expanded(
+            child: Text(
+              value,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -524,3 +634,4 @@ class _CalendarScreenState extends State<CalendarScreen> {
     );
   }
 }
+
