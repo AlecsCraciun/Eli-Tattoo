@@ -9,6 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
   # 🔹 Firebase Services
   firebase_core: ^2.25.4
   firebase_auth: ^4.17.4
@@ -28,9 +29,12 @@ dependencies:
   lottie: ^2.7.0
   animate_do: ^3.1.2
   animations: ^2.0.8
-  table_calendar: ^3.0.9  # Adăugat pentru calendar
-  fl_chart: ^0.66.2      # Adăugat pentru grafice
-  calendar_view: ^1.1.0  # Adăugat pentru view-uri calendar
+  table_calendar: ^3.0.9
+  fl_chart: ^0.66.2
+  calendar_view: ^1.1.0
+  emoji_picker_flutter: ^1.6.3
+  swipeable_tile: ^2.0.0+3
+  timeago: ^3.6.0
 
   # 🔹 State Management
   provider: ^6.1.1
@@ -63,7 +67,7 @@ dependencies:
   video_player: ^2.8.2
 
   # 🔹 Notificări locale
-  flutter_local_notifications: 15.1.1
+  flutter_local_notifications: 14.1.1
 
   # 🔹 UI Enhancements
   glassmorphism_ui: ^0.3.0

@@ -217,6 +217,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.11"
+  emoji_picker_flutter:
+    dependency: "direct main"
+    description:
+      name: emoji_picker_flutter
+      sha256: "8506341d62efd116d6fb1481450bffdbac659d3d90d46d9cc610bfae5f33cc54"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.6.4"
   equatable:
     dependency: transitive
     description:
@@ -482,10 +490,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_local_notifications
-      sha256: "3002092e5b8ce2f86c3361422e52e6db6776c23ee21e0b2f71b892bf4259ef04"
+      sha256: "812791d43ccfc1b443a0d39fa02a206fc228c597e28ff9337e09e3ca8d370391"
       url: "https://pub.dev"
     source: hosted
-    version: "15.1.1"
+    version: "14.1.1"
   flutter_local_notifications_linux:
     dependency: transitive
     description:
@@ -692,10 +700,10 @@ packages:
     dependency: "direct main"
     description:
       name: google_maps_flutter
-      sha256: b42ff7f3875a5eedbe388d883100561b85c62beed1c39ad66dd60537c75bb424
+      sha256: "830d8f7b51b4a950bf0d7daa675324fed6c9beb57a7ecca2a59018270c96b4e0"
       url: "https://pub.dev"
     source: hosted
-    version: "2.12.0"
+    version: "2.12.1"
   google_maps_flutter_android:
     dependency: transitive
     description:
@@ -708,10 +716,10 @@ packages:
     dependency: transitive
     description:
       name: google_maps_flutter_ios
-      sha256: ef72c822930ce69515cb91c10cd88cfb8b26296f765808a43cbc9a10eaffacfe
+      sha256: "2911e0c5654c2cc0d664324e0f49f055bb748740162821bdc0285045150b0439"
       url: "https://pub.dev"
     source: hosted
-    version: "2.15.0"
+    version: "2.15.1"
   google_maps_flutter_platform_interface:
     dependency: transitive
     description:
@@ -1381,6 +1389,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.1"
+  swipeable_tile:
+    dependency: "direct main"
+    description:
+      name: swipeable_tile
+      sha256: "6312b59b14c5ff22bf91aafa64d7e74df5f2322cb206db4c34d9d9946e3e44d4"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
   synchronized:
     dependency: transitive
     description:
@@ -1413,6 +1429,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.4"
+  timeago:
+    dependency: "direct main"
+    description:
+      name: timeago
+      sha256: "054cedf68706bb142839ba0ae6b135f6b68039f0b8301cbe8784ae653d5ff8de"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.7.0"
   timezone:
     dependency: transitive
     description:
@@ -1457,10 +1481,10 @@ packages:
     dependency: transitive
     description:
       name: url_launcher_ios
-      sha256: "16a513b6c12bb419304e72ea0ae2ab4fed569920d1c7cb850263fe3acc824626"
+      sha256: "7f2022359d4c099eea7df3fdf739f7d3d3b9faf3166fb1dd390775176e0b76cb"
       url: "https://pub.dev"
     source: hosted
-    version: "6.3.2"
+    version: "6.3.3"
   url_launcher_linux:
     dependency: transitive
     description:

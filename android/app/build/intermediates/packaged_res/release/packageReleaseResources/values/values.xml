@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ic_launcher_background">#000000</color>
+    <string name="default_web_client_id" translatable="false">485612502628-r470qvpinru85ima6pl7b0rmpegg5j0i.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">485612502628</string>
+    <string name="google_api_key" translatable="false">AIzaSyA-NzCgBePeBHqkVwOsvfaiORVVbz7UdT4</string>
+    <string name="google_app_id" translatable="false">1:485612502628:android:c836831a3075e075d0a971</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyA-NzCgBePeBHqkVwOsvfaiORVVbz7UdT4</string>
+    <string name="google_storage_bucket" translatable="false">elitattoo-app-c7763.firebasestorage.app</string>
+    <string name="project_id" translatable="false">elitattoo-app-c7763</string>
+    <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        
+        <item name="android:windowBackground">@drawable/launch_background</item>
+    </style>
+    <style name="NormalTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <item name="android:windowBackground">?android:colorBackground</item>
+    </style>
+</resources>
