@@ -59,7 +59,8 @@ dependencies:
 
   # 🔹 QR & Barcode
   qr_flutter: ^4.1.0
-  mobile_scanner: ^3.0.0
+  # ❗ Temporar comentat – provoacă conflict pe iOS
+  # mobile_scanner: ^3.0.0
 
   # 🔹 Multimedia
   photo_view: ^0.14.0
