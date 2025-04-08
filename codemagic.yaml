@@ -1,0 +1,20 @@
+workflows:
+  ios-build:
+    name: iOS Release Build
+    environment:
+      flutter: stable
+      xcode: latest
+    scripts:
+      - name: Install dependencies
+        script: |
+          flutter pub get
+      - name: Build iOS app
+        script: |
+          flutter build ios --release
+    artifacts:
+      - build/ios/iphoneos/Runner.app
+      - build/ios/ipa/*.ipa
+    publishing:
+      email:
+        recipients:
+          - alecstattoobrasov@gmail.com
