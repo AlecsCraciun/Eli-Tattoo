@@ -4,7 +4,6 @@ import '../services/appointments_service.dart';
 
 class NewBookingScreen extends StatefulWidget {
   final Appointment? appointment;
-
   const NewBookingScreen({Key? key, this.appointment}) : super(key: key);
 
   @override
@@ -32,6 +31,13 @@ class _NewBookingScreenState extends State<NewBookingScreen> {
   final List<String> _artists = ['Alecs Craciun', 'Denis Mihali', 'Blanca Sardaru'];
   final List<String> _locations = ['Strada Republicii 25', 'B-dul Nicolae Balcescu Nr.20'];
 
+  // Adăugăm maparea pentru email-urile artiștilor
+  final Map<String, String> _artistEmails = {
+    'Alecs Craciun': 'osuta1dfsex@gmail.com',
+    'Denis Mihali': 'denismyhali@gmail.com',
+    'Blanca Sardaru': 'blancasardaru28@yahoo.com',
+  };
+
   @override
   void initState() {
     super.initState();
@@ -53,7 +59,11 @@ class _NewBookingScreenState extends State<NewBookingScreen> {
       _selectedTime = appointment.time;
       _selectedLocation = appointment.location;
       _selectedDuration = appointment.duration;
-      _selectedArtist = appointment.artistId;
+      // Găsim numele artistului bazat pe email
+      _selectedArtist = _artists.firstWhere(
+        (artist) => _artistEmails[artist] == appointment.artistId,
+        orElse: () => 'Alecs Craciun',
+      );
     }
   }
 
@@ -89,6 +99,7 @@ class _NewBookingScreenState extends State<NewBookingScreen> {
         );
       },
     );
+
     if (picked != null && picked != _selectedDate) {
       setState(() {
         _selectedDate = picked;
@@ -114,6 +125,7 @@ class _NewBookingScreenState extends State<NewBookingScreen> {
         );
       },
     );
+
     if (picked != null) {
       setState(() {
         _selectedTime = '${picked.hour.toString().padLeft(2, '0')}:${picked.minute.toString().padLeft(2, '0')}';
@@ -126,7 +138,7 @@ class _NewBookingScreenState extends State<NewBookingScreen> {
       try {
         final appointment = Appointment(
           id: widget.appointment?.id ?? '',
-          artistId: _selectedArtist,
+          artistId: _artistEmails[_selectedArtist] ?? '', // Folosim email-ul artistului
           clientName: _clientNameController.text,
           clientEmail: _clientEmailController.text,
           clientPhone: _clientPhoneController.text,

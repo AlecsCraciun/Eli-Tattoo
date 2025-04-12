@@ -19,6 +19,13 @@ dependencies:
   firebase_analytics: ^10.8.4
   firebase_database: ^10.4.4
   google_sign_in: ^6.2.1
+  
+  # 🔹 Beacon & Sensors
+  flutter_beacon:
+    path: lib_beacon/flutter_beacon
+  flutter_compass: ^0.8.0
+  vibration: ^3.1.3
+  audioplayers: ^5.2.1
 
   # 🔹 UI Components
   cupertino_icons: ^1.0.6
@@ -59,21 +66,20 @@ dependencies:
 
   # 🔹 QR & Barcode
   qr_flutter: ^4.1.0
-  # ❗ Temporar comentat – provoacă conflict pe iOS
-  # mobile_scanner: ^3.0.0
+  mobile_scanner: ^3.0.0
 
   # 🔹 Multimedia
   photo_view: ^0.14.0
   giphy_picker: ^3.0.1
   video_player: ^2.8.2
+  just_audio: ^0.9.36
 
   # 🔹 Notificări locale
-  flutter_local_notifications: 14.1.1
+  flutter_local_notifications: ^14.1.1
 
   # 🔹 UI Enhancements
   glassmorphism_ui: ^0.3.0
   glassmorphism: ^3.0.0
-  flutter_launcher_icons: ^0.13.1
 
   # 🔹 🔐 Chei API (.env)
   flutter_dotenv: ^5.2.1
@@ -83,6 +89,7 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^3.0.1
   flutter_native_splash: ^2.3.10
+  flutter_launcher_icons: ^0.13.1
 
 flutter_icons:
   android: true
@@ -105,6 +112,7 @@ flutter:
     - assets/icons/
     - assets/fonts/
     - assets/buttons/
+    - assets/sounds/
     - assets/images/logo.png
     - assets/images/tbi_banner.png
     - assets/images/alecs_avatar.jpg
@@ -119,3 +127,7 @@ flutter:
         - asset: assets/fonts/Poppins-Bold.ttf
         - asset: assets/fonts/Poppins-Regular.ttf
         - asset: assets/fonts/Poppins-Light.ttf
+
+dependency_overrides:
+  flutter_beacon:
+    path: lib_beacon/flutter_beacon

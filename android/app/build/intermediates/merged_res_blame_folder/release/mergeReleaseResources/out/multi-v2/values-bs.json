@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.elitattoo.clients.app-mergeReleaseResources-89:/values-bs/values-bs.xml",
+            "outputFile": "com.elitattoo.clients.app-mergeReleaseResources-95:/values-bs/values-bs.xml",
             "map": [
                 {
                     "source": "/home/alecs-ink/.gradle/caches/8.10.2/transforms/7503c3bf4ab106797df546908029698f/transformed/material-1.11.0/res/values-bs/values-bs.xml",

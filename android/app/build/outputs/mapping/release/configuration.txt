@@ -34,6 +34,11 @@
 -keep class io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingService { <init>(); }
 -keep class io.flutter.plugins.imagepicker.ImagePickerFileProvider { <init>(); }
 -keep class io.flutter.plugins.urllauncher.WebViewActivity { <init>(); }
+-keep class org.altbeacon.beacon.BeaconIntentProcessor { <init>(); }
+-keep class org.altbeacon.beacon.service.BeaconService { <init>(); }
+-keep class org.altbeacon.beacon.service.ScanJob { <init>(); }
+-keep class org.altbeacon.beacon.startup.StartupBroadcastReceiver { <init>(); }
+-keep class org.altbeacon.bluetooth.BluetoothTestJob { <init>(); }
 -keep class android.widget.Space { <init>(android.content.Context, android.util.AttributeSet); }
 
 -keep class androidx.appcompat.app.AlertController$RecycleListView { <init>(android.content.Context, android.util.AttributeSet); }
@@ -243,6 +248,9 @@
 -keep,allowshrinking,allowobfuscation class <1>
 
 # End of content from /home/alecs-ink/flutter/packages/flutter_tools/gradle/flutter_proguard_rules.pro
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/proguard.txt
+
+# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/proguard.txt
 # The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/7503c3bf4ab106797df546908029698f/transformed/material-1.11.0/proguard.txt
 # Copyright (C) 2015 The Android Open Source Project
 #
@@ -451,7 +459,7 @@
 }
 
 # End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/a4220b5ee723fba7acc664a2b5c85228/transformed/vectordrawable-animated-1.1.0/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/cd79e8926f3586b575e2cf621318b1c2/transformed/media-1.1.0/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/2c7a28485314ee0e74d343b62dcecbb6/transformed/media-1.7.0/proguard.txt
 # Copyright (C) 2017 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -475,7 +483,7 @@
 -keep class androidx.media.** implements android.os.Parcelable {
     public static final android.os.Parcelable$Creator *;
 }
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/cd79e8926f3586b575e2cf621318b1c2/transformed/media-1.1.0/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/2c7a28485314ee0e74d343b62dcecbb6/transformed/media-1.7.0/proguard.txt
 # The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/proguard.txt
 -dontwarn com.google.appengine.api.**
 -dontwarn okio.**

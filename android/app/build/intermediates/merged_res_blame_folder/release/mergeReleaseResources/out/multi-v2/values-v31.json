@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.elitattoo.clients.app-mergeReleaseResources-89:/values-v31/values-v31.xml",
+            "outputFile": "com.elitattoo.clients.app-mergeReleaseResources-95:/values-v31/values-v31.xml",
             "map": [
                 {
                     "source": "/home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/res/values-v31/styles.xml",

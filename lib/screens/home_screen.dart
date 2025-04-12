@@ -4,6 +4,9 @@ import 'package:animate_do/animate_do.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'dart:async';
+import 'dart:ui';
 import 'promo_screen.dart';
 import 'portfolio_screen.dart';
 import 'services_screen.dart';
@@ -18,87 +21,195 @@ import 'gdpr_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
-
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin {
   User? _user;
   String? _userRole;
   Map<String, dynamic> _userStats = {};
   bool _isLoading = true;
+  bool _hasError = false;
   final ScrollController _statusScrollController = ScrollController();
+  List<StreamSubscription> _subscriptions = [];
+  late AnimationController _backgroundAnimationController;
+  Timer? _loadingTimer;
 
   @override
   void initState() {
     super.initState();
+    _backgroundAnimationController = AnimationController(
+      duration: const Duration(seconds: 10),
+      vsync: this,
+    )..repeat(reverse: true);
     _initializeUser();
+  }
+
+  @override
+  void dispose() {
+    _backgroundAnimationController.dispose();
+    _loadingTimer?.cancel();
+    for (var subscription in _subscriptions) {
+      subscription.cancel();
+    }
+    _statusScrollController.dispose();
+    super.dispose();
   }
 
   Future<void> _initializeUser() async {
     try {
-      setState(() => _isLoading = true);
-      await _checkAuthStatus();
-      if (_user != null) {
-        await _loadUserStats();
-      }
-    } finally {
-      setState(() => _isLoading = false);
-    }
-  }
+      setState(() {
+        _isLoading = true;
+        _hasError = false;
+      });
+      _loadingTimer?.cancel();
+      _loadingTimer = Timer(const Duration(seconds: 10), () {
+        if (mounted && _isLoading) {
+          setState(() {
+            _isLoading = false;
+            _hasError = true;
+          });
+        }
+      });
 
-  Future<void> _checkAuthStatus() async {
-    FirebaseAuth.instance.authStateChanges().listen((User? user) async {
-      if (user != null) {
-        DocumentSnapshot userDoc =
-            await FirebaseFirestore.instance.collection("users").doc(user.uid).get();
+      _user = FirebaseAuth.instance.currentUser;
+      if (_user != null) {
+        final userDoc = await FirebaseFirestore.instance
+            .collection("users")
+            .doc(_user!.uid)
+            .get();
+        if (userDoc.exists) {
+          final userData = userDoc.data() as Map<String, dynamic>;
+          setState(() {
+            _userRole = userData['role'] ?? "user";
+          });
+        }
+        await _loadUserStats();
+        _setupUserStatsStream();
+      }
+
+      _loadingTimer?.cancel();
+      if (mounted) {
         setState(() {
-          _user = user;
-          _userRole = userDoc.exists ? userDoc.get("role") : "user";
-        });
-      } else {
-        setState(() {
-          _user = null;
-          _userRole = null;
+          _isLoading = false;
+          _hasError = false;
         });
       }
-    });
+    } catch (e) {
+      print("Error in _initializeUser: $e");
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+          _hasError = true;
+        });
+      }
+    }
   }
 
   Future<void> _loadUserStats() async {
     if (_user == null) return;
 
     try {
-      final userDoc = await FirebaseFirestore.instance
-          .collection("users")
+      final now = DateTime.now();
+      final startOfDay = DateTime(now.year, now.month, now.day);
+
+      final loyaltyDoc = await FirebaseFirestore.instance
+          .collection("loyalty_points")
           .doc(_user!.uid)
           .get();
       
+      int totalPoints = 0;
+      if (loyaltyDoc.exists) {
+        final data = loyaltyDoc.data() as Map<String, dynamic>;
+        totalPoints = data['total_points'] ?? 0;
+      }
+
       final appointments = await FirebaseFirestore.instance
           .collection("appointments")
-          .where("userId", isEqualTo: _user!.uid)
-          .where("status", isEqualTo: "active")
+          .where("clientEmail", isEqualTo: _user!.email)
+          .where("date", isGreaterThanOrEqualTo: startOfDay)
           .get();
 
       final unreadMessages = await FirebaseFirestore.instance
+          .collection("chats")
+          .doc(_user!.uid)
           .collection("messages")
-          .where("recipientId", isEqualTo: _user!.uid)
+          .where("receiverId", isEqualTo: _user!.uid)
           .where("read", isEqualTo: false)
           .get();
 
-      setState(() {
-        _userStats = {
-          "points": userDoc.get("points") ?? 0,
-          "level": userDoc.get("level") ?? 1,
-          "activeAppointments": appointments.docs.length,
-          "unreadMessages": unreadMessages.docs.length,
-          "vouchers": userDoc.get("vouchers") ?? [],
-          "treasureProgress": userDoc.get("treasureProgress") ?? 0,
-        };
-      });
+      if (mounted) {
+        setState(() {
+          _userStats = {
+            "points": totalPoints,
+            "activeAppointments": appointments.docs.length,
+            "unreadMessages": unreadMessages.docs.length,
+            "vouchers": _userStats["vouchers"] ?? [],
+          };
+        });
+      }
     } catch (e) {
       print("Error loading user stats: $e");
+    }
+  }
+
+  void _setupUserStatsStream() {
+    for (var subscription in _subscriptions) {
+      subscription.cancel();
+    }
+    _subscriptions.clear();
+    
+    if (_user != null) {
+      _subscriptions.add(
+        FirebaseFirestore.instance
+            .collection("loyalty_points")
+            .doc(_user!.uid)
+            .snapshots()
+            .listen((snapshot) {
+          if (snapshot.exists && mounted) {
+            final data = snapshot.data() as Map<String, dynamic>;
+            setState(() {
+              _userStats["points"] = data['total_points'] ?? 0;
+            });
+          }
+        })
+      );
+
+      final now = DateTime.now();
+      final startOfDay = DateTime(now.year, now.month, now.day);
+      
+      _subscriptions.add(
+        FirebaseFirestore.instance
+            .collection("appointments")
+            .where("clientEmail", isEqualTo: _user!.email)
+            .where("date", isGreaterThanOrEqualTo: startOfDay)
+            .snapshots()
+            .listen((snapshot) {
+          if (mounted) {
+            setState(() {
+              _userStats["activeAppointments"] = snapshot.docs.length;
+            });
+          }
+        })
+      );
+
+      _subscriptions.add(
+        FirebaseFirestore.instance
+            .collection("chats")
+            .doc(_user!.uid)
+            .collection("messages")
+            .where("receiverId", isEqualTo: _user!.uid)
+            .where("read", isEqualTo: false)
+            .snapshots()
+            .listen((snapshot) {
+          if (mounted) {
+            setState(() {
+              _userStats["unreadMessages"] = snapshot.docs.length;
+            });
+          }
+        })
+      );
     }
   }
 
@@ -110,30 +221,87 @@ class _HomeScreenState extends State<HomeScreen> {
         onRefresh: _initializeUser,
         child: Stack(
           children: [
-            Positioned.fill(
-              child: Image.asset('assets/images/background.png', fit: BoxFit.cover),
+            AnimatedBuilder(
+              animation: _backgroundAnimationController,
+              builder: (context, child) {
+                return Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        HSLColor.fromAHSL(1.0, _backgroundAnimationController.value * 360, 0.6, 0.2).toColor(),
+                        HSLColor.fromAHSL(1.0, (_backgroundAnimationController.value * 360 + 60) % 360, 0.6, 0.3).toColor(),
+                      ],
+                    ),
+                  ),
+                );
+              },
             ),
             SafeArea(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 20),
-                  _buildLogo(),
-                  const SizedBox(height: 20),
-                  _buildStatusBar(),
-                  const SizedBox(height: 20),
                   Expanded(
-                    child: _buildMainButtons(),
+                    child: CustomScrollView(
+                      physics: const BouncingScrollPhysics(),
+                      slivers: [
+                        SliverFillRemaining(
+                          hasScrollBody: false,
+                          child: Column(
+                            children: [
+                              const SizedBox(height: 20),
+                              _buildAnimatedLogo(),
+                              const Spacer(),
+                              _buildStatusBar(),
+                              const SizedBox(height: 20),
+                              _buildMainButtons(),
+                              const SizedBox(height: 20),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
             ),
-            if (_isLoading)
-              Container(
-                color: Colors.black54,
-                child: const Center(
-                  child: CircularProgressIndicator(
-                    color: Colors.amber,
+            if (_isLoading || _hasError)
+              BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                child: Container(
+                  color: Colors.black26,
+                  child: Center(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        if (_isLoading)
+                          const CircularProgressIndicator(
+                            color: Colors.white,
+                            strokeWidth: 3,
+                          ),
+                        if (_hasError) ...[
+                          const Icon(
+                            Icons.error_outline,
+                            color: Colors.white,
+                            size: 50,
+                          ),
+                          const SizedBox(height: 20),
+                          const Text(
+                            'A apărut o eroare la încărcare',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ],
+                        const SizedBox(height: 20),
+                        ElevatedButton(
+                          onPressed: _initializeUser,
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white.withOpacity(0.2),
+                            foregroundColor: Colors.white,
+                          ),
+                          child: Text(_hasError ? 'Reîncearcă' : 'Anulează'),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -144,15 +312,25 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildLogo() {
+  Widget _buildAnimatedLogo() {
     return BounceInDown(
       child: Container(
         width: 150,
         height: 150,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/logo.png'),
-            fit: BoxFit.contain,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2),
+              blurRadius: 20,
+              spreadRadius: 5,
+            ),
+          ],
+        ),
+        child: ClipOval(
+          child: Image.asset(
+            'assets/images/logo.png',
+            fit: BoxFit.cover,
           ),
         ),
       ),
@@ -160,62 +338,58 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildStatusBar() {
+    if (_user == null) return Container();
+
     return Container(
-      height: 100,
       margin: const EdgeInsets.symmetric(horizontal: 15),
-      child: GlassContainer(
-        borderRadius: BorderRadius.circular(15),
-        blur: 10,
-        color: Colors.white.withOpacity(0.1),
-        border: Border.all(color: Colors.white.withOpacity(0.2)),
-        child: SingleChildScrollView(
-          controller: _statusScrollController,
-          scrollDirection: Axis.horizontal,
-          physics: const BouncingScrollPhysics(),
-          child: Row(
-            children: [
-              _buildStatusItem(
-                "Puncte",
-                "${_userStats['points'] ?? 0}",
-                Icons.star,
-                Colors.amber,
-              ),
-              _buildStatusDivider(),
-              _buildStatusItem(
-                "Nivel",
-                "${_userStats['level'] ?? 1}",
-                Icons.trending_up,
-                Colors.green,
-              ),
-              _buildStatusDivider(),
-              _buildStatusItem(
-                "Programări",
-                "${_userStats['activeAppointments'] ?? 0}",
-                Icons.calendar_today,
-                Colors.blue,
-              ),
-              _buildStatusDivider(),
-              _buildStatusItem(
-                "Mesaje",
-                "${_userStats['unreadMessages'] ?? 0}",
-                Icons.mail,
-                Colors.red,
-              ),
-              _buildStatusDivider(),
-              _buildStatusItem(
-                "Vouchere",
-                "${(_userStats['vouchers'] as List?)?.length ?? 0}",
-                Icons.card_giftcard,
-                Colors.purple,
-              ),
-              _buildStatusDivider(),
-              _buildStatusItem(
-                "Treasure",
-                "${_userStats['treasureProgress'] ?? 0}%",
-                Icons.map,
-                Colors.orange,
-              ),
-            ],
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
+        child: GlassContainer(
+          borderRadius: BorderRadius.circular(20),
+          blur: 20,
+          color: Colors.white.withOpacity(0.1),
+          child: SizedBox(
+            height: 85,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Expanded(
+                  child: _buildStatusItem(
+                    "Puncte",
+                    "${_userStats['points'] ?? 0}",
+                    Icons.star_rounded,
+                    Colors.amber.shade300,
+                  ),
+                ),
+                _buildStatusDivider(),
+                Expanded(
+                  child: _buildStatusItem(
+                    "Programări",
+                    "${_userStats['activeAppointments'] ?? 0}",
+                    Icons.event_available_rounded,
+                    Colors.teal.shade300,
+                  ),
+                ),
+                _buildStatusDivider(),
+                Expanded(
+                  child: _buildStatusItem(
+                    "Mesaje",
+                    "${_userStats['unreadMessages'] ?? 0}",
+                    Icons.mark_chat_unread_rounded,
+                    Colors.pink.shade300,
+                  ),
+                ),
+                _buildStatusDivider(),
+                Expanded(
+                  child: _buildStatusItem(
+                    "Vouchere",
+                    "${(_userStats['vouchers'] ?? []).length}",
+                    Icons.card_giftcard_rounded,
+                    Colors.purple.shade300,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -226,24 +400,41 @@ class _HomeScreenState extends State<HomeScreen> {
     return Container(
       height: 40,
       width: 1,
-      margin: const EdgeInsets.symmetric(horizontal: 10),
-      color: Colors.white.withOpacity(0.2),
+      margin: const EdgeInsets.symmetric(horizontal: 15),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Colors.white.withOpacity(0),
+            Colors.white.withOpacity(0.2),
+            Colors.white.withOpacity(0),
+          ],
+        ),
+      ),
     );
   }
 
   Widget _buildStatusItem(String label, String value, IconData icon, Color color) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, color: color, size: 24),
+          Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: color.withOpacity(0.2),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Icon(icon, color: color, size: 22),
+          ),
           const SizedBox(height: 5),
           Text(
             value,
             style: const TextStyle(
               color: Colors.white,
-              fontSize: 18,
+              fontSize: 16,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -260,20 +451,33 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildMainButtons() {
-    return Padding(
+    return Container(
       padding: const EdgeInsets.symmetric(horizontal: 15),
-      child: GridView.count(
-        crossAxisCount: 2,
-        crossAxisSpacing: 10,
-        mainAxisSpacing: 10,
-        childAspectRatio: 2.2,
+      child: Column(
         children: [
-          _buildCustomButton(context, 'Promoții', PromoScreen(), Icons.local_offer, false),
-          _buildCustomButton(context, 'Portofoliu', PortfolioScreen(), Icons.image, false),
-          _buildCustomButton(context, 'Servicii', ServicesScreen(), Icons.build, false),
-          _buildCustomButton(context, 'Fidelizare', LoyaltyScreen(), Icons.star, true),
-          _buildCustomButton(context, 'Chat', null, Icons.chat, true),
-          _buildCustomButton(context, 'Treasure Hunt', TreasureHuntScreen(), Icons.map, true),
+          Row(
+            children: [
+              Expanded(child: _buildCustomButton(context, 'Promoții', PromoScreen(), Icons.local_offer_rounded, false)),
+              const SizedBox(width: 10),
+              Expanded(child: _buildCustomButton(context, 'Portofoliu', PortfolioScreen(), Icons.photo_library_rounded, false)),
+            ],
+          ),
+          const SizedBox(height: 10),
+          Row(
+            children: [
+              Expanded(child: _buildCustomButton(context, 'Servicii', ServicesScreen(), Icons.design_services_rounded, false)),
+              const SizedBox(width: 10),
+              Expanded(child: _buildCustomButton(context, 'Fidelizare', LoyaltyScreen(), Icons.star_rounded, true)),
+            ],
+          ),
+          const SizedBox(height: 10),
+          Row(
+            children: [
+              Expanded(child: _buildCustomButton(context, 'Chat', null, Icons.chat_rounded, true)),
+              const SizedBox(width: 10),
+              Expanded(child: _buildCustomButton(context, 'Treasure Hunt', TreasureHuntScreen(), Icons.explore_rounded, true)),
+            ],
+          ),
         ],
       ),
     );
@@ -281,7 +485,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildCustomButton(BuildContext context, String label, Widget? screen, IconData icon, bool requiresAuth) {
     return GestureDetector(
-      onTap: () {
+            onTap: () {
         if (requiresAuth && _user == null) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
         } else if (label == 'Chat') {
@@ -291,21 +495,30 @@ class _HomeScreenState extends State<HomeScreen> {
         }
       },
       child: GlassContainer(
-        borderRadius: BorderRadius.circular(12),
-        blur: 5,
-        color: Colors.white.withOpacity(0.2),
-        border: Border.all(color: Colors.white.withOpacity(0.3), width: 1.5),
-        child: Center(
+        borderRadius: BorderRadius.circular(15),
+        blur: 20,
+        color: Colors.white.withOpacity(0.1),
+        child: Container(
+          height: 80,
+          padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(icon, color: Colors.white, size: 24),
-              const SizedBox(width: 8),
+              Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Icon(icon, color: Colors.white, size: 24),
+              ),
+              const SizedBox(width: 10),
               Text(
                 label,
                 style: const TextStyle(
                   color: Colors.white,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             ],
@@ -316,72 +529,85 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildBottomBar() {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.black54,
-        border: Border(
-          top: BorderSide(
-            color: Colors.white.withOpacity(0.1),
-            width: 1,
+    return ClipRRect(
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.black.withOpacity(0.2),
+          ),
+          child: SafeArea(
+            child: BottomAppBar(
+              color: Colors.transparent,
+              elevation: 0,
+              child: Container(
+                height: 60,
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    _buildBottomBarItem(Icons.phone_rounded, () async {
+                      final phoneUri = Uri.parse('tel:+40787229574');
+                      if (await canLaunchUrl(phoneUri)) {
+                        await launchUrl(phoneUri);
+                      }
+                    }),
+                    _buildBottomBarItem(Icons.map_rounded, () async {
+                      final mapsUri = Uri.parse('https://www.google.com/maps/dir//Eli+Tattoo+Studio+Strada+Republicii+25+Brașov+500030/@45.643265,25.5922325,16z');
+                      if (await canLaunchUrl(mapsUri)) {
+                        await launchUrl(mapsUri, mode: LaunchMode.externalApplication);
+                      }
+                    }),
+                    _buildBottomBarItem(Icons.chat_rounded, () async {
+                      final whatsappUri = Uri.parse('whatsapp://send?phone=+40787229574');
+                      if (await canLaunchUrl(whatsappUri)) {
+                        await launchUrl(whatsappUri);
+                      }
+                    }, showBadge: (_userStats['unreadMessages'] ?? 0) > 0),
+                    _buildBottomBarItem(Icons.settings_rounded, () {
+                      if (_userRole == "admin" || _userRole == "artist") {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => AdminScreen()));
+                      } else {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const GdprScreen()));
+                      }
+                    }),
+                  ],
+                ),
+              ),
+            ),
           ),
         ),
       ),
-      child: BottomAppBar(
-        color: Colors.transparent,
-        elevation: 0,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            IconButton(
-              icon: const Icon(Icons.phone, color: Colors.white),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: const Icon(Icons.map, color: Colors.white),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: Stack(
-                children: [
-                  const Icon(Icons.chat, color: Colors.white),
-                  if ((_userStats['unreadMessages'] ?? 0) > 0)
-                    Positioned(
-                      right: 0,
-                      top: 0,
-                      child: Container(
-                        padding: const EdgeInsets.all(2),
-                        decoration: const BoxDecoration(
-                          color: Colors.red,
-                          shape: BoxShape.circle,
-                        ),
-                        constraints: const BoxConstraints(
-                          minWidth: 14,
-                          minHeight: 14,
-                        ),
-                        child: Text(
-                          '${_userStats['unreadMessages']}',
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 8,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ),
-                ],
+    );
+  }
+
+  Widget _buildBottomBarItem(IconData icon, VoidCallback onTap, {bool showBadge = false}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: 45,
+        height: 45,
+        decoration: BoxDecoration(
+          color: Colors.white.withOpacity(0.1),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Icon(icon, color: Colors.white, size: 24),
+            if (showBadge)
+              Positioned(
+                right: 8,
+                top: 8,
+                child: Container(
+                  width: 8,
+                  height: 8,
+                  decoration: const BoxDecoration(
+                    color: Colors.red,
+                    shape: BoxShape.circle,
+                  ),
+                ),
               ),
-              onPressed: () => _navigateToChat(context),
-            ),
-            IconButton(
-              icon: const Icon(Icons.settings, color: Colors.white),
-              onPressed: () {
-                if (_userRole == "admin" || _userRole == "artist") {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => AdminScreen()));
-                } else {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const GdprScreen()));
-                }
-              },
-            ),
           ],
         ),
       ),

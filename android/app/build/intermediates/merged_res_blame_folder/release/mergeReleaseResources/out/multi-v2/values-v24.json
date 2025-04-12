@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.elitattoo.clients.app-mergeReleaseResources-89:/values-v24/values-v24.xml",
+            "outputFile": "com.elitattoo.clients.app-mergeReleaseResources-95:/values-v24/values-v24.xml",
             "map": [
                 {
                     "source": "/home/alecs-ink/.gradle/caches/8.10.2/transforms/67e431d42222568371fff0afd22bbdc6/transformed/appcompat-1.6.1/res/values-v24/values-v24.xml",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "/home/alecs-ink/.gradle/caches/8.10.2/transforms/cd79e8926f3586b575e2cf621318b1c2/transformed/media-1.1.0/res/values-v24/values-v24.xml",
+                    "source": "/home/alecs-ink/.gradle/caches/8.10.2/transforms/2c7a28485314ee0e74d343b62dcecbb6/transformed/media-1.7.0/res/values-v24/values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

@@ -3015,10 +3015,6 @@ dimen preference_seekbar_padding_vertical
 dimen preference_seekbar_value_minWidth
 dimen preferences_detail_width
 dimen preferences_header_width
-dimen subtitle_corner_radius
-dimen subtitle_outline_width
-dimen subtitle_shadow_offset
-dimen subtitle_shadow_radius
 dimen tooltip_corner_radius
 dimen tooltip_horizontal_padding
 dimen tooltip_margin
@@ -3534,6 +3530,7 @@ id material_timepicker_view
 id material_value_index
 id matrix
 id media_actions
+id media_controller_compat_view_tag
 id message
 id middle
 id mini

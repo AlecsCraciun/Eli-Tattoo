@@ -20,6 +20,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
   DateTime? _selectedDay;
   final AppointmentsService _appointmentsService = AppointmentsService();
   Map<DateTime, List<Appointment>> _appointments = {};
+  Map<String, Color> _artistColorCache = {};
 
   final List<Map<String, String>> _artistsData = [
     {'name': 'Toți artiștii', 'email': ''},
@@ -36,6 +37,26 @@ class _CalendarScreenState extends State<CalendarScreen> {
       (artist) => artist['name'] == name,
       orElse: () => {'name': '', 'email': ''},
     )['email']!;
+  }
+
+  Color _getArtistColor(String artistId) {
+    if (_artistColorCache.containsKey(artistId)) {
+      return _artistColorCache[artistId]!;
+    }
+    
+    Color color;
+    if (artistId.toLowerCase().contains('alecs')) {
+      color = Colors.blue;
+    } else if (artistId.toLowerCase().contains('denis')) {
+      color = Colors.green;
+    } else if (artistId.toLowerCase().contains('blanca')) {
+      color = Colors.pink;
+    } else {
+      color = Colors.grey;
+    }
+    
+    _artistColorCache[artistId] = color;
+    return color;
   }
 
   @override
@@ -116,47 +137,42 @@ class _CalendarScreenState extends State<CalendarScreen> {
     }
   }
 
-  Color _getArtistColor(String artistId) {
-    if (artistId.toLowerCase().contains('alecs')) return Colors.blue;
-    if (artistId.toLowerCase().contains('denis')) return Colors.green;
-    if (artistId.toLowerCase().contains('blanca')) return Colors.pink;
-    return Colors.grey;
-  }
-
   Widget _buildAppointmentIndicator(List<Appointment> dayAppointments) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: dayAppointments.map((appointment) {
-        String artistName = '';
-        if (appointment.artistId.toLowerCase().contains('alecs')) {
-          artistName = 'Alecs';
-        } else if (appointment.artistId.toLowerCase().contains('denis')) {
-          artistName = 'Denis';
-        } else if (appointment.artistId.toLowerCase().contains('blanca')) {
-          artistName = 'Blanca';
-        }
-        
-        return Container(
-          margin: const EdgeInsets.symmetric(vertical: 1),
-          padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-          decoration: BoxDecoration(
-            color: _getArtistColor(appointment.artistId).withOpacity(0.2),
-            borderRadius: BorderRadius.circular(4),
-            border: Border.all(
-              color: _getArtistColor(appointment.artistId).withOpacity(0.3),
+    return Padding(
+      padding: const EdgeInsets.only(top: 24),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: dayAppointments.map((appointment) {
+          String artistName = '';
+          if (appointment.artistId.contains('osuta1dfsex')) {
+            artistName = 'Alecs';
+          } else if (appointment.artistId.contains('denismyhali')) {
+            artistName = 'Denis';
+          } else if (appointment.artistId.contains('blancasardaru28')) {
+            artistName = 'Blanca';
+          }
+          
+          return Container(
+            margin: const EdgeInsets.symmetric(vertical: 1),
+            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+            decoration: BoxDecoration(
+              color: _getArtistColor(appointment.artistId).withOpacity(0.2),
+              borderRadius: BorderRadius.circular(4),
             ),
-          ),
-          child: Text(
-            '${appointment.time} - $artistName',
-            style: const TextStyle(
-              fontSize: 10,
-              color: Colors.white,
-              fontWeight: FontWeight.w500,
+            child: Text(
+              '${appointment.time} - $artistName',
+              style: const TextStyle(
+                fontSize: 10,
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
+              ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
-          ),
-        );
-      }).toList(),
+          );
+        }).toList(),
+      ),
     );
   }
 
@@ -354,15 +370,21 @@ class _CalendarScreenState extends State<CalendarScreen> {
     weekendTextStyle: const TextStyle(color: Colors.white70, fontSize: 16),
     selectedDecoration: BoxDecoration(
       color: Colors.blue.withOpacity(0.3),
+      shape: BoxShape.rectangle,
       borderRadius: BorderRadius.circular(8),
       border: Border.all(color: Colors.blue.withOpacity(0.4), width: 1.0),
     ),
     todayDecoration: BoxDecoration(
       color: Colors.white.withOpacity(0.1),
+      shape: BoxShape.rectangle,
       borderRadius: BorderRadius.circular(8),
       border: Border.all(color: Colors.white.withOpacity(0.2), width: 1.0),
     ),
     outsideTextStyle: const TextStyle(color: Colors.white38, fontSize: 16),
+    disabledDecoration: BoxDecoration(
+      shape: BoxShape.rectangle,
+      borderRadius: BorderRadius.circular(8),
+    ),
   );
 
   HeaderStyle get _headerStyle => HeaderStyle(
@@ -399,7 +421,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
         ),
         borderGradient: LinearGradient(
           colors: [
-            Colors.white.withOpacity(0.2),
+                        Colors.white.withOpacity(0.2),
             Colors.white.withOpacity(0.1),
           ],
         ),
@@ -422,7 +444,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
             itemCount: appointments.length,
             itemBuilder: (context, index) {
               final appointment = appointments[index];
-                            return GestureDetector(
+              return GestureDetector(
                 onTap: () => _showAppointmentFullDetails(appointment),
                 child: Container(
                   margin: const EdgeInsets.only(bottom: 8),
@@ -634,4 +656,3 @@ class _CalendarScreenState extends State<CalendarScreen> {
     );
   }
 }
-

@@ -14,6 +14,7 @@ class Appointment {
 
   final String id;
   final String artistId;
+  final String artistName;
   final String clientName;
   final String clientEmail;
   final String clientPhone;
@@ -26,6 +27,10 @@ class Appointment {
   final String notes;
   final String status;
   final String location;
+  final DateTime? createdAt;
+  final String? createdBy;
+  final DateTime? updatedAt;
+  final String? updatedBy;
 
   DateTime get endTime {
     try {
@@ -64,10 +69,12 @@ class Appointment {
     try {
       final hours = duration ~/ 60;
       final minutes = duration % 60;
-      if (minutes == 0) {
-        return '$hours ore';
+      if (hours == 0) {
+        return '$minutes minute';
+      } else if (minutes == 0) {
+        return hours == 1 ? '1 oră' : '$hours ore';
       }
-      return '$hours ore și $minutes minute';
+      return '${hours == 1 ? "1 oră" : "$hours ore"} și $minutes minute';
     } catch (e) {
       print('Eroare la formatarea duratei: $e');
       return '2 ore';
@@ -77,6 +84,7 @@ class Appointment {
   Appointment({
     required this.id,
     required this.artistId,
+    this.artistName = '',
     required this.clientName,
     required this.clientEmail,
     required this.clientPhone,
@@ -89,24 +97,22 @@ class Appointment {
     required this.location,
     this.notes = '',
     this.status = 'pending',
-  }) : assert(availableDurations.contains(duration), 'Durata trebuie să fie una din valorile predefinite');
+    this.createdAt,
+    this.createdBy,
+    this.updatedAt,
+    this.updatedBy,
+  }) : assert(availableDurations.contains(duration), 
+       'Durata trebuie să fie una din valorile predefinite: ${availableDurations.join(", ")} minute');
 
   factory Appointment.fromMap(Map<String, dynamic> map, String documentId) {
     try {
       final timestamp = map['date'] as Timestamp?;
-      final DateTime appointmentDate;
-      
-      if (timestamp != null) {
-        appointmentDate = timestamp.toDate();
-        print('Appointment Date parsed successfully: ${appointmentDate.toString()}');
-      } else {
-        print('Warning: Timestamp is null, using current date');
-        appointmentDate = DateTime.now();
-      }
+      final DateTime appointmentDate = timestamp?.toDate() ?? DateTime.now();
 
-      final appointment = Appointment(
+      return Appointment(
         id: documentId,
         artistId: map['artistId'] as String? ?? '',
+        artistName: map['artistName'] as String? ?? '',
         clientName: map['clientName'] as String? ?? '',
         clientEmail: map['clientEmail'] as String? ?? '',
         clientPhone: map['clientPhone'] as String? ?? '',
@@ -119,21 +125,22 @@ class Appointment {
         location: map['location'] as String? ?? '',
         notes: map['notes'] as String? ?? '',
         status: map['status'] as String? ?? 'pending',
+        createdAt: (map['createdAt'] as Timestamp?)?.toDate(),
+        createdBy: map['createdBy'] as String?,
+        updatedAt: (map['updatedAt'] as Timestamp?)?.toDate(),
+        updatedBy: map['updatedBy'] as String?,
       );
-
-      print('Appointment created successfully: ${appointment.toString()}');
-      return appointment;
-    } catch (e, stackTrace) {
+    } catch (e) {
       print('Eroare la crearea Appointment din Map: $e');
-      print('Stack trace: $stackTrace');
       throw Exception('Eroare la parsarea datelor programării: $e');
     }
   }
 
   Map<String, dynamic> toMap() {
     try {
-      final map = {
+      return {
         'artistId': artistId,
+        'artistName': artistName,
         'clientName': clientName,
         'clientEmail': clientEmail,
         'clientPhone': clientPhone,
@@ -146,12 +153,13 @@ class Appointment {
         'location': location,
         'notes': notes,
         'status': status,
+        'createdAt': createdAt != null ? Timestamp.fromDate(createdAt!) : null,
+        'createdBy': createdBy,
+        'updatedAt': updatedAt != null ? Timestamp.fromDate(updatedAt!) : null,
+        'updatedBy': updatedBy,
       };
-      print('Appointment converted to map successfully: $map');
-      return map;
-    } catch (e, stackTrace) {
+    } catch (e) {
       print('Eroare la convertirea Appointment în Map: $e');
-      print('Stack trace: $stackTrace');
       throw Exception('Eroare la salvarea datelor programării: $e');
     }
   }
@@ -159,6 +167,7 @@ class Appointment {
   Appointment copyWith({
     String? id,
     String? artistId,
+    String? artistName,
     String? clientName,
     String? clientEmail,
     String? clientPhone,
@@ -171,11 +180,16 @@ class Appointment {
     String? location,
     String? notes,
     String? status,
+    DateTime? createdAt,
+    String? createdBy,
+    DateTime? updatedAt,
+    String? updatedBy,
   }) {
     try {
       return Appointment(
         id: id ?? this.id,
         artistId: artistId ?? this.artistId,
+        artistName: artistName ?? this.artistName,
         clientName: clientName ?? this.clientName,
         clientEmail: clientEmail ?? this.clientEmail,
         clientPhone: clientPhone ?? this.clientPhone,
@@ -188,10 +202,14 @@ class Appointment {
         location: location ?? this.location,
         notes: notes ?? this.notes,
         status: status ?? this.status,
+        createdAt: createdAt ?? this.createdAt,
+        createdBy: createdBy ?? this.createdBy,
+        updatedAt: updatedAt ?? this.updatedAt,
+        updatedBy: updatedBy ?? this.updatedBy,
       );
     } catch (e) {
       print('Eroare la copierea Appointment: $e');
-      throw Exception('Eroare la modificarea programării');
+      throw Exception('Eroare la modificarea programării: $e');
     }
   }
 

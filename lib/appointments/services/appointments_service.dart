@@ -10,16 +10,24 @@ class AppointmentsService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FlutterLocalNotificationsPlugin _notifications = FlutterLocalNotificationsPlugin();
 
+  // Canale pentru notificări
   static const String APPOINTMENTS_CHANNEL = 'appointments_channel';
   static const String REMINDERS_CHANNEL = 'reminders_channel';
   static const String UPDATES_CHANNEL = 'updates_channel';
   static const String CANCELLATIONS_CHANNEL = 'cancellations_channel';
 
-  CollectionReference get _appointments => _firestore.collection('appointments');
-  CollectionReference get _artists => _firestore.collection('artists');
+  // Referințe Firestore
+  late final CollectionReference _appointments;
+  late final CollectionReference _artists;
 
   AppointmentsService() {
+    _initializeCollections();
     _initializeTimezones();
+  }
+
+  void _initializeCollections() {
+    _appointments = _firestore.collection('appointments');
+    _artists = _firestore.collection('artists');
   }
 
   void _initializeTimezones() {
@@ -60,6 +68,7 @@ class AppointmentsService {
   Future<String> createAppointment(Appointment appointment) async {
     try {
       print('Creating appointment for ${appointment.clientName}');
+      
       final isAvailable = await checkAvailability(
         appointment.artistId,
         appointment.date,
@@ -97,27 +106,45 @@ class AppointmentsService {
   Future<void> updateAppointment(Appointment appointment) async {
     try {
       print('Updating appointment ${appointment.id}');
+      
+      if (appointment.id == null) {
+        throw 'ID-ul programării lipsește';
+      }
+
+      // Verificăm dacă programarea există
       final docSnapshot = await _appointments.doc(appointment.id).get();
       if (!docSnapshot.exists) {
         throw 'Programarea nu există';
       }
 
-      final isAvailable = await checkAvailability(
-        appointment.artistId,
-        appointment.date,
-        appointment.time,
-        appointment.duration,
-      );
-      
-      if (!isAvailable && docSnapshot.id != appointment.id) {
-        throw 'Intervalul orar este deja ocupat';
+      // Verificăm disponibilitatea, excludând programarea curentă
+      final query = await _appointments
+          .where('artistId', isEqualTo: appointment.artistId)
+          .where('date', isEqualTo: Timestamp.fromDate(appointment.date))
+          .where('status', isEqualTo: 'confirmed')
+          .get();
+
+      for (var doc in query.docs) {
+        if (doc.id != appointment.id) {  // Excludem programarea curentă
+          final existingApp = Appointment.fromMap(doc.data() as Map<String, dynamic>, doc.id);
+          final existingStart = existingApp.startDateTime;
+          final existingEnd = existingApp.endTime;
+          final newStart = appointment.startDateTime;
+          final newEnd = appointment.endTime;
+
+          if (newStart.isBefore(existingEnd) && newEnd.isAfter(existingStart)) {
+            throw 'Intervalul orar este deja ocupat';
+          }
+        }
       }
 
+      // Actualizăm programarea
       await _appointments.doc(appointment.id).update({
         ...appointment.toMap(),
         'date': Timestamp.fromDate(appointment.date),
         'updatedAt': FieldValue.serverTimestamp(),
         'updatedBy': _auth.currentUser?.email,
+        'status': 'confirmed',  // Asigurăm că statusul rămâne confirmed
       });
 
       print('Appointment updated successfully');
@@ -127,6 +154,7 @@ class AppointmentsService {
       throw 'Eroare la actualizarea programării: $e';
     }
   }
+
 
   Stream<Map<DateTime, List<Appointment>>> getMonthAppointments(
     DateTime startOfMonth,
@@ -410,7 +438,7 @@ class AppointmentsService {
     }
   }
 
-    Future<void> showAppointmentNotification(
+  Future<void> showAppointmentNotification(
     String clientName,
     String time,
   ) async {

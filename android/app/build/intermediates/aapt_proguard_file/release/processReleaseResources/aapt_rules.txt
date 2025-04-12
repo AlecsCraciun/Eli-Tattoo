@@ -33,6 +33,11 @@
 -keep class io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingService { <init>(); }
 -keep class io.flutter.plugins.imagepicker.ImagePickerFileProvider { <init>(); }
 -keep class io.flutter.plugins.urllauncher.WebViewActivity { <init>(); }
+-keep class org.altbeacon.beacon.BeaconIntentProcessor { <init>(); }
+-keep class org.altbeacon.beacon.service.BeaconService { <init>(); }
+-keep class org.altbeacon.beacon.service.ScanJob { <init>(); }
+-keep class org.altbeacon.beacon.startup.StartupBroadcastReceiver { <init>(); }
+-keep class org.altbeacon.bluetooth.BluetoothTestJob { <init>(); }
 -keep class android.widget.Space { <init>(android.content.Context, android.util.AttributeSet); }
 
 -keep class androidx.appcompat.app.AlertController$RecycleListView { <init>(android.content.Context, android.util.AttributeSet); }

@@ -6,7 +6,7 @@
     <!-- Permisiuni pentru cameră (necesare pentru scanarea QR) -->
     <uses-permission android:name="android.permission.CAMERA"/>
     
-    <!-- Permisiuni pentru locație (necesare pentru geofencing) -->
+    <!-- Permisiuni pentru locație (necesare pentru geofencing și iBeacon) -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     
@@ -14,11 +14,21 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
 
+    <!-- Permisiuni pentru Bluetooth (iBeacon) -->
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"/>
+
     <application
         android:label="eli_tattoo_new"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:enableOnBackInvokedCallback="true">
+
+        <!-- Bibliotecă iBeacon -->
+        <uses-library android:name="org.altbeacon.beacon" android:required="false"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -28,6 +38,7 @@
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
             android:windowSoftInputMode="adjustResize">
+
             <meta-data
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"

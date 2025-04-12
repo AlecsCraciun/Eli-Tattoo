@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.elitattoo.clients.app-mergeReleaseResources-89:/values-uz/values-uz.xml",
+            "outputFile": "com.elitattoo.clients.app-mergeReleaseResources-95:/values-uz/values-uz.xml",
             "map": [
                 {
                     "source": "/home/alecs-ink/.gradle/caches/8.10.2/transforms/ab1dc0cd23ebe3c890248eaabfbb4ea4/transformed/jetified-media3-exoplayer-1.4.1/res/values-uz/values-uz.xml",

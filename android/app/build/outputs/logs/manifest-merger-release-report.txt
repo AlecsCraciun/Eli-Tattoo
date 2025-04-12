@@ -1,9 +1,11 @@
 -- Merging decision tree log ---
 application
-INJECTED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:17:5-44:19
-INJECTED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:17:5-44:19
+INJECTED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:23:5-55:19
+INJECTED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:23:5-55:19
 MERGED from [:location] /home/alecs-ink/.pub-cache/hosted/pub.dev/location-5.0.3/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:10:5-16:19
 MERGED from [:location] /home/alecs-ink/.pub-cache/hosted/pub.dev/location-5.0.3/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:10:5-16:19
+MERGED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:19:5-59:19
+MERGED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:19:5-59:19
 MERGED from [com.google.android.material:material:1.11.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/7503c3bf4ab106797df546908029698f/transformed/material-1.11.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.11.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/7503c3bf4ab106797df546908029698f/transformed/material-1.11.0/AndroidManifest.xml:22:5-20
 MERGED from [:geolocator_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/geolocator_android-4.6.2/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:7:5-13:19
@@ -129,26 +131,32 @@ MERGED from [com.google.android.odml:image:1.0.0-beta1] /home/alecs-ink/.gradle/
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.13.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/8cf478dec41eed746328fa8046755ba2/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
 	android:label
-		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:18:9-39
+		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:24:9-39
 	android:icon
-		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:20:9-43
+		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:26:9-43
 	android:enableOnBackInvokedCallback
-		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:21:9-51
+		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:27:9-51
 	android:name
 		INJECTED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml
-		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:19:9-42
+		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:25:9-42
 manifest
-ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:1:1-52:12
-INJECTED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:1:1-52:12
-INJECTED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:1:1-52:12
-INJECTED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:1:1-52:12
+ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:1:1-63:12
+INJECTED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:1:1-63:12
+INJECTED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:1:1-63:12
+INJECTED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:1:1-63:12
 MERGED from [:location] /home/alecs-ink/.pub-cache/hosted/pub.dev/location-5.0.3/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-18:12
 MERGED from [:shared_preferences_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.8/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [:flutter_beacon] /home/alecs-ink/Desktop/eli_tattoo_new/lib_beacon/flutter_beacon/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:2:1-61:12
 MERGED from [com.google.android.material:material:1.11.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/7503c3bf4ab106797df546908029698f/transformed/material-1.11.0/AndroidManifest.xml:17:1-24:12
+MERGED from [:audioplayers_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/audioplayers_android-4.0.3/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-7:12
 MERGED from [:geolocator_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/geolocator_android-4.6.2/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-15:12
 MERGED from [com.google.android.gms:play-services-location:21.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/cc3336a24e8ef5d3d66fff7f5ca80854/transformed/jetified-play-services-location-21.2.0/AndroidManifest.xml:2:1-9:12
+MERGED from [:just_audio] /home/alecs-ink/.pub-cache/hosted/pub.dev/just_audio-0.9.44/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [:audio_session] /home/alecs-ink/.pub-cache/hosted/pub.dev/audio_session-0.1.25/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-7:12
 MERGED from [:cloud_firestore] /home/alecs-ink/.pub-cache/hosted/pub.dev/cloud_firestore-4.17.5/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-15:12
 MERGED from [:connectivity_plus] /home/alecs-ink/.pub-cache/hosted/pub.dev/connectivity_plus-5.0.2/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-9:12
+MERGED from [:device_info_plus] /home/alecs-ink/.pub-cache/hosted/pub.dev/device_info_plus-10.1.2/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-7:12
 MERGED from [:emoji_picker_flutter] /home/alecs-ink/.pub-cache/hosted/pub.dev/emoji_picker_flutter-1.6.4/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-7:12
 MERGED from [:firebase_analytics] /home/alecs-ink/.pub-cache/hosted/pub.dev/firebase_analytics-10.10.7/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-19:12
 MERGED from [:firebase_auth] /home/alecs-ink/.pub-cache/hosted/pub.dev/firebase_auth-4.20.0/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-15:12
@@ -156,6 +164,7 @@ MERGED from [:firebase_database] /home/alecs-ink/.pub-cache/hosted/pub.dev/fireb
 MERGED from [:firebase_messaging] /home/alecs-ink/.pub-cache/hosted/pub.dev/firebase_messaging-14.9.4/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-48:12
 MERGED from [:firebase_storage] /home/alecs-ink/.pub-cache/hosted/pub.dev/firebase_storage-11.7.7/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-15:12
 MERGED from [:firebase_core] /home/alecs-ink/.pub-cache/hosted/pub.dev/firebase_core-2.32.0/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-15:12
+MERGED from [:flutter_compass] /home/alecs-ink/.pub-cache/hosted/pub.dev/flutter_compass-0.8.1/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-7:12
 MERGED from [:flutter_local_notifications] /home/alecs-ink/.pub-cache/hosted/pub.dev/flutter_local_notifications-14.1.1/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-32:12
 MERGED from [:flutter_native_splash] /home/alecs-ink/.pub-cache/hosted/pub.dev/flutter_native_splash-2.4.4/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-7:12
 MERGED from [:google_maps_flutter_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/google_maps_flutter_android-2.16.0/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-7:12
@@ -169,6 +178,7 @@ MERGED from [:path_provider_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/p
 MERGED from [:permission_handler_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/permission_handler_android-12.1.0/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-7:12
 MERGED from [:sqflite_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/sqflite_android-2.4.1/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-7:12
 MERGED from [:url_launcher_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.15/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-14:12
+MERGED from [:vibration] /home/alecs-ink/.pub-cache/hosted/pub.dev/vibration-3.1.3/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-9:12
 MERGED from [:video_player_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/video_player_android-2.8.2/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.camera:camera-core:1.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/15ffd9a7ca617c85cc12267461976e4a/transformed/jetified-camera-core-1.3.1/AndroidManifest.xml:17:1-36:12
 MERGED from [androidx.camera:camera-camera2:1.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/c091dce789e802e9021e6fe2a76e431a/transformed/jetified-camera-camera2-1.3.1/AndroidManifest.xml:17:1-36:12
@@ -179,13 +189,15 @@ MERGED from [androidx.preference:preference:1.2.1] /home/alecs-ink/.gradle/cache
 MERGED from [androidx.appcompat:appcompat:1.6.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/67e431d42222568371fff0afd22bbdc6/transformed/appcompat-1.6.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/2899c534f3de5608a8a60403e44e6ec5/transformed/jetified-emoji2-views-helper-1.2.0/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.emoji2:emoji2:1.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/d221757f531c672c2df2db4ebaa2cbf1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/fed45d0f0a0718ae4a42abefae2a1c55/transformed/legacy-support-v4-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/cb98276ae8bdd946a2259a69bef27bdf/transformed/legacy-support-core-ui-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/9967797afdd90cde852a608be4a71bf1/transformed/drawerlayout-1.1.1/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/c9ca8a45334a59e7b1dab4e619a1512f/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/d1c6aeab48522fe582cd8f8fd37aed73/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a4220b5ee723fba7acc664a2b5c85228/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a955e1aaa27844724e860bd6269b5afd/transformed/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/d8d2fedd17fffc12839dcc9cce6d60ff/transformed/jetified-viewpager2-1.0.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.media:media:1.1.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/cd79e8926f3586b575e2cf621318b1c2/transformed/media-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.media:media:1.7.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/2c7a28485314ee0e74d343b62dcecbb6/transformed/media-1.7.0/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.gms:play-services-maps:18.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/223e4c2782dceb65140338abe6972c59/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:17:1-44:12
 MERGED from [com.google.android.gms:play-services-auth:21.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/41fd65a6a815b5614b87b654f9cfd65e/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:17:1-40:12
 MERGED from [com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:17:1-75:12
@@ -248,22 +260,24 @@ MERGED from [com.google.android.gms:play-services-measurement-base:21.6.1] /home
 MERGED from [com.google.android.gms:play-services-basement:18.3.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/abeed4f47a72eff8f5b4e9bf7f2f3c91/transformed/jetified-play-services-basement-18.3.0/AndroidManifest.xml:16:1-26:12
 MERGED from [androidx.fragment:fragment:1.7.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/55520e4df2220e27f13f0bbb7467d11a/transformed/fragment-1.7.1/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.activity:activity:1.9.3] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a70ddd560199940b45ffc1a1c4db7f79/transformed/jetified-activity-1.9.3/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.browser:browser:1.8.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/308a2e77faa557d0bd706972416bde6a/transformed/browser-1.8.0/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.media3:media3-extractor:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/9e7454f640b41d9fb1f89a6b912b741e/transformed/jetified-media3-extractor-1.4.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.media3:media3-container:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/458a1a3589d1e39abd86072805af9a32/transformed/jetified-media3-container-1.4.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.media3:media3-datasource:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/dcc302a7b606f68719f42912b7ef31a0/transformed/jetified-media3-datasource-1.4.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.media3:media3-decoder:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a93664941e2b88c03441606ac08a6fc2/transformed/jetified-media3-decoder-1.4.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.media3:media3-database:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/d8df7439c67c18e2b650336c112408c6/transformed/jetified-media3-database-1.4.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.media3:media3-common:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/f287878c588d535c6238ddf78c37b2ed/transformed/jetified-media3-common-1.4.1/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.media3:media3-exoplayer-hls:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/e45546448fd971172ffd9d216a54d834/transformed/jetified-media3-exoplayer-hls-1.4.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.media3:media3-exoplayer-dash:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/09fc8eeb7b5bae391cca11b3fcf42aca/transformed/jetified-media3-exoplayer-dash-1.4.1/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.media3:media3-exoplayer-rtsp:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/4d53732e8ebd4dda2c45fb0959ea7441/transformed/jetified-media3-exoplayer-rtsp-1.4.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media3:media3-exoplayer-hls:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/e45546448fd971172ffd9d216a54d834/transformed/jetified-media3-exoplayer-hls-1.4.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.media3:media3-exoplayer-smoothstreaming:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/d54be51abe8aaa49b41f4a3e99db2aa4/transformed/jetified-media3-exoplayer-smoothstreaming-1.4.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media3:media3-exoplayer-rtsp:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/4d53732e8ebd4dda2c45fb0959ea7441/transformed/jetified-media3-exoplayer-rtsp-1.4.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.media3:media3-exoplayer:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/ab1dc0cd23ebe3c890248eaabfbb4ea4/transformed/jetified-media3-exoplayer-1.4.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.browser:browser:1.8.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/308a2e77faa557d0bd706972416bde6a/transformed/browser-1.8.0/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.recyclerview:recyclerview:1.1.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/378ea1994e3598d3fb5f44e10e5e1679/transformed/recyclerview-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.viewpager:viewpager:1.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/ddd5e7b38041965968ff0c456e5ef322/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.customview:customview:1.1.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/7ba2c056d15ac2bb85e5cc14a5abc112/transformed/customview-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.core:core-ktx:1.13.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/6ec70d4eb0351866340efe37c2014fef/transformed/jetified-core-ktx-1.13.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/7c5a81a775ceb5f896270c240e3627f0/transformed/swiperefreshlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/3d3f16dd28e73e73ebdd49d75e0396da/transformed/asynclayoutinflater-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.transition:transition:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/45af1ebc35cbf9d2d2886a132166b73a/transformed/transition-1.4.1/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.core:core:1.13.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/8cf478dec41eed746328fa8046755ba2/transformed/core-1.13.1/AndroidManifest.xml:17:1-30:12
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.7.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/c092edbccc16347970ed4f22e8da111a/transformed/lifecycle-runtime-2.7.0/AndroidManifest.xml:2:1-7:12
@@ -282,13 +296,13 @@ MERGED from [androidx.interpolator:interpolator:1.0.0] /home/alecs-ink/.gradle/c
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/92a2169b5b2674c8bbe10e1b1d80da0f/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.documentfile:documentfile:1.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/76a0dd850d9f18b6d5dce2588e83d61b/transformed/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/768c044a1b4db4aa31548ac9b4db55c8/transformed/print-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/ff849810dfe34a0ab790c402787c149e/transformed/core-runtime-2.2.0/AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-components:17.1.5] /home/alecs-ink/.gradle/caches/8.10.2/transforms/e8c994221057b3c1840994d9e7871976/transformed/jetified-firebase-components-17.1.5/AndroidManifest.xml:15:1-20:12
 MERGED from [com.google.firebase:firebase-datatransport:18.1.7] /home/alecs-ink/.gradle/caches/8.10.2/transforms/7db1b95df90f3baf78601bd1f13dbf08/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:15:1-33:12
 MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.8] /home/alecs-ink/.gradle/caches/8.10.2/transforms/06f79797ad77f08b9bcaf5ac75dacce7/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:15:1-37:12
 MERGED from [com.google.android.datatransport:transport-runtime:3.1.8] /home/alecs-ink/.gradle/caches/8.10.2/transforms/28a5037b5ebc48ab32c50633c524288e/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:15:1-41:12
 MERGED from [com.google.android.datatransport:transport-api:3.1.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/881c4abfce54f2ad198c7660c5ae4450/transformed/jetified-transport-api-3.1.0/AndroidManifest.xml:15:1-20:12
 MERGED from [com.google.firebase:firebase-encoders-json:18.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/7d0d33ecaece8d17a3b79a6bcd1ce82f/transformed/jetified-firebase-encoders-json-18.0.0/AndroidManifest.xml:15:1-23:12
-MERGED from [androidx.arch.core:core-runtime:2.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/ff849810dfe34a0ab790c402787c149e/transformed/core-runtime-2.2.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.window.extensions.core:core:1.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/47506b70b93177473c53f4d5d7e77c91/transformed/jetified-core-1.0.0/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.annotation:annotation-experimental:1.4.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/f09a22cdd213028a38958888c7d16e20/transformed/jetified-annotation-experimental-1.4.0/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.multidex:multidex:2.0.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/257037ccdbd8ee62491517d3612043a3/transformed/multidex-2.0.1/AndroidManifest.xml:17:1-22:12
@@ -403,6 +417,8 @@ uses-permission#android.permission.ACCESS_COARSE_LOCATION
 ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:11:5-80
 MERGED from [:location] /home/alecs-ink/.pub-cache/hosted/pub.dev/location-5.0.3/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:7:5-81
 MERGED from [:location] /home/alecs-ink/.pub-cache/hosted/pub.dev/location-5.0.3/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:7:5-81
+MERGED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:17:5-81
+MERGED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:17:5-81
 	android:name
 		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:11:22-78
 uses-permission#android.permission.POST_NOTIFICATIONS
@@ -419,62 +435,94 @@ uses-permission#android.permission.VIBRATE
 ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:15:5-65
 MERGED from [:flutter_local_notifications] /home/alecs-ink/.pub-cache/hosted/pub.dev/flutter_local_notifications-14.1.1/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:8:5-66
 MERGED from [:flutter_local_notifications] /home/alecs-ink/.pub-cache/hosted/pub.dev/flutter_local_notifications-14.1.1/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:8:5-66
+MERGED from [:vibration] /home/alecs-ink/.pub-cache/hosted/pub.dev/vibration-3.1.3/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:7:5-66
+MERGED from [:vibration] /home/alecs-ink/.pub-cache/hosted/pub.dev/vibration-3.1.3/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:7:5-66
 	android:name
 		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:15:22-63
+uses-permission#android.permission.BLUETOOTH
+ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:18:5-67
+MERGED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:10:5-12:36
+MERGED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:10:5-12:36
+	android:required
+		ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:12:9-33
+	android:name
+		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:18:22-65
+uses-permission#android.permission.BLUETOOTH_ADMIN
+ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:19:5-73
+MERGED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:13:5-15:36
+MERGED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:13:5-15:36
+	android:required
+		ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:15:9-33
+	android:name
+		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:19:22-71
+uses-permission#android.permission.BLUETOOTH_SCAN
+ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:20:5-72
+	android:name
+		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:20:22-70
+uses-permission#android.permission.BLUETOOTH_CONNECT
+ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:21:5-75
+	android:name
+		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:21:22-73
 queries
-ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:46:5-51:15
+ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:57:5-62:15
 MERGED from [com.google.android.gms:play-services-maps:18.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/223e4c2782dceb65140338abe6972c59/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:30:5-34:15
 MERGED from [com.google.android.gms:play-services-maps:18.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/223e4c2782dceb65140338abe6972c59/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:30:5-34:15
 intent#action:name:android.intent.action.PROCESS_TEXT+data:mimeType:text/plain
-ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:47:9-50:18
+ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:58:9-61:18
 action#android.intent.action.PROCESS_TEXT
-ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:48:13-72
+ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:59:13-72
 	android:name
-		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:48:21-70
+		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:59:21-70
 data
-ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:49:13-50
+ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:60:13-50
 	android:mimeType
-		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:49:19-48
+		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:60:19-48
+uses-library#org.altbeacon.beacon
+ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:30:9-85
+	android:required
+		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:30:59-83
+	android:name
+		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:30:23-58
 activity#com.elitattoo.clients.MainActivity
-ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:22:9-39:20
+ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:32:9-50:20
 	android:launchMode
-		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:25:13-43
+		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:35:13-43
 	android:hardwareAccelerated
-		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:29:13-47
+		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:39:13-47
 	android:windowSoftInputMode
-		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:30:13-55
+		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:40:13-55
 	android:exported
-		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:24:13-36
+		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:34:13-36
 	android:configChanges
-		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:28:13-163
+		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:38:13-163
 	android:theme
-		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:27:13-47
+		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:37:13-47
 	android:taskAffinity
-		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:26:13-36
+		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:36:13-36
 	android:name
-		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:23:13-41
+		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:33:13-41
 meta-data#io.flutter.embedding.android.NormalTheme
-ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:31:13-34:17
+ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:42:13-45:17
 	android:resource
-		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:33:15-52
+		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:44:15-52
 	android:name
-		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:32:15-70
+		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:43:15-70
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:35:13-38:29
+ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:46:13-49:29
 action#android.intent.action.MAIN
-ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:36:17-68
+ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:47:17-68
 	android:name
-		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:36:25-66
+		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:47:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:37:17-76
+ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:48:17-76
 	android:name
-		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:37:27-74
+		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:48:27-74
 meta-data#flutterEmbedding
-ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:41:9-43:33
+ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:52:9-54:33
 	android:value
-		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:43:13-30
+		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:54:13-30
 	android:name
-		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:42:13-44
+		ADDED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:53:13-44
 uses-sdk
 INJECTED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml
@@ -483,16 +531,28 @@ MERGED from [:location] /home/alecs-ink/.pub-cache/hosted/pub.dev/location-5.0.3
 MERGED from [:location] /home/alecs-ink/.pub-cache/hosted/pub.dev/location-5.0.3/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
 MERGED from [:shared_preferences_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.8/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
 MERGED from [:shared_preferences_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.8/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_beacon] /home/alecs-ink/Desktop/eli_tattoo_new/lib_beacon/flutter_beacon/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_beacon] /home/alecs-ink/Desktop/eli_tattoo_new/lib_beacon/flutter_beacon/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
+MERGED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:6:5-8:41
+MERGED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:6:5-8:41
 MERGED from [com.google.android.material:material:1.11.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/7503c3bf4ab106797df546908029698f/transformed/material-1.11.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.material:material:1.11.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/7503c3bf4ab106797df546908029698f/transformed/material-1.11.0/AndroidManifest.xml:20:5-44
+MERGED from [:audioplayers_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/audioplayers_android-4.0.3/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
+MERGED from [:audioplayers_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/audioplayers_android-4.0.3/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
 MERGED from [:geolocator_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/geolocator_android-4.6.2/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
 MERGED from [:geolocator_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/geolocator_android-4.6.2/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-location:21.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/cc3336a24e8ef5d3d66fff7f5ca80854/transformed/jetified-play-services-location-21.2.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-location:21.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/cc3336a24e8ef5d3d66fff7f5ca80854/transformed/jetified-play-services-location-21.2.0/AndroidManifest.xml:5:5-44
+MERGED from [:just_audio] /home/alecs-ink/.pub-cache/hosted/pub.dev/just_audio-0.9.44/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
+MERGED from [:just_audio] /home/alecs-ink/.pub-cache/hosted/pub.dev/just_audio-0.9.44/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
+MERGED from [:audio_session] /home/alecs-ink/.pub-cache/hosted/pub.dev/audio_session-0.1.25/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
+MERGED from [:audio_session] /home/alecs-ink/.pub-cache/hosted/pub.dev/audio_session-0.1.25/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
 MERGED from [:cloud_firestore] /home/alecs-ink/.pub-cache/hosted/pub.dev/cloud_firestore-4.17.5/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
 MERGED from [:cloud_firestore] /home/alecs-ink/.pub-cache/hosted/pub.dev/cloud_firestore-4.17.5/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
 MERGED from [:connectivity_plus] /home/alecs-ink/.pub-cache/hosted/pub.dev/connectivity_plus-5.0.2/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
 MERGED from [:connectivity_plus] /home/alecs-ink/.pub-cache/hosted/pub.dev/connectivity_plus-5.0.2/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
+MERGED from [:device_info_plus] /home/alecs-ink/.pub-cache/hosted/pub.dev/device_info_plus-10.1.2/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
+MERGED from [:device_info_plus] /home/alecs-ink/.pub-cache/hosted/pub.dev/device_info_plus-10.1.2/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
 MERGED from [:emoji_picker_flutter] /home/alecs-ink/.pub-cache/hosted/pub.dev/emoji_picker_flutter-1.6.4/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
 MERGED from [:emoji_picker_flutter] /home/alecs-ink/.pub-cache/hosted/pub.dev/emoji_picker_flutter-1.6.4/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
 MERGED from [:firebase_analytics] /home/alecs-ink/.pub-cache/hosted/pub.dev/firebase_analytics-10.10.7/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
@@ -507,6 +567,8 @@ MERGED from [:firebase_storage] /home/alecs-ink/.pub-cache/hosted/pub.dev/fireba
 MERGED from [:firebase_storage] /home/alecs-ink/.pub-cache/hosted/pub.dev/firebase_storage-11.7.7/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] /home/alecs-ink/.pub-cache/hosted/pub.dev/firebase_core-2.32.0/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] /home/alecs-ink/.pub-cache/hosted/pub.dev/firebase_core-2.32.0/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_compass] /home/alecs-ink/.pub-cache/hosted/pub.dev/flutter_compass-0.8.1/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_compass] /home/alecs-ink/.pub-cache/hosted/pub.dev/flutter_compass-0.8.1/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
 MERGED from [:flutter_local_notifications] /home/alecs-ink/.pub-cache/hosted/pub.dev/flutter_local_notifications-14.1.1/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
 MERGED from [:flutter_local_notifications] /home/alecs-ink/.pub-cache/hosted/pub.dev/flutter_local_notifications-14.1.1/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
 MERGED from [:flutter_native_splash] /home/alecs-ink/.pub-cache/hosted/pub.dev/flutter_native_splash-2.4.4/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
@@ -533,6 +595,8 @@ MERGED from [:sqflite_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/sqflite
 MERGED from [:sqflite_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/sqflite_android-2.4.1/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
 MERGED from [:url_launcher_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.15/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
 MERGED from [:url_launcher_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.15/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
+MERGED from [:vibration] /home/alecs-ink/.pub-cache/hosted/pub.dev/vibration-3.1.3/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
+MERGED from [:vibration] /home/alecs-ink/.pub-cache/hosted/pub.dev/vibration-3.1.3/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
 MERGED from [:video_player_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/video_player_android-2.8.2/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
 MERGED from [:video_player_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/video_player_android-2.8.2/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
 MERGED from [androidx.camera:camera-core:1.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/15ffd9a7ca617c85cc12267461976e4a/transformed/jetified-camera-core-1.3.1/AndroidManifest.xml:21:5-44
@@ -553,6 +617,10 @@ MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] /home/alecs-ink/.gradle/
 MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/2899c534f3de5608a8a60403e44e6ec5/transformed/jetified-emoji2-views-helper-1.2.0/AndroidManifest.xml:5:5-44
 MERGED from [androidx.emoji2:emoji2:1.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/d221757f531c672c2df2db4ebaa2cbf1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:21:5-44
 MERGED from [androidx.emoji2:emoji2:1.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/d221757f531c672c2df2db4ebaa2cbf1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/fed45d0f0a0718ae4a42abefae2a1c55/transformed/legacy-support-v4-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/fed45d0f0a0718ae4a42abefae2a1c55/transformed/legacy-support-v4-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/cb98276ae8bdd946a2259a69bef27bdf/transformed/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/cb98276ae8bdd946a2259a69bef27bdf/transformed/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/9967797afdd90cde852a608be4a71bf1/transformed/drawerlayout-1.1.1/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/9967797afdd90cde852a608be4a71bf1/transformed/drawerlayout-1.1.1/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/c9ca8a45334a59e7b1dab4e619a1512f/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
@@ -565,8 +633,8 @@ MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/alecs-ink/.grad
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a955e1aaa27844724e860bd6269b5afd/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/d8d2fedd17fffc12839dcc9cce6d60ff/transformed/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/d8d2fedd17fffc12839dcc9cce6d60ff/transformed/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.media:media:1.1.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/cd79e8926f3586b575e2cf621318b1c2/transformed/media-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.media:media:1.1.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/cd79e8926f3586b575e2cf621318b1c2/transformed/media-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.media:media:1.7.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/2c7a28485314ee0e74d343b62dcecbb6/transformed/media-1.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.media:media:1.7.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/2c7a28485314ee0e74d343b62dcecbb6/transformed/media-1.7.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-maps:18.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/223e4c2782dceb65140338abe6972c59/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-maps:18.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/223e4c2782dceb65140338abe6972c59/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-auth:21.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/41fd65a6a815b5614b87b654f9cfd65e/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:20:5-44
@@ -691,8 +759,6 @@ MERGED from [androidx.fragment:fragment:1.7.1] /home/alecs-ink/.gradle/caches/8.
 MERGED from [androidx.fragment:fragment:1.7.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/55520e4df2220e27f13f0bbb7467d11a/transformed/fragment-1.7.1/AndroidManifest.xml:5:5-44
 MERGED from [androidx.activity:activity:1.9.3] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a70ddd560199940b45ffc1a1c4db7f79/transformed/jetified-activity-1.9.3/AndroidManifest.xml:20:5-44
 MERGED from [androidx.activity:activity:1.9.3] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a70ddd560199940b45ffc1a1c4db7f79/transformed/jetified-activity-1.9.3/AndroidManifest.xml:20:5-44
-MERGED from [androidx.browser:browser:1.8.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/308a2e77faa557d0bd706972416bde6a/transformed/browser-1.8.0/AndroidManifest.xml:5:5-44
-MERGED from [androidx.browser:browser:1.8.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/308a2e77faa557d0bd706972416bde6a/transformed/browser-1.8.0/AndroidManifest.xml:5:5-44
 MERGED from [androidx.media3:media3-extractor:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/9e7454f640b41d9fb1f89a6b912b741e/transformed/jetified-media3-extractor-1.4.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.media3:media3-extractor:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/9e7454f640b41d9fb1f89a6b912b741e/transformed/jetified-media3-extractor-1.4.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.media3:media3-container:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/458a1a3589d1e39abd86072805af9a32/transformed/jetified-media3-container-1.4.1/AndroidManifest.xml:20:5-44
@@ -705,16 +771,18 @@ MERGED from [androidx.media3:media3-database:1.4.1] /home/alecs-ink/.gradle/cach
 MERGED from [androidx.media3:media3-database:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/d8df7439c67c18e2b650336c112408c6/transformed/jetified-media3-database-1.4.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.media3:media3-common:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/f287878c588d535c6238ddf78c37b2ed/transformed/jetified-media3-common-1.4.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.media3:media3-common:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/f287878c588d535c6238ddf78c37b2ed/transformed/jetified-media3-common-1.4.1/AndroidManifest.xml:20:5-44
-MERGED from [androidx.media3:media3-exoplayer-hls:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/e45546448fd971172ffd9d216a54d834/transformed/jetified-media3-exoplayer-hls-1.4.1/AndroidManifest.xml:20:5-44
-MERGED from [androidx.media3:media3-exoplayer-hls:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/e45546448fd971172ffd9d216a54d834/transformed/jetified-media3-exoplayer-hls-1.4.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.media3:media3-exoplayer-dash:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/09fc8eeb7b5bae391cca11b3fcf42aca/transformed/jetified-media3-exoplayer-dash-1.4.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.media3:media3-exoplayer-dash:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/09fc8eeb7b5bae391cca11b3fcf42aca/transformed/jetified-media3-exoplayer-dash-1.4.1/AndroidManifest.xml:20:5-44
-MERGED from [androidx.media3:media3-exoplayer-rtsp:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/4d53732e8ebd4dda2c45fb0959ea7441/transformed/jetified-media3-exoplayer-rtsp-1.4.1/AndroidManifest.xml:20:5-44
-MERGED from [androidx.media3:media3-exoplayer-rtsp:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/4d53732e8ebd4dda2c45fb0959ea7441/transformed/jetified-media3-exoplayer-rtsp-1.4.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-exoplayer-hls:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/e45546448fd971172ffd9d216a54d834/transformed/jetified-media3-exoplayer-hls-1.4.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-exoplayer-hls:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/e45546448fd971172ffd9d216a54d834/transformed/jetified-media3-exoplayer-hls-1.4.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.media3:media3-exoplayer-smoothstreaming:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/d54be51abe8aaa49b41f4a3e99db2aa4/transformed/jetified-media3-exoplayer-smoothstreaming-1.4.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.media3:media3-exoplayer-smoothstreaming:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/d54be51abe8aaa49b41f4a3e99db2aa4/transformed/jetified-media3-exoplayer-smoothstreaming-1.4.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-exoplayer-rtsp:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/4d53732e8ebd4dda2c45fb0959ea7441/transformed/jetified-media3-exoplayer-rtsp-1.4.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-exoplayer-rtsp:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/4d53732e8ebd4dda2c45fb0959ea7441/transformed/jetified-media3-exoplayer-rtsp-1.4.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.media3:media3-exoplayer:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/ab1dc0cd23ebe3c890248eaabfbb4ea4/transformed/jetified-media3-exoplayer-1.4.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.media3:media3-exoplayer:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/ab1dc0cd23ebe3c890248eaabfbb4ea4/transformed/jetified-media3-exoplayer-1.4.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.browser:browser:1.8.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/308a2e77faa557d0bd706972416bde6a/transformed/browser-1.8.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.browser:browser:1.8.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/308a2e77faa557d0bd706972416bde6a/transformed/browser-1.8.0/AndroidManifest.xml:5:5-44
 MERGED from [androidx.recyclerview:recyclerview:1.1.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/378ea1994e3598d3fb5f44e10e5e1679/transformed/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.recyclerview:recyclerview:1.1.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/378ea1994e3598d3fb5f44e10e5e1679/transformed/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.viewpager:viewpager:1.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/ddd5e7b38041965968ff0c456e5ef322/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
@@ -723,6 +791,10 @@ MERGED from [androidx.customview:customview:1.1.0] /home/alecs-ink/.gradle/cache
 MERGED from [androidx.customview:customview:1.1.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/7ba2c056d15ac2bb85e5cc14a5abc112/transformed/customview-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.core:core-ktx:1.13.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/6ec70d4eb0351866340efe37c2014fef/transformed/jetified-core-ktx-1.13.1/AndroidManifest.xml:5:5-44
 MERGED from [androidx.core:core-ktx:1.13.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/6ec70d4eb0351866340efe37c2014fef/transformed/jetified-core-ktx-1.13.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/7c5a81a775ceb5f896270c240e3627f0/transformed/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/7c5a81a775ceb5f896270c240e3627f0/transformed/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/3d3f16dd28e73e73ebdd49d75e0396da/transformed/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/3d3f16dd28e73e73ebdd49d75e0396da/transformed/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.transition:transition:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/45af1ebc35cbf9d2d2886a132166b73a/transformed/transition-1.4.1/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.transition:transition:1.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/45af1ebc35cbf9d2d2886a132166b73a/transformed/transition-1.4.1/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.core:core:1.13.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/8cf478dec41eed746328fa8046755ba2/transformed/core-1.13.1/AndroidManifest.xml:20:5-44
@@ -759,6 +831,8 @@ MERGED from [androidx.documentfile:documentfile:1.0.0] /home/alecs-ink/.gradle/c
 MERGED from [androidx.documentfile:documentfile:1.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/76a0dd850d9f18b6d5dce2588e83d61b/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/768c044a1b4db4aa31548ac9b4db55c8/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/768c044a1b4db4aa31548ac9b4db55c8/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/ff849810dfe34a0ab790c402787c149e/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/ff849810dfe34a0ab790c402787c149e/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-components:17.1.5] /home/alecs-ink/.gradle/caches/8.10.2/transforms/e8c994221057b3c1840994d9e7871976/transformed/jetified-firebase-components-17.1.5/AndroidManifest.xml:18:5-44
 MERGED from [com.google.firebase:firebase-components:17.1.5] /home/alecs-ink/.gradle/caches/8.10.2/transforms/e8c994221057b3c1840994d9e7871976/transformed/jetified-firebase-components-17.1.5/AndroidManifest.xml:18:5-44
 MERGED from [com.google.firebase:firebase-datatransport:18.1.7] /home/alecs-ink/.gradle/caches/8.10.2/transforms/7db1b95df90f3baf78601bd1f13dbf08/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:18:5-20:41
@@ -771,8 +845,6 @@ MERGED from [com.google.android.datatransport:transport-api:3.1.0] /home/alecs-i
 MERGED from [com.google.android.datatransport:transport-api:3.1.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/881c4abfce54f2ad198c7660c5ae4450/transformed/jetified-transport-api-3.1.0/AndroidManifest.xml:18:5-44
 MERGED from [com.google.firebase:firebase-encoders-json:18.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/7d0d33ecaece8d17a3b79a6bcd1ce82f/transformed/jetified-firebase-encoders-json-18.0.0/AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.firebase:firebase-encoders-json:18.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/7d0d33ecaece8d17a3b79a6bcd1ce82f/transformed/jetified-firebase-encoders-json-18.0.0/AndroidManifest.xml:19:5-21:41
-MERGED from [androidx.arch.core:core-runtime:2.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/ff849810dfe34a0ab790c402787c149e/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.arch.core:core-runtime:2.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/ff849810dfe34a0ab790c402787c149e/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.window.extensions.core:core:1.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/47506b70b93177473c53f4d5d7e77c91/transformed/jetified-core-1.0.0/AndroidManifest.xml:5:5-44
 MERGED from [androidx.window.extensions.core:core:1.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/47506b70b93177473c53f4d5d7e77c91/transformed/jetified-core-1.0.0/AndroidManifest.xml:5:5-44
 MERGED from [androidx.annotation:annotation-experimental:1.4.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/f09a22cdd213028a38958888c7d16e20/transformed/jetified-annotation-experimental-1.4.0/AndroidManifest.xml:5:5-44
@@ -805,6 +877,86 @@ ADDED from [:location] /home/alecs-ink/.pub-cache/hosted/pub.dev/location-5.0.3/
 		ADDED from [:location] /home/alecs-ink/.pub-cache/hosted/pub.dev/location-5.0.3/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:15:13-53
 	android:name
 		ADDED from [:location] /home/alecs-ink/.pub-cache/hosted/pub.dev/location-5.0.3/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:12:13-71
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:16:5-81
+MERGED from [:flutter_local_notifications] /home/alecs-ink/.pub-cache/hosted/pub.dev/flutter_local_notifications-14.1.1/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:7:5-81
+MERGED from [:flutter_local_notifications] /home/alecs-ink/.pub-cache/hosted/pub.dev/flutter_local_notifications-14.1.1/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:7:5-81
+	android:name
+		ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:16:22-78
+receiver#org.altbeacon.beacon.startup.StartupBroadcastReceiver
+ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:20:9-28:20
+	android:exported
+		ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:22:13-37
+	android:name
+		ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:21:13-81
+intent-filter#action:name:android.intent.action.ACTION_POWER_CONNECTED+action:name:android.intent.action.ACTION_POWER_DISCONNECTED+action:name:android.intent.action.BOOT_COMPLETED
+ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:23:13-27:29
+action#android.intent.action.BOOT_COMPLETED
+ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:24:17-79
+	android:name
+		ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:24:25-76
+action#android.intent.action.ACTION_POWER_CONNECTED
+ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:25:17-87
+	android:name
+		ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:25:25-84
+action#android.intent.action.ACTION_POWER_DISCONNECTED
+ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:26:17-90
+	android:name
+		ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:26:25-87
+service#org.altbeacon.beacon.service.BeaconService
+ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:30:9-35:38
+	android:enabled
+		ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:32:13-35
+	android:label
+		ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:35:13-35
+	android:exported
+		ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:33:13-37
+	android:isolatedProcess
+		ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:34:13-44
+	android:name
+		ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:31:13-70
+service#org.altbeacon.beacon.BeaconIntentProcessor
+ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:36:9-39:40
+	android:enabled
+		ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:38:13-35
+	android:exported
+		ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:39:13-37
+	android:name
+		ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:37:13-70
+service#org.altbeacon.beacon.service.ScanJob
+ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:40:9-50:19
+	android:exported
+		ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:42:13-37
+	android:permission
+		ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:43:13-69
+	android:name
+		ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:41:13-64
+meta-data#immediateScanJobId
+ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:44:13-46:45
+	android:value
+		ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:46:17-42
+	android:name
+		ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:45:17-50
+meta-data#periodicScanJobId
+ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:47:13-49:45
+	android:value
+		ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:49:17-42
+	android:name
+		ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:48:17-49
+service#org.altbeacon.bluetooth.BluetoothTestJob
+ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:51:9-58:19
+	android:exported
+		ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:53:13-37
+	android:permission
+		ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:54:13-69
+	android:name
+		ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:52:13-68
+meta-data#jobId
+ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:55:13-57:46
+	android:value
+		ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:57:17-43
+	android:name
+		ADDED from [org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:56:17-37
 service#com.baseflow.geolocator.GeolocatorLocationService
 ADDED from [:geolocator_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/geolocator_android-4.6.2/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:8:9-12:56
 	android:enabled
@@ -963,10 +1115,6 @@ ADDED from [:firebase_core] /home/alecs-ink/.pub-cache/hosted/pub.dev/firebase_c
 		ADDED from [:firebase_core] /home/alecs-ink/.pub-cache/hosted/pub.dev/firebase_core-2.32.0/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:11:17-82
 	android:name
 		ADDED from [:firebase_core] /home/alecs-ink/.pub-cache/hosted/pub.dev/firebase_core-2.32.0/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:10:17-124
-uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
-ADDED from [:flutter_local_notifications] /home/alecs-ink/.pub-cache/hosted/pub.dev/flutter_local_notifications-14.1.1/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:7:5-81
-	android:name
-		ADDED from [:flutter_local_notifications] /home/alecs-ink/.pub-cache/hosted/pub.dev/flutter_local_notifications-14.1.1/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:7:22-78
 uses-permission#android.permission.USE_FULL_SCREEN_INTENT
 ADDED from [:flutter_local_notifications] /home/alecs-ink/.pub-cache/hosted/pub.dev/flutter_local_notifications-14.1.1/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:9:5-81
 	android:name
@@ -995,10 +1143,6 @@ ADDED from [:flutter_local_notifications] /home/alecs-ink/.pub-cache/hosted/pub.
 		ADDED from [:flutter_local_notifications] /home/alecs-ink/.pub-cache/hosted/pub.dev/flutter_local_notifications-14.1.1/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:21:13-101
 intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.MY_PACKAGE_REPLACED+action:name:android.intent.action.QUICKBOOT_POWERON+action:name:com.htc.intent.action.QUICKBOOT_POWERON
 ADDED from [:flutter_local_notifications] /home/alecs-ink/.pub-cache/hosted/pub.dev/flutter_local_notifications-14.1.1/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:23:13-28:29
-action#android.intent.action.BOOT_COMPLETED
-ADDED from [:flutter_local_notifications] /home/alecs-ink/.pub-cache/hosted/pub.dev/flutter_local_notifications-14.1.1/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:24:17-79
-	android:name
-		ADDED from [:flutter_local_notifications] /home/alecs-ink/.pub-cache/hosted/pub.dev/flutter_local_notifications-14.1.1/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:24:25-76
 action#android.intent.action.MY_PACKAGE_REPLACED
 ADDED from [:flutter_local_notifications] /home/alecs-ink/.pub-cache/hosted/pub.dev/flutter_local_notifications-14.1.1/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:25:17-84
 	android:name

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.elitattoo.clients.app-mergeReleaseResources-89:/values-as/values-as.xml",
+            "outputFile": "com.elitattoo.clients.app-mergeReleaseResources-95:/values-as/values-as.xml",
             "map": [
                 {
                     "source": "/home/alecs-ink/.gradle/caches/8.10.2/transforms/abeed4f47a72eff8f5b4e9bf7f2f3c91/transformed/jetified-play-services-basement-18.3.0/res/values-as/values.xml",

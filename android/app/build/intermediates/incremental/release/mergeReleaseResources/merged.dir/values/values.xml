@@ -1821,10 +1821,6 @@
     <dimen name="preference_seekbar_value_minWidth">36dp</dimen>
     <dimen name="preferences_detail_width">300dp</dimen>
     <dimen name="preferences_header_width">384dp</dimen>
-    <dimen name="subtitle_corner_radius">2dp</dimen>
-    <dimen name="subtitle_outline_width">2dp</dimen>
-    <dimen name="subtitle_shadow_offset">2dp</dimen>
-    <dimen name="subtitle_shadow_radius">2dp</dimen>
     <dimen name="tooltip_corner_radius">2dp</dimen>
     <dimen name="tooltip_horizontal_padding">16dp</dimen>
     <dimen name="tooltip_margin">8dp</dimen>
@@ -1886,6 +1882,7 @@
     <item name="material_clock_face" type="id"/>
     <item name="material_clock_level" type="id"/>
     <item name="material_value_index" type="id"/>
+    <item name="media_controller_compat_view_tag" type="id"/>
     <item name="motion_base" type="id"/>
     <item name="mtrl_anchor_parent" type="id"/>
     <item name="mtrl_card_checked_layer_id" type="id"/>

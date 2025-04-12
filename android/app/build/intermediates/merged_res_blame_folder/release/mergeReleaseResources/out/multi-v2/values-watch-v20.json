@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.elitattoo.clients.app-mergeReleaseResources-89:/values-watch-v20/values-watch-v20.xml",
+            "outputFile": "com.elitattoo.clients.app-mergeReleaseResources-95:/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
                     "source": "/home/alecs-ink/.gradle/caches/8.10.2/transforms/41fd65a6a815b5614b87b654f9cfd65e/transformed/jetified-play-services-auth-21.0.0/res/values-watch-v20/values.xml",
