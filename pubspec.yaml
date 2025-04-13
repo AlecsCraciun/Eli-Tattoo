@@ -20,6 +20,11 @@ dependencies:
   firebase_database: ^10.4.4
   google_sign_in: ^6.2.1
   
+  # 🔹 Permissions & Settings
+  permission_handler: ^11.2.0
+  app_settings: ^5.0.0
+  device_info_plus: ^9.0.0
+
   # 🔹 Beacon & Sensors
   flutter_beacon:
     path: lib_beacon/flutter_beacon
@@ -42,6 +47,8 @@ dependencies:
   emoji_picker_flutter: ^1.6.3
   swipeable_tile: ^2.0.0+3
   timeago: ^3.6.0
+  glassmorphism_ui: ^0.3.0
+  glassmorphism: ^3.0.0
 
   # 🔹 State Management
   provider: ^6.1.1
@@ -59,10 +66,10 @@ dependencies:
   flutter_secure_storage: ^8.0.0
   image_picker: ^1.0.7
   path_provider: ^2.1.2
-  permission_handler: ^11.2.0
   connectivity_plus: ^5.0.2
   package_info_plus: ^4.0.0
   uuid: ^4.2.2
+  share_plus: ^7.2.1
 
   # 🔹 QR & Barcode
   qr_flutter: ^4.1.0
@@ -76,10 +83,6 @@ dependencies:
 
   # 🔹 Notificări locale
   flutter_local_notifications: ^14.1.1
-
-  # 🔹 UI Enhancements
-  glassmorphism_ui: ^0.3.0
-  glassmorphism: ^3.0.0
 
   # 🔹 🔐 Chei API (.env)
   flutter_dotenv: ^5.2.1

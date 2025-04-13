@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 import 'package:flutter_beacon/flutter_beacon.dart';
 import 'package:flutter_compass/flutter_compass.dart';
 import 'package:vibration/vibration.dart';
@@ -28,7 +27,8 @@ class VoucherTrackerScreen extends StatefulWidget {
   _VoucherTrackerScreenState createState() => _VoucherTrackerScreenState();
 }
 
-class _VoucherTrackerScreenState extends State<VoucherTrackerScreen> with SingleTickerProviderStateMixin {
+class _VoucherTrackerScreenState extends State<VoucherTrackerScreen> 
+    with SingleTickerProviderStateMixin {
   Position? _currentPosition;
   double _distance = double.infinity;
   double _bearing = 0.0;
@@ -37,7 +37,8 @@ class _VoucherTrackerScreenState extends State<VoucherTrackerScreen> with Single
   final AudioPlayer _audioPlayer = AudioPlayer();
   DateTime? _lastFeedbackTime;
   
-  final FlutterLocalNotificationsPlugin _notificationsPlugin = FlutterLocalNotificationsPlugin();
+  final FlutterLocalNotificationsPlugin _notificationsPlugin = 
+      FlutterLocalNotificationsPlugin();
   Stream<RangingResult>? _beaconStream;
   StreamSubscription<Position>? _positionStream;
   StreamSubscription<CompassEvent>? _compassStream;
@@ -53,13 +54,21 @@ class _VoucherTrackerScreenState extends State<VoucherTrackerScreen> with Single
     super.initState();
     _initServices();
     _initAnimations();
+    
+    // Debug logs
+    print('Inițializare VoucherTrackerScreen');
+    print('Coordonate țintă: ${widget.latitude}, ${widget.longitude}');
   }
 
   Future<void> _initServices() async {
-    await _initNotifications();
-    await _initLocationTracking();
-    await _initCompass();
-    await _initBeacon();
+    try {
+      await _initNotifications();
+      await _initLocationTracking();
+      await _initCompass();
+      await _initBeacon();
+    } catch (e) {
+      print('Eroare la inițializarea serviciilor: $e');
+    }
   }
 
   void _initAnimations() {
@@ -76,6 +85,7 @@ class _VoucherTrackerScreenState extends State<VoucherTrackerScreen> with Single
   Future<void> _initLocationTracking() async {
     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
+      print('Serviciile de localizare sunt dezactivate');
       return Future.error('Serviciile de localizare sunt dezactivate.');
     }
 
@@ -83,6 +93,7 @@ class _VoucherTrackerScreenState extends State<VoucherTrackerScreen> with Single
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
+        print('Permisiunile de localizare sunt refuzate');
         return Future.error('Permisiunile de localizare sunt refuzate');
       }
     }
@@ -93,6 +104,7 @@ class _VoucherTrackerScreenState extends State<VoucherTrackerScreen> with Single
         distanceFilter: 5,
       ),
     ).listen((Position position) {
+      print('Poziție actualizată: ${position.latitude}, ${position.longitude}');
       setState(() {
         _currentPosition = position;
         _updateDistanceAndBearing();
@@ -121,7 +133,7 @@ class _VoucherTrackerScreenState extends State<VoucherTrackerScreen> with Single
         identifier: 'EliVoucher',
         proximityUUID: '13CC7F8DF0C84AAAA000AAAAAAAAAAAA',
       );
-
+      
       _beaconStream = flutterBeacon.ranging([_region]);
       _beaconStream!.listen((RangingResult result) {
         if (result.beacons.isNotEmpty) {
@@ -133,7 +145,9 @@ class _VoucherTrackerScreenState extends State<VoucherTrackerScreen> with Single
             if (_distanceHistory.length > _filterWindowSize) {
               _distanceHistory.removeAt(0);
             }
-            final filteredDistance = _distanceHistory.reduce((a, b) => a + b) / _distanceHistory.length;
+            
+            final filteredDistance = _distanceHistory.reduce((a, b) => a + b) / 
+                _distanceHistory.length;
             
             setState(() {
               _usingBeacon = true;
@@ -159,6 +173,8 @@ class _VoucherTrackerScreenState extends State<VoucherTrackerScreen> with Single
     
     final gpsDistance = Geolocator.distanceBetween(lat1, lon1, lat2, lon2);
     final bearing = _calculateBearing(lat1, lon1, lat2, lon2);
+    
+    print('Distanță calculată: $gpsDistance metri');
     
     setState(() {
       _bearing = bearing;
@@ -193,6 +209,7 @@ class _VoucherTrackerScreenState extends State<VoucherTrackerScreen> with Single
       priority: Priority.high,
     );
     const notificationDetails = NotificationDetails(android: androidDetails);
+    
     await _notificationsPlugin.show(
       0,
       '🎉 Ești aproape de un voucher!',
@@ -203,12 +220,13 @@ class _VoucherTrackerScreenState extends State<VoucherTrackerScreen> with Single
 
   void _provideFeedback() async {
     if (_lastFeedbackTime != null && 
-        DateTime.now().difference(_lastFeedbackTime!) < const Duration(seconds: 2)) {
+        DateTime.now().difference(_lastFeedbackTime!) < 
+        const Duration(seconds: 2)) {
       return;
     }
     
     _lastFeedbackTime = DateTime.now();
-
+    
     if (_distance <= 50 && _distance > 30) {
       Vibration.vibrate(duration: 100, amplitude: 50);
       await _audioPlayer.play(AssetSource('sounds/far.mp3'));
@@ -357,7 +375,7 @@ class _VoucherTrackerScreenState extends State<VoucherTrackerScreen> with Single
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
+      backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text(
           widget.title,
@@ -367,30 +385,20 @@ class _VoucherTrackerScreenState extends State<VoucherTrackerScreen> with Single
             fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: Colors.black.withOpacity(0.3),
+        backgroundColor: Colors.black,
         elevation: 0,
         centerTitle: true,
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/background.png'),
-            fit: BoxFit.cover,
-            colorFilter: ColorFilter.mode(
-              Colors.black.withOpacity(0.5),
-              BlendMode.darken,
-            ),
-          ),
-        ),
-        child: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              _buildDistanceIndicator(),
-              _buildCompassArrow(),
-              _buildScanButton(),
-            ],
-          ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            _buildDistanceIndicator(),
+            _buildCompassArrow(),
+            _buildScanButton(),
+          ],
         ),
       ),
     );
