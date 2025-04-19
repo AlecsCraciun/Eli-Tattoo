@@ -10,10 +10,12 @@ import 'package:share_plus/share_plus.dart';
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/foundation.dart' show kIsWeb;
-import 'dart:html' as html;
 import 'package:eli_tattoo/screens/legal/privacy_policy_screen.dart';
 import 'package:eli_tattoo/screens/legal/terms_screen.dart';
 import 'package:eli_tattoo/screens/legal/gdpr_rights_screen.dart';
+// Importă funcția triggerDownload din fișierul corect
+import 'package:eli_tattoo/utils/gdpr_platform.dart';
+
 
 class GdprScreen extends StatefulWidget {
   const GdprScreen({Key? key}) : super(key: key);
@@ -172,16 +174,8 @@ class _GdprScreenState extends State<GdprScreen> {
       final jsonData = jsonEncode(allData);
       
       if (kIsWeb) {
-        final blob = html.Blob([jsonData]);
-        final url = html.Url.createObjectUrlFromBlob(blob);
-        final anchor = html.AnchorElement()
-          ..href = url
-          ..style.display = 'none'
-          ..download = 'my_data.json';
-        html.document.body?.children.add(anchor);
-        anchor.click();
-        html.document.body?.children.remove(anchor);
-        html.Url.revokeObjectUrl(url);
+        triggerDownload(jsonData);
+
       } else {
         final directory = await getApplicationDocumentsDirectory();
         final file = File('${directory.path}/my_data.json');

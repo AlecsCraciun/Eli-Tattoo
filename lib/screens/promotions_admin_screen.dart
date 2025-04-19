@@ -6,7 +6,6 @@ import 'package:glassmorphism/glassmorphism.dart';
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
 class PromotionsAdminScreen extends StatefulWidget {
@@ -67,7 +66,6 @@ class _PromotionsAdminScreenState extends State<PromotionsAdminScreen> {
 
   Future<String?> _uploadImage() async {
     if (_selectedImage == null && _webImage == null) return null;
-    
     try {
       String fileName = 'promotions/${DateTime.now().millisecondsSinceEpoch}.jpg';
       Reference ref = _storage.ref().child(fileName);
@@ -172,6 +170,8 @@ class _PromotionsAdminScreenState extends State<PromotionsAdminScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -203,7 +203,7 @@ class _PromotionsAdminScreenState extends State<PromotionsAdminScreen> {
                   if (_showAddForm) ...[
                     GlassmorphicContainer(
                       width: double.infinity,
-                      height: 680,
+                      height: screenHeight * 0.8,
                       borderRadius: 20,
                       blur: 20,
                       alignment: Alignment.center,
@@ -217,201 +217,202 @@ class _PromotionsAdminScreenState extends State<PromotionsAdminScreen> {
                       borderGradient: const LinearGradient(
                         colors: [Colors.white54, Colors.white24],
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              "Adaugă Promoție Nouă",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
+                      child: SingleChildScrollView(
+                        child: Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                "Adaugă Promoție Nouă",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                            const SizedBox(height: 20),
-                            TextField(
-                              controller: titleController,
-                              decoration: InputDecoration(
-                                labelText: "Titlu Promoție",
-                                labelStyle: const TextStyle(color: Colors.white70),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                  borderSide: const BorderSide(color: Colors.white30),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                  borderSide: const BorderSide(color: Colors.white),
-                                ),
-                                filled: true,
-                                fillColor: Colors.white.withOpacity(0.1),
-                              ),
-                              style: const TextStyle(color: Colors.white),
-                            ),
-                            const SizedBox(height: 16),
-                            TextField(
-                              controller: descriptionController,
-                              maxLines: 3,
-                              decoration: InputDecoration(
-                                labelText: "Descriere",
-                                labelStyle: const TextStyle(color: Colors.white70),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                  borderSide: const BorderSide(color: Colors.white30),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                  borderSide: const BorderSide(color: Colors.white),
-                                ),
-                                filled: true,
-                                fillColor: Colors.white.withOpacity(0.1),
-                              ),
-                              style: const TextStyle(color: Colors.white),
-                            ),
-                            const SizedBox(height: 16),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: TextField(
-                                    controller: linkTextController,
-                                    decoration: InputDecoration(
-                                      labelText: "Text Link",
-                                      labelStyle: const TextStyle(color: Colors.white70),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(8),
-                                        borderSide: const BorderSide(color: Colors.white30),
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(8),
-                                        borderSide: const BorderSide(color: Colors.white),
-                                      ),
-                                      filled: true,
-                                      fillColor: Colors.white.withOpacity(0.1),
-                                    ),
-                                    style: const TextStyle(color: Colors.white),
+                              const SizedBox(height: 20),
+                              TextField(
+                                controller: titleController,
+                                decoration: InputDecoration(
+                                  labelText: "Titlu Promoție",
+                                  labelStyle: const TextStyle(color: Colors.white70),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                    borderSide: const BorderSide(color: Colors.white30),
                                   ),
-                                ),
-                                const SizedBox(width: 16),
-                                Expanded(
-                                  child: TextField(
-                                    controller: linkUrlController,
-                                    decoration: InputDecoration(
-                                      labelText: "URL",
-                                      labelStyle: const TextStyle(color: Colors.white70),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(8),
-                                        borderSide: const BorderSide(color: Colors.white30),
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(8),
-                                        borderSide: const BorderSide(color: Colors.white),
-                                      ),
-                                      filled: true,
-                                      fillColor: Colors.white.withOpacity(0.1),
-                                    ),
-                                    style: const TextStyle(color: Colors.white),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                    borderSide: const BorderSide(color: Colors.white),
                                   ),
+                                  filled: true,
+                                  fillColor: Colors.white.withOpacity(0.1),
                                 ),
-                              ],
-                            ),
-                            const SizedBox(height: 20),
-                            Container(
-                              height: 200,
-                              decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.1),
-                                borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: Colors.white30),
+                                style: const TextStyle(color: Colors.white),
                               ),
-                              child: _selectedImage != null
-                                  ? Image.file(_selectedImage!, fit: BoxFit.cover)
-                                  : _webImage != null
-                                      ? Image.memory(_webImage!, fit: BoxFit.cover)
-                                      : const Center(
-                                          child: Column(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Icon(
-                                                Icons.image_outlined,
-                                                color: Colors.white70,
-                                                size: 48,
-                                              ),
-                                              SizedBox(height: 8),
-                                              Text(
-                                                "Selectează o imagine",
-                                                style: TextStyle(color: Colors.white70),
-                                              ),
-                                            ],
+                              const SizedBox(height: 16),
+                              TextField(
+                                controller: descriptionController,
+                                maxLines: 3,
+                                decoration: InputDecoration(
+                                  labelText: "Descriere",
+                                  labelStyle: const TextStyle(color: Colors.white70),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                    borderSide: const BorderSide(color: Colors.white30),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                    borderSide: const BorderSide(color: Colors.white),
+                                  ),
+                                  filled: true,
+                                  fillColor: Colors.white.withOpacity(0.1),
+                                ),
+                                style: const TextStyle(color: Colors.white),
+                              ),
+                              const SizedBox(height: 16),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: TextField(
+                                      controller: linkTextController,
+                                      decoration: InputDecoration(
+                                        labelText: "Text Link",
+                                        labelStyle: const TextStyle(color: Colors.white70),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(8),
+                                          borderSide: const BorderSide(color: Colors.white30),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(8),
+                                          borderSide: const BorderSide(color: Colors.white),
+                                        ),
+                                        filled: true,
+                                        fillColor: Colors.white.withOpacity(0.1),
+                                      ),
+                                      style: const TextStyle(color: Colors.white),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 16),
+                                  Expanded(
+                                    child: TextField(
+                                      controller: linkUrlController,
+                                      decoration: InputDecoration(
+                                        labelText: "URL",
+                                        labelStyle: const TextStyle(color: Colors.white70),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(8),
+                                          borderSide: const BorderSide(color: Colors.white30),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(8),
+                                          borderSide: const BorderSide(color: Colors.white),
+                                        ),
+                                        filled: true,
+                                        fillColor: Colors.white.withOpacity(0.1),
+                                      ),
+                                      style: const TextStyle(color: Colors.white),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 20),
+                              Container(
+                                height: 200,
+                                decoration: BoxDecoration(
+                                  color: Colors.white.withOpacity(0.1),
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(color: Colors.white30),
+                                ),
+                                child: _selectedImage != null
+                                    ? Image.file(_selectedImage!, fit: BoxFit.cover)
+                                    : _webImage != null
+                                        ? Image.memory(_webImage!, fit: BoxFit.cover)
+                                        : const Center(
+                                            child: Column(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                Icon(
+                                                  Icons.image_outlined,
+                                                  color: Colors.white70,
+                                                  size: 48,
+                                                ),
+                                                SizedBox(height: 8),
+                                                Text(
+                                                  "Selectează o imagine",
+                                                  style: TextStyle(color: Colors.white70),
+                                                ),
+                                              ],
+                                            ),
                                           ),
+                              ),
+                              const SizedBox(height: 20),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: ElevatedButton.icon(
+                                      onPressed: _pickImage,
+                                      icon: const Icon(Icons.image),
+                                      label: const Text("Alege Imagine"),
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.green.withOpacity(0.8),
+                                        padding: const EdgeInsets.symmetric(vertical: 16),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(10),
                                         ),
-                            ),
-                            const SizedBox(height: 20),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: ElevatedButton.icon(
-                                    onPressed: _pickImage,
-                                    icon: const Icon(Icons.image),
-                                    label: const Text("Alege Imagine"),
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.green.withOpacity(0.8),
-                                      padding: const EdgeInsets.symmetric(vertical: 16),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10),
                                       ),
                                     ),
                                   ),
-                                ),
-                                const SizedBox(width: 16),
-                                Expanded(
-                                  child: ElevatedButton.icon(
-                                    onPressed: _pickExpiryDate,
-                                    icon: const Icon(Icons.calendar_today),
-                                    label: Text(
-                                      _selectedExpiryDate == null
-                                          ? "Alege data"
-                                          : DateFormat('yyyy-MM-dd')
-                                              .format(_selectedExpiryDate!),
-                                    ),
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.blue.withOpacity(0.8),
-                                      padding: const EdgeInsets.symmetric(vertical: 16),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10),
+                                  const SizedBox(width: 16),
+                                  Expanded(
+                                    child: ElevatedButton.icon(
+                                      onPressed: _pickExpiryDate,
+                                      icon: const Icon(Icons.calendar_today),
+                                      label: Text(
+                                        _selectedExpiryDate == null
+                                            ? "Alege data"
+                                            : DateFormat('yyyy-MM-dd').format(_selectedExpiryDate!),
+                                      ),
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.blue.withOpacity(0.8),
+                                        padding: const EdgeInsets.symmetric(vertical: 16),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(10),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 20),
-                            SizedBox(
-                              width: double.infinity,
-                              child: ElevatedButton.icon(
-                                onPressed: _isUploading ? null : _addPromotion,
-                                icon: _isUploading
-                                    ? const SizedBox(
-                                        width: 20,
-                                        height: 20,
-                                        child: CircularProgressIndicator(
-                                          color: Colors.white,
-                                        ),
-                                      )
-                                    : const Icon(Icons.add),
-                                label: Text(
-                                  _isUploading ? "Se încarcă..." : "Adaugă Promoție",
-                                  style: const TextStyle(fontSize: 16),
-                                ),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.deepOrange.withOpacity(0.8),
-                                  padding: const EdgeInsets.symmetric(vertical: 20),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                                                    ),
+                                ],
+                              ),
+                              const SizedBox(height: 20),
+                              SizedBox(
+                                width: double.infinity,
+                                child: ElevatedButton.icon(
+                                  onPressed: _isUploading ? null : _addPromotion,
+                                  icon: _isUploading
+                                      ? const SizedBox(
+                                          width: 20,
+                                          height: 20,
+                                          child: CircularProgressIndicator(
+                                            color: Colors.white,
+                                          ),
+                                        )
+                                      : const Icon(Icons.add),
+                                  label: Text(
+                                    _isUploading ? "Se încarcă..." : "Adaugă Promoție",
+                                    style: const TextStyle(fontSize: 16),
+                                  ),
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.deepOrange.withOpacity(0.8),
+                                    padding: const EdgeInsets.symmetric(vertical: 20),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -448,16 +449,15 @@ class _PromotionsAdminScreenState extends State<PromotionsAdminScreen> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: const [
-                              Icon(Icons.campaign_outlined, 
-                                   color: Colors.white70, 
-                                   size: 64),
+                              Icon(
+                                Icons.campaign_outlined,
+                                color: Colors.white70,
+                                size: 64,
+                              ),
                               SizedBox(height: 16),
                               Text(
                                 "Nu există promoții active",
-                                style: TextStyle(
-                                  color: Colors.white70, 
-                                  fontSize: 18
-                                ),
+                                style: TextStyle(color: Colors.white70, fontSize: 18),
                               ),
                             ],
                           ),
@@ -471,10 +471,8 @@ class _PromotionsAdminScreenState extends State<PromotionsAdminScreen> {
                         itemBuilder: (context, index) {
                           final doc = promotions[index];
                           final data = doc.data() as Map<String, dynamic>;
-                          final DateTime expiryDate = 
-                              DateTime.parse(data['expiraLa']);
-                          final bool isExpired = 
-                              expiryDate.isBefore(DateTime.now());
+                          final DateTime expiryDate = DateTime.parse(data['expiraLa']);
+                          final bool isExpired = expiryDate.isBefore(DateTime.now());
 
                           return Padding(
                             padding: const EdgeInsets.only(bottom: 12.0),
@@ -497,73 +495,81 @@ class _PromotionsAdminScreenState extends State<PromotionsAdminScreen> {
                                   Colors.white24.withOpacity(isExpired ? 0.3 : 1),
                                 ],
                               ),
-                              child: ListTile(
-                                contentPadding: const EdgeInsets.all(16),
-                                leading: Container(
-                                  width: 80,
-                                  height: 80,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    image: DecorationImage(
-                                      image: NetworkImage(data['imagine']),
-                                      fit: BoxFit.cover,
-                                      colorFilter: isExpired
-                                          ? ColorFilter.mode(
-                                              Colors.grey.withOpacity(0.7),
-                                              BlendMode.saturation,
-                                            )
-                                          : null,
-                                    ),
-                                  ),
-                                ),
-                                title: Text(
-                                  data['titlu'],
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    decoration: isExpired 
-                                        ? TextDecoration.lineThrough 
-                                        : null,
-                                  ),
-                                ),
-                                subtitle: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                              child: Padding(
+                                padding: const EdgeInsets.all(16.0),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Text(
-                                      data['descriere'],
-                                      style: TextStyle(
-                                        color: Colors.white70,
-                                        decoration: isExpired 
-                                            ? TextDecoration.lineThrough 
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(10),
+                                      child: Image.network(
+                                        data['imagine'],
+                                        width: 80,
+                                        height: 80,
+                                        fit: BoxFit.cover,
+                                        color: isExpired
+                                            ? Colors.grey.withOpacity(0.7)
                                             : null,
+                                        colorBlendMode: BlendMode.saturation,
                                       ),
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
                                     ),
-                                    const SizedBox(height: 4),
-                                    Text(
-                                      "Expiră la: ${DateFormat('yyyy-MM-dd').format(expiryDate)}",
-                                      style: TextStyle(
-                                        color: isExpired 
-                                            ? Colors.red.withOpacity(0.7) 
-                                            : Colors.green,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500,
+                                    const SizedBox(width: 16),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Text(
+                                            data['titlu'],
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold,
+                                              decoration: isExpired
+                                                  ? TextDecoration.lineThrough
+                                                  : null,
+                                            ),
+                                          ),
+                                          const SizedBox(height: 4),
+                                          Text(
+                                            data['descriere'],
+                                            style: TextStyle(
+                                              color: Colors.white70,
+                                              decoration: isExpired
+                                                  ? TextDecoration.lineThrough
+                                                  : null,
+                                            ),
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                          const SizedBox(height: 4),
+                                          Text(
+                                            "Expiră la: ${DateFormat('yyyy-MM-dd').format(expiryDate)}",
+                                            style: TextStyle(
+                                              color: isExpired
+                                                  ? Colors.red.withOpacity(0.7)
+                                                  : Colors.green,
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Center(
+                                      child: IconButton(
+                                        icon: const Icon(
+                                          Icons.delete_outline,
+                                          color: Colors.red,
+                                          size: 28,
+                                        ),
+                                        onPressed: () => _deletePromotion(
+                                          doc.id,
+                                          data['imagine'],
+                                        ),
                                       ),
                                     ),
                                   ],
-                                ),
-                                trailing: IconButton(
-                                  icon: const Icon(
-                                    Icons.delete_outline,
-                                    color: Colors.red,
-                                    size: 28,
-                                  ),
-                                  onPressed: () => _deletePromotion(
-                                    doc.id,
-                                    data['imagine'],
-                                  ),
                                 ),
                               ),
                             ),
@@ -581,4 +587,3 @@ class _PromotionsAdminScreenState extends State<PromotionsAdminScreen> {
     );
   }
 }
-

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.elitattoo.clients.app-mergeReleaseResources-95:/values-v26/values-v26.xml",
+            "outputFile": "com.elitattoo.clients.app-mergeReleaseResources-97:/values-v26/values-v26.xml",
             "map": [
                 {
-                    "source": "/home/alecs-ink/.gradle/caches/8.10.2/transforms/67e431d42222568371fff0afd22bbdc6/transformed/appcompat-1.6.1/res/values-v26/values-v26.xml",
+                    "source": "/home/alecs-ink/.gradle/caches/8.9/transforms/ddfc4de3dd534a416cd05eaee1b9889d/transformed/appcompat-1.6.1/res/values-v26/values-v26.xml",
                     "from": {
                         "startLines": "2,3,4,8,12,16",
                         "startColumns": "4,4,4,4,4,4",

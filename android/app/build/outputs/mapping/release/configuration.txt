@@ -28,6 +28,8 @@
 -keep class com.google.mlkit.common.internal.MlKitComponentDiscoveryService { <init>(); }
 -keep class com.google.mlkit.common.internal.MlKitInitProvider { <init>(); }
 -keep class com.lyokone.location.FlutterLocationService { <init>(); }
+-keep class dev.fluttercommunity.plus.share.ShareFileProvider { <init>(); }
+-keep class dev.fluttercommunity.plus.share.SharePlusPendingIntent { <init>(); }
 -keep class io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingBackgroundService { <init>(); }
 -keep class io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingInitProvider { <init>(); }
 -keep class io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingReceiver { <init>(); }
@@ -248,10 +250,10 @@
 -keep,allowshrinking,allowobfuscation class <1>
 
 # End of content from /home/alecs-ink/flutter/packages/flutter_tools/gradle/flutter_proguard_rules.pro
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/proguard.txt
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/7503c3bf4ab106797df546908029698f/transformed/material-1.11.0/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/a2305f6979c027688806bed2cff11441/transformed/material-1.11.0/proguard.txt
 # Copyright (C) 2015 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -299,7 +301,7 @@
 }
 
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/7503c3bf4ab106797df546908029698f/transformed/material-1.11.0/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/a2305f6979c027688806bed2cff11441/transformed/material-1.11.0/proguard.txt
 # The proguard configuration file for the following section is /home/alecs-ink/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.27/android/build/intermediates/consumer_proguard_dir/release/exportReleaseConsumerProguardFiles/lib0/proguard.txt
 # The point of this package is to specify that a dependent plugin intends to
 # use the AndroidX lifecycle classes. Make sure no R8 heuristics shrink classes
@@ -324,7 +326,7 @@
 }
 
 # End of content from /home/alecs-ink/.pub-cache/hosted/pub.dev/mobile_scanner-3.5.7/android/build/intermediates/consumer_proguard_dir/release/exportReleaseConsumerProguardFiles/lib0/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/15ffd9a7ca617c85cc12267461976e4a/transformed/jetified-camera-core-1.3.1/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/89f28c2fe58d8954e60c219b7f32305a/transformed/jetified-camera-core-1.3.1/proguard.txt
 # Copyright (C) 2023 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -343,8 +345,8 @@
 # please see b/278818703.
 -keep,allowobfuscation,allowshrinking class ** implements androidx.camera.core.impl.Quirk
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/15ffd9a7ca617c85cc12267461976e4a/transformed/jetified-camera-core-1.3.1/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/c091dce789e802e9021e6fe2a76e431a/transformed/jetified-camera-camera2-1.3.1/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/89f28c2fe58d8954e60c219b7f32305a/transformed/jetified-camera-core-1.3.1/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/e71701d2a2dbbac054ff366c03f5acd7/transformed/jetified-camera-camera2-1.3.1/proguard.txt
 # Copyright (C) 2020 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -362,8 +364,8 @@
 # This is necessary for default initialization using Camera2Config
 -keep public class androidx.camera.camera2.Camera2Config$DefaultProvider { *; }
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/c091dce789e802e9021e6fe2a76e431a/transformed/jetified-camera-camera2-1.3.1/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/0098a6e93522fecc805d8900172003dc/transformed/preference-1.2.1/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/e71701d2a2dbbac054ff366c03f5acd7/transformed/jetified-camera-camera2-1.3.1/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/f78e9faac5e46b4041f530b1f9f35b80/transformed/preference-1.2.1/proguard.txt
 # Copyright (C) 2015 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -386,8 +388,8 @@
     public <init>(android.content.Context, android.util.AttributeSet);
 }
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/0098a6e93522fecc805d8900172003dc/transformed/preference-1.2.1/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/67e431d42222568371fff0afd22bbdc6/transformed/appcompat-1.6.1/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/f78e9faac5e46b4041f530b1f9f35b80/transformed/preference-1.2.1/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/ddfc4de3dd534a416cd05eaee1b9889d/transformed/appcompat-1.6.1/proguard.txt
 # Copyright (C) 2018 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -411,8 +413,8 @@
   <methods>;
 }
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/67e431d42222568371fff0afd22bbdc6/transformed/appcompat-1.6.1/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/c9ca8a45334a59e7b1dab4e619a1512f/transformed/coordinatorlayout-1.1.0/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/ddfc4de3dd534a416cd05eaee1b9889d/transformed/appcompat-1.6.1/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/b2f84a6cfe4c9cbe6b53533398fb65e6/transformed/coordinatorlayout-1.1.0/proguard.txt
 # Copyright (C) 2016 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -436,8 +438,8 @@
 # Make sure we keep annotations for CoordinatorLayout's DefaultBehavior and ViewPager's DecorView
 -keepattributes *Annotation*
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/c9ca8a45334a59e7b1dab4e619a1512f/transformed/coordinatorlayout-1.1.0/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/a4220b5ee723fba7acc664a2b5c85228/transformed/vectordrawable-animated-1.1.0/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/b2f84a6cfe4c9cbe6b53533398fb65e6/transformed/coordinatorlayout-1.1.0/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/c47c316d5dde5fa11f208ab5549bb02e/transformed/vectordrawable-animated-1.1.0/proguard.txt
 # Copyright (C) 2016 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -458,8 +460,8 @@
    *** get*();
 }
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/a4220b5ee723fba7acc664a2b5c85228/transformed/vectordrawable-animated-1.1.0/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/2c7a28485314ee0e74d343b62dcecbb6/transformed/media-1.7.0/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/c47c316d5dde5fa11f208ab5549bb02e/transformed/vectordrawable-animated-1.1.0/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/a82d6aa75d6baaec383a394ac3912179/transformed/media-1.7.0/proguard.txt
 # Copyright (C) 2017 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -483,8 +485,8 @@
 -keep class androidx.media.** implements android.os.Parcelable {
     public static final android.os.Parcelable$Creator *;
 }
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/2c7a28485314ee0e74d343b62dcecbb6/transformed/media-1.7.0/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/a82d6aa75d6baaec383a394ac3912179/transformed/media-1.7.0/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/c737962ecf4e7ec5815ddb56536c6cd8/transformed/jetified-firebase-auth-22.3.1/proguard.txt
 -dontwarn com.google.appengine.api.**
 -dontwarn okio.**
 -dontwarn org.apache.**
@@ -513,8 +515,8 @@
   <fields>;
 }
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/adb6e8489a85a46611751c062b4a2e8d/transformed/jetified-firebase-firestore-24.11.0/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/c737962ecf4e7ec5815ddb56536c6cd8/transformed/jetified-firebase-auth-22.3.1/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/a79f32e7e6fb00cf245d028e4cdeb5b0/transformed/jetified-firebase-firestore-24.11.0/proguard.txt
 # Needed for DNS resolution.  Present in OpenJDK, but not Android
 -dontwarn javax.naming.**
 
@@ -534,8 +536,8 @@
 -dontwarn okio.**
 -dontwarn com.google.j2objc.annotations.**
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/adb6e8489a85a46611751c062b4a2e8d/transformed/jetified-firebase-firestore-24.11.0/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/51b235d850b37c8d41b8481383af3675/transformed/jetified-play-services-auth-base-18.0.10/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/a79f32e7e6fb00cf245d028e4cdeb5b0/transformed/jetified-firebase-firestore-24.11.0/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/4683f708cf799a7f8e9b824740ba9b9b/transformed/jetified-play-services-auth-base-18.0.10/proguard.txt
 # We keep all fields for every generated proto file as the runtime uses
 # reflection over them that ProGuard cannot detect. Without this keep
 # rule, fields may be removed that would cause runtime failures.
@@ -543,14 +545,14 @@
   <fields>;
 }
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/51b235d850b37c8d41b8481383af3675/transformed/jetified-play-services-auth-base-18.0.10/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/3bd12c6cbfbbfc347f55413e1c4b070a/transformed/jetified-play-services-fido-20.0.1/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/4683f708cf799a7f8e9b824740ba9b9b/transformed/jetified-play-services-auth-base-18.0.10/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/ef4bf995cc58c24e4f0f8a39af495fae/transformed/jetified-play-services-fido-20.0.1/proguard.txt
 # Methods enable and disable in this class are complained as unresolved
 # references, but they are system APIs and are not used by Fido client apps.
 -dontwarn android.nfc.NfcAdapter
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/3bd12c6cbfbbfc347f55413e1c4b070a/transformed/jetified-play-services-fido-20.0.1/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/dfcd323e6841826ff25a6ffa6e85df24/transformed/jetified-barcode-scanning-17.2.0/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/ef4bf995cc58c24e4f0f8a39af495fae/transformed/jetified-play-services-fido-20.0.1/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/7e26896982dffb1638dde2fc3d2aae30/transformed/jetified-barcode-scanning-17.2.0/proguard.txt
 # We keep all fields for every generated proto file as the runtime uses
 # reflection over them that ProGuard cannot detect. Without this keep
 # rule, fields may be removed that would cause runtime failures.
@@ -564,8 +566,8 @@
     native <methods>;
 }
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/dfcd323e6841826ff25a6ffa6e85df24/transformed/jetified-barcode-scanning-17.2.0/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/fc5d6015c2437c3ed3888a4f1189a14d/transformed/jetified-common-18.9.0/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/7e26896982dffb1638dde2fc3d2aae30/transformed/jetified-barcode-scanning-17.2.0/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/5db4464ca5b9701c0ca84f72e93d9adf/transformed/jetified-common-18.9.0/proguard.txt
 # Annotations are implemented as attributes, so we have to explicitly keep them.
 # Catch all which encompasses attributes like RuntimeVisibleParameterAnnotations
 # and RuntimeVisibleTypeAnnotations
@@ -587,8 +589,8 @@
     @com.google.android.apps.common.proguard.UsedBy* *;
 }
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/fc5d6015c2437c3ed3888a4f1189a14d/transformed/jetified-common-18.9.0/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/9db9b81a577112600e8d2ee7b5450923/transformed/jetified-play-services-base-18.3.0/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/5db4464ca5b9701c0ca84f72e93d9adf/transformed/jetified-common-18.9.0/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/754bc4a02d6bcf9e2bc91d4b8d59dfab/transformed/jetified-play-services-base-18.3.0/proguard.txt
 # b/35135904 Ensure that proguard will not strip the mResultGuardian.
 -keepclassmembers class com.google.android.gms.common.api.internal.BasePendingResult {
   com.google.android.gms.common.api.internal.BasePendingResult$ReleasableResultGuardian mResultGuardian;
@@ -596,8 +598,8 @@
 
 
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/9db9b81a577112600e8d2ee7b5450923/transformed/jetified-play-services-base-18.3.0/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/b623c3e55fcf5221a64a80614426afbd/transformed/jetified-play-services-measurement-api-21.6.1/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/754bc4a02d6bcf9e2bc91d4b8d59dfab/transformed/jetified-play-services-base-18.3.0/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/3ae933ae769b5aafb83489c4222edd74/transformed/jetified-play-services-measurement-api-21.6.1/proguard.txt
 # Can be removed once we pull in a dependency on firebase-common that includes
 # https://github.com/firebase/firebase-android-sdk/pull/1472/commits/856f1ca1151cdd88679bbc778892f23dfa34fc06#diff-a2ed34b5a38b4c6c686b09e54865eb48
 -dontwarn com.google.auto.value.AutoValue
@@ -610,21 +612,21 @@
   <fields>;
 }
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/b623c3e55fcf5221a64a80614426afbd/transformed/jetified-play-services-measurement-api-21.6.1/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/ce52788a58cccaeb8e26ccb3742a5810/transformed/jetified-firebase-auth-interop-20.0.0/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/3ae933ae769b5aafb83489c4222edd74/transformed/jetified-play-services-measurement-api-21.6.1/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/4fd5728e3477610f6a7a62043a798dfc/transformed/jetified-firebase-auth-interop-20.0.0/proguard.txt
 # Can be removed once we pull in a dependency on firebase-common that includes
 # https://github.com/firebase/firebase-android-sdk/pull/1472/commits/856f1ca1151cdd88679bbc778892f23dfa34fc06#diff-a2ed34b5a38b4c6c686b09e54865eb48
 -dontwarn com.google.auto.value.AutoValue
 -dontwarn com.google.auto.value.AutoValue$Builder
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/ce52788a58cccaeb8e26ccb3742a5810/transformed/jetified-firebase-auth-interop-20.0.0/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/7753fbb9eb20d93e79e4caf23f22802c/transformed/jetified-firebase-common-20.4.3/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/4fd5728e3477610f6a7a62043a798dfc/transformed/jetified-firebase-auth-interop-20.0.0/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/e32fd470e544b71cc917e2abc3e127e5/transformed/jetified-firebase-common-20.4.3/proguard.txt
 -dontwarn com.google.firebase.platforminfo.KotlinDetector
 -dontwarn com.google.auto.value.AutoValue
 -dontwarn com.google.auto.value.AutoValue$Builder
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/7753fbb9eb20d93e79e4caf23f22802c/transformed/jetified-firebase-common-20.4.3/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/5fdaf0860f29f6cf362db9df42e1364e/transformed/jetified-recaptcha-18.4.0/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/e32fd470e544b71cc917e2abc3e127e5/transformed/jetified-firebase-common-20.4.3/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/d633ce462cec33e6526ce99db5e33760/transformed/jetified-recaptcha-18.4.0/proguard.txt
 # Proguard cannot process META-INF/versions/9.
 # See https://discuss.gradle.org/t/meta-inf-version-duplicate-error-when-using-proguard/31380
 -dontwarn module-info
@@ -653,8 +655,8 @@
   <fields>;
 }
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/5fdaf0860f29f6cf362db9df42e1364e/transformed/jetified-recaptcha-18.4.0/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/5093ab42d2307deb2d7ac0b7f5718c38/transformed/jetified-window-1.2.0/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/d633ce462cec33e6526ce99db5e33760/transformed/jetified-recaptcha-18.4.0/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/5634259c0af1587d404b3176bd1596e6/transformed/jetified-window-1.2.0/proguard.txt
 # Copyright (C) 2020 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -682,14 +684,14 @@
 }
 # Required for window area API reflection guard
 -keep interface androidx.window.area.reflectionguard.* {*;}
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/5093ab42d2307deb2d7ac0b7f5718c38/transformed/jetified-window-1.2.0/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/4d91208c3ff867f77373dd8bd3521990/transformed/rules/lib/META-INF/proguard/androidx.datastore_datastore-preferences-core.pro
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/5634259c0af1587d404b3176bd1596e6/transformed/jetified-window-1.2.0/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/6b71a333d69f38f96847391120aa6f49/transformed/rules/lib/META-INF/proguard/androidx.datastore_datastore-preferences-core.pro
 -keepclassmembers class * extends androidx.datastore.preferences.protobuf.GeneratedMessageLite {
     <fields>;
 }
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/4d91208c3ff867f77373dd8bd3521990/transformed/rules/lib/META-INF/proguard/androidx.datastore_datastore-preferences-core.pro
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/130f9d14b87c5cf07adde5e837f14ab6/transformed/jetified-play-services-measurement-21.6.1/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/6b71a333d69f38f96847391120aa6f49/transformed/rules/lib/META-INF/proguard/androidx.datastore_datastore-preferences-core.pro
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/1dc5f0e357d0a10d4a4a5523c256e684/transformed/jetified-play-services-measurement-21.6.1/proguard.txt
 # We keep all fields for every generated proto file as the runtime uses
 # reflection over them that ProGuard cannot detect. Without this keep
 # rule, fields may be removed that would cause runtime failures.
@@ -697,8 +699,8 @@
   <fields>;
 }
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/130f9d14b87c5cf07adde5e837f14ab6/transformed/jetified-play-services-measurement-21.6.1/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/450f06705d74c02577b16de7b796b0d1/transformed/jetified-play-services-measurement-sdk-21.6.1/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/1dc5f0e357d0a10d4a4a5523c256e684/transformed/jetified-play-services-measurement-21.6.1/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/1a7f949fbd46c68ed54e9e3e5dfa2ead/transformed/jetified-play-services-measurement-sdk-21.6.1/proguard.txt
 # We keep all fields for every generated proto file as the runtime uses
 # reflection over them that ProGuard cannot detect. Without this keep
 # rule, fields may be removed that would cause runtime failures.
@@ -706,8 +708,8 @@
   <fields>;
 }
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/450f06705d74c02577b16de7b796b0d1/transformed/jetified-play-services-measurement-sdk-21.6.1/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/4834c8be4c55fb19c26dbb74ac5fbb94/transformed/jetified-play-services-measurement-impl-21.6.1/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/1a7f949fbd46c68ed54e9e3e5dfa2ead/transformed/jetified-play-services-measurement-sdk-21.6.1/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/381a5559413990a6de1aa4c72e5b5938/transformed/jetified-play-services-measurement-impl-21.6.1/proguard.txt
 # We keep all fields for every generated proto file as the runtime uses
 # reflection over them that ProGuard cannot detect. Without this keep
 # rule, fields may be removed that would cause runtime failures.
@@ -715,8 +717,8 @@
   <fields>;
 }
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/4834c8be4c55fb19c26dbb74ac5fbb94/transformed/jetified-play-services-measurement-impl-21.6.1/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/c7156a54e8f0502a1f8f57797d8b3e6e/transformed/jetified-lifecycle-viewmodel-savedstate-2.7.0/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/381a5559413990a6de1aa4c72e5b5938/transformed/jetified-play-services-measurement-impl-21.6.1/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/bb166a6280ee22ea7c32e1df55497582/transformed/jetified-lifecycle-viewmodel-savedstate-2.7.0/proguard.txt
 -keepclassmembers,allowobfuscation class * extends androidx.lifecycle.ViewModel {
     <init>(androidx.lifecycle.SavedStateHandle);
 }
@@ -725,8 +727,8 @@
     <init>(android.app.Application,androidx.lifecycle.SavedStateHandle);
 }
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/c7156a54e8f0502a1f8f57797d8b3e6e/transformed/jetified-lifecycle-viewmodel-savedstate-2.7.0/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/1b91be3af319ede480d7185430690ee1/transformed/lifecycle-viewmodel-2.7.0/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/bb166a6280ee22ea7c32e1df55497582/transformed/jetified-lifecycle-viewmodel-savedstate-2.7.0/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/ca019841235a657cf893b24e8b6a1133/transformed/lifecycle-viewmodel-2.7.0/proguard.txt
 -keepclassmembers,allowobfuscation class * extends androidx.lifecycle.ViewModel {
     <init>();
 }
@@ -735,8 +737,8 @@
     <init>(android.app.Application);
 }
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/1b91be3af319ede480d7185430690ee1/transformed/lifecycle-viewmodel-2.7.0/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/46b66fdd6023c785ed6f4a14161280a9/transformed/rules/lib/META-INF/com.android.tools/r8/coroutines.pro
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/ca019841235a657cf893b24e8b6a1133/transformed/lifecycle-viewmodel-2.7.0/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/9879774a029921a0e6e7d7d9c38e2d3b/transformed/rules/lib/META-INF/com.android.tools/r8/coroutines.pro
 # When editing this file, update the following files as well:
 # - META-INF/proguard/coroutines.pro
 # - META-INF/com.android.tools/proguard/coroutines.pro
@@ -764,12 +766,12 @@
 
 # An annotation used for build tooling, won't be directly accessed.
 -dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/46b66fdd6023c785ed6f4a14161280a9/transformed/rules/lib/META-INF/com.android.tools/r8/coroutines.pro
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/7b180219ad72ca48e76b8a5127003ab7/transformed/jetified-play-services-tasks-18.1.0/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/9879774a029921a0e6e7d7d9c38e2d3b/transformed/rules/lib/META-INF/com.android.tools/r8/coroutines.pro
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/d2576c0e2a6a29e18a4d79ba2dac8981/transformed/jetified-play-services-tasks-18.1.0/proguard.txt
 
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/7b180219ad72ca48e76b8a5127003ab7/transformed/jetified-play-services-tasks-18.1.0/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/465f70a3b9abe5f7b12cb30c32cfcaea/transformed/jetified-play-services-measurement-sdk-api-21.6.1/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/d2576c0e2a6a29e18a4d79ba2dac8981/transformed/jetified-play-services-tasks-18.1.0/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/617f66b2a56e82c807159e045e123ced/transformed/jetified-play-services-measurement-sdk-api-21.6.1/proguard.txt
 # We keep all fields for every generated proto file as the runtime uses
 # reflection over them that ProGuard cannot detect. Without this keep
 # rule, fields may be removed that would cause runtime failures.
@@ -777,8 +779,8 @@
   <fields>;
 }
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/465f70a3b9abe5f7b12cb30c32cfcaea/transformed/jetified-play-services-measurement-sdk-api-21.6.1/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/8b1a7bccb5e8a3637c96ea5689f2c722/transformed/jetified-play-services-measurement-base-21.6.1/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/617f66b2a56e82c807159e045e123ced/transformed/jetified-play-services-measurement-sdk-api-21.6.1/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/2a0f72df1cf2cde7fec8627f2294c2f7/transformed/jetified-play-services-measurement-base-21.6.1/proguard.txt
 # We keep all fields for every generated proto file as the runtime uses
 # reflection over them that ProGuard cannot detect. Without this keep
 # rule, fields may be removed that would cause runtime failures.
@@ -786,8 +788,8 @@
   <fields>;
 }
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/8b1a7bccb5e8a3637c96ea5689f2c722/transformed/jetified-play-services-measurement-base-21.6.1/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/abeed4f47a72eff8f5b4e9bf7f2f3c91/transformed/jetified-play-services-basement-18.3.0/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/2a0f72df1cf2cde7fec8627f2294c2f7/transformed/jetified-play-services-measurement-base-21.6.1/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/359d4c672a8c2d21fa7d20865ac90aa0/transformed/jetified-play-services-basement-18.3.0/proguard.txt
 # Needed when building against pre-Marshmallow SDK.
 -dontwarn android.security.NetworkSecurityPolicy
 
@@ -865,8 +867,8 @@
 
 
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/abeed4f47a72eff8f5b4e9bf7f2f3c91/transformed/jetified-play-services-basement-18.3.0/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/55520e4df2220e27f13f0bbb7467d11a/transformed/fragment-1.7.1/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/359d4c672a8c2d21fa7d20865ac90aa0/transformed/jetified-play-services-basement-18.3.0/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/30e53f9586371c3ebcf5e8cd2db45efd/transformed/fragment-1.7.1/proguard.txt
 # Copyright (C) 2020 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -897,8 +899,8 @@
     public <init>();
 }
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/55520e4df2220e27f13f0bbb7467d11a/transformed/fragment-1.7.1/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/9e7454f640b41d9fb1f89a6b912b741e/transformed/jetified-media3-extractor-1.4.1/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/30e53f9586371c3ebcf5e8cd2db45efd/transformed/fragment-1.7.1/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/8ee8a1ac250df5e0a0c018adad461a06/transformed/jetified-media3-extractor-1.4.1/proguard.txt
 # Proguard rules specific to the extractor module.
 
 # Methods accessed via reflection in DefaultExtractorsFactory
@@ -920,8 +922,8 @@
 -dontwarn kotlin.annotations.jvm.**
 -dontwarn javax.annotation.**
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/9e7454f640b41d9fb1f89a6b912b741e/transformed/jetified-media3-extractor-1.4.1/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/dcc302a7b606f68719f42912b7ef31a0/transformed/jetified-media3-datasource-1.4.1/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/8ee8a1ac250df5e0a0c018adad461a06/transformed/jetified-media3-extractor-1.4.1/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/2f787cb6dc2d0c14a5b07e30515abcda/transformed/jetified-media3-datasource-1.4.1/proguard.txt
 # Proguard rules specific to the DataSource module.
 
 # Constant folding for resource integers may mean that a resource passed to this method appears to be unused. Keep the method to prevent this from happening.
@@ -935,8 +937,8 @@
   <init>();
 }
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/dcc302a7b606f68719f42912b7ef31a0/transformed/jetified-media3-datasource-1.4.1/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/f287878c588d535c6238ddf78c37b2ed/transformed/jetified-media3-common-1.4.1/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/2f787cb6dc2d0c14a5b07e30515abcda/transformed/jetified-media3-datasource-1.4.1/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/60628c0b4598d9c59e08ffec69eaa7e8/transformed/jetified-media3-common-1.4.1/proguard.txt
 # Proguard rules specific to the common module.
 
 # Don't warn about checkerframework and Kotlin annotations
@@ -960,8 +962,8 @@
 # This is needed for ProGuard but not R8.
 -keepclassmembernames class com.google.common.base.Function { *; }
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/f287878c588d535c6238ddf78c37b2ed/transformed/jetified-media3-common-1.4.1/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/ab1dc0cd23ebe3c890248eaabfbb4ea4/transformed/jetified-media3-exoplayer-1.4.1/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/60628c0b4598d9c59e08ffec69eaa7e8/transformed/jetified-media3-common-1.4.1/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/2395f4cb6fc8acc236093698dd234a7a/transformed/jetified-media3-exoplayer-1.4.1/proguard.txt
 # Proguard rules specific to the core module.
 
 # Constructors accessed via reflection in DefaultRenderersFactory
@@ -1036,8 +1038,8 @@
   androidx.media3.effect.DefaultVideoFrameProcessor$Factory build();
 }
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/ab1dc0cd23ebe3c890248eaabfbb4ea4/transformed/jetified-media3-exoplayer-1.4.1/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/378ea1994e3598d3fb5f44e10e5e1679/transformed/recyclerview-1.1.0/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/2395f4cb6fc8acc236093698dd234a7a/transformed/jetified-media3-exoplayer-1.4.1/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/532100ba404c532525821030a9ed4ce3/transformed/recyclerview-1.1.0/proguard.txt
 # Copyright (C) 2015 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -1063,8 +1065,8 @@
     public void suppressLayout(boolean);
     public boolean isLayoutSuppressed();
 }
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/378ea1994e3598d3fb5f44e10e5e1679/transformed/recyclerview-1.1.0/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/45af1ebc35cbf9d2d2886a132166b73a/transformed/transition-1.4.1/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/532100ba404c532525821030a9ed4ce3/transformed/recyclerview-1.1.0/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/b8dd7b183d67320f99136697219d3a4f/transformed/transition-1.4.1/proguard.txt
 # Copyright (C) 2017 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -1084,8 +1086,8 @@
   androidx.transition.ChangeBounds$ViewBounds mViewBounds;
 }
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/45af1ebc35cbf9d2d2886a132166b73a/transformed/transition-1.4.1/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/8cf478dec41eed746328fa8046755ba2/transformed/core-1.13.1/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/b8dd7b183d67320f99136697219d3a4f/transformed/transition-1.4.1/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/a8035354cad8d7497540b65a96ad765d/transformed/core-1.13.1/proguard.txt
 # Never inline methods, but allow shrinking and obfuscation.
 -keepclassmembernames,allowobfuscation,allowshrinking class androidx.core.view.ViewCompat$Api* {
   <methods>;
@@ -1103,8 +1105,8 @@
   <methods>;
 }
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/8cf478dec41eed746328fa8046755ba2/transformed/core-1.13.1/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/c092edbccc16347970ed4f22e8da111a/transformed/lifecycle-runtime-2.7.0/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/a8035354cad8d7497540b65a96ad765d/transformed/core-1.13.1/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/e0b856ee0337e26a435c2cb726886cca/transformed/lifecycle-runtime-2.7.0/proguard.txt
 -keepattributes AnnotationDefault,
                 RuntimeVisibleAnnotations,
                 RuntimeVisibleParameterAnnotations,
@@ -1125,12 +1127,12 @@
 # this rule is need to work properly when app is compiled with api 28, see b/142778206
 # Also this rule prevents registerIn from being inlined.
 -keepclassmembers class androidx.lifecycle.ReportFragment$LifecycleCallbacks { *; }
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/c092edbccc16347970ed4f22e8da111a/transformed/lifecycle-runtime-2.7.0/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/e80aa748ff6540407d8dba61c0d945fe/transformed/jetified-lifecycle-process-2.7.0/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/e0b856ee0337e26a435c2cb726886cca/transformed/lifecycle-runtime-2.7.0/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/54a6cf6b466238d6d436a0a915f13f2f/transformed/jetified-lifecycle-process-2.7.0/proguard.txt
 # this rule is need to work properly when app is compiled with api 28, see b/142778206
 -keepclassmembers class * extends androidx.lifecycle.EmptyActivityLifecycleCallbacks { *; }
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/e80aa748ff6540407d8dba61c0d945fe/transformed/jetified-lifecycle-process-2.7.0/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/b3d51a44ab6b56289d4858158a1ad6dd/transformed/jetified-savedstate-1.2.1/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/54a6cf6b466238d6d436a0a915f13f2f/transformed/jetified-lifecycle-process-2.7.0/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/d6df4627b1ff7ace49114d5dfc8a6381/transformed/jetified-savedstate-1.2.1/proguard.txt
 # Copyright (C) 2019 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -1149,8 +1151,8 @@
     <init>();
 }
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/b3d51a44ab6b56289d4858158a1ad6dd/transformed/jetified-savedstate-1.2.1/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/0161ca1b69c6b4524a86cd5896f2279a/transformed/rules/lib/META-INF/com.android.tools/r8-from-1.6.0/coroutines.pro
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/d6df4627b1ff7ace49114d5dfc8a6381/transformed/jetified-savedstate-1.2.1/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/d321e755dfa25855882f74b96d96cb64/transformed/rules/lib/META-INF/com.android.tools/r8-from-1.6.0/coroutines.pro
 # Allow R8 to optimize away the FastServiceLoader.
 # Together with ServiceLoader optimization in R8
 # this results in direct instantiation when loading Dispatchers.Main
@@ -1174,8 +1176,8 @@
     boolean getRECOVER_STACK_TRACES() return false;
 }
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/0161ca1b69c6b4524a86cd5896f2279a/transformed/rules/lib/META-INF/com.android.tools/r8-from-1.6.0/coroutines.pro
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/e0d9d3675465ff69d847e2f781f20c61/transformed/jetified-startup-runtime-1.1.1/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/d321e755dfa25855882f74b96d96cb64/transformed/rules/lib/META-INF/com.android.tools/r8-from-1.6.0/coroutines.pro
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/6864d9a1a1bbd7471fc2a389a742a3a8/transformed/jetified-startup-runtime-1.1.1/proguard.txt
 # It's important that we preserve initializer names, given they are used in the AndroidManifest.xml.
 -keepnames class * extends androidx.startup.Initializer
 
@@ -1189,36 +1191,36 @@
 
 -assumenosideeffects class androidx.startup.StartupLogger { public static <methods>; }
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/e0d9d3675465ff69d847e2f781f20c61/transformed/jetified-startup-runtime-1.1.1/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/92a2169b5b2674c8bbe10e1b1d80da0f/transformed/versionedparcelable-1.1.1/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/6864d9a1a1bbd7471fc2a389a742a3a8/transformed/jetified-startup-runtime-1.1.1/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/a7b9fd6dc3f94745824387a4b130589d/transformed/versionedparcelable-1.1.1/proguard.txt
 -keep class * implements androidx.versionedparcelable.VersionedParcelable
 -keep public class android.support.**Parcelizer { *; }
 -keep public class androidx.**Parcelizer { *; }
 -keep public class androidx.versionedparcelable.ParcelImpl
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/92a2169b5b2674c8bbe10e1b1d80da0f/transformed/versionedparcelable-1.1.1/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/e8c994221057b3c1840994d9e7871976/transformed/jetified-firebase-components-17.1.5/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/a7b9fd6dc3f94745824387a4b130589d/transformed/versionedparcelable-1.1.1/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/ca09ac0d4457fc7a4cb5080d0e5bd879/transformed/jetified-firebase-components-17.1.5/proguard.txt
 -dontwarn com.google.firebase.components.Component$Instantiation
 -dontwarn com.google.firebase.components.Component$ComponentType
 
 -keep class * implements com.google.firebase.components.ComponentRegistrar
 -keep,allowshrinking interface com.google.firebase.components.ComponentRegistrar
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/e8c994221057b3c1840994d9e7871976/transformed/jetified-firebase-components-17.1.5/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/06f79797ad77f08b9bcaf5ac75dacce7/transformed/jetified-transport-backend-cct-3.1.8/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/ca09ac0d4457fc7a4cb5080d0e5bd879/transformed/jetified-firebase-components-17.1.5/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/32008a522d20f65765f21a4c4c414cc7/transformed/jetified-transport-backend-cct-3.1.8/proguard.txt
 -dontwarn com.google.auto.value.AutoValue
 -dontwarn com.google.auto.value.AutoValue$Builder
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/06f79797ad77f08b9bcaf5ac75dacce7/transformed/jetified-transport-backend-cct-3.1.8/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/881c4abfce54f2ad198c7660c5ae4450/transformed/jetified-transport-api-3.1.0/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/32008a522d20f65765f21a4c4c414cc7/transformed/jetified-transport-backend-cct-3.1.8/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/a6072a40953e68c48436a8b86fb82e25/transformed/jetified-transport-api-3.1.0/proguard.txt
 -dontwarn com.google.auto.value.AutoValue
 -dontwarn com.google.auto.value.AutoValue$Builder
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/881c4abfce54f2ad198c7660c5ae4450/transformed/jetified-transport-api-3.1.0/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/7d0d33ecaece8d17a3b79a6bcd1ce82f/transformed/jetified-firebase-encoders-json-18.0.0/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/a6072a40953e68c48436a8b86fb82e25/transformed/jetified-transport-api-3.1.0/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/c78aec152a2ba6a892d7f31ca104da54/transformed/jetified-firebase-encoders-json-18.0.0/proguard.txt
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/7d0d33ecaece8d17a3b79a6bcd1ce82f/transformed/jetified-firebase-encoders-json-18.0.0/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/47506b70b93177473c53f4d5d7e77c91/transformed/jetified-core-1.0.0/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/c78aec152a2ba6a892d7f31ca104da54/transformed/jetified-firebase-encoders-json-18.0.0/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/b7940e873ce6fe75051423150dbd4a6e/transformed/jetified-core-1.0.0/proguard.txt
 # Copyright (C) 2022 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -1243,8 +1245,8 @@
 -keep interface androidx.window.extensions.core.util.function.Function {
   public *** apply(***);
 }
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/47506b70b93177473c53f4d5d7e77c91/transformed/jetified-core-1.0.0/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/732dd6470acbcdf14bcdff1e8c145a76/transformed/rules/lib/META-INF/proguard/androidx-annotations.pro
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/b7940e873ce6fe75051423150dbd4a6e/transformed/jetified-core-1.0.0/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/b3349f4402ff674df1548c2fae318f61/transformed/rules/lib/META-INF/proguard/androidx-annotations.pro
 -keep,allowobfuscation @interface androidx.annotation.Keep
 -keep @androidx.annotation.Keep class * {*;}
 
@@ -1264,13 +1266,13 @@
   @androidx.annotation.DoNotInline <methods>;
 }
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/732dd6470acbcdf14bcdff1e8c145a76/transformed/rules/lib/META-INF/proguard/androidx-annotations.pro
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/f4baecc432f8f4388936cce8b37236e1/transformed/rules/lib/META-INF/proguard/okio.pro
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/b3349f4402ff674df1548c2fae318f61/transformed/rules/lib/META-INF/proguard/androidx-annotations.pro
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/fc2d2ee62f0576eb2b676941c4a7e1e7/transformed/rules/lib/META-INF/proguard/okio.pro
 # Animal Sniffer compileOnly dependency to ensure APIs are compatible with older versions of Java.
 -dontwarn org.codehaus.mojo.animal_sniffer.*
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/f4baecc432f8f4388936cce8b37236e1/transformed/rules/lib/META-INF/proguard/okio.pro
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/29d7fdf5ce4077658a814c93712d7e3c/transformed/jetified-grpc-android-1.57.2/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/fc2d2ee62f0576eb2b676941c4a7e1e7/transformed/rules/lib/META-INF/proguard/okio.pro
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/9d6a3210f886dd7015066d780e483ba3/transformed/jetified-grpc-android-1.57.2/proguard.txt
 -keepclassmembers class io.grpc.okhttp.OkHttpChannelBuilder {
   io.grpc.okhttp.OkHttpChannelBuilder forTarget(java.lang.String);
   io.grpc.okhttp.OkHttpChannelBuilder scheduledExecutorService(java.util.concurrent.ScheduledExecutorService);
@@ -1278,8 +1280,8 @@
   io.grpc.okhttp.OkHttpChannelBuilder transportExecutor(java.util.concurrent.Executor);
 }
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/29d7fdf5ce4077658a814c93712d7e3c/transformed/jetified-grpc-android-1.57.2/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/29d9e3a32081f16afce666bfc84aad0a/transformed/rules/lib/META-INF/proguard/protobuf.pro
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/9d6a3210f886dd7015066d780e483ba3/transformed/jetified-grpc-android-1.57.2/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/944753407047603997c5fa61f8ca33a2/transformed/rules/lib/META-INF/proguard/protobuf.pro
 # Recently Protobuf Javalite introduced a change that relies on reflection,
 # which doesn't work with Proguard. This rule keeps the reflection usages in
 # (shaded) Protobuf classes in Tink as-is.
@@ -1295,11 +1297,11 @@
   <fields>;
 }
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/29d9e3a32081f16afce666bfc84aad0a/transformed/rules/lib/META-INF/proguard/protobuf.pro
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/8a63b21759398e83092b56262a073cdf/transformed/jetified-android-maps-utils-3.6.0/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/944753407047603997c5fa61f8ca33a2/transformed/rules/lib/META-INF/proguard/protobuf.pro
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/39443254c6715570d96b584dc49ffddc/transformed/jetified-android-maps-utils-3.6.0/proguard.txt
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/8a63b21759398e83092b56262a073cdf/transformed/jetified-android-maps-utils-3.6.0/proguard.txt
-# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.10.2/transforms/1bb7c6add5d320a1abe41b632f59db92/transformed/jetified-protolite-well-known-types-18.0.0/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/39443254c6715570d96b584dc49ffddc/transformed/jetified-android-maps-utils-3.6.0/proguard.txt
+# The proguard configuration file for the following section is /home/alecs-ink/.gradle/caches/8.9/transforms/c550a13feec0fa4cc8bfeeb1c2520157/transformed/jetified-protolite-well-known-types-18.0.0/proguard.txt
 # Add project specific ProGuard rules here.
 # You can control the set of applied configuration files using the
 # proguardFiles setting in build.gradle.
@@ -1328,7 +1330,7 @@
   <fields>;
 }
 
-# End of content from /home/alecs-ink/.gradle/caches/8.10.2/transforms/1bb7c6add5d320a1abe41b632f59db92/transformed/jetified-protolite-well-known-types-18.0.0/proguard.txt
+# End of content from /home/alecs-ink/.gradle/caches/8.9/transforms/c550a13feec0fa4cc8bfeeb1c2520157/transformed/jetified-protolite-well-known-types-18.0.0/proguard.txt
 # The proguard configuration file for the following section is <unknown>
 
 # End of content from <unknown>

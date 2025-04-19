@@ -1,4 +1,4 @@
-#Sat Apr 12 17:49:50 EEST 2025
+#Sat Apr 19 12:36:02 EEST 2025
 base.0=/home/alecs-ink/Desktop/eli_tattoo_new/android/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
 base.1=/home/alecs-ink/Desktop/eli_tattoo_new/android/app/build/intermediates/desugar_lib_dex/release/l8DexDesugarLibRelease/classes1000.dex
 path.0=classes.dex

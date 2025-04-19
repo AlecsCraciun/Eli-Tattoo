@@ -42,13 +42,13 @@
 27        android:name="android.permission.BLUETOOTH"
 27-->/home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:18:22-65
 28        android:required="false" />
-28-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:12:9-33
+28-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:12:9-33
 29    <uses-permission
 29-->/home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:19:5-73
 30        android:name="android.permission.BLUETOOTH_ADMIN"
 30-->/home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:19:22-71
 31        android:required="false" />
-31-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:15:9-33
+31-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:15:9-33
 32    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
 32-->/home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:20:5-72
 32-->/home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:20:22-70
@@ -70,13 +70,13 @@
 40        </intent>
 41        <!-- Needs to be explicitly declared on Android R+ -->
 42        <package android:name="com.google.android.apps.maps" />
-42-->[com.google.android.gms:play-services-maps:18.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/223e4c2782dceb65140338abe6972c59/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:33:9-64
-42-->[com.google.android.gms:play-services-maps:18.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/223e4c2782dceb65140338abe6972c59/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:33:18-61
+42-->[com.google.android.gms:play-services-maps:18.2.0] /home/alecs-ink/.gradle/caches/8.9/transforms/2543dd7cebd179c206fe073f43ecde09/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:33:9-64
+42-->[com.google.android.gms:play-services-maps:18.2.0] /home/alecs-ink/.gradle/caches/8.9/transforms/2543dd7cebd179c206fe073f43ecde09/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:33:18-61
 43    </queries>
 44
 45    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-45-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:16:5-81
-45-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:16:22-78
+45-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:16:5-81
+45-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:16:22-78
 46    <uses-permission android:name="android.permission.WAKE_LOCK" />
 46-->[:firebase_analytics] /home/alecs-ink/.pub-cache/hosted/pub.dev/firebase_analytics-10.10.7/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:9:5-68
 46-->[:firebase_analytics] /home/alecs-ink/.pub-cache/hosted/pub.dev/firebase_analytics-10.10.7/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:9:22-65
@@ -94,46 +94,46 @@
 52        android:required="false" />
 52-->[:mobile_scanner] /home/alecs-ink/.pub-cache/hosted/pub.dev/mobile_scanner-3.5.7/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:11:9-33
 53    <uses-feature
-53-->[com.google.android.gms:play-services-maps:18.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/223e4c2782dceb65140338abe6972c59/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:26:5-28:35
+53-->[com.google.android.gms:play-services-maps:18.2.0] /home/alecs-ink/.gradle/caches/8.9/transforms/2543dd7cebd179c206fe073f43ecde09/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:26:5-28:35
 54        android:glEsVersion="0x00020000"
-54-->[com.google.android.gms:play-services-maps:18.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/223e4c2782dceb65140338abe6972c59/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:27:9-41
+54-->[com.google.android.gms:play-services-maps:18.2.0] /home/alecs-ink/.gradle/caches/8.9/transforms/2543dd7cebd179c206fe073f43ecde09/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:27:9-41
 55        android:required="true" /> <!-- Required by older versions of Google Play services to create IID tokens -->
-55-->[com.google.android.gms:play-services-maps:18.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/223e4c2782dceb65140338abe6972c59/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:28:9-32
+55-->[com.google.android.gms:play-services-maps:18.2.0] /home/alecs-ink/.gradle/caches/8.9/transforms/2543dd7cebd179c206fe073f43ecde09/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:28:9-32
 56    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-56-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/185b052657445071c55336e362c7ed18/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:26:5-82
-56-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/185b052657445071c55336e362c7ed18/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:26:22-79
+56-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.9/transforms/3be7542b8e619927574c876caa1ae3d0/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:26:5-82
+56-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.9/transforms/3be7542b8e619927574c876caa1ae3d0/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:26:22-79
 57    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
-57-->[com.google.android.gms:play-services-measurement-api:21.6.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b623c3e55fcf5221a64a80614426afbd/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:25:5-79
-57-->[com.google.android.gms:play-services-measurement-api:21.6.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b623c3e55fcf5221a64a80614426afbd/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:25:22-76
+57-->[com.google.android.gms:play-services-measurement-api:21.6.1] /home/alecs-ink/.gradle/caches/8.9/transforms/3ae933ae769b5aafb83489c4222edd74/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:25:5-79
+57-->[com.google.android.gms:play-services-measurement-api:21.6.1] /home/alecs-ink/.gradle/caches/8.9/transforms/3ae933ae769b5aafb83489c4222edd74/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:25:22-76
 58    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_ATTRIBUTION" />
-58-->[com.google.android.gms:play-services-measurement-api:21.6.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b623c3e55fcf5221a64a80614426afbd/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:26:5-88
-58-->[com.google.android.gms:play-services-measurement-api:21.6.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b623c3e55fcf5221a64a80614426afbd/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:26:22-85
+58-->[com.google.android.gms:play-services-measurement-api:21.6.1] /home/alecs-ink/.gradle/caches/8.9/transforms/3ae933ae769b5aafb83489c4222edd74/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:26:5-88
+58-->[com.google.android.gms:play-services-measurement-api:21.6.1] /home/alecs-ink/.gradle/caches/8.9/transforms/3ae933ae769b5aafb83489c4222edd74/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:26:22-85
 59    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_AD_ID" />
-59-->[com.google.android.gms:play-services-measurement-api:21.6.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b623c3e55fcf5221a64a80614426afbd/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:27:5-82
-59-->[com.google.android.gms:play-services-measurement-api:21.6.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b623c3e55fcf5221a64a80614426afbd/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:27:22-79
+59-->[com.google.android.gms:play-services-measurement-api:21.6.1] /home/alecs-ink/.gradle/caches/8.9/transforms/3ae933ae769b5aafb83489c4222edd74/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:27:5-82
+59-->[com.google.android.gms:play-services-measurement-api:21.6.1] /home/alecs-ink/.gradle/caches/8.9/transforms/3ae933ae769b5aafb83489c4222edd74/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:27:22-79
 60    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
-60-->[com.google.android.recaptcha:recaptcha:18.4.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/5fdaf0860f29f6cf362db9df42e1364e/transformed/jetified-recaptcha-18.4.0/AndroidManifest.xml:9:5-98
-60-->[com.google.android.recaptcha:recaptcha:18.4.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/5fdaf0860f29f6cf362db9df42e1364e/transformed/jetified-recaptcha-18.4.0/AndroidManifest.xml:9:22-95
+60-->[com.google.android.recaptcha:recaptcha:18.4.0] /home/alecs-ink/.gradle/caches/8.9/transforms/d633ce462cec33e6526ce99db5e33760/transformed/jetified-recaptcha-18.4.0/AndroidManifest.xml:9:5-98
+60-->[com.google.android.recaptcha:recaptcha:18.4.0] /home/alecs-ink/.gradle/caches/8.9/transforms/d633ce462cec33e6526ce99db5e33760/transformed/jetified-recaptcha-18.4.0/AndroidManifest.xml:9:22-95
 61    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
-61-->[com.google.android.gms:play-services-measurement:21.6.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/130f9d14b87c5cf07adde5e837f14ab6/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:26:5-110
-61-->[com.google.android.gms:play-services-measurement:21.6.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/130f9d14b87c5cf07adde5e837f14ab6/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:26:22-107
+61-->[com.google.android.gms:play-services-measurement:21.6.1] /home/alecs-ink/.gradle/caches/8.9/transforms/1dc5f0e357d0a10d4a4a5523c256e684/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:26:5-110
+61-->[com.google.android.gms:play-services-measurement:21.6.1] /home/alecs-ink/.gradle/caches/8.9/transforms/1dc5f0e357d0a10d4a4a5523c256e684/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:26:22-107
 62
 63    <permission
-63-->[androidx.core:core:1.13.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/8cf478dec41eed746328fa8046755ba2/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
+63-->[androidx.core:core:1.13.1] /home/alecs-ink/.gradle/caches/8.9/transforms/a8035354cad8d7497540b65a96ad765d/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
 64        android:name="com.elitattoo.clients.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-64-->[androidx.core:core:1.13.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/8cf478dec41eed746328fa8046755ba2/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
+64-->[androidx.core:core:1.13.1] /home/alecs-ink/.gradle/caches/8.9/transforms/a8035354cad8d7497540b65a96ad765d/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
 65        android:protectionLevel="signature" />
-65-->[androidx.core:core:1.13.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/8cf478dec41eed746328fa8046755ba2/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
+65-->[androidx.core:core:1.13.1] /home/alecs-ink/.gradle/caches/8.9/transforms/a8035354cad8d7497540b65a96ad765d/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
 66
 67    <uses-permission android:name="com.elitattoo.clients.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-67-->[androidx.core:core:1.13.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/8cf478dec41eed746328fa8046755ba2/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
-67-->[androidx.core:core:1.13.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/8cf478dec41eed746328fa8046755ba2/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
+67-->[androidx.core:core:1.13.1] /home/alecs-ink/.gradle/caches/8.9/transforms/a8035354cad8d7497540b65a96ad765d/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+67-->[androidx.core:core:1.13.1] /home/alecs-ink/.gradle/caches/8.9/transforms/a8035354cad8d7497540b65a96ad765d/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
 68
 69    <application
 70        android:name="android.app.Application"
 70-->/home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:25:9-42
 71        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-71-->[androidx.core:core:1.13.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/8cf478dec41eed746328fa8046755ba2/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
+71-->[androidx.core:core:1.13.1] /home/alecs-ink/.gradle/caches/8.9/transforms/a8035354cad8d7497540b65a96ad765d/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
 72        android:enableOnBackInvokedCallback="true"
 72-->/home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:27:9-51
 73        android:extractNativeLibs="true"
@@ -206,80 +206,80 @@
 110-->[:location] /home/alecs-ink/.pub-cache/hosted/pub.dev/location-5.0.3/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:15:13-53
 111
 112        <receiver
-112-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:20:9-28:20
+112-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:20:9-28:20
 113            android:name="org.altbeacon.beacon.startup.StartupBroadcastReceiver"
-113-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:21:13-81
+113-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:21:13-81
 114            android:exported="false" >
-114-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:22:13-37
+114-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:22:13-37
 115            <intent-filter>
-115-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:23:13-27:29
+115-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:23:13-27:29
 116                <action android:name="android.intent.action.BOOT_COMPLETED" />
-116-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:24:17-79
-116-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:24:25-76
+116-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:24:17-79
+116-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:24:25-76
 117                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
-117-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:25:17-87
-117-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:25:25-84
+117-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:25:17-87
+117-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:25:25-84
 118                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
-118-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:26:17-90
-118-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:26:25-87
+118-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:26:17-90
+118-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:26:25-87
 119            </intent-filter>
 120        </receiver>
 121
 122        <service
-122-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:30:9-35:38
+122-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:30:9-35:38
 123            android:name="org.altbeacon.beacon.service.BeaconService"
-123-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:31:13-70
+123-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:31:13-70
 124            android:enabled="true"
-124-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:32:13-35
+124-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:32:13-35
 125            android:exported="false"
-125-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:33:13-37
+125-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:33:13-37
 126            android:isolatedProcess="false"
-126-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:34:13-44
+126-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:34:13-44
 127            android:label="beacon" />
-127-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:35:13-35
+127-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:35:13-35
 128        <service
-128-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:36:9-39:40
+128-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:36:9-39:40
 129            android:name="org.altbeacon.beacon.BeaconIntentProcessor"
-129-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:37:13-70
+129-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:37:13-70
 130            android:enabled="true"
-130-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:38:13-35
+130-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:38:13-35
 131            android:exported="false" />
-131-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:39:13-37
+131-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:39:13-37
 132        <service
-132-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:40:9-50:19
+132-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:40:9-50:19
 133            android:name="org.altbeacon.beacon.service.ScanJob"
-133-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:41:13-64
+133-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:41:13-64
 134            android:exported="false"
-134-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:42:13-37
+134-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:42:13-37
 135            android:permission="android.permission.BIND_JOB_SERVICE" >
-135-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:43:13-69
+135-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:43:13-69
 136            <meta-data
-136-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:44:13-46:45
+136-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:44:13-46:45
 137                android:name="immediateScanJobId"
-137-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:45:17-50
+137-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:45:17-50
 138                android:value="208352939" />
-138-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:46:17-42
+138-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:46:17-42
 139            <meta-data
-139-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:47:13-49:45
+139-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:47:13-49:45
 140                android:name="periodicScanJobId"
-140-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:48:17-49
+140-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:48:17-49
 141                android:value="208352940" />
-141-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:49:17-42
+141-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:49:17-42
 142        </service>
 143        <service
-143-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:51:9-58:19
+143-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:51:9-58:19
 144            android:name="org.altbeacon.bluetooth.BluetoothTestJob"
-144-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:52:13-68
+144-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:52:13-68
 145            android:exported="false"
-145-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:53:13-37
+145-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:53:13-37
 146            android:permission="android.permission.BIND_JOB_SERVICE" >
-146-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:54:13-69
+146-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:54:13-69
 147            <meta-data
-147-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:55:13-57:46
+147-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:55:13-57:46
 148                android:name="jobId"
-148-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:56:17-37
+148-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:56:17-37
 149                android:value="1799803768" />
-149-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:57:17-43
+149-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:57:17-43
 150        </service>
 151        <service
 151-->[:geolocator_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/geolocator_android-4.6.2/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:8:9-12:56
@@ -296,9 +296,9 @@
 157            android:name="com.google.firebase.components.ComponentDiscoveryService"
 157-->[:cloud_firestore] /home/alecs-ink/.pub-cache/hosted/pub.dev/cloud_firestore-4.17.5/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:8:18-89
 158            android:directBootAware="true"
-158-->[com.google.firebase:firebase-common:20.4.3] /home/alecs-ink/.gradle/caches/8.10.2/transforms/7753fbb9eb20d93e79e4caf23f22802c/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:32:13-43
+158-->[com.google.firebase:firebase-common:20.4.3] /home/alecs-ink/.gradle/caches/8.9/transforms/e32fd470e544b71cc917e2abc3e127e5/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:32:13-43
 159            android:exported="false" >
-159-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:68:13-37
+159-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/c737962ecf4e7ec5815ddb56536c6cd8/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:68:13-37
 160            <meta-data
 160-->[:cloud_firestore] /home/alecs-ink/.pub-cache/hosted/pub.dev/cloud_firestore-4.17.5/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:9:13-11:85
 161                android:name="com.google.firebase.components:io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestoreRegistrar"
@@ -342,107 +342,107 @@
 180                android:value="com.google.firebase.components.ComponentRegistrar" />
 180-->[:firebase_core] /home/alecs-ink/.pub-cache/hosted/pub.dev/firebase_core-2.32.0/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:11:17-82
 181            <meta-data
-181-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:69:13-71:85
+181-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/c737962ecf4e7ec5815ddb56536c6cd8/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:69:13-71:85
 182                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
-182-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:70:17-109
+182-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/c737962ecf4e7ec5815ddb56536c6cd8/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:70:17-109
 183                android:value="com.google.firebase.components.ComponentRegistrar" />
-183-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:71:17-82
+183-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/c737962ecf4e7ec5815ddb56536c6cd8/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:71:17-82
 184            <meta-data
-184-->[com.google.firebase:firebase-firestore:24.11.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/adb6e8489a85a46611751c062b4a2e8d/transformed/jetified-firebase-firestore-24.11.0/AndroidManifest.xml:17:13-19:85
+184-->[com.google.firebase:firebase-firestore:24.11.0] /home/alecs-ink/.gradle/caches/8.9/transforms/a79f32e7e6fb00cf245d028e4cdeb5b0/transformed/jetified-firebase-firestore-24.11.0/AndroidManifest.xml:17:13-19:85
 185                android:name="com.google.firebase.components:com.google.firebase.firestore.FirebaseFirestoreKtxRegistrar"
-185-->[com.google.firebase:firebase-firestore:24.11.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/adb6e8489a85a46611751c062b4a2e8d/transformed/jetified-firebase-firestore-24.11.0/AndroidManifest.xml:18:17-122
+185-->[com.google.firebase:firebase-firestore:24.11.0] /home/alecs-ink/.gradle/caches/8.9/transforms/a79f32e7e6fb00cf245d028e4cdeb5b0/transformed/jetified-firebase-firestore-24.11.0/AndroidManifest.xml:18:17-122
 186                android:value="com.google.firebase.components.ComponentRegistrar" />
-186-->[com.google.firebase:firebase-firestore:24.11.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/adb6e8489a85a46611751c062b4a2e8d/transformed/jetified-firebase-firestore-24.11.0/AndroidManifest.xml:19:17-82
+186-->[com.google.firebase:firebase-firestore:24.11.0] /home/alecs-ink/.gradle/caches/8.9/transforms/a79f32e7e6fb00cf245d028e4cdeb5b0/transformed/jetified-firebase-firestore-24.11.0/AndroidManifest.xml:19:17-82
 187            <meta-data
-187-->[com.google.firebase:firebase-firestore:24.11.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/adb6e8489a85a46611751c062b4a2e8d/transformed/jetified-firebase-firestore-24.11.0/AndroidManifest.xml:20:13-22:85
+187-->[com.google.firebase:firebase-firestore:24.11.0] /home/alecs-ink/.gradle/caches/8.9/transforms/a79f32e7e6fb00cf245d028e4cdeb5b0/transformed/jetified-firebase-firestore-24.11.0/AndroidManifest.xml:20:13-22:85
 188                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
-188-->[com.google.firebase:firebase-firestore:24.11.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/adb6e8489a85a46611751c062b4a2e8d/transformed/jetified-firebase-firestore-24.11.0/AndroidManifest.xml:21:17-111
+188-->[com.google.firebase:firebase-firestore:24.11.0] /home/alecs-ink/.gradle/caches/8.9/transforms/a79f32e7e6fb00cf245d028e4cdeb5b0/transformed/jetified-firebase-firestore-24.11.0/AndroidManifest.xml:21:17-111
 189                android:value="com.google.firebase.components.ComponentRegistrar" />
-189-->[com.google.firebase:firebase-firestore:24.11.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/adb6e8489a85a46611751c062b4a2e8d/transformed/jetified-firebase-firestore-24.11.0/AndroidManifest.xml:22:17-82
+189-->[com.google.firebase:firebase-firestore:24.11.0] /home/alecs-ink/.gradle/caches/8.9/transforms/a79f32e7e6fb00cf245d028e4cdeb5b0/transformed/jetified-firebase-firestore-24.11.0/AndroidManifest.xml:22:17-82
 190            <meta-data
-190-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/185b052657445071c55336e362c7ed18/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:57:13-59:85
+190-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.9/transforms/3be7542b8e619927574c876caa1ae3d0/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:57:13-59:85
 191                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingKtxRegistrar"
-191-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/185b052657445071c55336e362c7ed18/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:58:17-122
+191-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.9/transforms/3be7542b8e619927574c876caa1ae3d0/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:58:17-122
 192                android:value="com.google.firebase.components.ComponentRegistrar" />
-192-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/185b052657445071c55336e362c7ed18/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:59:17-82
+192-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.9/transforms/3be7542b8e619927574c876caa1ae3d0/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:59:17-82
 193            <meta-data
-193-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/185b052657445071c55336e362c7ed18/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:60:13-62:85
+193-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.9/transforms/3be7542b8e619927574c876caa1ae3d0/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:60:13-62:85
 194                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
-194-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/185b052657445071c55336e362c7ed18/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:61:17-119
+194-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.9/transforms/3be7542b8e619927574c876caa1ae3d0/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:61:17-119
 195                android:value="com.google.firebase.components.ComponentRegistrar" />
-195-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/185b052657445071c55336e362c7ed18/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:62:17-82
+195-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.9/transforms/3be7542b8e619927574c876caa1ae3d0/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:62:17-82
 196            <meta-data
-196-->[com.google.firebase:firebase-storage:20.3.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/9aa35a2dcb4b947222b61dfe0759d866/transformed/jetified-firebase-storage-20.3.0/AndroidManifest.xml:30:13-32:85
+196-->[com.google.firebase:firebase-storage:20.3.0] /home/alecs-ink/.gradle/caches/8.9/transforms/96ecb229f3bad59fa2b41ec941bee6e4/transformed/jetified-firebase-storage-20.3.0/AndroidManifest.xml:30:13-32:85
 197                android:name="com.google.firebase.components:com.google.firebase.storage.FirebaseStorageKtxRegistrar"
-197-->[com.google.firebase:firebase-storage:20.3.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/9aa35a2dcb4b947222b61dfe0759d866/transformed/jetified-firebase-storage-20.3.0/AndroidManifest.xml:31:17-118
+197-->[com.google.firebase:firebase-storage:20.3.0] /home/alecs-ink/.gradle/caches/8.9/transforms/96ecb229f3bad59fa2b41ec941bee6e4/transformed/jetified-firebase-storage-20.3.0/AndroidManifest.xml:31:17-118
 198                android:value="com.google.firebase.components.ComponentRegistrar" />
-198-->[com.google.firebase:firebase-storage:20.3.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/9aa35a2dcb4b947222b61dfe0759d866/transformed/jetified-firebase-storage-20.3.0/AndroidManifest.xml:32:17-82
+198-->[com.google.firebase:firebase-storage:20.3.0] /home/alecs-ink/.gradle/caches/8.9/transforms/96ecb229f3bad59fa2b41ec941bee6e4/transformed/jetified-firebase-storage-20.3.0/AndroidManifest.xml:32:17-82
 199            <meta-data
-199-->[com.google.firebase:firebase-storage:20.3.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/9aa35a2dcb4b947222b61dfe0759d866/transformed/jetified-firebase-storage-20.3.0/AndroidManifest.xml:33:13-35:85
+199-->[com.google.firebase:firebase-storage:20.3.0] /home/alecs-ink/.gradle/caches/8.9/transforms/96ecb229f3bad59fa2b41ec941bee6e4/transformed/jetified-firebase-storage-20.3.0/AndroidManifest.xml:33:13-35:85
 200                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
-200-->[com.google.firebase:firebase-storage:20.3.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/9aa35a2dcb4b947222b61dfe0759d866/transformed/jetified-firebase-storage-20.3.0/AndroidManifest.xml:34:17-107
+200-->[com.google.firebase:firebase-storage:20.3.0] /home/alecs-ink/.gradle/caches/8.9/transforms/96ecb229f3bad59fa2b41ec941bee6e4/transformed/jetified-firebase-storage-20.3.0/AndroidManifest.xml:34:17-107
 201                android:value="com.google.firebase.components.ComponentRegistrar" />
-201-->[com.google.firebase:firebase-storage:20.3.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/9aa35a2dcb4b947222b61dfe0759d866/transformed/jetified-firebase-storage-20.3.0/AndroidManifest.xml:35:17-82
+201-->[com.google.firebase:firebase-storage:20.3.0] /home/alecs-ink/.gradle/caches/8.9/transforms/96ecb229f3bad59fa2b41ec941bee6e4/transformed/jetified-firebase-storage-20.3.0/AndroidManifest.xml:35:17-82
 202            <meta-data
-202-->[com.google.firebase:firebase-database:20.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a58a99b4257fe679516e99bb2847cf4e/transformed/jetified-firebase-database-20.3.1/AndroidManifest.xml:29:13-31:85
+202-->[com.google.firebase:firebase-database:20.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/70b264d683303c878ce39abde5208583/transformed/jetified-firebase-database-20.3.1/AndroidManifest.xml:29:13-31:85
 203                android:name="com.google.firebase.components:com.google.firebase.database.FirebaseDatabaseKtxRegistrar"
-203-->[com.google.firebase:firebase-database:20.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a58a99b4257fe679516e99bb2847cf4e/transformed/jetified-firebase-database-20.3.1/AndroidManifest.xml:30:17-120
+203-->[com.google.firebase:firebase-database:20.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/70b264d683303c878ce39abde5208583/transformed/jetified-firebase-database-20.3.1/AndroidManifest.xml:30:17-120
 204                android:value="com.google.firebase.components.ComponentRegistrar" />
-204-->[com.google.firebase:firebase-database:20.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a58a99b4257fe679516e99bb2847cf4e/transformed/jetified-firebase-database-20.3.1/AndroidManifest.xml:31:17-82
+204-->[com.google.firebase:firebase-database:20.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/70b264d683303c878ce39abde5208583/transformed/jetified-firebase-database-20.3.1/AndroidManifest.xml:31:17-82
 205            <meta-data
-205-->[com.google.firebase:firebase-database:20.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a58a99b4257fe679516e99bb2847cf4e/transformed/jetified-firebase-database-20.3.1/AndroidManifest.xml:32:13-34:85
+205-->[com.google.firebase:firebase-database:20.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/70b264d683303c878ce39abde5208583/transformed/jetified-firebase-database-20.3.1/AndroidManifest.xml:32:13-34:85
 206                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
-206-->[com.google.firebase:firebase-database:20.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a58a99b4257fe679516e99bb2847cf4e/transformed/jetified-firebase-database-20.3.1/AndroidManifest.xml:33:17-109
+206-->[com.google.firebase:firebase-database:20.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/70b264d683303c878ce39abde5208583/transformed/jetified-firebase-database-20.3.1/AndroidManifest.xml:33:17-109
 207                android:value="com.google.firebase.components.ComponentRegistrar" />
-207-->[com.google.firebase:firebase-database:20.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a58a99b4257fe679516e99bb2847cf4e/transformed/jetified-firebase-database-20.3.1/AndroidManifest.xml:34:17-82
+207-->[com.google.firebase:firebase-database:20.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/70b264d683303c878ce39abde5208583/transformed/jetified-firebase-database-20.3.1/AndroidManifest.xml:34:17-82
 208            <meta-data
-208-->[com.google.firebase:firebase-appcheck:17.1.2] /home/alecs-ink/.gradle/caches/8.10.2/transforms/f16ceed9788ac673dac789056ac63718/transformed/jetified-firebase-appcheck-17.1.2/AndroidManifest.xml:25:13-27:85
+208-->[com.google.firebase:firebase-appcheck:17.1.2] /home/alecs-ink/.gradle/caches/8.9/transforms/823aa248ba3ee333fd6e059ee93d4e8d/transformed/jetified-firebase-appcheck-17.1.2/AndroidManifest.xml:25:13-27:85
 209                android:name="com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckKtxRegistrar"
-209-->[com.google.firebase:firebase-appcheck:17.1.2] /home/alecs-ink/.gradle/caches/8.10.2/transforms/f16ceed9788ac673dac789056ac63718/transformed/jetified-firebase-appcheck-17.1.2/AndroidManifest.xml:26:17-120
+209-->[com.google.firebase:firebase-appcheck:17.1.2] /home/alecs-ink/.gradle/caches/8.9/transforms/823aa248ba3ee333fd6e059ee93d4e8d/transformed/jetified-firebase-appcheck-17.1.2/AndroidManifest.xml:26:17-120
 210                android:value="com.google.firebase.components.ComponentRegistrar" />
-210-->[com.google.firebase:firebase-appcheck:17.1.2] /home/alecs-ink/.gradle/caches/8.10.2/transforms/f16ceed9788ac673dac789056ac63718/transformed/jetified-firebase-appcheck-17.1.2/AndroidManifest.xml:27:17-82
+210-->[com.google.firebase:firebase-appcheck:17.1.2] /home/alecs-ink/.gradle/caches/8.9/transforms/823aa248ba3ee333fd6e059ee93d4e8d/transformed/jetified-firebase-appcheck-17.1.2/AndroidManifest.xml:27:17-82
 211            <meta-data
-211-->[com.google.firebase:firebase-appcheck:17.1.2] /home/alecs-ink/.gradle/caches/8.10.2/transforms/f16ceed9788ac673dac789056ac63718/transformed/jetified-firebase-appcheck-17.1.2/AndroidManifest.xml:28:13-30:85
+211-->[com.google.firebase:firebase-appcheck:17.1.2] /home/alecs-ink/.gradle/caches/8.9/transforms/823aa248ba3ee333fd6e059ee93d4e8d/transformed/jetified-firebase-appcheck-17.1.2/AndroidManifest.xml:28:13-30:85
 212                android:name="com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckRegistrar"
-212-->[com.google.firebase:firebase-appcheck:17.1.2] /home/alecs-ink/.gradle/caches/8.10.2/transforms/f16ceed9788ac673dac789056ac63718/transformed/jetified-firebase-appcheck-17.1.2/AndroidManifest.xml:29:17-117
+212-->[com.google.firebase:firebase-appcheck:17.1.2] /home/alecs-ink/.gradle/caches/8.9/transforms/823aa248ba3ee333fd6e059ee93d4e8d/transformed/jetified-firebase-appcheck-17.1.2/AndroidManifest.xml:29:17-117
 213                android:value="com.google.firebase.components.ComponentRegistrar" />
-213-->[com.google.firebase:firebase-appcheck:17.1.2] /home/alecs-ink/.gradle/caches/8.10.2/transforms/f16ceed9788ac673dac789056ac63718/transformed/jetified-firebase-appcheck-17.1.2/AndroidManifest.xml:30:17-82
+213-->[com.google.firebase:firebase-appcheck:17.1.2] /home/alecs-ink/.gradle/caches/8.9/transforms/823aa248ba3ee333fd6e059ee93d4e8d/transformed/jetified-firebase-appcheck-17.1.2/AndroidManifest.xml:30:17-82
 214            <meta-data
-214-->[com.google.android.gms:play-services-measurement-api:21.6.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b623c3e55fcf5221a64a80614426afbd/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:37:13-39:85
+214-->[com.google.android.gms:play-services-measurement-api:21.6.1] /home/alecs-ink/.gradle/caches/8.9/transforms/3ae933ae769b5aafb83489c4222edd74/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:37:13-39:85
 215                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
-215-->[com.google.android.gms:play-services-measurement-api:21.6.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b623c3e55fcf5221a64a80614426afbd/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:38:17-139
+215-->[com.google.android.gms:play-services-measurement-api:21.6.1] /home/alecs-ink/.gradle/caches/8.9/transforms/3ae933ae769b5aafb83489c4222edd74/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:38:17-139
 216                android:value="com.google.firebase.components.ComponentRegistrar" />
-216-->[com.google.android.gms:play-services-measurement-api:21.6.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b623c3e55fcf5221a64a80614426afbd/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:39:17-82
+216-->[com.google.android.gms:play-services-measurement-api:21.6.1] /home/alecs-ink/.gradle/caches/8.9/transforms/3ae933ae769b5aafb83489c4222edd74/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:39:17-82
 217            <meta-data
-217-->[com.google.firebase:firebase-installations:17.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/90732639fa4f56076e94b2645278604e/transformed/jetified-firebase-installations-17.2.0/AndroidManifest.xml:15:13-17:85
+217-->[com.google.firebase:firebase-installations:17.2.0] /home/alecs-ink/.gradle/caches/8.9/transforms/b56847bf3f92da9e6d07cf0ca5605445/transformed/jetified-firebase-installations-17.2.0/AndroidManifest.xml:15:13-17:85
 218                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsKtxRegistrar"
-218-->[com.google.firebase:firebase-installations:17.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/90732639fa4f56076e94b2645278604e/transformed/jetified-firebase-installations-17.2.0/AndroidManifest.xml:16:17-130
+218-->[com.google.firebase:firebase-installations:17.2.0] /home/alecs-ink/.gradle/caches/8.9/transforms/b56847bf3f92da9e6d07cf0ca5605445/transformed/jetified-firebase-installations-17.2.0/AndroidManifest.xml:16:17-130
 219                android:value="com.google.firebase.components.ComponentRegistrar" />
-219-->[com.google.firebase:firebase-installations:17.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/90732639fa4f56076e94b2645278604e/transformed/jetified-firebase-installations-17.2.0/AndroidManifest.xml:17:17-82
+219-->[com.google.firebase:firebase-installations:17.2.0] /home/alecs-ink/.gradle/caches/8.9/transforms/b56847bf3f92da9e6d07cf0ca5605445/transformed/jetified-firebase-installations-17.2.0/AndroidManifest.xml:17:17-82
 220            <meta-data
-220-->[com.google.firebase:firebase-installations:17.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/90732639fa4f56076e94b2645278604e/transformed/jetified-firebase-installations-17.2.0/AndroidManifest.xml:18:13-20:85
+220-->[com.google.firebase:firebase-installations:17.2.0] /home/alecs-ink/.gradle/caches/8.9/transforms/b56847bf3f92da9e6d07cf0ca5605445/transformed/jetified-firebase-installations-17.2.0/AndroidManifest.xml:18:13-20:85
 221                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
-221-->[com.google.firebase:firebase-installations:17.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/90732639fa4f56076e94b2645278604e/transformed/jetified-firebase-installations-17.2.0/AndroidManifest.xml:19:17-127
+221-->[com.google.firebase:firebase-installations:17.2.0] /home/alecs-ink/.gradle/caches/8.9/transforms/b56847bf3f92da9e6d07cf0ca5605445/transformed/jetified-firebase-installations-17.2.0/AndroidManifest.xml:19:17-127
 222                android:value="com.google.firebase.components.ComponentRegistrar" />
-222-->[com.google.firebase:firebase-installations:17.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/90732639fa4f56076e94b2645278604e/transformed/jetified-firebase-installations-17.2.0/AndroidManifest.xml:20:17-82
+222-->[com.google.firebase:firebase-installations:17.2.0] /home/alecs-ink/.gradle/caches/8.9/transforms/b56847bf3f92da9e6d07cf0ca5605445/transformed/jetified-firebase-installations-17.2.0/AndroidManifest.xml:20:17-82
 223            <meta-data
-223-->[com.google.firebase:firebase-common-ktx:20.4.3] /home/alecs-ink/.gradle/caches/8.10.2/transforms/66d01334e5efd132dc1afb0484ccb5aa/transformed/jetified-firebase-common-ktx-20.4.3/AndroidManifest.xml:12:13-14:85
+223-->[com.google.firebase:firebase-common-ktx:20.4.3] /home/alecs-ink/.gradle/caches/8.9/transforms/50b1566ca7a9e1648447092ddf69c060/transformed/jetified-firebase-common-ktx-20.4.3/AndroidManifest.xml:12:13-14:85
 224                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar"
-224-->[com.google.firebase:firebase-common-ktx:20.4.3] /home/alecs-ink/.gradle/caches/8.10.2/transforms/66d01334e5efd132dc1afb0484ccb5aa/transformed/jetified-firebase-common-ktx-20.4.3/AndroidManifest.xml:13:17-116
+224-->[com.google.firebase:firebase-common-ktx:20.4.3] /home/alecs-ink/.gradle/caches/8.9/transforms/50b1566ca7a9e1648447092ddf69c060/transformed/jetified-firebase-common-ktx-20.4.3/AndroidManifest.xml:13:17-116
 225                android:value="com.google.firebase.components.ComponentRegistrar" />
-225-->[com.google.firebase:firebase-common-ktx:20.4.3] /home/alecs-ink/.gradle/caches/8.10.2/transforms/66d01334e5efd132dc1afb0484ccb5aa/transformed/jetified-firebase-common-ktx-20.4.3/AndroidManifest.xml:14:17-82
+225-->[com.google.firebase:firebase-common-ktx:20.4.3] /home/alecs-ink/.gradle/caches/8.9/transforms/50b1566ca7a9e1648447092ddf69c060/transformed/jetified-firebase-common-ktx-20.4.3/AndroidManifest.xml:14:17-82
 226            <meta-data
-226-->[com.google.firebase:firebase-common:20.4.3] /home/alecs-ink/.gradle/caches/8.10.2/transforms/7753fbb9eb20d93e79e4caf23f22802c/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:35:13-37:85
+226-->[com.google.firebase:firebase-common:20.4.3] /home/alecs-ink/.gradle/caches/8.9/transforms/e32fd470e544b71cc917e2abc3e127e5/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:35:13-37:85
 227                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
-227-->[com.google.firebase:firebase-common:20.4.3] /home/alecs-ink/.gradle/caches/8.10.2/transforms/7753fbb9eb20d93e79e4caf23f22802c/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:36:17-109
+227-->[com.google.firebase:firebase-common:20.4.3] /home/alecs-ink/.gradle/caches/8.9/transforms/e32fd470e544b71cc917e2abc3e127e5/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:36:17-109
 228                android:value="com.google.firebase.components.ComponentRegistrar" />
-228-->[com.google.firebase:firebase-common:20.4.3] /home/alecs-ink/.gradle/caches/8.10.2/transforms/7753fbb9eb20d93e79e4caf23f22802c/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:37:17-82
+228-->[com.google.firebase:firebase-common:20.4.3] /home/alecs-ink/.gradle/caches/8.9/transforms/e32fd470e544b71cc917e2abc3e127e5/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:37:17-82
 229            <meta-data
-229-->[com.google.firebase:firebase-datatransport:18.1.7] /home/alecs-ink/.gradle/caches/8.10.2/transforms/7db1b95df90f3baf78601bd1f13dbf08/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:27:13-29:85
+229-->[com.google.firebase:firebase-datatransport:18.1.7] /home/alecs-ink/.gradle/caches/8.9/transforms/ac7d9b417659e3ebf13e8dac95ce00d8/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:27:13-29:85
 230                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
-230-->[com.google.firebase:firebase-datatransport:18.1.7] /home/alecs-ink/.gradle/caches/8.10.2/transforms/7db1b95df90f3baf78601bd1f13dbf08/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:28:17-115
+230-->[com.google.firebase:firebase-datatransport:18.1.7] /home/alecs-ink/.gradle/caches/8.9/transforms/ac7d9b417659e3ebf13e8dac95ce00d8/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:28:17-115
 231                android:value="com.google.firebase.components.ComponentRegistrar" />
-231-->[com.google.firebase:firebase-datatransport:18.1.7] /home/alecs-ink/.gradle/caches/8.10.2/transforms/7db1b95df90f3baf78601bd1f13dbf08/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:29:17-82
+231-->[com.google.firebase:firebase-datatransport:18.1.7] /home/alecs-ink/.gradle/caches/8.9/transforms/ac7d9b417659e3ebf13e8dac95ce00d8/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:29:17-82
 232        </service>
 233        <service
 233-->[:firebase_messaging] /home/alecs-ink/.pub-cache/hosted/pub.dev/firebase_messaging-14.9.4/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:14:9-17:72
@@ -514,8 +514,8 @@
 269            <intent-filter>
 269-->[:flutter_local_notifications] /home/alecs-ink/.pub-cache/hosted/pub.dev/flutter_local_notifications-14.1.1/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:23:13-28:29
 270                <action android:name="android.intent.action.BOOT_COMPLETED" />
-270-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:24:17-79
-270-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a7d6c158e68fa219d2a84f2486018157/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:24:25-76
+270-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:24:17-79
+270-->[org.altbeacon:android-beacon-library:2.19] /home/alecs-ink/.gradle/caches/8.9/transforms/5b5a5ba6b37ee3eb48cafb2a159ed939/transformed/jetified-android-beacon-library-2.19/AndroidManifest.xml:24:25-76
 271                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
 271-->[:flutter_local_notifications] /home/alecs-ink/.pub-cache/hosted/pub.dev/flutter_local_notifications-14.1.1/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:25:17-84
 271-->[:flutter_local_notifications] /home/alecs-ink/.pub-cache/hosted/pub.dev/flutter_local_notifications-14.1.1/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:25:25-81
@@ -567,391 +567,429 @@
 296                android:value="" />
 296-->[:image_picker_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/image_picker_android-0.8.12+22/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:30:17-33
 297        </service>
-298
-299        <activity
-299-->[:url_launcher_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.15/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:8:9-11:74
-300            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
-300-->[:url_launcher_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.15/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:9:13-74
-301            android:exported="false"
-301-->[:url_launcher_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.15/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:10:13-37
-302            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-302-->[:url_launcher_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.15/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:11:13-71
-303        <!--
-304        Service for holding metadata. Cannot be instantiated.
-305        Metadata will be merged from other manifests.
-306        -->
-307        <service
-307-->[androidx.camera:camera-core:1.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/15ffd9a7ca617c85cc12267461976e4a/transformed/jetified-camera-core-1.3.1/AndroidManifest.xml:29:9-33:78
-308            android:name="androidx.camera.core.impl.MetadataHolderService"
-308-->[androidx.camera:camera-core:1.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/15ffd9a7ca617c85cc12267461976e4a/transformed/jetified-camera-core-1.3.1/AndroidManifest.xml:30:13-75
-309            android:enabled="false"
-309-->[androidx.camera:camera-core:1.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/15ffd9a7ca617c85cc12267461976e4a/transformed/jetified-camera-core-1.3.1/AndroidManifest.xml:31:13-36
-310            android:exported="false" >
-310-->[androidx.camera:camera-core:1.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/15ffd9a7ca617c85cc12267461976e4a/transformed/jetified-camera-core-1.3.1/AndroidManifest.xml:32:13-37
-311            <meta-data
-311-->[androidx.camera:camera-camera2:1.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/c091dce789e802e9021e6fe2a76e431a/transformed/jetified-camera-camera2-1.3.1/AndroidManifest.xml:30:13-32:89
-312                android:name="androidx.camera.core.impl.MetadataHolderService.DEFAULT_CONFIG_PROVIDER"
-312-->[androidx.camera:camera-camera2:1.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/c091dce789e802e9021e6fe2a76e431a/transformed/jetified-camera-camera2-1.3.1/AndroidManifest.xml:31:17-103
-313                android:value="androidx.camera.camera2.Camera2Config$DefaultProvider" />
-313-->[androidx.camera:camera-camera2:1.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/c091dce789e802e9021e6fe2a76e431a/transformed/jetified-camera-camera2-1.3.1/AndroidManifest.xml:32:17-86
-314        </service>
-315
-316        <provider
-316-->[androidx.emoji2:emoji2:1.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/d221757f531c672c2df2db4ebaa2cbf1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
-317            android:name="androidx.startup.InitializationProvider"
-317-->[androidx.emoji2:emoji2:1.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/d221757f531c672c2df2db4ebaa2cbf1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
-318            android:authorities="com.elitattoo.clients.androidx-startup"
-318-->[androidx.emoji2:emoji2:1.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/d221757f531c672c2df2db4ebaa2cbf1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
-319            android:exported="false" >
-319-->[androidx.emoji2:emoji2:1.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/d221757f531c672c2df2db4ebaa2cbf1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
-320            <meta-data
-320-->[androidx.emoji2:emoji2:1.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/d221757f531c672c2df2db4ebaa2cbf1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
-321                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-321-->[androidx.emoji2:emoji2:1.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/d221757f531c672c2df2db4ebaa2cbf1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
-322                android:value="androidx.startup" />
-322-->[androidx.emoji2:emoji2:1.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/d221757f531c672c2df2db4ebaa2cbf1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
-323            <meta-data
-323-->[androidx.lifecycle:lifecycle-process:2.7.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/e80aa748ff6540407d8dba61c0d945fe/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:29:13-31:52
-324                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-324-->[androidx.lifecycle:lifecycle-process:2.7.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/e80aa748ff6540407d8dba61c0d945fe/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:30:17-78
-325                android:value="androidx.startup" />
-325-->[androidx.lifecycle:lifecycle-process:2.7.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/e80aa748ff6540407d8dba61c0d945fe/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:31:17-49
-326            <meta-data
-326-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/5f7dcf6815bacc3ae7f099ba801348de/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
-327                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-327-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/5f7dcf6815bacc3ae7f099ba801348de/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:30:17-85
-328                android:value="androidx.startup" />
-328-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/5f7dcf6815bacc3ae7f099ba801348de/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:31:17-49
-329        </provider> <!-- Needs to be explicitly declared on P+ -->
-330        <uses-library
-330-->[com.google.android.gms:play-services-maps:18.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/223e4c2782dceb65140338abe6972c59/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:39:9-41:40
-331            android:name="org.apache.http.legacy"
-331-->[com.google.android.gms:play-services-maps:18.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/223e4c2782dceb65140338abe6972c59/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:40:13-50
-332            android:required="false" />
-332-->[com.google.android.gms:play-services-maps:18.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/223e4c2782dceb65140338abe6972c59/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:41:13-37
-333
-334        <activity
-334-->[com.google.android.gms:play-services-auth:21.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/41fd65a6a815b5614b87b654f9cfd65e/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:23:9-27:75
-335            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
-335-->[com.google.android.gms:play-services-auth:21.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/41fd65a6a815b5614b87b654f9cfd65e/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:24:13-93
-336            android:excludeFromRecents="true"
-336-->[com.google.android.gms:play-services-auth:21.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/41fd65a6a815b5614b87b654f9cfd65e/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:25:13-46
-337            android:exported="false"
-337-->[com.google.android.gms:play-services-auth:21.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/41fd65a6a815b5614b87b654f9cfd65e/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:26:13-37
-338            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-338-->[com.google.android.gms:play-services-auth:21.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/41fd65a6a815b5614b87b654f9cfd65e/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:27:13-72
-339        <!--
-340            Service handling Google Sign-In user revocation. For apps that do not integrate with
-341            Google Sign-In, this service will never be started.
-342        -->
-343        <service
-343-->[com.google.android.gms:play-services-auth:21.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/41fd65a6a815b5614b87b654f9cfd65e/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:33:9-37:51
-344            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
-344-->[com.google.android.gms:play-services-auth:21.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/41fd65a6a815b5614b87b654f9cfd65e/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:34:13-89
-345            android:exported="true"
-345-->[com.google.android.gms:play-services-auth:21.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/41fd65a6a815b5614b87b654f9cfd65e/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:35:13-36
-346            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
-346-->[com.google.android.gms:play-services-auth:21.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/41fd65a6a815b5614b87b654f9cfd65e/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:36:13-107
-347            android:visibleToInstantApps="true" />
-347-->[com.google.android.gms:play-services-auth:21.0.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/41fd65a6a815b5614b87b654f9cfd65e/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:37:13-48
-348
-349        <activity
-349-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:29:9-46:20
-350            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
-350-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:30:13-80
-351            android:excludeFromRecents="true"
-351-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:31:13-46
-352            android:exported="true"
-352-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:32:13-36
-353            android:launchMode="singleTask"
-353-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:33:13-44
-354            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-354-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:34:13-72
-355            <intent-filter>
-355-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:35:13-45:29
-356                <action android:name="android.intent.action.VIEW" />
-356-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:36:17-69
-356-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:36:25-66
+298        <!--
+299           Declares a provider which allows us to store files to share in
+300           '.../caches/share_plus' and grant the receiving action access
+301        -->
+302        <provider
+302-->[:share_plus] /home/alecs-ink/.pub-cache/hosted/pub.dev/share_plus-7.2.2/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:13:9-21:20
+303            android:name="dev.fluttercommunity.plus.share.ShareFileProvider"
+303-->[:share_plus] /home/alecs-ink/.pub-cache/hosted/pub.dev/share_plus-7.2.2/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:14:13-77
+304            android:authorities="com.elitattoo.clients.flutter.share_provider"
+304-->[:share_plus] /home/alecs-ink/.pub-cache/hosted/pub.dev/share_plus-7.2.2/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:15:13-74
+305            android:exported="false"
+305-->[:share_plus] /home/alecs-ink/.pub-cache/hosted/pub.dev/share_plus-7.2.2/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:16:13-37
+306            android:grantUriPermissions="true" >
+306-->[:share_plus] /home/alecs-ink/.pub-cache/hosted/pub.dev/share_plus-7.2.2/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:17:13-47
+307            <meta-data
+307-->[:image_picker_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/image_picker_android-0.8.12+22/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:14:13-16:75
+308                android:name="android.support.FILE_PROVIDER_PATHS"
+308-->[:image_picker_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/image_picker_android-0.8.12+22/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:15:17-67
+309                android:resource="@xml/flutter_share_file_paths" />
+309-->[:image_picker_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/image_picker_android-0.8.12+22/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:16:17-72
+310        </provider>
+311        <!--
+312           This manifest declared broadcast receiver allows us to use an explicit
+313           Intent when creating a PendingItent to be informed of the user's choice
+314        -->
+315        <receiver
+315-->[:share_plus] /home/alecs-ink/.pub-cache/hosted/pub.dev/share_plus-7.2.2/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:26:9-32:20
+316            android:name="dev.fluttercommunity.plus.share.SharePlusPendingIntent"
+316-->[:share_plus] /home/alecs-ink/.pub-cache/hosted/pub.dev/share_plus-7.2.2/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:27:13-82
+317            android:exported="false" >
+317-->[:share_plus] /home/alecs-ink/.pub-cache/hosted/pub.dev/share_plus-7.2.2/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:28:13-37
+318            <intent-filter>
+318-->[:share_plus] /home/alecs-ink/.pub-cache/hosted/pub.dev/share_plus-7.2.2/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:29:13-31:29
+319                <action android:name="EXTRA_CHOSEN_COMPONENT" />
+319-->[:share_plus] /home/alecs-ink/.pub-cache/hosted/pub.dev/share_plus-7.2.2/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:30:17-65
+319-->[:share_plus] /home/alecs-ink/.pub-cache/hosted/pub.dev/share_plus-7.2.2/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:30:25-62
+320            </intent-filter>
+321        </receiver>
+322
+323        <activity
+323-->[:url_launcher_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.15/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:8:9-11:74
+324            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+324-->[:url_launcher_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.15/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:9:13-74
+325            android:exported="false"
+325-->[:url_launcher_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.15/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:10:13-37
+326            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+326-->[:url_launcher_android] /home/alecs-ink/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.15/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:11:13-71
+327        <!--
+328        Service for holding metadata. Cannot be instantiated.
+329        Metadata will be merged from other manifests.
+330        -->
+331        <service
+331-->[androidx.camera:camera-core:1.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/89f28c2fe58d8954e60c219b7f32305a/transformed/jetified-camera-core-1.3.1/AndroidManifest.xml:29:9-33:78
+332            android:name="androidx.camera.core.impl.MetadataHolderService"
+332-->[androidx.camera:camera-core:1.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/89f28c2fe58d8954e60c219b7f32305a/transformed/jetified-camera-core-1.3.1/AndroidManifest.xml:30:13-75
+333            android:enabled="false"
+333-->[androidx.camera:camera-core:1.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/89f28c2fe58d8954e60c219b7f32305a/transformed/jetified-camera-core-1.3.1/AndroidManifest.xml:31:13-36
+334            android:exported="false" >
+334-->[androidx.camera:camera-core:1.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/89f28c2fe58d8954e60c219b7f32305a/transformed/jetified-camera-core-1.3.1/AndroidManifest.xml:32:13-37
+335            <meta-data
+335-->[androidx.camera:camera-camera2:1.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/e71701d2a2dbbac054ff366c03f5acd7/transformed/jetified-camera-camera2-1.3.1/AndroidManifest.xml:30:13-32:89
+336                android:name="androidx.camera.core.impl.MetadataHolderService.DEFAULT_CONFIG_PROVIDER"
+336-->[androidx.camera:camera-camera2:1.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/e71701d2a2dbbac054ff366c03f5acd7/transformed/jetified-camera-camera2-1.3.1/AndroidManifest.xml:31:17-103
+337                android:value="androidx.camera.camera2.Camera2Config$DefaultProvider" />
+337-->[androidx.camera:camera-camera2:1.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/e71701d2a2dbbac054ff366c03f5acd7/transformed/jetified-camera-camera2-1.3.1/AndroidManifest.xml:32:17-86
+338        </service>
+339
+340        <provider
+340-->[androidx.emoji2:emoji2:1.2.0] /home/alecs-ink/.gradle/caches/8.9/transforms/18eb71818c7ccca5a932a14da575c5a2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+341            android:name="androidx.startup.InitializationProvider"
+341-->[androidx.emoji2:emoji2:1.2.0] /home/alecs-ink/.gradle/caches/8.9/transforms/18eb71818c7ccca5a932a14da575c5a2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
+342            android:authorities="com.elitattoo.clients.androidx-startup"
+342-->[androidx.emoji2:emoji2:1.2.0] /home/alecs-ink/.gradle/caches/8.9/transforms/18eb71818c7ccca5a932a14da575c5a2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
+343            android:exported="false" >
+343-->[androidx.emoji2:emoji2:1.2.0] /home/alecs-ink/.gradle/caches/8.9/transforms/18eb71818c7ccca5a932a14da575c5a2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
+344            <meta-data
+344-->[androidx.emoji2:emoji2:1.2.0] /home/alecs-ink/.gradle/caches/8.9/transforms/18eb71818c7ccca5a932a14da575c5a2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+345                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+345-->[androidx.emoji2:emoji2:1.2.0] /home/alecs-ink/.gradle/caches/8.9/transforms/18eb71818c7ccca5a932a14da575c5a2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+346                android:value="androidx.startup" />
+346-->[androidx.emoji2:emoji2:1.2.0] /home/alecs-ink/.gradle/caches/8.9/transforms/18eb71818c7ccca5a932a14da575c5a2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+347            <meta-data
+347-->[androidx.lifecycle:lifecycle-process:2.7.0] /home/alecs-ink/.gradle/caches/8.9/transforms/54a6cf6b466238d6d436a0a915f13f2f/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:29:13-31:52
+348                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+348-->[androidx.lifecycle:lifecycle-process:2.7.0] /home/alecs-ink/.gradle/caches/8.9/transforms/54a6cf6b466238d6d436a0a915f13f2f/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:30:17-78
+349                android:value="androidx.startup" />
+349-->[androidx.lifecycle:lifecycle-process:2.7.0] /home/alecs-ink/.gradle/caches/8.9/transforms/54a6cf6b466238d6d436a0a915f13f2f/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:31:17-49
+350            <meta-data
+350-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/2a42408294d82609de5815d4bafe1d72/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
+351                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+351-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/2a42408294d82609de5815d4bafe1d72/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:30:17-85
+352                android:value="androidx.startup" />
+352-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/2a42408294d82609de5815d4bafe1d72/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:31:17-49
+353        </provider> <!-- Needs to be explicitly declared on P+ -->
+354        <uses-library
+354-->[com.google.android.gms:play-services-maps:18.2.0] /home/alecs-ink/.gradle/caches/8.9/transforms/2543dd7cebd179c206fe073f43ecde09/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:39:9-41:40
+355            android:name="org.apache.http.legacy"
+355-->[com.google.android.gms:play-services-maps:18.2.0] /home/alecs-ink/.gradle/caches/8.9/transforms/2543dd7cebd179c206fe073f43ecde09/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:40:13-50
+356            android:required="false" />
+356-->[com.google.android.gms:play-services-maps:18.2.0] /home/alecs-ink/.gradle/caches/8.9/transforms/2543dd7cebd179c206fe073f43ecde09/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:41:13-37
 357
-358                <category android:name="android.intent.category.DEFAULT" />
-358-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:38:17-76
-358-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:38:27-73
-359                <category android:name="android.intent.category.BROWSABLE" />
-359-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:39:17-78
-359-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:39:27-75
-360
-361                <data
-361-->/home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:60:13-50
-362                    android:host="firebase.auth"
-363                    android:path="/"
-364                    android:scheme="genericidp" />
-365            </intent-filter>
-366        </activity>
-367        <activity
-367-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:47:9-64:20
-368            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
-368-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:48:13-79
-369            android:excludeFromRecents="true"
-369-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:49:13-46
-370            android:exported="true"
-370-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:50:13-36
-371            android:launchMode="singleTask"
-371-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:51:13-44
-372            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-372-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:52:13-72
-373            <intent-filter>
-373-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:53:13-63:29
-374                <action android:name="android.intent.action.VIEW" />
-374-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:36:17-69
-374-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:36:25-66
-375
-376                <category android:name="android.intent.category.DEFAULT" />
-376-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:38:17-76
-376-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:38:27-73
-377                <category android:name="android.intent.category.BROWSABLE" />
-377-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:39:17-78
-377-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b45093fdb38786cbfe49c26826c35aaf/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:39:27-75
-378
-379                <data
-379-->/home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:60:13-50
-380                    android:host="firebase.auth"
-381                    android:path="/"
-382                    android:scheme="recaptcha" />
-383            </intent-filter>
-384        </activity>
-385
-386        <receiver
-386-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/185b052657445071c55336e362c7ed18/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:29:9-40:20
-387            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
-387-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/185b052657445071c55336e362c7ed18/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:30:13-78
-388            android:exported="true"
-388-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/185b052657445071c55336e362c7ed18/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:31:13-36
-389            android:permission="com.google.android.c2dm.permission.SEND" >
-389-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/185b052657445071c55336e362c7ed18/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:32:13-73
-390            <intent-filter>
-390-->[:firebase_messaging] /home/alecs-ink/.pub-cache/hosted/pub.dev/firebase_messaging-14.9.4/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:30:13-32:29
-391                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-391-->[:firebase_messaging] /home/alecs-ink/.pub-cache/hosted/pub.dev/firebase_messaging-14.9.4/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:31:17-81
-391-->[:firebase_messaging] /home/alecs-ink/.pub-cache/hosted/pub.dev/firebase_messaging-14.9.4/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:31:25-78
-392            </intent-filter>
-393
-394            <meta-data
-394-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/185b052657445071c55336e362c7ed18/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:37:13-39:40
-395                android:name="com.google.android.gms.cloudmessaging.FINISHED_AFTER_HANDLED"
-395-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/185b052657445071c55336e362c7ed18/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:38:17-92
-396                android:value="true" />
-396-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/185b052657445071c55336e362c7ed18/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:39:17-37
-397        </receiver>
-398        <!--
-399             FirebaseMessagingService performs security checks at runtime,
-400             but set to not exported to explicitly avoid allowing another app to call it.
-401        -->
-402        <service
-402-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/185b052657445071c55336e362c7ed18/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:46:9-53:19
-403            android:name="com.google.firebase.messaging.FirebaseMessagingService"
-403-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/185b052657445071c55336e362c7ed18/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:47:13-82
-404            android:directBootAware="true"
-404-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/185b052657445071c55336e362c7ed18/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:48:13-43
-405            android:exported="false" >
-405-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/185b052657445071c55336e362c7ed18/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:49:13-37
-406            <intent-filter android:priority="-500" >
-406-->[:firebase_messaging] /home/alecs-ink/.pub-cache/hosted/pub.dev/firebase_messaging-14.9.4/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:21:13-23:29
-407                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-407-->[:firebase_messaging] /home/alecs-ink/.pub-cache/hosted/pub.dev/firebase_messaging-14.9.4/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:22:17-78
-407-->[:firebase_messaging] /home/alecs-ink/.pub-cache/hosted/pub.dev/firebase_messaging-14.9.4/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:22:25-75
-408            </intent-filter>
-409        </service>
-410        <service
-410-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/c8053840a0f71738f3bb6c037ecba2f9/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:9:9-15:19
-411            android:name="com.google.mlkit.common.internal.MlKitComponentDiscoveryService"
-411-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/c8053840a0f71738f3bb6c037ecba2f9/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:10:13-91
-412            android:directBootAware="true"
-412-->[com.google.mlkit:common:18.9.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/fc5d6015c2437c3ed3888a4f1189a14d/transformed/jetified-common-18.9.0/AndroidManifest.xml:17:13-43
-413            android:exported="false" >
-413-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/c8053840a0f71738f3bb6c037ecba2f9/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:11:13-37
-414            <meta-data
-414-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/c8053840a0f71738f3bb6c037ecba2f9/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:12:13-14:85
-415                android:name="com.google.firebase.components:com.google.mlkit.vision.barcode.internal.BarcodeRegistrar"
-415-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/c8053840a0f71738f3bb6c037ecba2f9/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:13:17-120
-416                android:value="com.google.firebase.components.ComponentRegistrar" />
-416-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/c8053840a0f71738f3bb6c037ecba2f9/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:14:17-82
-417            <meta-data
-417-->[com.google.mlkit:vision-common:17.3.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a05b5895d4441831cef9203768ec4801/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:12:13-14:85
-418                android:name="com.google.firebase.components:com.google.mlkit.vision.common.internal.VisionCommonRegistrar"
-418-->[com.google.mlkit:vision-common:17.3.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a05b5895d4441831cef9203768ec4801/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:13:17-124
-419                android:value="com.google.firebase.components.ComponentRegistrar" />
-419-->[com.google.mlkit:vision-common:17.3.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/a05b5895d4441831cef9203768ec4801/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:14:17-82
-420            <meta-data
-420-->[com.google.mlkit:common:18.9.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/fc5d6015c2437c3ed3888a4f1189a14d/transformed/jetified-common-18.9.0/AndroidManifest.xml:20:13-22:85
-421                android:name="com.google.firebase.components:com.google.mlkit.common.internal.CommonComponentRegistrar"
-421-->[com.google.mlkit:common:18.9.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/fc5d6015c2437c3ed3888a4f1189a14d/transformed/jetified-common-18.9.0/AndroidManifest.xml:21:17-120
-422                android:value="com.google.firebase.components.ComponentRegistrar" />
-422-->[com.google.mlkit:common:18.9.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/fc5d6015c2437c3ed3888a4f1189a14d/transformed/jetified-common-18.9.0/AndroidManifest.xml:22:17-82
-423        </service>
-424
-425        <provider
-425-->[com.google.mlkit:common:18.9.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/fc5d6015c2437c3ed3888a4f1189a14d/transformed/jetified-common-18.9.0/AndroidManifest.xml:9:9-13:38
-426            android:name="com.google.mlkit.common.internal.MlKitInitProvider"
-426-->[com.google.mlkit:common:18.9.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/fc5d6015c2437c3ed3888a4f1189a14d/transformed/jetified-common-18.9.0/AndroidManifest.xml:10:13-78
-427            android:authorities="com.elitattoo.clients.mlkitinitprovider"
-427-->[com.google.mlkit:common:18.9.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/fc5d6015c2437c3ed3888a4f1189a14d/transformed/jetified-common-18.9.0/AndroidManifest.xml:11:13-69
-428            android:exported="false"
-428-->[com.google.mlkit:common:18.9.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/fc5d6015c2437c3ed3888a4f1189a14d/transformed/jetified-common-18.9.0/AndroidManifest.xml:12:13-37
-429            android:initOrder="99" />
-429-->[com.google.mlkit:common:18.9.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/fc5d6015c2437c3ed3888a4f1189a14d/transformed/jetified-common-18.9.0/AndroidManifest.xml:13:13-35
-430
-431        <activity
-431-->[com.google.android.gms:play-services-base:18.3.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/9db9b81a577112600e8d2ee7b5450923/transformed/jetified-play-services-base-18.3.0/AndroidManifest.xml:20:9-22:45
-432            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-432-->[com.google.android.gms:play-services-base:18.3.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/9db9b81a577112600e8d2ee7b5450923/transformed/jetified-play-services-base-18.3.0/AndroidManifest.xml:20:19-85
-433            android:exported="false"
-433-->[com.google.android.gms:play-services-base:18.3.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/9db9b81a577112600e8d2ee7b5450923/transformed/jetified-play-services-base-18.3.0/AndroidManifest.xml:22:19-43
-434            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-434-->[com.google.android.gms:play-services-base:18.3.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/9db9b81a577112600e8d2ee7b5450923/transformed/jetified-play-services-base-18.3.0/AndroidManifest.xml:21:19-78
-435
-436        <property
-436-->[com.google.android.gms:play-services-measurement-api:21.6.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b623c3e55fcf5221a64a80614426afbd/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:30:9-32:61
-437            android:name="android.adservices.AD_SERVICES_CONFIG"
-437-->[com.google.android.gms:play-services-measurement-api:21.6.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b623c3e55fcf5221a64a80614426afbd/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:31:13-65
-438            android:resource="@xml/ga_ad_services_config" />
-438-->[com.google.android.gms:play-services-measurement-api:21.6.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/b623c3e55fcf5221a64a80614426afbd/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:32:13-58
-439
-440        <provider
-440-->[com.google.firebase:firebase-common:20.4.3] /home/alecs-ink/.gradle/caches/8.10.2/transforms/7753fbb9eb20d93e79e4caf23f22802c/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:23:9-28:39
-441            android:name="com.google.firebase.provider.FirebaseInitProvider"
-441-->[com.google.firebase:firebase-common:20.4.3] /home/alecs-ink/.gradle/caches/8.10.2/transforms/7753fbb9eb20d93e79e4caf23f22802c/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:24:13-77
-442            android:authorities="com.elitattoo.clients.firebaseinitprovider"
-442-->[com.google.firebase:firebase-common:20.4.3] /home/alecs-ink/.gradle/caches/8.10.2/transforms/7753fbb9eb20d93e79e4caf23f22802c/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:25:13-72
-443            android:directBootAware="true"
-443-->[com.google.firebase:firebase-common:20.4.3] /home/alecs-ink/.gradle/caches/8.10.2/transforms/7753fbb9eb20d93e79e4caf23f22802c/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:26:13-43
-444            android:exported="false"
-444-->[com.google.firebase:firebase-common:20.4.3] /home/alecs-ink/.gradle/caches/8.10.2/transforms/7753fbb9eb20d93e79e4caf23f22802c/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:27:13-37
-445            android:initOrder="100" />
-445-->[com.google.firebase:firebase-common:20.4.3] /home/alecs-ink/.gradle/caches/8.10.2/transforms/7753fbb9eb20d93e79e4caf23f22802c/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:28:13-36
-446
-447        <uses-library
-447-->[androidx.window:window:1.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/5093ab42d2307deb2d7ac0b7f5718c38/transformed/jetified-window-1.2.0/AndroidManifest.xml:23:9-25:40
-448            android:name="androidx.window.extensions"
-448-->[androidx.window:window:1.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/5093ab42d2307deb2d7ac0b7f5718c38/transformed/jetified-window-1.2.0/AndroidManifest.xml:24:13-54
-449            android:required="false" />
-449-->[androidx.window:window:1.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/5093ab42d2307deb2d7ac0b7f5718c38/transformed/jetified-window-1.2.0/AndroidManifest.xml:25:13-37
-450        <uses-library
-450-->[androidx.window:window:1.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/5093ab42d2307deb2d7ac0b7f5718c38/transformed/jetified-window-1.2.0/AndroidManifest.xml:26:9-28:40
-451            android:name="androidx.window.sidecar"
-451-->[androidx.window:window:1.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/5093ab42d2307deb2d7ac0b7f5718c38/transformed/jetified-window-1.2.0/AndroidManifest.xml:27:13-51
-452            android:required="false" />
-452-->[androidx.window:window:1.2.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/5093ab42d2307deb2d7ac0b7f5718c38/transformed/jetified-window-1.2.0/AndroidManifest.xml:28:13-37
-453
-454        <receiver
-454-->[com.google.android.gms:play-services-measurement:21.6.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/130f9d14b87c5cf07adde5e837f14ab6/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:29:9-33:20
-455            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
-455-->[com.google.android.gms:play-services-measurement:21.6.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/130f9d14b87c5cf07adde5e837f14ab6/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:30:13-85
-456            android:enabled="true"
-456-->[com.google.android.gms:play-services-measurement:21.6.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/130f9d14b87c5cf07adde5e837f14ab6/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:31:13-35
-457            android:exported="false" >
-457-->[com.google.android.gms:play-services-measurement:21.6.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/130f9d14b87c5cf07adde5e837f14ab6/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:32:13-37
-458        </receiver>
+358        <activity
+358-->[com.google.android.gms:play-services-auth:21.0.0] /home/alecs-ink/.gradle/caches/8.9/transforms/55f1005d7e6fb7937e2ddad3c99db092/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:23:9-27:75
+359            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+359-->[com.google.android.gms:play-services-auth:21.0.0] /home/alecs-ink/.gradle/caches/8.9/transforms/55f1005d7e6fb7937e2ddad3c99db092/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:24:13-93
+360            android:excludeFromRecents="true"
+360-->[com.google.android.gms:play-services-auth:21.0.0] /home/alecs-ink/.gradle/caches/8.9/transforms/55f1005d7e6fb7937e2ddad3c99db092/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:25:13-46
+361            android:exported="false"
+361-->[com.google.android.gms:play-services-auth:21.0.0] /home/alecs-ink/.gradle/caches/8.9/transforms/55f1005d7e6fb7937e2ddad3c99db092/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:26:13-37
+362            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+362-->[com.google.android.gms:play-services-auth:21.0.0] /home/alecs-ink/.gradle/caches/8.9/transforms/55f1005d7e6fb7937e2ddad3c99db092/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:27:13-72
+363        <!--
+364            Service handling Google Sign-In user revocation. For apps that do not integrate with
+365            Google Sign-In, this service will never be started.
+366        -->
+367        <service
+367-->[com.google.android.gms:play-services-auth:21.0.0] /home/alecs-ink/.gradle/caches/8.9/transforms/55f1005d7e6fb7937e2ddad3c99db092/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:33:9-37:51
+368            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+368-->[com.google.android.gms:play-services-auth:21.0.0] /home/alecs-ink/.gradle/caches/8.9/transforms/55f1005d7e6fb7937e2ddad3c99db092/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:34:13-89
+369            android:exported="true"
+369-->[com.google.android.gms:play-services-auth:21.0.0] /home/alecs-ink/.gradle/caches/8.9/transforms/55f1005d7e6fb7937e2ddad3c99db092/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:35:13-36
+370            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+370-->[com.google.android.gms:play-services-auth:21.0.0] /home/alecs-ink/.gradle/caches/8.9/transforms/55f1005d7e6fb7937e2ddad3c99db092/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:36:13-107
+371            android:visibleToInstantApps="true" />
+371-->[com.google.android.gms:play-services-auth:21.0.0] /home/alecs-ink/.gradle/caches/8.9/transforms/55f1005d7e6fb7937e2ddad3c99db092/transformed/jetified-play-services-auth-21.0.0/AndroidManifest.xml:37:13-48
+372
+373        <activity
+373-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/c737962ecf4e7ec5815ddb56536c6cd8/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:29:9-46:20
+374            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+374-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/c737962ecf4e7ec5815ddb56536c6cd8/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:30:13-80
+375            android:excludeFromRecents="true"
+375-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/c737962ecf4e7ec5815ddb56536c6cd8/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:31:13-46
+376            android:exported="true"
+376-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/c737962ecf4e7ec5815ddb56536c6cd8/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:32:13-36
+377            android:launchMode="singleTask"
+377-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/c737962ecf4e7ec5815ddb56536c6cd8/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:33:13-44
+378            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+378-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/c737962ecf4e7ec5815ddb56536c6cd8/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:34:13-72
+379            <intent-filter>
+379-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/c737962ecf4e7ec5815ddb56536c6cd8/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:35:13-45:29
+380                <action android:name="android.intent.action.VIEW" />
+380-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/c737962ecf4e7ec5815ddb56536c6cd8/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:36:17-69
+380-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/c737962ecf4e7ec5815ddb56536c6cd8/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:36:25-66
+381
+382                <category android:name="android.intent.category.DEFAULT" />
+382-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/c737962ecf4e7ec5815ddb56536c6cd8/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:38:17-76
+382-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/c737962ecf4e7ec5815ddb56536c6cd8/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:38:27-73
+383                <category android:name="android.intent.category.BROWSABLE" />
+383-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/c737962ecf4e7ec5815ddb56536c6cd8/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:39:17-78
+383-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/c737962ecf4e7ec5815ddb56536c6cd8/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:39:27-75
+384
+385                <data
+385-->/home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:60:13-50
+386                    android:host="firebase.auth"
+387                    android:path="/"
+388                    android:scheme="genericidp" />
+389            </intent-filter>
+390        </activity>
+391        <activity
+391-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/c737962ecf4e7ec5815ddb56536c6cd8/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:47:9-64:20
+392            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+392-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/c737962ecf4e7ec5815ddb56536c6cd8/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:48:13-79
+393            android:excludeFromRecents="true"
+393-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/c737962ecf4e7ec5815ddb56536c6cd8/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:49:13-46
+394            android:exported="true"
+394-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/c737962ecf4e7ec5815ddb56536c6cd8/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:50:13-36
+395            android:launchMode="singleTask"
+395-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/c737962ecf4e7ec5815ddb56536c6cd8/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:51:13-44
+396            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+396-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/c737962ecf4e7ec5815ddb56536c6cd8/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:52:13-72
+397            <intent-filter>
+397-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/c737962ecf4e7ec5815ddb56536c6cd8/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:53:13-63:29
+398                <action android:name="android.intent.action.VIEW" />
+398-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/c737962ecf4e7ec5815ddb56536c6cd8/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:36:17-69
+398-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/c737962ecf4e7ec5815ddb56536c6cd8/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:36:25-66
+399
+400                <category android:name="android.intent.category.DEFAULT" />
+400-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/c737962ecf4e7ec5815ddb56536c6cd8/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:38:17-76
+400-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/c737962ecf4e7ec5815ddb56536c6cd8/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:38:27-73
+401                <category android:name="android.intent.category.BROWSABLE" />
+401-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/c737962ecf4e7ec5815ddb56536c6cd8/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:39:17-78
+401-->[com.google.firebase:firebase-auth:22.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/c737962ecf4e7ec5815ddb56536c6cd8/transformed/jetified-firebase-auth-22.3.1/AndroidManifest.xml:39:27-75
+402
+403                <data
+403-->/home/alecs-ink/Desktop/eli_tattoo_new/android/app/src/main/AndroidManifest.xml:60:13-50
+404                    android:host="firebase.auth"
+405                    android:path="/"
+406                    android:scheme="recaptcha" />
+407            </intent-filter>
+408        </activity>
+409
+410        <receiver
+410-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.9/transforms/3be7542b8e619927574c876caa1ae3d0/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:29:9-40:20
+411            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+411-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.9/transforms/3be7542b8e619927574c876caa1ae3d0/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:30:13-78
+412            android:exported="true"
+412-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.9/transforms/3be7542b8e619927574c876caa1ae3d0/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:31:13-36
+413            android:permission="com.google.android.c2dm.permission.SEND" >
+413-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.9/transforms/3be7542b8e619927574c876caa1ae3d0/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:32:13-73
+414            <intent-filter>
+414-->[:firebase_messaging] /home/alecs-ink/.pub-cache/hosted/pub.dev/firebase_messaging-14.9.4/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:30:13-32:29
+415                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+415-->[:firebase_messaging] /home/alecs-ink/.pub-cache/hosted/pub.dev/firebase_messaging-14.9.4/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:31:17-81
+415-->[:firebase_messaging] /home/alecs-ink/.pub-cache/hosted/pub.dev/firebase_messaging-14.9.4/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:31:25-78
+416            </intent-filter>
+417
+418            <meta-data
+418-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.9/transforms/3be7542b8e619927574c876caa1ae3d0/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:37:13-39:40
+419                android:name="com.google.android.gms.cloudmessaging.FINISHED_AFTER_HANDLED"
+419-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.9/transforms/3be7542b8e619927574c876caa1ae3d0/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:38:17-92
+420                android:value="true" />
+420-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.9/transforms/3be7542b8e619927574c876caa1ae3d0/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:39:17-37
+421        </receiver>
+422        <!--
+423             FirebaseMessagingService performs security checks at runtime,
+424             but set to not exported to explicitly avoid allowing another app to call it.
+425        -->
+426        <service
+426-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.9/transforms/3be7542b8e619927574c876caa1ae3d0/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:46:9-53:19
+427            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+427-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.9/transforms/3be7542b8e619927574c876caa1ae3d0/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:47:13-82
+428            android:directBootAware="true"
+428-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.9/transforms/3be7542b8e619927574c876caa1ae3d0/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:48:13-43
+429            android:exported="false" >
+429-->[com.google.firebase:firebase-messaging:23.4.1] /home/alecs-ink/.gradle/caches/8.9/transforms/3be7542b8e619927574c876caa1ae3d0/transformed/jetified-firebase-messaging-23.4.1/AndroidManifest.xml:49:13-37
+430            <intent-filter android:priority="-500" >
+430-->[:firebase_messaging] /home/alecs-ink/.pub-cache/hosted/pub.dev/firebase_messaging-14.9.4/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:21:13-23:29
+431                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+431-->[:firebase_messaging] /home/alecs-ink/.pub-cache/hosted/pub.dev/firebase_messaging-14.9.4/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:22:17-78
+431-->[:firebase_messaging] /home/alecs-ink/.pub-cache/hosted/pub.dev/firebase_messaging-14.9.4/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:22:25-75
+432            </intent-filter>
+433        </service>
+434        <service
+434-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /home/alecs-ink/.gradle/caches/8.9/transforms/dda29ac00c7fa43162fabacb0d63ae74/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:9:9-15:19
+435            android:name="com.google.mlkit.common.internal.MlKitComponentDiscoveryService"
+435-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /home/alecs-ink/.gradle/caches/8.9/transforms/dda29ac00c7fa43162fabacb0d63ae74/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:10:13-91
+436            android:directBootAware="true"
+436-->[com.google.mlkit:common:18.9.0] /home/alecs-ink/.gradle/caches/8.9/transforms/5db4464ca5b9701c0ca84f72e93d9adf/transformed/jetified-common-18.9.0/AndroidManifest.xml:17:13-43
+437            android:exported="false" >
+437-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /home/alecs-ink/.gradle/caches/8.9/transforms/dda29ac00c7fa43162fabacb0d63ae74/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:11:13-37
+438            <meta-data
+438-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /home/alecs-ink/.gradle/caches/8.9/transforms/dda29ac00c7fa43162fabacb0d63ae74/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:12:13-14:85
+439                android:name="com.google.firebase.components:com.google.mlkit.vision.barcode.internal.BarcodeRegistrar"
+439-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /home/alecs-ink/.gradle/caches/8.9/transforms/dda29ac00c7fa43162fabacb0d63ae74/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:13:17-120
+440                android:value="com.google.firebase.components.ComponentRegistrar" />
+440-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /home/alecs-ink/.gradle/caches/8.9/transforms/dda29ac00c7fa43162fabacb0d63ae74/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:14:17-82
+441            <meta-data
+441-->[com.google.mlkit:vision-common:17.3.0] /home/alecs-ink/.gradle/caches/8.9/transforms/fae321c218941f8656ede1601f79a915/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:12:13-14:85
+442                android:name="com.google.firebase.components:com.google.mlkit.vision.common.internal.VisionCommonRegistrar"
+442-->[com.google.mlkit:vision-common:17.3.0] /home/alecs-ink/.gradle/caches/8.9/transforms/fae321c218941f8656ede1601f79a915/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:13:17-124
+443                android:value="com.google.firebase.components.ComponentRegistrar" />
+443-->[com.google.mlkit:vision-common:17.3.0] /home/alecs-ink/.gradle/caches/8.9/transforms/fae321c218941f8656ede1601f79a915/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:14:17-82
+444            <meta-data
+444-->[com.google.mlkit:common:18.9.0] /home/alecs-ink/.gradle/caches/8.9/transforms/5db4464ca5b9701c0ca84f72e93d9adf/transformed/jetified-common-18.9.0/AndroidManifest.xml:20:13-22:85
+445                android:name="com.google.firebase.components:com.google.mlkit.common.internal.CommonComponentRegistrar"
+445-->[com.google.mlkit:common:18.9.0] /home/alecs-ink/.gradle/caches/8.9/transforms/5db4464ca5b9701c0ca84f72e93d9adf/transformed/jetified-common-18.9.0/AndroidManifest.xml:21:17-120
+446                android:value="com.google.firebase.components.ComponentRegistrar" />
+446-->[com.google.mlkit:common:18.9.0] /home/alecs-ink/.gradle/caches/8.9/transforms/5db4464ca5b9701c0ca84f72e93d9adf/transformed/jetified-common-18.9.0/AndroidManifest.xml:22:17-82
+447        </service>
+448
+449        <provider
+449-->[com.google.mlkit:common:18.9.0] /home/alecs-ink/.gradle/caches/8.9/transforms/5db4464ca5b9701c0ca84f72e93d9adf/transformed/jetified-common-18.9.0/AndroidManifest.xml:9:9-13:38
+450            android:name="com.google.mlkit.common.internal.MlKitInitProvider"
+450-->[com.google.mlkit:common:18.9.0] /home/alecs-ink/.gradle/caches/8.9/transforms/5db4464ca5b9701c0ca84f72e93d9adf/transformed/jetified-common-18.9.0/AndroidManifest.xml:10:13-78
+451            android:authorities="com.elitattoo.clients.mlkitinitprovider"
+451-->[com.google.mlkit:common:18.9.0] /home/alecs-ink/.gradle/caches/8.9/transforms/5db4464ca5b9701c0ca84f72e93d9adf/transformed/jetified-common-18.9.0/AndroidManifest.xml:11:13-69
+452            android:exported="false"
+452-->[com.google.mlkit:common:18.9.0] /home/alecs-ink/.gradle/caches/8.9/transforms/5db4464ca5b9701c0ca84f72e93d9adf/transformed/jetified-common-18.9.0/AndroidManifest.xml:12:13-37
+453            android:initOrder="99" />
+453-->[com.google.mlkit:common:18.9.0] /home/alecs-ink/.gradle/caches/8.9/transforms/5db4464ca5b9701c0ca84f72e93d9adf/transformed/jetified-common-18.9.0/AndroidManifest.xml:13:13-35
+454
+455        <activity
+455-->[com.google.android.gms:play-services-base:18.3.0] /home/alecs-ink/.gradle/caches/8.9/transforms/754bc4a02d6bcf9e2bc91d4b8d59dfab/transformed/jetified-play-services-base-18.3.0/AndroidManifest.xml:20:9-22:45
+456            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+456-->[com.google.android.gms:play-services-base:18.3.0] /home/alecs-ink/.gradle/caches/8.9/transforms/754bc4a02d6bcf9e2bc91d4b8d59dfab/transformed/jetified-play-services-base-18.3.0/AndroidManifest.xml:20:19-85
+457            android:exported="false"
+457-->[com.google.android.gms:play-services-base:18.3.0] /home/alecs-ink/.gradle/caches/8.9/transforms/754bc4a02d6bcf9e2bc91d4b8d59dfab/transformed/jetified-play-services-base-18.3.0/AndroidManifest.xml:22:19-43
+458            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+458-->[com.google.android.gms:play-services-base:18.3.0] /home/alecs-ink/.gradle/caches/8.9/transforms/754bc4a02d6bcf9e2bc91d4b8d59dfab/transformed/jetified-play-services-base-18.3.0/AndroidManifest.xml:21:19-78
 459
-460        <service
-460-->[com.google.android.gms:play-services-measurement:21.6.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/130f9d14b87c5cf07adde5e837f14ab6/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:35:9-38:40
-461            android:name="com.google.android.gms.measurement.AppMeasurementService"
-461-->[com.google.android.gms:play-services-measurement:21.6.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/130f9d14b87c5cf07adde5e837f14ab6/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:36:13-84
-462            android:enabled="true"
-462-->[com.google.android.gms:play-services-measurement:21.6.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/130f9d14b87c5cf07adde5e837f14ab6/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:37:13-35
-463            android:exported="false" />
-463-->[com.google.android.gms:play-services-measurement:21.6.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/130f9d14b87c5cf07adde5e837f14ab6/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:38:13-37
-464        <service
-464-->[com.google.android.gms:play-services-measurement:21.6.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/130f9d14b87c5cf07adde5e837f14ab6/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:39:9-43:72
-465            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
-465-->[com.google.android.gms:play-services-measurement:21.6.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/130f9d14b87c5cf07adde5e837f14ab6/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:40:13-87
-466            android:enabled="true"
-466-->[com.google.android.gms:play-services-measurement:21.6.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/130f9d14b87c5cf07adde5e837f14ab6/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:41:13-35
-467            android:exported="false"
-467-->[com.google.android.gms:play-services-measurement:21.6.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/130f9d14b87c5cf07adde5e837f14ab6/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:42:13-37
-468            android:permission="android.permission.BIND_JOB_SERVICE" />
-468-->[com.google.android.gms:play-services-measurement:21.6.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/130f9d14b87c5cf07adde5e837f14ab6/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:43:13-69
-469
-470        <uses-library
-470-->[androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /home/alecs-ink/.gradle/caches/8.10.2/transforms/d64764d3e19c57f00bd96b21f5aea43c/transformed/jetified-ads-adservices-1.0.0-beta05/AndroidManifest.xml:23:9-25:40
-471            android:name="android.ext.adservices"
-471-->[androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /home/alecs-ink/.gradle/caches/8.10.2/transforms/d64764d3e19c57f00bd96b21f5aea43c/transformed/jetified-ads-adservices-1.0.0-beta05/AndroidManifest.xml:24:13-50
-472            android:required="false" />
-472-->[androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /home/alecs-ink/.gradle/caches/8.10.2/transforms/d64764d3e19c57f00bd96b21f5aea43c/transformed/jetified-ads-adservices-1.0.0-beta05/AndroidManifest.xml:25:13-37
-473
-474        <meta-data
-474-->[com.google.android.gms:play-services-basement:18.3.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/abeed4f47a72eff8f5b4e9bf7f2f3c91/transformed/jetified-play-services-basement-18.3.0/AndroidManifest.xml:21:9-23:69
-475            android:name="com.google.android.gms.version"
-475-->[com.google.android.gms:play-services-basement:18.3.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/abeed4f47a72eff8f5b4e9bf7f2f3c91/transformed/jetified-play-services-basement-18.3.0/AndroidManifest.xml:22:13-58
-476            android:value="@integer/google_play_services_version" />
-476-->[com.google.android.gms:play-services-basement:18.3.0] /home/alecs-ink/.gradle/caches/8.10.2/transforms/abeed4f47a72eff8f5b4e9bf7f2f3c91/transformed/jetified-play-services-basement-18.3.0/AndroidManifest.xml:23:13-66
+460        <property
+460-->[com.google.android.gms:play-services-measurement-api:21.6.1] /home/alecs-ink/.gradle/caches/8.9/transforms/3ae933ae769b5aafb83489c4222edd74/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:30:9-32:61
+461            android:name="android.adservices.AD_SERVICES_CONFIG"
+461-->[com.google.android.gms:play-services-measurement-api:21.6.1] /home/alecs-ink/.gradle/caches/8.9/transforms/3ae933ae769b5aafb83489c4222edd74/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:31:13-65
+462            android:resource="@xml/ga_ad_services_config" />
+462-->[com.google.android.gms:play-services-measurement-api:21.6.1] /home/alecs-ink/.gradle/caches/8.9/transforms/3ae933ae769b5aafb83489c4222edd74/transformed/jetified-play-services-measurement-api-21.6.1/AndroidManifest.xml:32:13-58
+463
+464        <provider
+464-->[com.google.firebase:firebase-common:20.4.3] /home/alecs-ink/.gradle/caches/8.9/transforms/e32fd470e544b71cc917e2abc3e127e5/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:23:9-28:39
+465            android:name="com.google.firebase.provider.FirebaseInitProvider"
+465-->[com.google.firebase:firebase-common:20.4.3] /home/alecs-ink/.gradle/caches/8.9/transforms/e32fd470e544b71cc917e2abc3e127e5/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:24:13-77
+466            android:authorities="com.elitattoo.clients.firebaseinitprovider"
+466-->[com.google.firebase:firebase-common:20.4.3] /home/alecs-ink/.gradle/caches/8.9/transforms/e32fd470e544b71cc917e2abc3e127e5/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:25:13-72
+467            android:directBootAware="true"
+467-->[com.google.firebase:firebase-common:20.4.3] /home/alecs-ink/.gradle/caches/8.9/transforms/e32fd470e544b71cc917e2abc3e127e5/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:26:13-43
+468            android:exported="false"
+468-->[com.google.firebase:firebase-common:20.4.3] /home/alecs-ink/.gradle/caches/8.9/transforms/e32fd470e544b71cc917e2abc3e127e5/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:27:13-37
+469            android:initOrder="100" />
+469-->[com.google.firebase:firebase-common:20.4.3] /home/alecs-ink/.gradle/caches/8.9/transforms/e32fd470e544b71cc917e2abc3e127e5/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:28:13-36
+470
+471        <uses-library
+471-->[androidx.window:window:1.2.0] /home/alecs-ink/.gradle/caches/8.9/transforms/5634259c0af1587d404b3176bd1596e6/transformed/jetified-window-1.2.0/AndroidManifest.xml:23:9-25:40
+472            android:name="androidx.window.extensions"
+472-->[androidx.window:window:1.2.0] /home/alecs-ink/.gradle/caches/8.9/transforms/5634259c0af1587d404b3176bd1596e6/transformed/jetified-window-1.2.0/AndroidManifest.xml:24:13-54
+473            android:required="false" />
+473-->[androidx.window:window:1.2.0] /home/alecs-ink/.gradle/caches/8.9/transforms/5634259c0af1587d404b3176bd1596e6/transformed/jetified-window-1.2.0/AndroidManifest.xml:25:13-37
+474        <uses-library
+474-->[androidx.window:window:1.2.0] /home/alecs-ink/.gradle/caches/8.9/transforms/5634259c0af1587d404b3176bd1596e6/transformed/jetified-window-1.2.0/AndroidManifest.xml:26:9-28:40
+475            android:name="androidx.window.sidecar"
+475-->[androidx.window:window:1.2.0] /home/alecs-ink/.gradle/caches/8.9/transforms/5634259c0af1587d404b3176bd1596e6/transformed/jetified-window-1.2.0/AndroidManifest.xml:27:13-51
+476            android:required="false" />
+476-->[androidx.window:window:1.2.0] /home/alecs-ink/.gradle/caches/8.9/transforms/5634259c0af1587d404b3176bd1596e6/transformed/jetified-window-1.2.0/AndroidManifest.xml:28:13-37
 477
 478        <receiver
-478-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/5f7dcf6815bacc3ae7f099ba801348de/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
-479            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-479-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/5f7dcf6815bacc3ae7f099ba801348de/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
-480            android:directBootAware="false"
-480-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/5f7dcf6815bacc3ae7f099ba801348de/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
-481            android:enabled="true"
-481-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/5f7dcf6815bacc3ae7f099ba801348de/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
-482            android:exported="true"
-482-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/5f7dcf6815bacc3ae7f099ba801348de/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
-483            android:permission="android.permission.DUMP" >
-483-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/5f7dcf6815bacc3ae7f099ba801348de/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
-484            <intent-filter>
-484-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/5f7dcf6815bacc3ae7f099ba801348de/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
-485                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-485-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/5f7dcf6815bacc3ae7f099ba801348de/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
-485-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/5f7dcf6815bacc3ae7f099ba801348de/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
-486            </intent-filter>
-487            <intent-filter>
-487-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/5f7dcf6815bacc3ae7f099ba801348de/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
-488                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-488-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/5f7dcf6815bacc3ae7f099ba801348de/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
-488-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/5f7dcf6815bacc3ae7f099ba801348de/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
-489            </intent-filter>
-490            <intent-filter>
-490-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/5f7dcf6815bacc3ae7f099ba801348de/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
-491                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-491-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/5f7dcf6815bacc3ae7f099ba801348de/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
-491-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/5f7dcf6815bacc3ae7f099ba801348de/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
-492            </intent-filter>
-493            <intent-filter>
-493-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/5f7dcf6815bacc3ae7f099ba801348de/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
-494                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-494-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/5f7dcf6815bacc3ae7f099ba801348de/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
-494-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.10.2/transforms/5f7dcf6815bacc3ae7f099ba801348de/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:25-92
-495            </intent-filter>
-496        </receiver>
+478-->[com.google.android.gms:play-services-measurement:21.6.1] /home/alecs-ink/.gradle/caches/8.9/transforms/1dc5f0e357d0a10d4a4a5523c256e684/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:29:9-33:20
+479            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+479-->[com.google.android.gms:play-services-measurement:21.6.1] /home/alecs-ink/.gradle/caches/8.9/transforms/1dc5f0e357d0a10d4a4a5523c256e684/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:30:13-85
+480            android:enabled="true"
+480-->[com.google.android.gms:play-services-measurement:21.6.1] /home/alecs-ink/.gradle/caches/8.9/transforms/1dc5f0e357d0a10d4a4a5523c256e684/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:31:13-35
+481            android:exported="false" >
+481-->[com.google.android.gms:play-services-measurement:21.6.1] /home/alecs-ink/.gradle/caches/8.9/transforms/1dc5f0e357d0a10d4a4a5523c256e684/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:32:13-37
+482        </receiver>
+483
+484        <service
+484-->[com.google.android.gms:play-services-measurement:21.6.1] /home/alecs-ink/.gradle/caches/8.9/transforms/1dc5f0e357d0a10d4a4a5523c256e684/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:35:9-38:40
+485            android:name="com.google.android.gms.measurement.AppMeasurementService"
+485-->[com.google.android.gms:play-services-measurement:21.6.1] /home/alecs-ink/.gradle/caches/8.9/transforms/1dc5f0e357d0a10d4a4a5523c256e684/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:36:13-84
+486            android:enabled="true"
+486-->[com.google.android.gms:play-services-measurement:21.6.1] /home/alecs-ink/.gradle/caches/8.9/transforms/1dc5f0e357d0a10d4a4a5523c256e684/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:37:13-35
+487            android:exported="false" />
+487-->[com.google.android.gms:play-services-measurement:21.6.1] /home/alecs-ink/.gradle/caches/8.9/transforms/1dc5f0e357d0a10d4a4a5523c256e684/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:38:13-37
+488        <service
+488-->[com.google.android.gms:play-services-measurement:21.6.1] /home/alecs-ink/.gradle/caches/8.9/transforms/1dc5f0e357d0a10d4a4a5523c256e684/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:39:9-43:72
+489            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+489-->[com.google.android.gms:play-services-measurement:21.6.1] /home/alecs-ink/.gradle/caches/8.9/transforms/1dc5f0e357d0a10d4a4a5523c256e684/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:40:13-87
+490            android:enabled="true"
+490-->[com.google.android.gms:play-services-measurement:21.6.1] /home/alecs-ink/.gradle/caches/8.9/transforms/1dc5f0e357d0a10d4a4a5523c256e684/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:41:13-35
+491            android:exported="false"
+491-->[com.google.android.gms:play-services-measurement:21.6.1] /home/alecs-ink/.gradle/caches/8.9/transforms/1dc5f0e357d0a10d4a4a5523c256e684/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:42:13-37
+492            android:permission="android.permission.BIND_JOB_SERVICE" />
+492-->[com.google.android.gms:play-services-measurement:21.6.1] /home/alecs-ink/.gradle/caches/8.9/transforms/1dc5f0e357d0a10d4a4a5523c256e684/transformed/jetified-play-services-measurement-21.6.1/AndroidManifest.xml:43:13-69
+493
+494        <uses-library
+494-->[androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /home/alecs-ink/.gradle/caches/8.9/transforms/d5f3e21b95001a635ab1af527ec8292e/transformed/jetified-ads-adservices-1.0.0-beta05/AndroidManifest.xml:23:9-25:40
+495            android:name="android.ext.adservices"
+495-->[androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /home/alecs-ink/.gradle/caches/8.9/transforms/d5f3e21b95001a635ab1af527ec8292e/transformed/jetified-ads-adservices-1.0.0-beta05/AndroidManifest.xml:24:13-50
+496            android:required="false" />
+496-->[androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /home/alecs-ink/.gradle/caches/8.9/transforms/d5f3e21b95001a635ab1af527ec8292e/transformed/jetified-ads-adservices-1.0.0-beta05/AndroidManifest.xml:25:13-37
 497
-498        <service
-498-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/alecs-ink/.gradle/caches/8.10.2/transforms/06f79797ad77f08b9bcaf5ac75dacce7/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:28:9-34:19
-499            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
-499-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/alecs-ink/.gradle/caches/8.10.2/transforms/06f79797ad77f08b9bcaf5ac75dacce7/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:29:13-103
-500            android:exported="false" >
-500-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/alecs-ink/.gradle/caches/8.10.2/transforms/06f79797ad77f08b9bcaf5ac75dacce7/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:30:13-37
-501            <meta-data
-501-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/alecs-ink/.gradle/caches/8.10.2/transforms/06f79797ad77f08b9bcaf5ac75dacce7/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:31:13-33:39
-502                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
-502-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/alecs-ink/.gradle/caches/8.10.2/transforms/06f79797ad77f08b9bcaf5ac75dacce7/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:32:17-94
-503                android:value="cct" />
-503-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/alecs-ink/.gradle/caches/8.10.2/transforms/06f79797ad77f08b9bcaf5ac75dacce7/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:33:17-36
-504        </service>
-505        <service
-505-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/alecs-ink/.gradle/caches/8.10.2/transforms/28a5037b5ebc48ab32c50633c524288e/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:26:9-30:19
-506            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
-506-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/alecs-ink/.gradle/caches/8.10.2/transforms/28a5037b5ebc48ab32c50633c524288e/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:27:13-117
-507            android:exported="false"
-507-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/alecs-ink/.gradle/caches/8.10.2/transforms/28a5037b5ebc48ab32c50633c524288e/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:28:13-37
-508            android:permission="android.permission.BIND_JOB_SERVICE" >
-508-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/alecs-ink/.gradle/caches/8.10.2/transforms/28a5037b5ebc48ab32c50633c524288e/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:29:13-69
-509        </service>
-510
-511        <receiver
-511-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/alecs-ink/.gradle/caches/8.10.2/transforms/28a5037b5ebc48ab32c50633c524288e/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:32:9-34:40
-512            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
-512-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/alecs-ink/.gradle/caches/8.10.2/transforms/28a5037b5ebc48ab32c50633c524288e/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:33:13-132
-513            android:exported="false" />
-513-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/alecs-ink/.gradle/caches/8.10.2/transforms/28a5037b5ebc48ab32c50633c524288e/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:34:13-37
-514    </application>
-515
-516</manifest>
+498        <meta-data
+498-->[com.google.android.gms:play-services-basement:18.3.0] /home/alecs-ink/.gradle/caches/8.9/transforms/359d4c672a8c2d21fa7d20865ac90aa0/transformed/jetified-play-services-basement-18.3.0/AndroidManifest.xml:21:9-23:69
+499            android:name="com.google.android.gms.version"
+499-->[com.google.android.gms:play-services-basement:18.3.0] /home/alecs-ink/.gradle/caches/8.9/transforms/359d4c672a8c2d21fa7d20865ac90aa0/transformed/jetified-play-services-basement-18.3.0/AndroidManifest.xml:22:13-58
+500            android:value="@integer/google_play_services_version" />
+500-->[com.google.android.gms:play-services-basement:18.3.0] /home/alecs-ink/.gradle/caches/8.9/transforms/359d4c672a8c2d21fa7d20865ac90aa0/transformed/jetified-play-services-basement-18.3.0/AndroidManifest.xml:23:13-66
+501
+502        <receiver
+502-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/2a42408294d82609de5815d4bafe1d72/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
+503            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+503-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/2a42408294d82609de5815d4bafe1d72/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
+504            android:directBootAware="false"
+504-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/2a42408294d82609de5815d4bafe1d72/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
+505            android:enabled="true"
+505-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/2a42408294d82609de5815d4bafe1d72/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
+506            android:exported="true"
+506-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/2a42408294d82609de5815d4bafe1d72/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
+507            android:permission="android.permission.DUMP" >
+507-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/2a42408294d82609de5815d4bafe1d72/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
+508            <intent-filter>
+508-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/2a42408294d82609de5815d4bafe1d72/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
+509                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+509-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/2a42408294d82609de5815d4bafe1d72/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
+509-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/2a42408294d82609de5815d4bafe1d72/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
+510            </intent-filter>
+511            <intent-filter>
+511-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/2a42408294d82609de5815d4bafe1d72/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
+512                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+512-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/2a42408294d82609de5815d4bafe1d72/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
+512-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/2a42408294d82609de5815d4bafe1d72/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
+513            </intent-filter>
+514            <intent-filter>
+514-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/2a42408294d82609de5815d4bafe1d72/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
+515                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+515-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/2a42408294d82609de5815d4bafe1d72/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
+515-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/2a42408294d82609de5815d4bafe1d72/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
+516            </intent-filter>
+517            <intent-filter>
+517-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/2a42408294d82609de5815d4bafe1d72/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
+518                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+518-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/2a42408294d82609de5815d4bafe1d72/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
+518-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/alecs-ink/.gradle/caches/8.9/transforms/2a42408294d82609de5815d4bafe1d72/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:25-92
+519            </intent-filter>
+520        </receiver>
+521
+522        <service
+522-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/alecs-ink/.gradle/caches/8.9/transforms/32008a522d20f65765f21a4c4c414cc7/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:28:9-34:19
+523            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+523-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/alecs-ink/.gradle/caches/8.9/transforms/32008a522d20f65765f21a4c4c414cc7/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:29:13-103
+524            android:exported="false" >
+524-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/alecs-ink/.gradle/caches/8.9/transforms/32008a522d20f65765f21a4c4c414cc7/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:30:13-37
+525            <meta-data
+525-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/alecs-ink/.gradle/caches/8.9/transforms/32008a522d20f65765f21a4c4c414cc7/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:31:13-33:39
+526                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+526-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/alecs-ink/.gradle/caches/8.9/transforms/32008a522d20f65765f21a4c4c414cc7/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:32:17-94
+527                android:value="cct" />
+527-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/alecs-ink/.gradle/caches/8.9/transforms/32008a522d20f65765f21a4c4c414cc7/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:33:17-36
+528        </service>
+529        <service
+529-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/alecs-ink/.gradle/caches/8.9/transforms/5ad63f61c48203128f60530d7b4df0a3/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:26:9-30:19
+530            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+530-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/alecs-ink/.gradle/caches/8.9/transforms/5ad63f61c48203128f60530d7b4df0a3/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:27:13-117
+531            android:exported="false"
+531-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/alecs-ink/.gradle/caches/8.9/transforms/5ad63f61c48203128f60530d7b4df0a3/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:28:13-37
+532            android:permission="android.permission.BIND_JOB_SERVICE" >
+532-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/alecs-ink/.gradle/caches/8.9/transforms/5ad63f61c48203128f60530d7b4df0a3/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:29:13-69
+533        </service>
+534
+535        <receiver
+535-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/alecs-ink/.gradle/caches/8.9/transforms/5ad63f61c48203128f60530d7b4df0a3/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:32:9-34:40
+536            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+536-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/alecs-ink/.gradle/caches/8.9/transforms/5ad63f61c48203128f60530d7b4df0a3/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:33:13-132
+537            android:exported="false" />
+537-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/alecs-ink/.gradle/caches/8.9/transforms/5ad63f61c48203128f60530d7b4df0a3/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:34:13-37
+538    </application>
+539
+540</manifest>

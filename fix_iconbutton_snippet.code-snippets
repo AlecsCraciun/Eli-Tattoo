@@ -1,0 +1,17 @@
+{
+  "Fix claimed IconButton syntax": {
+    "prefix": "fixclaimed",
+    "body": [
+      "IconButton(",
+      "  icon: const Icon(Icons.check_circle_outline, color: Colors.green),",
+      "  onPressed: () async {",
+      "    await _firestore",
+      "        .collection(\"treasure_hunt_rewards\")",
+      "        .doc(doc.id)",
+      "        .update({\"claimed\": true});",
+      "  },",
+      "),"
+    ],
+    "description": "Fix IconButton bloc for claimed vouchers"
+  }
+}

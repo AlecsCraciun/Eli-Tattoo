@@ -315,8 +315,8 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
   Widget _buildAnimatedLogo() {
     return BounceInDown(
       child: Container(
-        width: 150,
-        height: 150,
+        width: 300,
+        height: 300,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           boxShadow: [

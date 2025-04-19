@@ -976,18 +976,6 @@ library {
 }
 library {
   maven_library {
-    groupId: "androidx.media"
-    artifactId: "media"
-    version: "1.7.0"
-  }
-  digests {
-    sha256: "\201\241\231\356\207\306\323\325\237\263_}\276\307\033?\035Pq(a\020\231\266\254:K\034Z\v\361\371"
-  }
-  repo_index {
-  }
-}
-library {
-  maven_library {
     groupId: "io.flutter"
     artifactId: "flutter_embedding_release"
     version: "1.0.0-18b71d647a292a980abb405ac7d16fe1f0b20434"
@@ -1046,6 +1034,18 @@ library {
   }
   repo_index {
     value: 1
+  }
+}
+library {
+  maven_library {
+    groupId: "androidx.media"
+    artifactId: "media"
+    version: "1.7.0"
+  }
+  digests {
+    sha256: "\201\241\231\356\207\306\323\325\237\263_}\276\307\033?\035Pq(a\020\231\266\254:K\034Z\v\361\371"
+  }
+  repo_index {
   }
 }
 library {
@@ -2362,7 +2362,7 @@ library {
 }
 library {
   digests {
-    sha256: "\033q$5\314{XC\347\256r\213\244p\245\243\376\344\265\v>\272\240\315IE\277\032.0\314r"
+    sha256: "\360\30737\037\274H\206\323\237\323\216\255P\002\232x~s\205a\373..\342}\367\324\255\337\236\375"
   }
 }
 library_dependencies {
@@ -2981,13 +2981,6 @@ library_dependencies {
 }
 library_dependencies {
   library_index: 81
-  library_dep_index: 6
-  library_dep_index: 10
-  library_dep_index: 8
-  library_dep_index: 8
-}
-library_dependencies {
-  library_index: 82
   library_dep_index: 17
   library_dep_index: 28
   library_dep_index: 32
@@ -2996,31 +2989,38 @@ library_dependencies {
   library_dep_index: 6
   library_dep_index: 34
   library_dep_index: 8
+  library_dep_index: 82
+  library_dep_index: 85
+}
+library_dependencies {
+  library_index: 82
+  library_dep_index: 8
   library_dep_index: 83
-  library_dep_index: 86
+  library_dep_index: 1
+  library_dep_index: 19
+  library_dep_index: 83
 }
 library_dependencies {
   library_index: 83
+  library_dep_index: 6
+  library_dep_index: 10
   library_dep_index: 8
   library_dep_index: 84
   library_dep_index: 1
-  library_dep_index: 19
-  library_dep_index: 84
+  library_dep_index: 18
+  library_dep_index: 82
 }
 library_dependencies {
   library_index: 84
   library_dep_index: 6
-  library_dep_index: 10
-  library_dep_index: 8
-  library_dep_index: 85
   library_dep_index: 1
-  library_dep_index: 18
-  library_dep_index: 83
 }
 library_dependencies {
-  library_index: 85
+  library_index: 86
   library_dep_index: 6
-  library_dep_index: 1
+  library_dep_index: 10
+  library_dep_index: 8
+  library_dep_index: 8
 }
 library_dependencies {
   library_index: 87
@@ -3438,7 +3438,7 @@ library_dependencies {
 library_dependencies {
   library_index: 147
   library_dep_index: 8
-  library_dep_index: 81
+  library_dep_index: 86
   library_dep_index: 65
   library_dep_index: 148
   library_dep_index: 25
@@ -3463,7 +3463,7 @@ library_dependencies {
   library_dep_index: 6
   library_dep_index: 44
   library_dep_index: 8
-  library_dep_index: 84
+  library_dep_index: 83
   library_dep_index: 70
 }
 library_dependencies {
@@ -3832,8 +3832,9 @@ module_dependencies {
   dependency_index: 78
   dependency_index: 79
   dependency_index: 80
+  dependency_index: 1
   dependency_index: 81
-  dependency_index: 82
+  dependency_index: 86
   dependency_index: 3
   dependency_index: 19
   dependency_index: 18
@@ -3841,7 +3842,6 @@ module_dependencies {
   dependency_index: 117
   dependency_index: 102
   dependency_index: 6
-  dependency_index: 1
   dependency_index: 88
   dependency_index: 111
   dependency_index: 146
@@ -4000,6 +4000,16 @@ repositories {
 repositories {
   maven_repo {
     url: "https://jcenter.bintray.com/"
+  }
+}
+repositories {
+  maven_repo {
+    url: "https://dl.google.com/dl/android/maven2/"
+  }
+}
+repositories {
+  maven_repo {
+    url: "https://repo.maven.apache.org/maven2/"
   }
 }
 repositories {

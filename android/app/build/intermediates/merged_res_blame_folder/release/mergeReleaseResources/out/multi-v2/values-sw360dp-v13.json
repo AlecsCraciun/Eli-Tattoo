@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.elitattoo.clients.app-mergeReleaseResources-95:/values-sw360dp-v13/values-sw360dp-v13.xml",
+            "outputFile": "com.elitattoo.clients.app-mergeReleaseResources-97:/values-sw360dp-v13/values-sw360dp-v13.xml",
             "map": [
                 {
-                    "source": "/home/alecs-ink/.gradle/caches/8.10.2/transforms/0098a6e93522fecc805d8900172003dc/transformed/preference-1.2.1/res/values-sw360dp-v13/values-sw360dp-v13.xml",
+                    "source": "/home/alecs-ink/.gradle/caches/8.9/transforms/f78e9faac5e46b4041f530b1f9f35b80/transformed/preference-1.2.1/res/values-sw360dp-v13/values-sw360dp-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
